@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.stats;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class Entity : Node
 {
     protected Skills skills;
 
-    private void Awake()
+    protected Stats stats;
+
+    private void Start()
     {
         Initiate();
     }
@@ -15,5 +18,6 @@ public class Entity : Node
     {
         base.Initiate();
         skills = gameObject.AddComponent<Skills>();
+        stats = gameObject.AddComponent<Stats>();
     }
 }

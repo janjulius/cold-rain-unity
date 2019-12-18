@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skills : MonoBehaviour, SavingModule
+public class Skills : Node, SavingModule
 {
     public static readonly string[] Skill = { "Warrior", "Archer", "Hunting", "Fishing", "Farming", "Cooking", "Artisan" };
 
