@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject MainCanvas;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);

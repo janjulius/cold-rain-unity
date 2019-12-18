@@ -5,10 +5,12 @@ using Assets.Scripts.math;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Entity
 {
     private Container inventory = new Container(50);
+
 
     public override void Initiate()
     {
