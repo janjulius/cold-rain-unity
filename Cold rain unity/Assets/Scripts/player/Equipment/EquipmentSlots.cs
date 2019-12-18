@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.item;
+using Assets.Scripts.stats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,10 @@ namespace Assets.Scripts.player.Equipment
         protected Item ShieldSlot { get; set; }
 
         protected Item AmmoSlot { get; set; }
+
+        public Stats GetStats()
+        {
+            return HeadSlot.Stats + TorsoSlot.Stats + LegSlot.Stats + FeetSlot.Stats + AmuletSlot.Stats + WeaponSlot.Stats + ShieldSlot.Stats + AmmoSlot.Stats;
+        }
     }
 }

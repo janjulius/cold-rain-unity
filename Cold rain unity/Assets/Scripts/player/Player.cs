@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.container;
+using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.item;
 using Assets.Scripts.math;
@@ -10,8 +11,7 @@ using UnityEngine.UI;
 public class Player : Entity
 {
     private Container inventory = new Container(50);
-
-
+    
     public override void Initiate()
     {
         base.Initiate();
@@ -19,7 +19,15 @@ public class Player : Entity
         print(inventory);
     }
 
-    public void Update()
+
+    public override void EntityUpdate()
     {
+        Vector2 position = new Vector2(transform.position.x, transform.position.y);
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Vector2 offset = new Vector2(transform.position.x - Constants.TILE_SIZE, transform.position.y);
+            print("Moving with offset of: " + offset.ToString());
+            SetDestination(offset);
+        }
     }
 }
