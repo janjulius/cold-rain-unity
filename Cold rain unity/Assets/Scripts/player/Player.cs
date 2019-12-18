@@ -29,5 +29,23 @@ public class Player : Entity
             print("Moving with offset of: " + offset.ToString());
             SetDestination(offset);
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Vector2 offset = new Vector2(transform.position.x + Constants.TILE_SIZE, transform.position.y);
+            print("Moving with offset of: " + offset.ToString());
+            SetDestination(offset);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Vector2 offset = new Vector2(transform.position.x , transform.position.y + Constants.TILE_SIZE);
+            print("Moving with offset of: " + offset.ToString());
+            SetDestination(offset);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Vector2 offset = new Vector2(transform.position.x, transform.position.y - Constants.TILE_SIZE);
+            print("Moving with offset of: " + offset.ToString());
+            SetDestination(offset);
+        }
     }
 }
