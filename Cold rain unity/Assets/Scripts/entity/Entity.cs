@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Entity : Node
 {
+    public Vector2 SpawnPosition;
+
     protected Skills skills;
 
     protected Stats stats;
@@ -34,6 +36,7 @@ public class Entity : Node
     public override void Initiate()
     {
         base.Initiate();
+        SetLocation(SpawnPosition);
         baseStats = gameObject.AddComponent<Stats>();
         UpdateBaseStats();
         bonusStats = gameObject.AddComponent<Stats>();
@@ -44,10 +47,7 @@ public class Entity : Node
     public void Update()
     {
         EntityUpdate();
-        timeM += Time.deltaTime / timeToReachTarget;
-        float step = timeToReachTarget * Time.deltaTime;
-        transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
-        IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
+        MovementUpdate();
     }
 
     public virtual void EntityUpdate()
@@ -55,12 +55,30 @@ public class Entity : Node
 
     }
 
+    /// <summary>
+    /// Updates all the movement code
+    /// </summary>
+    private void MovementUpdate()
+    {
+        timeM += Time.deltaTime / timeToReachTarget;
+        float step = timeToReachTarget * Time.deltaTime;
+        transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
+        IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
+    }
+
+    /// <summary>
+    /// Update the stats of the entity
+    /// </summary>
     private void UpdateStats()
     {
         stats = baseStats + bonusStats;
         timeToReachTarget = 1 / stats.Speed;
     }
 
+    /// <summary>
+    /// Set the next destination of this entity
+    /// </summary>
+    /// <param name="loc"></param>
     public void SetDestination(Vector2 loc)
     {
         timeM = 0;
@@ -68,6 +86,15 @@ public class Entity : Node
         targetPosition = loc;
     }
 
+    public void SetLocation(Vector2 loc)
+    {
+        print($"Setting location for {name} to {loc}");
+        transform.position = loc;
+    }
+
+    /// <summary>
+    /// Updates the base stats
+    /// </summary>
     protected virtual void UpdateBaseStats()
     {
         baseStats = new Stats(10, 5, 1, 1, 1, 5, 1, 0, 1, 1);

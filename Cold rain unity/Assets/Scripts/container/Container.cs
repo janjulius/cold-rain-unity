@@ -8,10 +8,19 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.container
 {
+    /// <summary>
+    /// Repersents a container which can hold items
+    /// </summary>
     struct Container : SavingModule
     {
+        /// <summary>
+        /// The items in the container
+        /// </summary>
         private Item[] items;
 
+        /// <summary>
+        /// The capacity of the container
+        /// </summary>
         private int capacity;
 
         public Container(int capacity)
@@ -20,6 +29,12 @@ namespace Assets.Scripts.container
             this.items = new Item[capacity];
         }
 
+        /// <summary>
+        /// Add an item to the container
+        /// </summary>
+        /// <param name="item">The item</param>
+        /// <param name="quantity">The quantity</param>
+        /// <returns></returns>
         public bool Add(Item item, int quantity)
         {
             for(int i = 0; i < capacity; i++)
@@ -33,6 +48,11 @@ namespace Assets.Scripts.container
             return false;
         }
 
+        /// <summary>
+        /// True if the item is present in the container
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool ContainsItem(Item item)
         {
             foreach (Item it in items)
@@ -48,6 +68,9 @@ namespace Assets.Scripts.container
             return false;
         }
 
+        /// <summary>
+        /// Refreshes the container
+        /// </summary>
         public void Refresh()
         {
 
@@ -63,6 +86,10 @@ namespace Assets.Scripts.container
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns the amount of free slots in the container
+        /// </summary>
+        /// <returns></returns>
         public int GetFreeSlots()
         {
             int r = 0;

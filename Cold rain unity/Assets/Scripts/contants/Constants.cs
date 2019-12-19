@@ -7,9 +7,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.contants
 {
+    /// <summary>
+    /// Constants values
+    /// </summary>
     class Constants
     {
-        public static float TILE_SIZE = 0.5f;
+        /// <summary>
+        /// Size of the tiles in unity measurements
+        /// </summary>
+        public static float TILE_SIZE = 1f;
 
     }
 }
