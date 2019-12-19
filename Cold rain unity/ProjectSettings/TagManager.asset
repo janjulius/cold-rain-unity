@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackgroundLayer
+    uniqueID: 3025857203
+    locked: 0
+  - name: DecorationLayer
+    uniqueID: 1531500621
+    locked: 0
+  - name: DecorationUpperLayer
+    uniqueID: 3215141347
+    locked: 0
+  - name: ObjectLayer
+    uniqueID: 2437171789
+    locked: 0
+  - name: ObjectUpperLayer
+    uniqueID: 602824165
+    locked: 0
