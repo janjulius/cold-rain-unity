@@ -15,6 +15,8 @@ public class Entity : Node
     protected int hitPoints;
     protected int energy;
 
+    public bool IsMoving { private set; get; }
+
     #region MovingVariables
 
     private Vector2 startPosition;
@@ -43,7 +45,9 @@ public class Entity : Node
     {
         EntityUpdate();
         timeM += Time.deltaTime / timeToReachTarget;
+        float step = timeToReachTarget * Time.deltaTime;
         transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
+        IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
     }
 
     public virtual void EntityUpdate()

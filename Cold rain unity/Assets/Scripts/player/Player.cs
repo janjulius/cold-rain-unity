@@ -23,28 +23,31 @@ public class Player : Entity
     public override void EntityUpdate()
     {
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (!IsMoving)
+            CheckMovementKeys();
+    }
+
+    private void CheckMovementKeys()
+    {
+        if (Input.GetKey(KeyCode.A))
         {
             Vector2 offset = new Vector2(transform.position.x - Constants.TILE_SIZE, transform.position.y);
-            print("Moving with offset of: " + offset.ToString());
             SetDestination(offset);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             Vector2 offset = new Vector2(transform.position.x + Constants.TILE_SIZE, transform.position.y);
-            print("Moving with offset of: " + offset.ToString());
             SetDestination(offset);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            Vector2 offset = new Vector2(transform.position.x , transform.position.y + Constants.TILE_SIZE);
-            print("Moving with offset of: " + offset.ToString());
+            Vector2 offset = new Vector2(transform.position.x, transform.position.y + Constants.TILE_SIZE);
             SetDestination(offset);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y - Constants.TILE_SIZE);
-            print("Moving with offset of: " + offset.ToString());
             SetDestination(offset);
         }
     }

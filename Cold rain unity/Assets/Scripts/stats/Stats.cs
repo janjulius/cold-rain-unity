@@ -14,7 +14,7 @@ namespace Assets.Scripts.stats
         public int Attack { get; set; }
         public int Defence { get; set; }
         public int Precision { get; set; }
-        public int Speed { get; set; }
+        public float Speed { get; set; }
 
         public int AttackSpeed { get; set; }
         public int CritChance { get; set; }
@@ -22,7 +22,7 @@ namespace Assets.Scripts.stats
         public float HitpointsRegeneration { get; set; }
         public float EnergyRegeneration { get; set; }
 
-        public Stats(int hitpoints, int energy, int attack, int defence, int precision, int speed, int attackSpeed, int critChance, float hitpointsRegeneration, float energyRegeneration)
+        public Stats(int hitpoints, int energy, int attack, int defence, int precision, float speed, int attackSpeed, int critChance, float hitpointsRegeneration, float energyRegeneration)
         {
             Hitpoints = hitpoints;
             Energy = energy;
