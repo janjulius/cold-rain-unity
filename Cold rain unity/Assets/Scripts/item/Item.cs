@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.stats;
+﻿using Assets.Scripts.databases;
+using Assets.Scripts.stats;
 using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.item
 {
-    public class Item
+    public class Item : DbElement
     {
-        public int Id { private set; get; }
         public string Name { private set; get; }
         public int Amount { private set; get; }
         public bool Stackable { private set; get; }

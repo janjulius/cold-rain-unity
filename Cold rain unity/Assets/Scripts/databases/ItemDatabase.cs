@@ -14,32 +14,22 @@ namespace Assets.Scripts.databases
     /// <summary>
     /// Items stored in this game
     /// </summary>
-    public class ItemDatabase : MonoBehaviour
+    public class ItemDatabase : CRDatabase
     {
-        /// <summary>
-        /// The items
-        /// </summary>
-        private static List<Item> items = new List<Item>();
-
         /// <summary>
         /// The inventory icons
         /// </summary>
         public Sprite[] InventoryIcon;
 
         public EquipmentItemMultiArray[] EquipmentArray;
-
-        private void Awake()
-        {
-            BuildItemDatabase();
-        }
-
+        
         /// <summary>
         /// Builds the item database
         /// </summary>
-        void BuildItemDatabase()
+        public override void BuildDatabase()
         {
             print("Building item database...");
-            items = new List<Item>()
+            items = new List<DbElement>()
             {
                 new Item(0, "Hedgehog Plushie", 1, false, new Stats(), "A nice plushie, it says POG on the label.", false, true, InventoryIcon[0], EquipmentArray[0]),
             };
@@ -48,15 +38,10 @@ namespace Assets.Scripts.databases
             print("The item database was built succesfully");
         }
 
-        /// <summary>
-        /// Gets an item with given id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public static Item GetItem(int id)
         {
-            Item it = null;
-            it = items.Where(i => i.Id == id).FirstOrDefault();
+            Item it;
+            it = items.Where(i => i.Id == id).FirstOrDefault() as Item;
             return it;
         }
     }

@@ -92,6 +92,10 @@ public class Entity : Node
         transform.position = loc;
     }
 
+    public virtual void Face(FaceDirection dir)
+    {
+    }
+
     /// <summary>
     /// Updates the base stats
     /// </summary>

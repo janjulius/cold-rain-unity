@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Node : Atom
 {
+    public void Awake()
+    {
+        Initiate();
+    }
+
     public override void Initiate()
     {
 

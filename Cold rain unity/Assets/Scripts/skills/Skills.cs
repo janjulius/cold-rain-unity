@@ -10,11 +10,6 @@ public class Skills : Node, SavingModule
 
     public static readonly int WARRIOR = 0, ARCHER = 1, HUNTING = 2, FISHING = 3, FARMING = 4, COOKING = 5, ARTISAN = 6;
 
-    public void Awake()
-    {
-        
-    }
-
     public void Load()
     {
         throw new System.NotImplementedException();
