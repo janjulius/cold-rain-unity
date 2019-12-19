@@ -17,6 +17,7 @@ public class Player : Entity
         base.Initiate();
         inventory.Add(ItemDatabase.GetItem(0), 1);
         print(inventory);
+        transform.position = new Vector2(2, 2);
     }
 
 

@@ -37,6 +37,7 @@ public class Entity : Node
     {
         base.Initiate();
         SetLocation(SpawnPosition);
+        print("ayyyyy whassup homie");
         baseStats = gameObject.AddComponent<Stats>();
         UpdateBaseStats();
         bonusStats = gameObject.AddComponent<Stats>();
