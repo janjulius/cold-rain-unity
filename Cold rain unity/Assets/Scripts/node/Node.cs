@@ -10,7 +10,17 @@ public class Node : Atom
         Initiate();
     }
 
+    public void Start()
+    {
+        StartInitiate();
+    }
+
     public override void Initiate()
+    {
+
+    }
+
+    public override void StartInitiate()
     {
 
     }

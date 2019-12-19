@@ -27,17 +27,11 @@ public class Entity : Node
     private float timeM;
 
     #endregion
-
-    private void Start()
-    {
-        Initiate();
-    }
-
-    public override void Initiate()
+    
+    public override void StartInitiate()
     {
         base.Initiate();
         SetLocation(SpawnPosition);
-        print("ayyyyy whassup homie");
         baseStats = gameObject.AddComponent<Stats>();
         UpdateBaseStats();
         bonusStats = gameObject.AddComponent<Stats>();

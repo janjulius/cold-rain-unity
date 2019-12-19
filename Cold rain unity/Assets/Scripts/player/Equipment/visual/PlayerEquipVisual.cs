@@ -24,6 +24,7 @@ namespace Assets.Scripts.player.Equipment.visual
         public override void Initiate()
         {
             base.Initiate();
+            print("initiated: " + name);
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 

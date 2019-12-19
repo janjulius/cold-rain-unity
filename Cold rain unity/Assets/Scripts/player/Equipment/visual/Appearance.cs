@@ -36,7 +36,7 @@ namespace Assets.Scripts.player.Equipment.visual
 
         private List<PlayerEquipVisual> allVisuals = new List<PlayerEquipVisual>();
 
-        public override void Initiate()
+        public override void StartInitiate()
         {
             base.Initiate();
 
@@ -45,6 +45,8 @@ namespace Assets.Scripts.player.Equipment.visual
             
             LoadAlterVisuals();
             UpdateAlterVisuals();
+
+            AdjustLayers(FaceDirection.DOWN);
         }
 
         private void LoadPrimitiveVisuals()
