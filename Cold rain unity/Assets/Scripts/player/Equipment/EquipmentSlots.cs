@@ -18,13 +18,13 @@ namespace Assets.Scripts.player.Equipment
         protected Item AmuletSlot { get; set; }
 
         protected Item WeaponSlot { get; set; }
-        protected Item ShieldSlot { get; set; }
+        protected Item OffHandSlot { get; set; }
 
         protected Item AmmoSlot { get; set; }
 
         public Stats GetStats()
         {
-            return HeadSlot.Stats + TorsoSlot.Stats + LegSlot.Stats + FeetSlot.Stats + AmuletSlot.Stats + WeaponSlot.Stats + ShieldSlot.Stats + AmmoSlot.Stats;
+            return HeadSlot.Stats + TorsoSlot.Stats + LegSlot.Stats + FeetSlot.Stats + AmuletSlot.Stats + WeaponSlot.Stats + OffHandSlot.Stats + AmmoSlot.Stats;
         }
     }
 }

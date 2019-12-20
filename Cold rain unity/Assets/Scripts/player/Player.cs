@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.container;
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
+using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
 using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment.visual;
@@ -15,6 +16,8 @@ public class Player : Entity
     private Container inventoryContainer;
 
     private Inventory inventoryDisplay;
+
+    private NavigatorInterface navigatorDisplay;
 
     private Appearance appearance;
 
@@ -31,12 +34,19 @@ public class Player : Entity
 
         GetReferences();
 
+        LoadNavigator();
+
         LoadAppearance();
         LoadInventory();
 
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
 
+    }
+
+    private void LoadNavigator()
+    {
+        navigatorDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<NavigatorInterface>();
     }
 
     private void LoadInventory()
@@ -97,7 +107,9 @@ public class Player : Entity
     public void CheckInterfaceToggleKeys()
     {
         if (Input.GetKeyDown(KeyCode.I))
-            inventoryDisplay.gameObject.SetActive(!inventoryDisplay.gameObject.activeSelf);
+            inventoryDisplay.ToggleActive();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            navigatorDisplay.ToggleActive();
     }
 
     public override void Face(FaceDirection dir)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.container
 {
-    public class ContainerDisplay : Node
+    public class ContainerDisplay : GameInterface
     {
         public override void Initiate()
         {

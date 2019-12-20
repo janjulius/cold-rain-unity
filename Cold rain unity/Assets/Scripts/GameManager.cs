@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        DontDestroyOnLoad(MainCanvas);
     }
     
     void Start()
