@@ -9,7 +9,7 @@ namespace Assets.Scripts.databases
 {
     public abstract class CRDatabase : Node
     {
-        protected static List<DbElement> items = new List<DbElement>();
+        protected List<DbElement> items = new List<DbElement>();
 
         public override void Initiate()
         {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.databases
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static DbElement GetElementById(int id) 
+        public DbElement GetElementById(int id) 
         {
             DbElement it;
             it = items.Where(i => i.Id == id).FirstOrDefault();

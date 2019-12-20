@@ -11,7 +11,7 @@ namespace Assets.Scripts.container
     /// <summary>
     /// Repersents a container which can hold items
     /// </summary>
-    struct Container : SavingModule
+    public struct Container : SavingModule
     {
         /// <summary>
         /// The items in the container
@@ -100,6 +100,15 @@ namespace Assets.Scripts.container
             }
             r = Math.Abs(r - capacity);
             return r;
+        }
+
+        /// <summary>
+        /// Gets the items in this container
+        /// </summary>
+        /// <returns></returns>
+        public Item[] GetItems()
+        {
+            return items;
         }
 
         public override string ToString()

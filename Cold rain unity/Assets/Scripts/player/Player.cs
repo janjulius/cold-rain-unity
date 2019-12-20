@@ -4,6 +4,7 @@ using Assets.Scripts.databases;
 using Assets.Scripts.item;
 using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment.visual;
+using Assets.Scripts.styles.hairstyles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +12,44 @@ using UnityEngine.UI;
 
 public class Player : Entity
 {
-    private Container inventory = new Container(50);
+    private Container inventoryContainer = new Container(Constants.INVENTORY_SIZE);
+
+    private Inventory inventoryDisplay;
 
     private Appearance appearance;
-    
-    public override void Initiate()
+
+    #region Database References
+
+    ItemDatabase itemDatabase;
+    HairDatabase hairDatabase;
+
+    #endregion
+
+    public override void StartInitiate()
     {
-        base.Initiate();
+        base.StartInitiate();
+
+        GetReferences();
+
         LoadAppearance();
-        inventory.Add(ItemDatabase.GetItem(0), 1);
-        print(inventory);
-        transform.position = new Vector2(2, 2);
+        
+
+        inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        inventoryDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<Inventory>();
+        print(inventoryDisplay);
+        inventoryDisplay.Refresh(inventoryContainer);
     }
 
+    #region References
+
+    private void GetReferences()
+    {
+        itemDatabase = Camera.main.GetComponent<ItemDatabase>();
+        hairDatabase = Camera.main.GetComponent<HairDatabase>();
+    }
+
+    #endregion
 
     public override void EntityUpdate()
     {
@@ -31,6 +57,8 @@ public class Player : Entity
 
         if (!IsMoving)
             CheckMovementKeys();
+
+        CheckInterfaceToggleKeys();
     }
 
     private void CheckMovementKeys()
@@ -59,6 +87,12 @@ public class Player : Entity
             SetDestination(offset);
             Face(FaceDirection.DOWN);
         }
+    }
+
+    public void CheckInterfaceToggleKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+            inventoryDisplay.gameObject.SetActive(!inventoryDisplay.gameObject.activeSelf);
     }
 
     public override void Face(FaceDirection dir)

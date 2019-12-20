@@ -15,11 +15,17 @@ public class Node : Atom
         StartInitiate();
     }
 
+    /// <summary>
+    /// Mostly used for loading database and other things before the game can be started
+    /// </summary>
     public override void Initiate()
     {
 
     }
 
+    /// <summary>
+    /// Used for initialising objects or entities
+    /// </summary>
     public override void StartInitiate()
     {
 
