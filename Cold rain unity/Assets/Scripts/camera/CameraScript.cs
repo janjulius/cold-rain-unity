@@ -4,60 +4,66 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform playerTransform;
+    public Transform PlayerTransform;
+    private Camera cameraa;
     private Vector3 cameraOffset;
+    public float Camerazoom;
 
-    public float smoothFactor = 0.5f;
+    public float SmoothFactor = 0.5f;
 
-    public float maxX;
-    public float maxY;
-    public float minX;
-    public float minY;
+    public float MaxX;
+    public float MaxY;
+    public float MinX;
+    public float MinY;
 
     void Start()
     {
-
-        cameraOffset = transform.position - playerTransform.position;
-
+        cameraOffset = transform.position - PlayerTransform.position;
+        cameraa = GetComponent<Camera>();
     }
 
+    void Update()
+    {
+        Camerazoom = cameraa.orthographicSize;
+    }
 
     void LateUpdate()
     {
-        Vector3 newPos = playerTransform.position + cameraOffset;
-        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+        float viewDistance = Camerazoom + (Camerazoom / 5);
+        Vector3 newPos = PlayerTransform.position + cameraOffset;
+        transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
 
-        if (playerTransform.position.x < minX)
+        if ((PlayerTransform.position.x - viewDistance)< MinX)
         {
-            transform.position = new Vector3(minX, newPos.y, newPos.z);
+            transform.position = new Vector3((MinX + viewDistance), newPos.y, newPos.z);
         }
-        if (playerTransform.position.x > maxX)
+        if ((PlayerTransform.position.x + viewDistance)> MaxX)
         {
-            transform.position = new Vector3(maxX, newPos.y, newPos.z);
+            transform.position = new Vector3((MaxX - viewDistance), newPos.y, newPos.z);
         }
-        if (playerTransform.position.y < minY)
+        if ((PlayerTransform.position.y - viewDistance) < MinY)
         {
-            transform.position = new Vector3(newPos.x, minY, newPos.z);
+            transform.position = new Vector3(newPos.x, (MinY + viewDistance), newPos.z);
         }
-        if (playerTransform.position.y > maxY)
+        if ((PlayerTransform.position.y + viewDistance) > MaxY)
         {
-            transform.position = new Vector3(newPos.x, maxY, newPos.z);
+            transform.position = new Vector3(newPos.x, (MaxY - viewDistance), newPos.z);
         }
-        if (playerTransform.position.x < minX && playerTransform.position.y < minY)
+        if ((PlayerTransform.position.x - viewDistance) < MinX && (PlayerTransform.position.y - viewDistance) < MinY)
         {
-            transform.position = new Vector3(minX, minY, newPos.z);
+            transform.position = new Vector3((MinX+ viewDistance), (MinY + viewDistance), newPos.z);
         }
-        if (playerTransform.position.x < minX && playerTransform.position.y > maxY)
+        if ((PlayerTransform.position.x - viewDistance) < MinX && (PlayerTransform.position.y + viewDistance) > MaxY)
         {
-            transform.position = new Vector3(minX, maxY, newPos.z);
+            transform.position = new Vector3((MinX + viewDistance), (MaxY - viewDistance), newPos.z);
         }
-        if (playerTransform.position.x > maxX && playerTransform.position.y < minY)
+        if ((PlayerTransform.position.x + viewDistance)> MaxX && (PlayerTransform.position.y - viewDistance) < MinY)
         {
-            transform.position = new Vector3(maxX, minY, newPos.z);
+            transform.position = new Vector3((MaxX - viewDistance), (MinY + viewDistance), newPos.z);
         }
-        if (playerTransform.position.x > maxX && playerTransform.position.y > maxY)
+        if ((PlayerTransform.position.x + viewDistance) > MaxX && (PlayerTransform.position.y + viewDistance) > MaxY)
         {
-            transform.position = new Vector3(maxX, maxY, newPos.z);
+            transform.position = new Vector3((MaxX - viewDistance), (MaxY - viewDistance), newPos.z);
         }
 
     }
