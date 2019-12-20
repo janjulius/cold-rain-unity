@@ -17,5 +17,9 @@ namespace Assets.Scripts.contants
         /// </summary>
         public static float TILE_SIZE = 1f;
 
+        /// <summary>
+        /// The default size of the inventory
+        /// </summary>
+        public static int INVENTORY_SIZE = 50;
     }
 }
