@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class Player : Entity
 {
-    private Container inventoryContainer = new Container(Constants.INVENTORY_SIZE);
+    private Container inventoryContainer;
 
     private Inventory inventoryDisplay;
 
@@ -32,13 +32,18 @@ public class Player : Entity
         GetReferences();
 
         LoadAppearance();
-        
+        LoadInventory();
 
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+
+    }
+
+    private void LoadInventory()
+    {
         inventoryDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<Inventory>();
-        print(inventoryDisplay);
-        inventoryDisplay.Refresh(inventoryContainer);
+        inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryDisplay);
+        inventoryContainer.Refresh();
     }
 
     #region References

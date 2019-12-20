@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.item;
+using Assets.Scripts.logger;
 using Assets.Scripts.saving;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,12 @@ namespace Assets.Scripts.container
         /// </summary>
         private int capacity;
 
-        public Container(int capacity)
+        private ContainerDisplay containerDisplay;
+
+        public Container(int capacity, ContainerDisplay containerDisplay)
         {
             this.capacity = capacity;
+            this.containerDisplay = containerDisplay;
             this.items = new Item[capacity];
         }
 
@@ -42,6 +46,7 @@ namespace Assets.Scripts.container
                 if(items[i] == null)
                 {
                     items[i] = item;
+                    Refresh();
                     return true;
                 }
             }
@@ -73,7 +78,10 @@ namespace Assets.Scripts.container
         /// </summary>
         public void Refresh()
         {
-
+            if (containerDisplay != null)
+                containerDisplay.Refresh(this);
+            else
+                CrLogger.Log(this, "Tried to refresh container, but the display is null", CrLogger.LogType.WARNING);
         }
 
         public void Load()
