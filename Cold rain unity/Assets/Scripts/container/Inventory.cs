@@ -10,7 +10,7 @@ public class Inventory : ContainerDisplay
     public GameObject SlotPrefab;
 
     private ItemSlot[] Slots = new ItemSlot[Constants.INVENTORY_SIZE];
-
+    
     public override void Create()
     {
         base.Create();

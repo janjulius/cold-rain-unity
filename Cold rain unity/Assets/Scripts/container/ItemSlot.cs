@@ -27,7 +27,6 @@ namespace Assets.Scripts.container
 
         private void SetImage(Sprite s)
         {
-            print(image);
             image.sprite = s;
         }
 

@@ -8,18 +8,18 @@ namespace Assets.Scripts.math
 {
     public class ProgressCalculator
     {
-        int minlevel = 1;
-        int maxlevel = 50;
-        double increase = 300.0;
-        double difference = 1.5;
-        double divider = 4;
-        double div = 8.0f;
+        private static int minlevel = 1;
+        private static int maxlevel = 50;
+        private static double increase = 300.0;
+        private static double difference = 1.5;
+        private static double divider = 4;
+        private static double div = 8.0f;
 
         /// <summary>
         /// Returns a dictionary of the curve
         /// </summary>
         /// <returns>Dictionary int level, experience double</returns>
-        public Dictionary<int, double> Curve()
+        public static Dictionary<int, double> Curve()
         {
             Dictionary<int, double> lvlExpValues = new Dictionary<int, double>(); //lvl:exp
 
@@ -45,7 +45,7 @@ namespace Assets.Scripts.math
         /// </summary>
         /// <param name="level">Level</param>
         /// <returns></returns>
-        public int getExperienceByLevel(int level)
+        public static int getExperienceByLevel(int level)
         {
             double points = 0;
             double output = 0;
@@ -68,7 +68,7 @@ namespace Assets.Scripts.math
         /// </summary>
         /// <param name="experience">Experience</param>
         /// <returns>int Level</returns>
-        public int GetLevelByExperience(double experience)
+        public static int GetLevelByExperience(double experience)
         {
             double points = 0;
             double output = 0;

@@ -8,9 +8,9 @@ namespace Assets.Scripts.container
 {
     public class ContainerDisplay : Node
     {
-        public override void StartInitiate()
+        public override void Initiate()
         {
-            base.StartInitiate();
+            base.Initiate();
             Create();
         }
 

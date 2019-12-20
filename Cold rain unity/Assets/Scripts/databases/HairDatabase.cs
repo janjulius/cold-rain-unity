@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.databases;
+using Assets.Scripts.item;
+using Assets.Scripts.logger;
 using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
@@ -15,13 +17,13 @@ namespace Assets.Scripts.styles.hairstyles
 
         public override void BuildDatabase()
         {
-            print("Building hair database...");
+            CrLogger.Log(this, "Building hair database...");
             items = new List<DbElement>()
             {
                 new HairStyle(0, "Bald"),
                 new HairStyle(1, "Classic")
             };
-            print("The hair database was built succesfully");
+            CrLogger.Log(this, "The hair database was built succesfully");
         }
 
         public Sprite[] GetHairStyleEquipements(int id)
