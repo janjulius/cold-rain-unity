@@ -13,8 +13,8 @@ using UnityEngine.UI;
 
 public class Player : Entity
 {
-
     private Appearance appearance;
+
 
     #region Interfaces and containers
 
@@ -33,11 +33,19 @@ public class Player : Entity
 
     #endregion
 
+    #region Other References
+
+    private GameManager gameManager;
+
+    #endregion
+
+
     public override void StartInitiate()
     {
         base.StartInitiate();
 
         GetReferences();
+        GetOtherReferences();
         
         LoadInterfaces();
 
@@ -54,6 +62,11 @@ public class Player : Entity
     {
         itemDatabase = Camera.main.GetComponent<ItemDatabase>();
         hairDatabase = Camera.main.GetComponent<HairDatabase>();
+    }
+
+    private void GetOtherReferences()
+    {
+        gameManager = Camera.main.GetComponent<GameManager>();
     }
 
     #endregion
@@ -120,6 +133,7 @@ public class Player : Entity
     {
         LoadNavigator();
         LoadInventory();
+        LoadSkillsInterface();
     }
 
     private void LoadNavigator()
@@ -129,8 +143,13 @@ public class Player : Entity
 
     private void LoadInventory()
     {
-        inventoryInterface = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<Inventory>();
+        inventoryInterface = gameManager.MainCanvas.GetComponentInChildren<Inventory>();
         inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
         inventoryContainer.Refresh();
+    }
+
+    private void LoadSkillsInterface()
+    {
+        skillsInterface = gameManager.MainCanvas.GetComponentInChildren<SkillsInterface>();
     }
 }

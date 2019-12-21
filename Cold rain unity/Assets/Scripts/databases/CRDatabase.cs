@@ -12,7 +12,7 @@ namespace Assets.Scripts.databases
     {
         protected List<DbElement> items = new List<DbElement>();
 
-        public EquipmentItemMultiArray[] EquipmentArray;
+        protected EquipmentItemMultiArray[] EquipmentArray;
 
         public override void Initiate()
         {

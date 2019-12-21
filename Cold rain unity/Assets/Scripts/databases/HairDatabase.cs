@@ -29,7 +29,7 @@ namespace Assets.Scripts.styles.hairstyles
                 print(i);
                 EquipmentArray[i] = new EquipmentItemMultiArray();
                 EquipmentArray[i].EquipSprites = new Sprite[4];
-                for(int j = 0; j < EquipmentArray.Length + 1; j++)
+                for(int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Hair/{i}/hair_{i}_{j}");
                 }
