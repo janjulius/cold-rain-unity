@@ -8,16 +8,24 @@ namespace Assets.Scripts.container
 {
     public class ContainerDisplay : GameInterface
     {
+        Container myContainer;
+
+        public override void Create()
+        {
+
+        }
+
+        public override void Refresh()
+        {
+
+        }
+
         public override void Initiate()
         {
             base.Initiate();
             Create();
         }
 
-        public virtual void Create()
-        {
-
-        }
 
         public virtual void Refresh(Container container)
         {
