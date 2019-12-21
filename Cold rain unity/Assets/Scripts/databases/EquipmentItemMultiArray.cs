@@ -10,6 +10,6 @@ namespace Assets.Scripts.util
     [Serializable]
     public class EquipmentItemMultiArray
     {
-        public Sprite[] EquipSprites;
+        public Sprite[] EquipSprites = new Sprite[4];
     }
 }

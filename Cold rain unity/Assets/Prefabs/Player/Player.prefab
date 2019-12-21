@@ -364,11 +364,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  BaseLocation: {x: 0.01, y: 0.03}
+  BaseLocation: {x: 0, y: 0.005}
   DisplaceLocation:
-  - {x: -0.005, y: 0.02}
-  - {x: -0.01, y: 0.015}
-  - {x: 0.005, y: 0.02}
+  - {x: -0.005, y: 0}
+  - {x: 0, y: 0.005}
+  - {x: 0.005, y: 0}
   spriteRenderer: {fileID: 0}
 --- !u!1 &5444071460202512756
 GameObject:
@@ -1042,11 +1042,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 0.8207547, g: 0.8080048, b: 0.56136525, a: 1}
+  SkinColor: {r: 1, g: 1, b: 1, a: 1}
   HairColor: {r: 1, g: 1, b: 1, a: 1}
   TopColor: {r: 0, g: 0, b: 0, a: 1}
   BottomColor: {r: 0, g: 0, b: 0, a: 1}
-  HairId: 1
+  HairId: 2
   BeardId: 0
   IsMale: 0
 --- !u!1 &5444071460926515513

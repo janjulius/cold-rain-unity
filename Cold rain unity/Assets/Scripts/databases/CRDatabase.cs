@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace Assets.Scripts.databases
     public abstract class CRDatabase : Node
     {
         protected List<DbElement> items = new List<DbElement>();
+
+        public EquipmentItemMultiArray[] EquipmentArray;
 
         public override void Initiate()
         {

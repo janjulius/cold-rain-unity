@@ -22,8 +22,6 @@ namespace Assets.Scripts.databases
         /// </summary>
         public Sprite[] InventoryIcon;
         
-        public EquipmentItemMultiArray[] EquipmentArray;
-        
         /// <summary>
         /// Builds the item database
         /// </summary>
@@ -50,8 +48,23 @@ namespace Assets.Scripts.databases
 
             };
 
-            for(int i = 0; i < InventoryIcon.Length; i++)
-                ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);
+            EquipmentArray = new EquipmentItemMultiArray[items.Count];
+            for (int i = 0; i < items.Count; i++)
+            {
+                print(i);
+                EquipmentArray[i] = new EquipmentItemMultiArray();
+                EquipmentArray[i].EquipSprites = new Sprite[4];
+                for (int j = 0; j < EquipmentArray.Length + 1; j++)
+                {
+                    InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}");
+                    EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Item/{i}/item_{i}_{j}");
+                }
+            }
+
+            //for(int i = 0; i < InventoryIcon.Length; i++)
+            //    ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);
+
+
 
             CrLogger.Log(this, "The item database was built succesfully");
         }

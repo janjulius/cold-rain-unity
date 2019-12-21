@@ -13,13 +13,18 @@ using UnityEngine.UI;
 
 public class Player : Entity
 {
-    private Container inventoryContainer;
-
-    private Inventory inventoryDisplay;
-
-    private NavigatorInterface navigatorDisplay;
 
     private Appearance appearance;
+
+    #region Interfaces and containers
+
+    private Container inventoryContainer;
+    private Inventory inventoryInterface;
+    private EquipmentInterface equipmentInterface;
+    private SkillsInterface skillsInterface;
+    private NavigatorInterface navigatorDisplay;
+
+    #endregion
 
     #region Database References
 
@@ -33,28 +38,15 @@ public class Player : Entity
         base.StartInitiate();
 
         GetReferences();
-
-        LoadNavigator();
+        
+        LoadInterfaces();
 
         LoadAppearance();
-        LoadInventory();
 
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
-
     }
 
-    private void LoadNavigator()
-    {
-        navigatorDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<NavigatorInterface>();
-    }
-
-    private void LoadInventory()
-    {
-        inventoryDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<Inventory>();
-        inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryDisplay);
-        inventoryContainer.Refresh();
-    }
 
     #region References
 
@@ -107,7 +99,7 @@ public class Player : Entity
     public void CheckInterfaceToggleKeys()
     {
         if (Input.GetKeyDown(KeyCode.I))
-            inventoryDisplay.ToggleActive();
+            inventoryInterface.ToggleActive();
         if (Input.GetKeyDown(KeyCode.Tab))
             navigatorDisplay.ToggleActive();
     }
@@ -122,5 +114,23 @@ public class Player : Entity
     {
         appearance = GetComponentInChildren<Appearance>();
         appearance.Initiate();
+    }
+
+    private void LoadInterfaces()
+    {
+        LoadNavigator();
+        LoadInventory();
+    }
+
+    private void LoadNavigator()
+    {
+        navigatorDisplay = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<NavigatorInterface>();
+    }
+
+    private void LoadInventory()
+    {
+        inventoryInterface = Camera.main.GetComponent<GameManager>().MainCanvas.GetComponentInChildren<Inventory>();
+        inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
+        inventoryContainer.Refresh();
     }
 }

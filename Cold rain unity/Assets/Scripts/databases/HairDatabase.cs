@@ -13,7 +13,6 @@ namespace Assets.Scripts.styles.hairstyles
 {
     public class HairDatabase : CRDatabase
     {
-        public EquipmentItemMultiArray[] equipmentItemMultiArray;
 
         public override void BuildDatabase()
         {
@@ -21,14 +20,27 @@ namespace Assets.Scripts.styles.hairstyles
             items = new List<DbElement>()
             {
                 new HairStyle(0, "Bald"),
-                new HairStyle(1, "Classic")
+                new HairStyle(1, "Classic"),
+                new HairStyle(2, "Monk")
             };
+            EquipmentArray = new EquipmentItemMultiArray[items.Count];
+            for(int i = 0; i < items.Count; i++)
+            {
+                print(i);
+                EquipmentArray[i] = new EquipmentItemMultiArray();
+                EquipmentArray[i].EquipSprites = new Sprite[4];
+                for(int j = 0; j < EquipmentArray.Length + 1; j++)
+                {
+                    EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Hair/{i}/hair_{i}_{j}");
+                }
+            }
+
             CrLogger.Log(this, "The hair database was built succesfully");
         }
 
         public Sprite[] GetHairStyleEquipements(int id)
         {
-            return equipmentItemMultiArray[id].EquipSprites;
+            return EquipmentArray[id].EquipSprites;
         }
     }
 }
