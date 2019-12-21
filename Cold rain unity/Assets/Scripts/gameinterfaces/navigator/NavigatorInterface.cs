@@ -31,5 +31,15 @@ namespace Assets.Scripts.gameinterfaces.navigator
 
         public void ToggleSkillsActivity() =>
             SkillsInterface.ToggleActive();
+
+        public override void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Refresh()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
