@@ -27,7 +27,8 @@ namespace Assets.Scripts.styles.hairstyles
                 new HairStyle(5, "Long wavy"),
                 new HairStyle(6, "Twin tails"),
                 new HairStyle(7, "Long straight"),
-                new HairStyle(8, "Male one")
+                new HairStyle(8, "Male one"),
+                new HairStyle(9, "Male two")
             };
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for(int i = 0; i < items.Count; i++)

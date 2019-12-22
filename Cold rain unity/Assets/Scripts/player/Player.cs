@@ -7,9 +7,11 @@ using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.styles.hairstyles;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : Entity
@@ -43,6 +45,7 @@ public class Player : Entity
     public override void StartInitiate()
     {
         base.StartInitiate();
+        DontDestroyOnLoad(this);
 
         GetReferences();
         GetOtherReferences();
@@ -170,4 +173,11 @@ public class Player : Entity
         equipmentInterface.Refresh(equipment, stats);
         equipmentInterface.ToggleActive();
     }
+
+    internal void LoadIntoScene(int sceneId, Vector2 endLocation)
+    {
+        SceneManager.LoadScene(sceneId);
+        SetLocation(endLocation);
+    }
+
 }
