@@ -55,7 +55,7 @@ public class Player : Entity
         LoadAppearance();
         
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
-        inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        inventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);
     }
 
@@ -115,6 +115,7 @@ public class Player : Entity
 
     public void CheckInterfaceToggleKeys()
     {
+        //TODO REFRESH INVENTORY ON OPENING, NOT ON BUTTON PRESS
         if (Input.GetKeyDown(KeyCode.I))
             inventoryInterface.ToggleActive();
         if (Input.GetKeyDown(KeyCode.Tab))
