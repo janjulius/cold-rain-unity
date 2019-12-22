@@ -20,6 +20,7 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public Inventory InventoryInterface;
         public SkillsInterface SkillsInterface;
         public EquipmentInterface EquipmentInterface;
+        public GameObject MapInterface;
 
         public GameObject canvas;
         
@@ -31,6 +32,9 @@ namespace Assets.Scripts.gameinterfaces.navigator
 
         public void ToggleSkillsActivity() =>
             SkillsInterface.ToggleActive();
+
+        public void ToggleMapActivity() =>
+            MapInterface.SetActive(!MapInterface.activeSelf);
 
         public override void Create()
         {
