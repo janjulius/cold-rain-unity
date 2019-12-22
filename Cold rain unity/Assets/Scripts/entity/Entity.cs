@@ -66,6 +66,7 @@ public class Entity : Node
     {
         timeM += Time.deltaTime / timeToReachTarget;
         float step = timeToReachTarget * Time.deltaTime;
+        
         transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
         IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
     }
