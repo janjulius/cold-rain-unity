@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b595e67c38f25cd47850b0166efd68a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: -0.5, y: -0.5}
+  SpawnPosition: {x: 0.5, y: 0.5}
 --- !u!50 &5444071460209386910
 Rigidbody2D:
   serializedVersion: 4
@@ -1043,10 +1043,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 1, g: 1, b: 1, a: 1}
+  HairColor: {r: 1, g: 0.57254905, b: 0.7080385, a: 1}
   TopColor: {r: 0, g: 0, b: 0, a: 1}
   BottomColor: {r: 0, g: 0, b: 0, a: 1}
-  HairId: 2
+  HairId: 6
   BeardId: 0
   IsMale: 0
 --- !u!1 &5444071460926515513

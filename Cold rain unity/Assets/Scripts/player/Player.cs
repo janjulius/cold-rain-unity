@@ -53,6 +53,7 @@ public class Player : Entity
         
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        SetLocation(SpawnPosition);
     }
 
 
@@ -86,26 +87,26 @@ public class Player : Entity
         if (Input.GetKey(KeyCode.A))
         {
             Vector2 offset = new Vector2(transform.position.x - Constants.TILE_SIZE, transform.position.y);
-            SetDestination(offset);
             Face(FaceDirection.LEFT);
+            SetDestination(offset);
         }
         if (Input.GetKey(KeyCode.D))
         {
             Vector2 offset = new Vector2(transform.position.x + Constants.TILE_SIZE, transform.position.y);
-            SetDestination(offset);
             Face(FaceDirection.RIGHT);
+            SetDestination(offset);
         }
         if (Input.GetKey(KeyCode.W))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y + Constants.TILE_SIZE);
-            SetDestination(offset);
             Face(FaceDirection.UP);
+            SetDestination(offset);
         }
         if (Input.GetKey(KeyCode.S))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y - Constants.TILE_SIZE);
-            SetDestination(offset);
             Face(FaceDirection.DOWN);
+            SetDestination(offset);
         }
     }
 

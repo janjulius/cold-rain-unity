@@ -1,11 +1,15 @@
-﻿using Assets.Scripts.player.Equipment;
+﻿using Assets.Scripts.contants;
+using Assets.Scripts.player.Equipment;
 using Assets.Scripts.stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Entity : Node
 {
+    protected FaceDirection faceDirection;
+
     public Vector2 SpawnPosition;
 
     protected Skills skills;
@@ -30,10 +34,19 @@ public class Entity : Node
     private float timeM;
 
     #endregion
-    
+
+    private Rigidbody2D rb;
+
+    private string[] NonPassableLayers = new string[]
+    {
+        "ObjectCollision"
+    };
+
     public override void StartInitiate()
     {
         base.Initiate();
+        startPosition = SpawnPosition; targetPosition = SpawnPosition;
+        rb = GetComponent<Rigidbody2D>();
         SetLocation(SpawnPosition);
         baseStats = gameObject.AddComponent<Stats>();
         UpdateBaseStats();
@@ -86,9 +99,25 @@ public class Entity : Node
     /// <param name="loc"></param>
     public void SetDestination(Vector2 loc)
     {
-        timeM = 0;
-        startPosition = transform.position;
-        targetPosition = loc;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorDirection(faceDirection), Constants.TILE_SIZE, LayerMask.GetMask(NonPassableLayers));
+        if (hit.collider == null)
+        {
+            timeM = 0;
+            startPosition = transform.position;
+            targetPosition = loc;
+        }
+    }
+
+    private Vector2 GetVectorDirection(FaceDirection dir)
+    {
+        if (dir == FaceDirection.DOWN)
+            return Vector2.down;
+        else if (dir == FaceDirection.RIGHT)
+            return Vector2.right;
+        else if (dir == FaceDirection.LEFT)
+            return Vector2.left;
+        else
+            return Vector2.up;
     }
 
     public void SetLocation(Vector2 loc)
@@ -99,6 +128,7 @@ public class Entity : Node
 
     public virtual void Face(FaceDirection dir)
     {
+        faceDirection = dir;
     }
 
     /// <summary>
