@@ -21,7 +21,8 @@ namespace Assets.Scripts.styles.hairstyles
             {
                 new HairStyle(0, "Bald"),
                 new HairStyle(1, "Classic"),
-                new HairStyle(2, "Monk")
+                new HairStyle(2, "Monk"),
+                new HairStyle(3, "Hair Tight")
             };
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for(int i = 0; i < items.Count; i++)
@@ -29,7 +30,7 @@ namespace Assets.Scripts.styles.hairstyles
                 print(i);
                 EquipmentArray[i] = new EquipmentItemMultiArray();
                 EquipmentArray[i].EquipSprites = new Sprite[4];
-                for(int j = 0; j < EquipmentArray.Length + 1; j++)
+                for(int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Hair/{i}/hair_{i}_{j}");
                 }

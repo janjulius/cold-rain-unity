@@ -20,5 +20,15 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public Image AmmoSlot;
         
         public TextMeshProUGUI BonusText;
+
+        public override void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Refresh()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

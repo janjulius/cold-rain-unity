@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameInterface : Node
+public abstract class GameInterface : Node
 {
     public void ToggleActive()
     {
@@ -13,4 +13,7 @@ public class GameInterface : Node
     {
         gameObject.SetActive(b);
     }
+
+    public abstract void Create();
+    public abstract void Refresh();
 }

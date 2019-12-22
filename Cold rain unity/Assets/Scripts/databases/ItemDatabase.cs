@@ -20,7 +20,7 @@ namespace Assets.Scripts.databases
         /// <summary>
         /// The inventory icons
         /// </summary>
-        public Sprite[] InventoryIcon;
+        private Sprite[] InventoryIcon;
         
         /// <summary>
         /// Builds the item database
@@ -28,12 +28,6 @@ namespace Assets.Scripts.databases
         public override void BuildDatabase()
         {
             CrLogger.Log(this, "Building item database...");
-            if (InventoryIcon.Length != EquipmentArray.Length)
-            {
-                CrLogger.Log(this, "The size of InventoryIcon[] and EquipmentArray[] in ItemDatabase are not the same, please review", CrLogger.LogType.ERROR);
-                CrLogger.Log(this, "ITEM DATABASE WAS NOT INITIALISED", CrLogger.LogType.ERROR);
-                return;
-            }
 
             items = new List<DbElement>()
             {
@@ -260,12 +254,12 @@ namespace Assets.Scripts.databases
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
+            InventoryIcon = new Sprite[items.Count];
             for (int i = 0; i < items.Count; i++)
             {
-                print(i);
                 EquipmentArray[i] = new EquipmentItemMultiArray();
                 EquipmentArray[i].EquipSprites = new Sprite[4];
-                for (int j = 0; j < EquipmentArray.Length + 1; j++)
+                for (int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
                     InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}");
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Item/{i}/item_{i}_{j}");
