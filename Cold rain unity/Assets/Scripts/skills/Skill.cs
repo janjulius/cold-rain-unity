@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.skills
 {
-    public class Skill : SavingModule
+    public abstract class Skill : SavingModule
     {
         protected int level = 1;
         protected int exp = 0;
+
+        public abstract string Name
+        {
+            get;
+        }
+
+        public event EventHandler LevelUp;
 
         public void AddExp(int toAdd)
         {
@@ -38,6 +45,14 @@ namespace Assets.Scripts.skills
                 return;
             }
         }
+
+        public virtual void OnLevelUp(EventArgs args)
+        {
+            EventHandler handler = LevelUp;
+            handler?.Invoke(this, args);
+        }
+
+        public int GetLevel() => level;
         
         public void Load()
         {

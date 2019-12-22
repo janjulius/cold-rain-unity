@@ -9,18 +9,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.player.Equipment
 {
-    class EquipmentSlots : MonoBehaviour
+    public class EquipmentSlots : MonoBehaviour
     {
-        protected Item HeadSlot { get; set; }
-        protected Item TorsoSlot { get; set; }
-        protected Item LegSlot { get; set; }
-        protected Item FeetSlot { get; set; }
-        protected Item AmuletSlot { get; set; }
-
-        protected Item WeaponSlot { get; set; }
-        protected Item OffHandSlot { get; set; }
-
-        protected Item AmmoSlot { get; set; }
+        public Item HeadSlot { get; protected set; }
+        public Item TorsoSlot { get; protected set; }
+        public Item LegSlot { get; protected set; }
+        public Item FeetSlot { get; protected set; }
+        public Item AmuletSlot { get; protected set; }
+        
+        public Item WeaponSlot { get; protected set; }
+        public Item OffHandSlot { get; protected set; }
+        
+        public Item AmmoSlot { get; protected set; }
 
         public Stats GetStats()
         {

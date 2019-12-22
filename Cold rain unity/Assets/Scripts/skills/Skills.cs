@@ -7,12 +7,10 @@ using UnityEngine;
 
 public class Skills : Node, SavingModule
 {
-    public static readonly string[] Skill = { "Warrior", "Archer", "Hunting", "Fishing", "Farming", "Cooking", "Artisan" };
-
     public static readonly int WARRIOR = 0, ARCHER = 1, HUNTING = 2, FISHING = 3, FARMING = 4, COOKING = 5, ARTISAN = 6;
 
     [SerializeField]
-    private Skill[] skills;
+    public Skill[] skills;
 
     private WarriorSkill warriorSkill;
     private ArcherSkill archerSkill;
@@ -25,6 +23,16 @@ public class Skills : Node, SavingModule
     public override void Initiate()
     {
         base.Initiate();
+
+        //TODO loading logic
+        warriorSkill = new WarriorSkill();
+        archerSkill = new ArcherSkill();
+        huntingSkill = new HuntingSkill();
+        fishingSkill = new FishingSkill();
+        farmingSkill = new FarmingSkill();
+        cookingSkill = new CookingSkill();
+        artisanSkill = new ArtisanSkill();
+
         skills = new Skill[]
         {
             warriorSkill,

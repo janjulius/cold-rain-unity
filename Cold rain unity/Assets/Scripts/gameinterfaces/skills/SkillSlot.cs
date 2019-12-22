@@ -13,5 +13,10 @@ namespace Assets.Scripts.gameinterfaces.skills
         public Image SkillImage;
         public TextMeshProUGUI SkillText;
         public TextMeshProUGUI LevelText;
+
+        public void Refresh(string levelText)
+        {
+            LevelText.text = levelText;
+        }
     }
 }

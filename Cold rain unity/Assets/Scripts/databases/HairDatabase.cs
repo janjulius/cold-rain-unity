@@ -22,8 +22,9 @@ namespace Assets.Scripts.styles.hairstyles
                 new HairStyle(0, "Bald"),
                 new HairStyle(1, "Classic"),
                 new HairStyle(2, "Monk"),
-                new HairStyle(3, "Hair Tight"),
-                new HairStyle(4, "Afro")
+                new HairStyle(3, "Hair tight"),
+                new HairStyle(4, "Afro"),
+                new HairStyle(5, "Long wavy")
             };
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for(int i = 0; i < items.Count; i++)
@@ -42,6 +43,7 @@ namespace Assets.Scripts.styles.hairstyles
 
         public Sprite[] GetHairStyleEquipements(int id)
         {
+            //catch exception because hair could not be added
             return EquipmentArray[id].EquipSprites;
         }
     }
