@@ -12,14 +12,23 @@ public class Entity : Node
 
     public Vector2 SpawnPosition;
 
-    protected Skills skills;
+    public Skills skills {
+        get;
+        protected set;
+    }
 
-    protected Stats stats;
-
+    public Stats stats {
+        get;
+        protected set;
+    }
+    
     private Stats baseStats;
     private Stats bonusStats;
     
-    protected EquipmentSlots equipment;
+    public EquipmentSlots equipment {
+        get;
+        protected set;
+    }
 
     protected int hitPoints;
     protected int energy;
