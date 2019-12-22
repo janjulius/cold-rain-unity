@@ -152,6 +152,7 @@ public class Player : Entity
         inventoryInterface = gameManager.MainCanvas.GetComponentInChildren<Inventory>();
         inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
         inventoryContainer.Refresh();
+        inventoryInterface.ToggleActive();
     }
 
     private void LoadSkillsInterface()
@@ -159,11 +160,13 @@ public class Player : Entity
         skillsInterface = gameManager.MainCanvas.GetComponentInChildren<SkillsInterface>();
         skillsInterface.Create(skills);
         skillsInterface.Refresh();
+        skillsInterface.ToggleActive();
     }
 
     private void LoadEquipmentInterface()
     {
         equipmentInterface = gameManager.MainCanvas.GetComponentInChildren<EquipmentInterface>();
         equipmentInterface.Refresh(equipment, stats);
+        equipmentInterface.ToggleActive();
     }
 }
