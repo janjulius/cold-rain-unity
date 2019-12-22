@@ -151,5 +151,7 @@ public class Player : Entity
     private void LoadSkillsInterface()
     {
         skillsInterface = gameManager.MainCanvas.GetComponentInChildren<SkillsInterface>();
+        skillsInterface.Create(skills);
+        skillsInterface.Refresh();
     }
 }

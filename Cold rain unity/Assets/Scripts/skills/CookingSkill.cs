@@ -8,5 +8,6 @@ namespace Assets.Scripts.skills
 {
     public class CookingSkill : Skill
     {
+        public override string Name => "Cooking";
     }
 }
