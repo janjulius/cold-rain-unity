@@ -4,6 +4,7 @@ using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
 using Assets.Scripts.math;
+using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.styles.hairstyles;
 using System.Collections;
@@ -14,8 +15,7 @@ using UnityEngine.UI;
 public class Player : Entity
 {
     private Appearance appearance;
-
-
+    
     #region Interfaces and containers
 
     private Container inventoryContainer;
@@ -50,7 +50,7 @@ public class Player : Entity
         LoadInterfaces();
 
         LoadAppearance();
-
+        
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
     }
@@ -129,11 +129,17 @@ public class Player : Entity
         appearance.Initiate();
     }
 
+    private void LoadEquipment()
+    {
+        equipment = GetComponent<EquipmentSlots>();
+    }
+
     private void LoadInterfaces()
     {
         LoadNavigator();
         LoadInventory();
         LoadSkillsInterface();
+        LoadEquipmentInterface();
     }
 
     private void LoadNavigator()
@@ -153,5 +159,11 @@ public class Player : Entity
         skillsInterface = gameManager.MainCanvas.GetComponentInChildren<SkillsInterface>();
         skillsInterface.Create(skills);
         skillsInterface.Refresh();
+    }
+
+    private void LoadEquipmentInterface()
+    {
+        equipmentInterface = gameManager.MainCanvas.GetComponentInChildren<EquipmentInterface>();
+        equipmentInterface.Refresh(equipment, stats);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.stats;
+﻿using Assets.Scripts.player.Equipment;
+using Assets.Scripts.stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Entity : Node
 
     private Stats baseStats;
     private Stats bonusStats;
+    
+    protected EquipmentSlots equipment;
 
     protected int hitPoints;
     protected int energy;
@@ -37,6 +40,12 @@ public class Entity : Node
         bonusStats = gameObject.AddComponent<Stats>();
         skills = gameObject.AddComponent<Skills>();
         UpdateStats();
+        
+        if(this is Player)
+        {
+            equipment = gameObject.AddComponent<EquipmentSlots>();
+        }
+
     }
 
     public void Update()

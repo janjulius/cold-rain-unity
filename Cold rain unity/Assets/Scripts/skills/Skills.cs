@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Skills : Node, SavingModule
 {
-    private static readonly int WARRIOR = 0, ARCHER = 1, HUNTING = 2, FISHING = 3, FARMING = 4, COOKING = 5, ARTISAN = 6;
+    public static readonly int WARRIOR = 0, ARCHER = 1, HUNTING = 2, FISHING = 3, FARMING = 4, COOKING = 5, ARTISAN = 6;
 
     [SerializeField]
     public Skill[] skills;

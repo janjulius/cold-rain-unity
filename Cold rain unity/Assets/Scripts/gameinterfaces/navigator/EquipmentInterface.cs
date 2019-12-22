@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts.player.Equipment;
+using Assets.Scripts.stats;
 
 namespace Assets.Scripts.gameinterfaces.navigator
 {
@@ -21,14 +23,33 @@ namespace Assets.Scripts.gameinterfaces.navigator
         
         public TextMeshProUGUI BonusText;
 
+        public void Refresh(EquipmentSlots equipment, Stats stats)
+        {
+            HeadSlot.sprite = equipment.HeadSlot?.InventoryIcon;
+            AmuletSlot.sprite = equipment.AmuletSlot?.InventoryIcon;
+            TorsoSlot.sprite = equipment.TorsoSlot?.InventoryIcon;
+            LegSlot.sprite = equipment.LegSlot?.InventoryIcon;
+            FeetSlot.sprite = equipment.FeetSlot?.InventoryIcon;
+            WeaponSlot.sprite = equipment.WeaponSlot?.InventoryIcon;
+            OffHandSlot.sprite = equipment.OffHandSlot?.InventoryIcon;
+            AmmoSlot.sprite = equipment.AmmoSlot?.InventoryIcon;
+
+            BonusText.text = ConstructBonusText(stats);
+        }
+
+        private string ConstructBonusText(Stats stats)
+        {
+            return $"Attack: {stats.Attack} Defence: {stats.Defence}\nPrecision: {stats.Precision} Speed: {stats.Speed}\n Attack Speed: {stats.AttackSpeed} Crit Chance: {stats.CritChance}%";
+        }
+
         public override void Create()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void Refresh()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
