@@ -41,9 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 3172810583
-    locked: 0
   - name: BackgroundLayer
     uniqueID: 3025857203
     locked: 0
@@ -58,4 +55,7 @@ TagManager:
     locked: 0
   - name: ObjectUpperLayer
     uniqueID: 602824165
+    locked: 0
+  - name: Player
+    uniqueID: 3172810583
     locked: 0
