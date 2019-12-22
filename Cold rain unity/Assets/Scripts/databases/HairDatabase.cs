@@ -21,7 +21,9 @@ namespace Assets.Scripts.styles.hairstyles
             {
                 new HairStyle(0, "Bald"),
                 new HairStyle(1, "Classic"),
-                new HairStyle(2, "Monk")
+                new HairStyle(2, "Monk"),
+                new HairStyle(3, "Hair Tight"),
+                new HairStyle(4, "Afro")
             };
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for(int i = 0; i < items.Count; i++)
