@@ -21,6 +21,11 @@ namespace Assets.Scripts.map
 
         public Vector2 endLocation;
 
+        [Header("Attatch audio source to this object")]
+        public bool PlaySound;
+
+        private AudioSource Sound;
+
         public override void Initiate()
         {
             base.Initiate();
@@ -28,6 +33,7 @@ namespace Assets.Scripts.map
             rb = GetComponent<Rigidbody2D>();
             coll.isTrigger = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            Sound = GetComponent<AudioSource>();
         }
 
         void OnTriggerEnter2D(Collider2D collision)
@@ -37,16 +43,33 @@ namespace Assets.Scripts.map
             {
                 if (player.IsMoving)
                 {
-                    if (GoesToOtherScene)
+                    if (PlaySound)
                     {
-                        player.LoadIntoScene(SceneId, endLocation);
-                    }
-                    else
+                        Sound.Play();
+                        Invoke("TriggerWarp", Sound.clip.length);
+                    } else
                     {
-                        player.SetLocation(endLocation);
+                        TriggerWarp();
                     }
                 }
              }
+        }
+
+        private void TriggerWarp()
+        {
+            if (GoesToOtherScene)
+            {
+                player.LoadIntoScene(SceneId, endLocation);
+            }
+            else
+            {
+                player.SetLocation(endLocation);
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawIcon(transform.position, "Light Gizmo.tiff", true);
         }
     }
 }
