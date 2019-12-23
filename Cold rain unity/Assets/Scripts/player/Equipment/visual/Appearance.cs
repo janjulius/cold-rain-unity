@@ -42,6 +42,7 @@ namespace Assets.Scripts.player.Equipment.visual
         private ArmRightCloth armRightCloth;
 
         private Hair hair;
+        private Beard beard;
 
         private PlayerEquipVisual[] primitiveVisuals;
         private PlayerEquipVisual[] alterVisuals;
@@ -50,6 +51,7 @@ namespace Assets.Scripts.player.Equipment.visual
 
         private HairDatabase hairDatabase;
         private LegsDatabase legsDatabase;
+        private BeardDatabase beardDatabase;
 
         public override void StartInitiate()
         {
@@ -57,6 +59,7 @@ namespace Assets.Scripts.player.Equipment.visual
 
             hairDatabase = Camera.main.GetComponent<HairDatabase>();
             legsDatabase = Camera.main.GetComponent<LegsDatabase>();
+            beardDatabase = Camera.main.GetComponent<BeardDatabase>();
 
             LoadPrimitiveVisuals();
             UpdatePrimitiveVisuals();
@@ -85,11 +88,12 @@ namespace Assets.Scripts.player.Equipment.visual
         private void LoadAlterVisuals()
         {
             hair = GetComponentInChildren<Hair>();
+            beard = GetComponentInChildren<Beard>();
             legLeftCloth = GetComponentInChildren<LegLeftCloth>();
             legRightCloth = GetComponentInChildren<LegRightCloth>();
             alterVisuals = new PlayerEquipVisual[]
             {
-                hair, legLeftCloth, legRightCloth
+                hair, beard, legLeftCloth, legRightCloth
             };
             allVisuals.AddRange(alterVisuals);
         }
@@ -104,10 +108,14 @@ namespace Assets.Scripts.player.Equipment.visual
 
         private void UpdateAlterVisuals()
         {
-            hair.SetColor(HairColor);
             print("Updating alter visuals");
+            hair.SetColor(HairColor);
             hair.EquipmentSprites = hairDatabase.GetHairStyleEquipements(HairId);
             hair.UpdateSprite(FaceDirection.DOWN);
+
+            beard.SetColor(HairColor);
+            beard.EquipmentSprites = beardDatabase.GetBeardStyleEquipements(BeardId);
+            beard.UpdateSprite(FaceDirection.DOWN);
 
             legLeftCloth.SetColor(BottomColor);
             legLeftCloth.EquipmentSprites = legsDatabase.GetLegStyleEquipements(LegsId).ToArray();
