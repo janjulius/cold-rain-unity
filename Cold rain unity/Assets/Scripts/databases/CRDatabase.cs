@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.util;
+﻿using Assets.Scripts.logger;
+using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,20 @@ namespace Assets.Scripts.databases
             DbElement it;
             it = items.Where(i => i.Id == id).FirstOrDefault();
             return it;
+        }
+
+        protected string GetSideLetter(int i)
+        {
+            if (i == 0)
+                return "F";
+            if (i == 1)
+                return "I";
+            if (i == 2)
+                return "B";
+            if (i == 3)
+                return "O";
+            CrLogger.Log(this, "GetSideLetter returned default value, this could mean an incorrect value was given.", CrLogger.LogType.WARNING);
+            return "F";
         }
 
         public abstract void BuildDatabase();
