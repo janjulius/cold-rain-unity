@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject MainCanvas;
+    public GameObject EventSystem;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
+        DontDestroyOnLoad(EventSystem);
     }
     
     void Start()
