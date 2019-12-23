@@ -33,6 +33,7 @@ namespace Assets.Scripts.map
             rb = GetComponent<Rigidbody2D>();
             coll.isTrigger = true;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             Sound = GetComponent<AudioSource>();
         }
 
