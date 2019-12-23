@@ -12,14 +12,23 @@ public class Entity : Node
 
     public Vector2 SpawnPosition;
 
-    protected Skills skills;
+    public Skills skills {
+        get;
+        protected set;
+    }
 
-    protected Stats stats;
-
+    public Stats stats {
+        get;
+        protected set;
+    }
+    
     private Stats baseStats;
     private Stats bonusStats;
     
-    protected EquipmentSlots equipment;
+    public EquipmentSlots equipment {
+        get;
+        protected set;
+    }
 
     protected int hitPoints;
     protected int energy;
@@ -32,10 +41,12 @@ public class Entity : Node
     private Vector2 targetPosition;
     private float timeToReachTarget;
     private float timeM;
+    private bool ForceDestination;
 
     #endregion
 
     private Rigidbody2D rb;
+
 
     private string[] NonPassableLayers = new string[]
     {
@@ -77,11 +88,20 @@ public class Entity : Node
     /// </summary>
     private void MovementUpdate()
     {
-        timeM += Time.deltaTime / timeToReachTarget;
-        float step = timeToReachTarget * Time.deltaTime;
-        
-        transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
-        IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
+
+        if (!ForceDestination)
+        {
+            timeM += Time.deltaTime / timeToReachTarget;
+            float step = timeToReachTarget * Time.deltaTime;
+
+            transform.position = Vector2.Lerp(startPosition, targetPosition, timeM);
+            IsMoving = new Vector2(transform.position.x, transform.position.y) != targetPosition;
+        }
+        else
+        {
+            transform.position = targetPosition;
+            ForceDestination = false;
+        }
     }
 
     /// <summary>
@@ -123,7 +143,9 @@ public class Entity : Node
     public void SetLocation(Vector2 loc)
     {
         print($"Setting location for {name} to {loc}");
-        transform.position = loc;
+        ForceDestination = true;
+        startPosition = loc;
+        targetPosition = loc;
     }
 
     public virtual void Face(FaceDirection dir)

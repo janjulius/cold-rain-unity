@@ -4,9 +4,12 @@ using UnityEngine;
 
 public abstract class GameInterface : Node
 {
-    public void ToggleActive()
+    protected Player player;
+
+    public bool ToggleActive()
     {
         gameObject.SetActive(!gameObject.activeSelf);
+        return gameObject.activeSelf;
     }
 
     public void SetActive(bool b)
@@ -14,6 +17,6 @@ public abstract class GameInterface : Node
         gameObject.SetActive(b);
     }
 
-    public abstract void Create();
+    public abstract void Create(Player player);
     public abstract void Refresh();
 }

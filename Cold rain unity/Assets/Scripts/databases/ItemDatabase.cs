@@ -305,6 +305,7 @@ namespace Assets.Scripts.databases
                 {
                     InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}");
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Item/{i}/item_{i}_{j}");
+                    ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);
                 }
             }
 
