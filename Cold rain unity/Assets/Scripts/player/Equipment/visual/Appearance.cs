@@ -1,4 +1,7 @@
-﻿using Assets.Scripts.node;
+﻿using Assets.Scripts.databases.appearance;
+using Assets.Scripts.extensions;
+using Assets.Scripts.node;
+using Assets.Scripts.player.Equipment.clothes;
 using Assets.Scripts.styles.hairstyles;
 using System;
 using System.Collections.Generic;
@@ -19,15 +22,24 @@ namespace Assets.Scripts.player.Equipment.visual
 
         public int HairId;
         public int BeardId;
+        public int LegsId;
 
         public bool IsMale;
 
+        //primitive
         private Head head;
         private LegLeft legLeft;
         private LegRight legRight;
         private ArmLeft armLeft;
         private ArmRight armRight;
         private Torso torso;
+
+        //clothing
+        private TorsoCloth torsoCloth;
+        private LegLeftCloth legLeftCloth;
+        private LegRightCloth legRightCloth;
+        private ArmLeftCloth armLeftCloth;
+        private ArmRightCloth armRightCloth;
 
         private Hair hair;
 
@@ -36,9 +48,15 @@ namespace Assets.Scripts.player.Equipment.visual
 
         private List<PlayerEquipVisual> allVisuals = new List<PlayerEquipVisual>();
 
+        private HairDatabase hairDatabase;
+        private LegsDatabase legsDatabase;
+
         public override void StartInitiate()
         {
             base.Initiate();
+
+            hairDatabase = Camera.main.GetComponent<HairDatabase>();
+            legsDatabase = Camera.main.GetComponent<LegsDatabase>();
 
             LoadPrimitiveVisuals();
             UpdatePrimitiveVisuals();
@@ -67,9 +85,11 @@ namespace Assets.Scripts.player.Equipment.visual
         private void LoadAlterVisuals()
         {
             hair = GetComponentInChildren<Hair>();
+            legLeftCloth = GetComponentInChildren<LegLeftCloth>();
+            legRightCloth = GetComponentInChildren<LegRightCloth>();
             alterVisuals = new PlayerEquipVisual[]
             {
-                hair
+                hair, legLeftCloth, legRightCloth
             };
             allVisuals.AddRange(alterVisuals);
         }
@@ -86,8 +106,18 @@ namespace Assets.Scripts.player.Equipment.visual
         {
             hair.SetColor(HairColor);
             print("Updating alter visuals");
-            hair.EquipmentSprites = Camera.main.GetComponent<HairDatabase>().GetHairStyleEquipements(HairId);
+            hair.EquipmentSprites = hairDatabase.GetHairStyleEquipements(HairId);
             hair.UpdateSprite(FaceDirection.DOWN);
+
+            legLeftCloth.SetColor(BottomColor);
+            legLeftCloth.EquipmentSprites = legsDatabase.GetLegStyleEquipements(LegsId).ToArray();
+            legLeftCloth.UpdateSprite(FaceDirection.DOWN);
+
+            legRightCloth.SetColor(BottomColor);
+            legRightCloth.EquipmentSprites = legsDatabase.GetLegStyleEquipements(LegsId).ToArray();
+            legRightCloth.spriteRenderer.flipX = true;
+            legRightCloth.EquipmentSprites.SwapValues(1, 3);
+            legRightCloth.UpdateSprite(FaceDirection.DOWN);
         }
 
         public void UpdateAppearance(FaceDirection dir)
@@ -105,20 +135,31 @@ namespace Assets.Scripts.player.Equipment.visual
             switch (dir)
             {
                 case FaceDirection.LEFT:
-                    armLeft.SetLayerOrder(torsoLayer + 1);
-                    armRight.SetLayerOrder(torsoLayer - 1);
-                    legLeft.SetLayerOrder(torsoLayer + 1);
-                    legRight.SetLayerOrder(torsoLayer - 1);
+                    armLeft.SetLayerOrder(torsoLayer + 5);
+                    armRight.SetLayerOrder(torsoLayer - 5);
+
+                    legLeft.SetLayerOrder(torsoLayer + 5);
+                    legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+
+                    legRight.SetLayerOrder(torsoLayer - 5);
+                    legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
                     break;
                 case FaceDirection.RIGHT:
-                    armLeft.SetLayerOrder(torsoLayer - 1);
-                    armRight.SetLayerOrder(torsoLayer + 1);
-                    legLeft.SetLayerOrder(torsoLayer - 1);
-                    legRight.SetLayerOrder(torsoLayer + 1);
+                    armLeft.SetLayerOrder(torsoLayer - 5);
+                    armRight.SetLayerOrder(torsoLayer + 5);
+
+                    legLeft.SetLayerOrder(torsoLayer - 5);
+                    legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+
+                    legRight.SetLayerOrder(torsoLayer + 5);
+                    legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
                     break;
                 default:
                     foreach (PlayerEquipVisual pv in primitiveVisuals)
                         pv.SetLayerOrder(0);
+                    foreach (PlayerEquipVisual pv in alterVisuals)
+                        pv.SetLayerOrder(1);
                     break;
             }
             hair.SetLayerOrder(head.GetLayerOrder() + 1);

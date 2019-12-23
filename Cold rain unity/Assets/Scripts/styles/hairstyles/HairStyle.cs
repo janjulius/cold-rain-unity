@@ -9,12 +9,10 @@ namespace Assets.Scripts.styles.hairstyles
 {
     public class HairStyle : DbElement
     {
-        public string HairName { get; private set; }
-
         public HairStyle(int id, string name)
         {
             Id = id;
-            HairName = name;
+            Name = name;
         }
     }
 }

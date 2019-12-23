@@ -9,5 +9,6 @@ namespace Assets.Scripts.databases
     public class DbElement
     {
         public int Id { protected set; get; }
+        public string Name { protected set; get; }
     }
 }
