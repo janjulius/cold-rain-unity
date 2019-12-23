@@ -55,7 +55,7 @@ public class Player : Entity
         LoadAppearance();
         
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
-        inventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        inventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);
     }
 
@@ -115,6 +115,7 @@ public class Player : Entity
 
     public void CheckInterfaceToggleKeys()
     {
+        //TODO REFRESH INVENTORY ON OPENING, NOT ON BUTTON PRESS
         if (Input.GetKeyDown(KeyCode.I))
             inventoryInterface.ToggleActive();
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -155,6 +156,7 @@ public class Player : Entity
     {
         inventoryInterface = gameManager.MainCanvas.GetComponentInChildren<Inventory>();
         inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
+        inventoryInterface.Create(this);
         inventoryContainer.Refresh();
         inventoryInterface.ToggleActive();
     }
@@ -162,7 +164,7 @@ public class Player : Entity
     private void LoadSkillsInterface()
     {
         skillsInterface = gameManager.MainCanvas.GetComponentInChildren<SkillsInterface>();
-        skillsInterface.Create(skills);
+        skillsInterface.Create(this);
         skillsInterface.Refresh();
         skillsInterface.ToggleActive();
     }
@@ -170,7 +172,8 @@ public class Player : Entity
     private void LoadEquipmentInterface()
     {
         equipmentInterface = gameManager.MainCanvas.GetComponentInChildren<EquipmentInterface>();
-        equipmentInterface.Refresh(equipment, stats);
+        equipmentInterface.Create(this);
+        equipmentInterface.Refresh();
         equipmentInterface.ToggleActive();
     }
 

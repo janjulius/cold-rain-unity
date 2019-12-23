@@ -13,21 +13,18 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public GameObject slotPrefab;
         private SkillSlot[] savedSlots;
         private Skills skills;
-
-        public void Create(Skills skills)
-        {
-            this.skills = skills;
-            Create();
-        }
-
+        
         //public void Refresh(Skills skills)
         //{
         //    this.skills = skills;
         //    Refresh();
         //}
 
-        public override void Create()
+        public override void Create(Player player)
         {
+            this.player = player;
+            this.skills = player.skills;
+
             savedSlots = new SkillSlot[skills.skills.Length];
             for (int i = 0; i < skills.skills.Length; i++)
             {

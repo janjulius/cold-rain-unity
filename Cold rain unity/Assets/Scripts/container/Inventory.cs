@@ -11,9 +11,9 @@ public class Inventory : ContainerDisplay
 
     private ItemSlot[] Slots = new ItemSlot[Constants.INVENTORY_SIZE];
     
-    public override void Create()
+    public override void Create(Player player)
     {
-        base.Create();
+        base.Create(player);
         for(int i = 0; i < Slots.Length; i++)
         {
             GameObject slot = Instantiate(SlotPrefab, Vector2.zero, Quaternion.identity, transform);
