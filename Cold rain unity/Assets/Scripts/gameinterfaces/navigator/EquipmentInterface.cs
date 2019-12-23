@@ -23,7 +23,10 @@ namespace Assets.Scripts.gameinterfaces.navigator
         
         public TextMeshProUGUI BonusText;
 
-        public void Refresh(EquipmentSlots equipment, Stats stats)
+        private EquipmentSlots equipment;
+        private Stats stats;
+
+        public override void Refresh()
         {
             HeadSlot.sprite = equipment.HeadSlot?.InventoryIcon;
             AmuletSlot.sprite = equipment.AmuletSlot?.InventoryIcon;
@@ -42,14 +45,11 @@ namespace Assets.Scripts.gameinterfaces.navigator
             return $"Attack: {stats.Attack} Defence: {stats.Defence}\nPrecision: {stats.Precision} Speed: {stats.Speed}\n Attack Speed: {stats.AttackSpeed} Crit Chance: {stats.CritChance}%";
         }
 
-        public override void Create()
+        public override void Create(Player player)
         {
-            //throw new NotImplementedException();
-        }
-
-        public override void Refresh()
-        {
-            //throw new NotImplementedException();
+            this.player = player;
+            equipment = player.equipment;
+            stats = player.stats;
         }
     }
 }

@@ -17,11 +17,6 @@ public abstract class GameInterface : Node
         gameObject.SetActive(b);
     }
 
-    public virtual void Create(Player player)
-    {
-        this.player = player;
-    }
-
-    public abstract void Create();
+    public abstract void Create(Player player);
     public abstract void Refresh();
 }

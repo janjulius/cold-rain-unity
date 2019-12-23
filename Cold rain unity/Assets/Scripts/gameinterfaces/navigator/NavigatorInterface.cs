@@ -36,9 +36,9 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public void ToggleMapActivity() =>
             MapInterface.SetActive(!MapInterface.activeSelf);
 
-        public override void Create()
+        public override void Create(Player player)
         {
-            throw new NotImplementedException();
+            this.player = player;
         }
 
         public override void Refresh()
