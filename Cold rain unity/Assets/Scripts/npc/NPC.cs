@@ -9,6 +9,7 @@ namespace Assets.Scripts.npc
 {
     class NPC : Entity
     {
+        public string name;
         public Dialogue dialogue;
     }
 }

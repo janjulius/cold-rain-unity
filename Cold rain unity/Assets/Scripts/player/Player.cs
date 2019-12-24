@@ -75,8 +75,9 @@ public class Player : Entity
 
     #endregion
 
-    public override void EntityUpdate()
+    protected override void EntityUpdate()
     {
+        base.EntityUpdate();
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
         if (!IsMoving)
@@ -93,19 +94,19 @@ public class Player : Entity
             Face(FaceDirection.LEFT);
             SetDestination(offset);
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             Vector2 offset = new Vector2(transform.position.x + Constants.TILE_SIZE, transform.position.y);
             Face(FaceDirection.RIGHT);
             SetDestination(offset);
         }
-        if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y + Constants.TILE_SIZE);
             Face(FaceDirection.UP);
             SetDestination(offset);
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y - Constants.TILE_SIZE);
             Face(FaceDirection.DOWN);
