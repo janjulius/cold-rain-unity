@@ -34,6 +34,18 @@ public class Entity : Node
     protected int energy;
 
     public bool IsMoving { private set; get; }
+    public bool CanMove { private set; get; }
+
+    #region Timers
+    public float EntityTimer { get; private set; }
+
+    /// <summary>
+    /// Blocks moving if this is higher than the entitytimer
+    /// </summary>
+    public float MoveBlockTimer { get; set; }
+
+    #endregion
+
 
     #region MovingVariables
 
@@ -76,11 +88,26 @@ public class Entity : Node
     {
         EntityUpdate();
         MovementUpdate();
+        UpdateTimers();
     }
 
-    public virtual void EntityUpdate()
+    protected virtual void EntityUpdate()
     {
+        EntityTimer += Time.deltaTime;
+    }
 
+    private void UpdateTimers()
+    {
+        CanMove = EntityTimer >= MoveBlockTimer;
+    }
+
+    /// <summary>
+    /// Blocks the player from moving for time in milliseconds
+    /// </summary>
+    /// <param name="time"></param>
+    public void BlockMovement(float time)
+    {
+        MoveBlockTimer = EntityTimer + time;
     }
 
     /// <summary>
@@ -88,7 +115,6 @@ public class Entity : Node
     /// </summary>
     private void MovementUpdate()
     {
-
         if (!ForceDestination)
         {
             timeM += Time.deltaTime / timeToReachTarget;
@@ -122,9 +148,12 @@ public class Entity : Node
         RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorDirection(faceDirection), Constants.TILE_SIZE, LayerMask.GetMask(NonPassableLayers));
         if (hit.collider == null)
         {
-            timeM = 0;
-            startPosition = transform.position;
-            targetPosition = loc;
+            if (CanMove)
+            {
+                timeM = 0;
+                startPosition = transform.position;
+                targetPosition = loc;
+            }
         }
     }
 
