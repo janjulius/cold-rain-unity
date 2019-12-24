@@ -19,6 +19,9 @@ namespace Assets.Scripts.map
         public bool GoesToOtherScene;
         public int SceneId = 0;
 
+        [Header("How long should the player be immobilized during this action.")]
+        public float LockTimeInSeconds = 0;
+
         public Vector2 endLocation;
 
         [Header("Attatch audio source to this object")]
@@ -44,6 +47,7 @@ namespace Assets.Scripts.map
             {
                 if (player.IsMoving)
                 {
+                    player.BlockMovement(LockTimeInSeconds);
                     if (PlaySound)
                     {
                         Sound.Play();

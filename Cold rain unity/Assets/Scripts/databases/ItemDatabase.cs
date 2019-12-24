@@ -95,7 +95,7 @@ namespace Assets.Scripts.databases
                 new Item(61, "Platinum legs", false, new Stats(), new Skills(), "a regular pair of legs, made out of platinum.", false, true),
                 new Item(62, "Ruby legs", false, new Stats(), new Skills(), "a pair of legs made out of platinum. They're decorated with a ruby.", false, true),
                 new Item(63, "Emerald legs", false, new Stats(), new Skills(), "a pair of legs made out of platinum. They're decorated with an emerald", false, true),
-                new Item(64, "Sapphire legs", false, new Stats(), new Skills(), "a pair of legs made out of platinum. They're decoared with a sapphire", false, true),
+                new Item(64, "Sapphire legs", false, new Stats(), new Skills(), "a pair of legs made out of platinum. They're decorated with a sapphire", false, true),
                 new Item(65, "Bronze boots", false, new Stats(), new Skills(), "a regular pair of boots made out of bronze.", false, true),
                 new Item(66, "Silver boots", false, new Stats(), new Skills(), "a regular pair of boots made out of silver.", false, true),
                 new Item(67, "Gold boots", false, new Stats(), new Skills(), "a regular pair of boots made out of gold.", false, true),
