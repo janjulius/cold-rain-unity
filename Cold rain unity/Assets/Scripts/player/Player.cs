@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Assets.Scripts.contants.Constants;
 
 public class Player : Entity
 {
@@ -46,6 +47,7 @@ public class Player : Entity
     {
         base.StartInitiate();
         DontDestroyOnLoad(this);
+        SetLayer((int)UnityLayers.PLAYER);
 
         GetReferences();
         GetOtherReferences();
@@ -84,6 +86,7 @@ public class Player : Entity
             CheckMovementKeys();
 
         CheckInterfaceToggleKeys();
+        CheckOtherKeys();
     }
 
     private void CheckMovementKeys()
@@ -121,6 +124,15 @@ public class Player : Entity
             inventoryInterface.ToggleActive();
         if (Input.GetKeyDown(KeyCode.Tab))
             navigatorDisplay.ToggleActive();
+    }
+
+    public void CheckOtherKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            if (facingEntity != null)
+                facingEntity.Interact(this);
+            else if (facingInteractable != null)
+                facingInteractable.Interact(this);
     }
 
     public override void Face(FaceDirection dir)
