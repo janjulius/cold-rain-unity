@@ -10,8 +10,8 @@ using static Assets.Scripts.contants.Constants;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Entity : Node, Iinteractable
 {
-
     public Vector2 SpawnPosition;
+    public string EntityName;
 
     public Skills skills
     {
@@ -90,7 +90,7 @@ public class Entity : Node, Iinteractable
     private Rigidbody2D rb;
 
     #region Facing Nodes
-    protected Entity facingEntity;
+    [HideInInspector] public Entity facingEntity;
     protected Interactable facingInteractable;
     #endregion
 

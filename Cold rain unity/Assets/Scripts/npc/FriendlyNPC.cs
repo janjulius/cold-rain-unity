@@ -13,9 +13,8 @@ namespace Assets.Scripts.npc
     [RequireComponent(typeof(Appearance))]
     public class FriendlyNPC : NPC
     {
-        private Appearance appearance;
-        
         public Dialogue dialogue;
+        private Appearance appearance;
 
         public override void Initiate()
         {

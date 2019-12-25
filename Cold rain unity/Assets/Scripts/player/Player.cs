@@ -2,23 +2,16 @@
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
-using Assets.Scripts.item;
-using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.styles.hairstyles;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using static Assets.Scripts.contants.Constants;
 
 public class Player : Entity
 {
     private Appearance appearance;
-    
+
     #region Interfaces and containers
 
     private Container inventoryContainer;
@@ -51,11 +44,11 @@ public class Player : Entity
 
         GetReferences();
         GetOtherReferences();
-        
+
         LoadInterfaces();
 
         LoadAppearance();
-        
+
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);

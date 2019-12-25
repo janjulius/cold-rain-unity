@@ -8,6 +8,11 @@ namespace Assets.Scripts.dialogue.dialogues
 {
     class TestDialogue : Dialogue
     {
+        public override void Initiate()
+        {
+            base.Initiate();
+        }
+
         public override void Handle()
         {
             base.Handle();
@@ -34,7 +39,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
-            Npc("Hello.");
+            Npc($"Hello! My name is {NPC.EntityName}.");
             stage = 0;
             return true;
         }
