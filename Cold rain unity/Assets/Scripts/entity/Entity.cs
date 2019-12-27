@@ -66,6 +66,8 @@ public class Entity : Node, Iinteractable
     }
     public bool CanMove { private set; get; }
 
+    public bool IsLocked { private set; get; }
+
     #region Timers
     public float EntityTimer { get; private set; }
 
@@ -73,6 +75,11 @@ public class Entity : Node, Iinteractable
     /// Blocks moving if this is higher than the entitytimer
     /// </summary>
     public float MoveBlockTimer { get; set; }
+
+    /// <summary>
+    /// Complete player lock
+    /// </summary>
+    public float LockTimer { get; set; }
 
     #endregion
 
@@ -139,15 +146,25 @@ public class Entity : Node, Iinteractable
     private void UpdateTimers()
     {
         CanMove = EntityTimer >= MoveBlockTimer;
+        IsLocked = EntityTimer >= LockTimer;
     }
 
     /// <summary>
-    /// Blocks the player from moving for time in milliseconds
+    /// Blocks the entity from moving for time in milliseconds
     /// </summary>
     /// <param name="time"></param>
     public void BlockMovement(float time)
     {
         MoveBlockTimer = EntityTimer + time;
+    }
+
+    /// <summary>
+    /// blocks the entity from doing any interaction for time in millis
+    /// </summary>
+    /// <param name="time"></param>
+    public void Lock(float time)
+    {
+        LockTimer = EntityTimer + time;
     }
 
     /// <summary>

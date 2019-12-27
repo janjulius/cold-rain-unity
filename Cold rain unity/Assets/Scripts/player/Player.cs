@@ -75,9 +75,9 @@ public class Player : Entity
         base.EntityUpdate();
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
-        if (!IsMoving)
+        if (!IsMoving || !IsLocked)
             CheckMovementKeys();
-
+        
         CheckInterfaceToggleKeys();
         CheckOtherKeys();
     }
@@ -121,7 +121,7 @@ public class Player : Entity
 
     public void CheckOtherKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !IsLocked)
             if (facingEntity != null)
                 facingEntity.Interact(this);
             else if (facingInteractable != null)
