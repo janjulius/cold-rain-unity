@@ -30,4 +30,9 @@ public class Node : Atom
     {
 
     }
+
+    public void SetLayer(int layer)
+    {
+        gameObject.layer = layer;
+    }
 }

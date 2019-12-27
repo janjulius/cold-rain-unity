@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.dialogue;
+using Assets.Scripts.logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.npc
 {
-    class NPC : Entity
+    public abstract class NPC : Entity
     {
-        public string name;
-        public Dialogue dialogue;
     }
 }

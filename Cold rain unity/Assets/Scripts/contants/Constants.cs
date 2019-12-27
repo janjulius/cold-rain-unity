@@ -10,7 +10,7 @@ namespace Assets.Scripts.contants
     /// <summary>
     /// Constants values
     /// </summary>
-    class Constants
+    public class Constants
     {
         /// <summary>
         /// Size of the tiles in unity measurements

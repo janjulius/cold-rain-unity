@@ -16,6 +16,8 @@ namespace Assets.Scripts.databases.appearance
             {
                     new BeardStyle(0, "Bald"),
                     new BeardStyle(1, "Short beard"),
+                    new BeardStyle(2, "Medium beard"),
+                    new BeardStyle(3, "Long beard")
             };
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for (int i = 0; i < items.Count; i++)

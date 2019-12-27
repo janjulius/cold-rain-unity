@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.dialogue;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.interactable
 {
-    class Interactable : Node
+    public class Interactable : Node, Iinteractable
     {
-        public Dialogue dialogue;
+        public virtual void Interact(Entity sender)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

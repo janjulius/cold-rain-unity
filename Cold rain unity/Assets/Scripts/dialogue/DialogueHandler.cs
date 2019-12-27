@@ -1,29 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.gameinterfaces.dialogue;
+using UnityEngine;
 
 namespace Assets.Scripts.dialogue
 {
-    class DialogueHandler
+    public class DialogueHandler : Node
     {
+        public DialogueUIHandler handler;
+        public Dialogue CurrentDialogue;
+        //public void SendDialogues(Entity entity, string message) => SendDialogues(entity, new string[] { message });
 
-        public void SendDialogues(Entity entity, string message) => SendDialogues(entity, new string[] { message });
-
-        public void SendDialogues(Entity entity, string[] messages)
+        public override void StartInitiate()
         {
-            //TODO: send the message
+            base.StartInitiate();
+            handler = Camera.main.GetComponent<GameManager>().DialogeUIHandler;
+            handler.gameObject.SetActive(false);
+        }
+
+        public void SendDialogues(Entity entity, string message)
+        {
+            if(!handler.gameObject.activeSelf)
+                Open();
+            handler.SetSenderText(entity.EntityName);
+            handler.SetDialogueText(message);
+        }
+
+        internal void SetCurrentDialogue(Dialogue dialogue)
+        {
+            CurrentDialogue = dialogue;
         }
 
         public void Close()
         {
-            throw new NotImplementedException();
+            handler.gameObject.SetActive(false);
         }
 
         public void Open()
         {
+            handler.gameObject.SetActive(true);
+        }
 
+        public void Advance()
+        {
+            CurrentDialogue.Handle();
         }
     }
 }

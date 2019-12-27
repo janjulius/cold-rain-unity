@@ -17,6 +17,11 @@ namespace Assets.Scripts.container
             LoadItem();
         }
 
+        public Item getItem()
+        {
+            return item;
+        }
+
         private void LoadItem()
         {
             SetImage(item.InventoryIcon);

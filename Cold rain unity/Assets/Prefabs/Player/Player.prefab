@@ -554,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5444071459894247862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.055, y: -0.005, z: 0}
+  m_LocalPosition: {x: 0.055, y: -0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5444071460967354504}
@@ -629,11 +629,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 04a45567f2e95fa4fb4469eb9f934ffa, type: 3}
   - {fileID: 21300000, guid: 45cdcf202dcce714abc97d5c9dfcec00, type: 3}
   - {fileID: 21300000, guid: b1dbfbc44b7ea784cb73354469d5f174, type: 3}
-  BaseLocation: {x: -0.055, y: -0.005}
+  BaseLocation: {x: 0.055, y: -0.005}
   DisplaceLocation:
-  - {x: -0.015, y: 0.01}
+  - {x: 0, y: 0}
   - {x: -0.055, y: -0.005}
-  - {x: 0.015, y: 0.01}
+  - {x: 0, y: 0}
   spriteRenderer: {fileID: 0}
 --- !u!1 &5444071460188922995
 GameObject:
@@ -1515,10 +1515,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+  HairColor: {r: 1, g: 0, b: 0, a: 1}
   TopColor: {r: 0, g: 0, b: 0, a: 1}
-  BottomColor: {r: 0, g: 0, b: 0, a: 1}
-  HairId: 12
+  BottomColor: {r: 1, g: 1, b: 1, a: 1}
+  HairId: 14
   BeardId: 0
   LegsId: 0
   IsMale: 0
@@ -1755,7 +1755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5444071461106563209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.055, y: -0.005, z: 0}
+  m_LocalPosition: {x: -0.055, y: -0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5444071461120520470}
@@ -1830,11 +1830,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f90fd7acbabd264408d03220bd65d60c, type: 3}
   - {fileID: 21300000, guid: 1dc684249aab45b4faf59dd5a9620b0f, type: 3}
   - {fileID: 21300000, guid: 6126d0e912548434f96fe98a12cb473b, type: 3}
-  BaseLocation: {x: 0.055, y: -0.005}
+  BaseLocation: {x: -0.055, y: -0.005}
   DisplaceLocation:
-  - {x: -0.015, y: 0.01}
+  - {x: 0, y: 0}
   - {x: 0.055, y: -0.005}
-  - {x: 0.015, y: 0.01}
+  - {x: 0, y: 0}
   spriteRenderer: {fileID: 0}
 --- !u!1 &5444071461120520465
 GameObject:
@@ -2050,6 +2050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5444071461476870449}
   - component: {fileID: 5444071461476870454}
+  - component: {fileID: 2130278918}
   m_Layer: 0
   m_Name: Beard
   m_TagString: Untagged
@@ -2120,6 +2121,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2130278918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444071461476870448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fd02d816f2fc0419c5984a037043a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipmentSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BaseLocation: {x: 0, y: 0}
+  DisplaceLocation:
+  - {x: 0.005, y: 0.01}
+  - {x: 0, y: 0}
+  - {x: -0.005, y: 0.01}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &6224041242359392577
 GameObject:
   m_ObjectHideFlags: 0

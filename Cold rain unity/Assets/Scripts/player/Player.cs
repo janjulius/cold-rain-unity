@@ -2,22 +2,16 @@
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
-using Assets.Scripts.item;
-using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.styles.hairstyles;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Player : Entity
 {
     private Appearance appearance;
-    
+
     #region Interfaces and containers
 
     private Container inventoryContainer;
@@ -46,14 +40,15 @@ public class Player : Entity
     {
         base.StartInitiate();
         DontDestroyOnLoad(this);
+        SetLayer((int)UnityLayers.PLAYER);
 
         GetReferences();
         GetOtherReferences();
-        
+
         LoadInterfaces();
 
         LoadAppearance();
-        
+
         inventoryContainer.Add(itemDatabase.GetItem(0), 1);
         inventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);
@@ -84,6 +79,7 @@ public class Player : Entity
             CheckMovementKeys();
 
         CheckInterfaceToggleKeys();
+        CheckOtherKeys();
     }
 
     private void CheckMovementKeys()
@@ -121,6 +117,15 @@ public class Player : Entity
             inventoryInterface.ToggleActive();
         if (Input.GetKeyDown(KeyCode.Tab))
             navigatorDisplay.ToggleActive();
+    }
+
+    public void CheckOtherKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            if (facingEntity != null)
+                facingEntity.Interact(this);
+            else if (facingInteractable != null)
+                facingInteractable.Interact(this);
     }
 
     public override void Face(FaceDirection dir)
