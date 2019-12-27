@@ -36,9 +36,10 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
         {
             //mm.AtopSocialLeftBar();
             print("Right click on rightclickmenucontroller");
+            //print(ItemSlot.getItem());
             RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
-                new Vector2(this.GetComponent<RectTransform>().offsetMin.x - 40,
-                this.GetComponent<RectTransform>().offsetMin.y));
+                new Vector2(parentObject.GetComponent<RectTransform>().offsetMin.x,
+                parentObject.GetComponent<RectTransform>().offsetMin.y));
         }
     }
 
