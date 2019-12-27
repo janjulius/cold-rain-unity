@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.container;
+using Assets.Scripts.item;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     public Button sampleButton;
     private List<RightClickMenuItem> contextMenuItems;
     private ItemSlot parentObject;
+    private Inventory inventoryObject;
     //private MainMenuManager mm;
     //private ChatManager cm;
 
@@ -18,6 +20,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     {
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
+        inventoryObject = GetComponentInParent<Inventory>();
         //mm = FindObjectOfType<MainMenuManager>();
 
         Action<Image> use = new Action<Image>(UseAction);
@@ -34,12 +37,12 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            //mm.AtopSocialLeftBar();
+            Item i = GetComponent<ItemSlot>().getItem();
             print("Right click on rightclickmenucontroller");
-            //print(ItemSlot.getItem());
             RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
-                new Vector2(parentObject.GetComponent<RectTransform>().offsetMin.x,
-                parentObject.GetComponent<RectTransform>().offsetMin.y));
+                parentObject.transform.position - inventoryObject.transform.position);
+                //new Vector2(parentObject.GetComponent<RectTransform>().offsetMin.x,
+                //parentObject.GetComponent<RectTransform>().offsetMin.y));
         }
     }
 
