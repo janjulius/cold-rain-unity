@@ -49,4 +49,9 @@ public class RightClickMenu : MonoBehaviour
             button.transform.SetParent(panel.transform);
         }
     }
+
+    public void HideContextMenu()
+    {
+        previousObject.gameObject.SetActive(false);
+    }
 }

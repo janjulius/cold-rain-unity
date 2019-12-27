@@ -14,6 +14,7 @@ public class Inventory : ContainerDisplay
     public override void Create(Player player)
     {
         base.Create(player);
+        myContainer = player.InventoryContainer;
         for(int i = 0; i < Slots.Length; i++)
         {
             GameObject slot = Instantiate(SlotPrefab, Vector2.zero, Quaternion.identity, transform);
@@ -35,6 +36,9 @@ public class Inventory : ContainerDisplay
             if(containerItems[i] != null)
             {
                 Slots[i].SetItem(containerItems[i]);
+            } else
+            {
+                Slots[i].Reset();
             }
         }
 

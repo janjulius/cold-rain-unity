@@ -8,7 +8,7 @@ namespace Assets.Scripts.container
 {
     public class ContainerDisplay : GameInterface
     {
-        Container myContainer;
+        protected Container myContainer;
 
         public override void Create(Player player)
         {
@@ -29,6 +29,11 @@ namespace Assets.Scripts.container
         public virtual void Refresh(Container container)
         {
 
+        }
+
+        public Container GetContainer()
+        {
+            return myContainer;
         }
 
     }

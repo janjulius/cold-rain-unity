@@ -14,7 +14,7 @@ public class Player : Entity
 
     #region Interfaces and containers
 
-    private Container inventoryContainer;
+    public Container InventoryContainer { private set; get; }
     private Inventory inventoryInterface;
     private EquipmentInterface equipmentInterface;
     private SkillsInterface skillsInterface;
@@ -49,8 +49,8 @@ public class Player : Entity
 
         LoadAppearance();
 
-        inventoryContainer.Add(itemDatabase.GetItem(0), 1);
-        inventoryContainer.Add(itemDatabase.GetItem(2), 1);
+        InventoryContainer.Add(itemDatabase.GetItem(0), 1);
+        InventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);
     }
 
@@ -161,9 +161,9 @@ public class Player : Entity
     private void LoadInventory()
     {
         inventoryInterface = gameManager.MainCanvas.GetComponentInChildren<Inventory>();
-        inventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
+        InventoryContainer = new Container(Constants.INVENTORY_SIZE, inventoryInterface);
         inventoryInterface.Create(this);
-        inventoryContainer.Refresh();
+        InventoryContainer.Refresh();
         inventoryInterface.ToggleActive();
     }
 

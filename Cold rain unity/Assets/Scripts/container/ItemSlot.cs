@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.item;
+﻿using System;
+using Assets.Scripts.item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,15 +9,21 @@ namespace Assets.Scripts.container
     public class ItemSlot : Node
     {
         private Item item;
+        private Container parentContainer;
         public Image image;
         public TextMeshProUGUI slotText;
         public Sprite emptyImage;
-        
+
+        public override void StartInitiate()
+        {
+            base.StartInitiate();
+            parentContainer = GetComponentInParent<ContainerDisplay>().GetContainer();
+        }
+
         public void SetItem(Item item)
         {
             this.item = item;
-            if(item != null)
-                LoadItem();
+            LoadItem();
         }
 
         public Item getItem()
@@ -40,6 +47,12 @@ namespace Assets.Scripts.container
             }
         }
 
+        internal void Reset()
+        {
+            item = null;
+            LoadItem();
+        }
+
         private void SetImage(Sprite s)
         {
             image.sprite = s;
@@ -48,6 +61,11 @@ namespace Assets.Scripts.container
         private void SetText(string text)
         {
             slotText.text = text;
+        }
+
+        public Container GetParentContainer()
+        {
+            return parentContainer;
         }
 
         private void SetText(int text) => SetText(text.ToString());
