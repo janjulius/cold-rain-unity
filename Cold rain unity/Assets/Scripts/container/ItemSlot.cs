@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.container
 {
-    public class ItemSlot : MonoBehaviour
+    public class ItemSlot : Node
     {
         private Item item;
         public Image image;
         public TextMeshProUGUI slotText;
+        public Sprite emptyImage;
         
         public void SetItem(Item item)
         {
@@ -24,10 +25,18 @@ namespace Assets.Scripts.container
 
         private void LoadItem()
         {
-            SetImage(item.InventoryIcon);
-            SetTextActivity(item.Stackable);
-            if (item.Stackable)
-                SetText(item.Amount.ToString());
+            if (item == null)
+            {
+                SetImage(emptyImage);
+                SetTextActivity(false);
+            }
+            else
+            {
+                SetImage(item.InventoryIcon);
+                SetTextActivity(item.Stackable);
+                if (item.Stackable)
+                    SetText(item.Amount.ToString());
+            }
         }
 
         private void SetImage(Sprite s)
