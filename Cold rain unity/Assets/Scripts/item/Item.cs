@@ -20,6 +20,7 @@ namespace Assets.Scripts.item
         public string Examine { private set; get; }
         public bool QuestItem { private set; get; }
         public bool Equipable { private set; get; }
+        public EquipmentType EquipmentType{ private set; get;}
 
         public Sprite InventoryIcon { private set; get; }
 
@@ -28,7 +29,7 @@ namespace Assets.Scripts.item
         /// </summary>
         public Sprite[] EquipSprites { private set; get; }
 
-        public Item(int id, string name, bool stackable, Stats stats, Skills requirements, string examine, bool questItem, bool equipable)
+        public Item(int id, string name, bool stackable, Stats stats, Skills requirements, string examine, bool questItem, bool equipable, EquipmentType equipmentType)
         {
             Id = id;
             Name = name;
@@ -39,6 +40,7 @@ namespace Assets.Scripts.item
             Examine = examine;
             QuestItem = questItem;
             Equipable = equipable;
+            this.EquipmentType = equipmentType;
         }
 
         public void SetSprites(Sprite inventoryIcon, EquipmentItemMultiArray eqima)

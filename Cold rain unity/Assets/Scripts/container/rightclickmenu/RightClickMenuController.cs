@@ -13,20 +13,17 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     private List<RightClickMenuItem> contextMenuItems;
     private ItemSlot parentObject;
     private Inventory inventoryObject;
-    //private MainMenuManager mm;
-    //private ChatManager cm;
 
     void Awake()
     {
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
         inventoryObject = GetComponentInParent<Inventory>();
-        //mm = FindObjectOfType<MainMenuManager>();
 
         Action<Image> use = new Action<Image>(UseAction);
         Action<Image> examine = new Action<Image>(ExamineAction);
         Action<Image> drop = new Action<Image>(DropAction);
-        
+
         contextMenuItems.Add(new RightClickMenuItem("Use", sampleButton, use));
         contextMenuItems.Add(new RightClickMenuItem("Examine", sampleButton, examine));
         contextMenuItems.Add(new RightClickMenuItem("Drop", sampleButton, drop));
@@ -38,26 +35,40 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             Item i = GetComponent<ItemSlot>().getItem();
-            print("Right click on rightclickmenucontroller");
+            if (i.Equipable)
+            {
+                Action<Image> equip = new Action<Image>(UseAction);
+                RightClickMenuItem equipclick = new RightClickMenuItem("Equip", sampleButton, equip);
+                if(contextMenuItems[0] != equipclick)
+                    contextMenuItems.Insert(0, equipclick);
+            }
+            print("Right click on " + i);
             RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
-                parentObject.transform.position - inventoryObject.transform.position);
-                //new Vector2(parentObject.GetComponent<RectTransform>().offsetMin.x,
-                //parentObject.GetComponent<RectTransform>().offsetMin.y));
+                eventData.position);
+        }
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            Item i = GetComponent<ItemSlot>().getItem();
+            print("Left click on " + i);
+            UseAction(GetComponent<ItemSlot>().image);
         }
     }
 
     private void ExamineAction(Image obj)
     {
-        throw new NotImplementedException();
+        print(GetComponent<ItemSlot>().getItem().Examine);
     }
 
     private void DropAction(Image obj)
     {
-        throw new NotImplementedException();
+        print("dropping " + GetComponent<ItemSlot>().getItem());
+        GetComponent<ItemSlot>().SetItem(null);
     }
 
     private void UseAction(Image obj)
     {
-        throw new NotImplementedException();
+        print("using " + GetComponent<ItemSlot>().getItem());
+
+        GetComponent<ItemSlot>().SetItem(null);
     }
 }

@@ -14,7 +14,8 @@ namespace Assets.Scripts.container
         public void SetItem(Item item)
         {
             this.item = item;
-            LoadItem();
+            if(item != null)
+                LoadItem();
         }
 
         public Item getItem()

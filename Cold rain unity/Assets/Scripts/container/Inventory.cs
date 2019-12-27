@@ -21,6 +21,11 @@ public class Inventory : ContainerDisplay
         }
     }
 
+    public ItemSlot[] getSlots()
+    {
+        return Slots;
+    }
+
     public override void Refresh(Container container)
     {
         base.Refresh(container);
