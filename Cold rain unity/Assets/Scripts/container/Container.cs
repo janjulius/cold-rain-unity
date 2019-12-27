@@ -54,6 +54,44 @@ namespace Assets.Scripts.container
         }
 
         /// <summary>
+        /// Remove an item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public bool Remove(Item item, int quantity)
+        {
+            for (int i = 0; i < capacity; i++)
+            {
+                if (items[i] == null)
+                    continue;
+                if (items[i].Id == item.Id)
+                {
+                    if (items[i].Amount < quantity) //if amount of item is less than quantity
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        items[i].Amount -= quantity;
+                        if(items[i].Amount <= 0)
+                            items[i] = null;
+                        Refresh();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Remove an item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public bool Remove(Item item) => Remove(item, 1);
+
+        /// <summary>
         /// True if the item is present in the container
         /// </summary>
         /// <param name="item"></param>
