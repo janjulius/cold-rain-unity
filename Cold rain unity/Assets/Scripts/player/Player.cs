@@ -120,8 +120,8 @@ public class Player : Entity
     }
 
     public void CheckOtherKeys()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !IsLocked)
+    { 
+        if (Input.GetKeyDown(KeyCode.Space))
             if (facingEntity != null)
                 facingEntity.Interact(this);
             else if (facingInteractable != null)
