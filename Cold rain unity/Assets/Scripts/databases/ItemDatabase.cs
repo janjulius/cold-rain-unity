@@ -309,7 +309,7 @@ namespace Assets.Scripts.databases
                 new Item(276, "Goat milk", true, new Stats(), new Skills(), "This milk was intended to feed baby goats with, but you took it.", false, false, EquipmentType.NONE),
                 new Item(277, "Egg", true, new Stats(), new Skills(), "an egg.", false, false, EquipmentType.NONE),
                 new Item(278, "Wool", true, new Stats(), new Skills(), "Very soft.", false, false, EquipmentType.NONE),
-                new Item(279, "Cook's book", true, new Stats(), new Skills(), "It used to belong to the late town's cook, now it's yours.", false, false, EquipmentType.NONE),
+                new Item(279, "Cook's book", false, new Stats(), new Skills(), "It used to belong to the late town's cook, now it's yours.", false, false, EquipmentType.NONE),
                 new Item(280, "Burnt deer meat", true, new Stats(), new Skills(), "This meat has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
                 new Item(281, "Burnt fish", true, new Stats(), new Skills(), "This fish has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
                 new Item(282, "Burnt duck", true, new Stats(), new Skills(), "This duck has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
@@ -403,6 +403,16 @@ namespace Assets.Scripts.databases
                 new Item(370, "Ruby dagger", false, new Stats(), new Skills(), "a dagger made out of platinum. There's a ruby in the rain-guard.", false, true, EquipmentType.OFFHAND),
                 new Item(371, "Emerald dagger", false, new Stats(), new Skills(), "a dagger made out of platinum. There's an emerald in the rain-guard.", false, true, EquipmentType.OFFHAND),
                 new Item(372, "Sapphire dagger", false, new Stats(), new Skills(), "a dagger made out of platinum. There's a sapphire in the rain-guard.", false, true, EquipmentType.OFFHAND),
+                new Item(373, "Raw bass", true, new Stats(), new Skills(), "Medium-sized freshwater fish.", false, false, EquipmentType.NONE),
+                new Item(374, "Raw esox", true, new Stats(), new Skills(), "Medium-sized freshwater fish.", false, false, EquipmentType.NONE),
+                new Item(375, "Raw catfish", true, new Stats(), new Skills(), "Large freshwater fish, can also be found on the internet.", false, false, EquipmentType.NONE),
+                new Item(376, "Raw walleye", true, new Stats(), new Skills(), "Medium-sized freshwater fish.", false, false, EquipmentType.NONE),
+                new Item(377, "Raw muskellunge", true, new Stats(), new Skills(), "Medium-sized freshwater fish.", false, false, EquipmentType.NONE),
+                new Item(378, "Raw tuna", true, new Stats(), new Skills(), "Large saltwater fish.", false, false, EquipmentType.NONE),
+                new Item(379, "Raw tarpon", true, new Stats(), new Skills(), "Large saltwater fish.", false, false, EquipmentType.NONE),
+                new Item(380, "Raw marlin", true, new Stats(), new Skills(), "Large saltwater fish with a massive nose.", false, false, EquipmentType.NONE),
+                new Item(381, "Raw red drum", true, new Stats(), new Skills(), "Small saltwater fish.", false, false, EquipmentType.NONE),
+                new Item(382, "Raw salmon", true, new Stats(), new Skills(), "Medium-sized saltwater fish.", false, false, EquipmentType.NONE),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];

@@ -101,7 +101,9 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
 
     private void EquipAction(Image obj)
     {
-        throw new NotImplementedException();
+        EquipmentType equiptype = GetComponent<ItemSlot>().getItem().EquipmentType;
+
+        print(equiptype);
     }
 
     private void ConsumeAction(Image obj)
