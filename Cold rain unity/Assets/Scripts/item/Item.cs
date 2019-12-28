@@ -21,7 +21,8 @@ namespace Assets.Scripts.item
         public bool QuestItem { private set; get; }
         public bool Equipable { private set; get; }
         public EquipmentType EquipmentType{ private set; get;}
-
+        public int Charges { private set; get; }
+        
         public Sprite InventoryIcon { private set; get; }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Assets.Scripts.item
             QuestItem = questItem;
             Equipable = equipable;
             this.EquipmentType = equipmentType;
+            Charges = 0;
         }
 
         public void SetSprites(Sprite inventoryIcon, EquipmentItemMultiArray eqima)
