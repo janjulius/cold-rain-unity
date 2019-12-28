@@ -35,14 +35,28 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
+                print("Right click on " + i);
                 if (i.Equipable)
                 {
-                    Action<Image> equip = new Action<Image>(UseAction);
-                    RightClickMenuItem equipclick = new RightClickMenuItem("Equip", sampleButton, equip);
-                    if (contextMenuItems[0] != equipclick)
-                        contextMenuItems.Insert(0, equipclick);
+                    Action<Image> equip = new Action<Image>(EquipAction);
+                    RightClickMenuItem equipitem = new RightClickMenuItem("Equip", sampleButton, equip);
+
+                    if (contextMenuItems.Count <4)
+                    {
+                        contextMenuItems.Add(equipitem);
+                    }
                 }
-                print("Right click on " + i);
+                //else if (i.Consumable)
+                //{
+                //    Action<Image> eat = new Action<Image>(ConsumeAction);
+                //    RightClickMenuItem eatitem = new RightClickMenuItem("Eat", sampleButton, eat);
+
+                //    if (contextMenuItems.Count < 4)
+                //    {
+                //        contextMenuItems.Add(eatitem);
+                //    }
+                //}
+                
                 RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
                     eventData.position);
             }
@@ -50,7 +64,12 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 print("Left click on " + i);
-                UseAction(GetComponent<ItemSlot>().image);
+                if (i.Equipable)
+                    EquipAction(GetComponent<ItemSlot>().image);
+                //else if(i.Consumable)
+                //    ConsumeAction(GetComponent<ItemSlot>().image);
+                else
+                    UseAction(GetComponent<ItemSlot>().image);
             }
         }
     }
@@ -64,7 +83,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     private void DropAction(Image obj)
     {
         print("dropping " + GetComponent<ItemSlot>().getItem());
-        // GetComponent<ItemSlot>().SetItem(null);\
+        // GetComponent<ItemSlot>().SetItem(null);
 
         ItemSlot slot = GetComponent<ItemSlot>();
         slot.GetParentContainer().Remove(slot.getItem());
@@ -74,8 +93,20 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     private void UseAction(Image obj)
     {
         print("using " + GetComponent<ItemSlot>().getItem());
-        GetComponent<ItemSlot>().SetItem(null);
+        //GetComponent<ItemSlot>().SetItem(null);
+        ItemSlot slot = GetComponent<ItemSlot>();
+        slot.GetParentContainer().Remove(slot.getItem());
         CloseMenu();
+    }
+
+    private void EquipAction(Image obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void ConsumeAction(Image obj)
+    {
+        throw new NotImplementedException();
     }
 
     private void CloseMenu()
