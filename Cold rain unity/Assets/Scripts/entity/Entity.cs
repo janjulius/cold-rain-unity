@@ -114,6 +114,7 @@ public class Entity : Node, Iinteractable
     public override void StartInitiate()
     {
         base.Initiate();
+        IsLocked = false;
         startPosition = SpawnPosition; targetPosition = SpawnPosition;
         SetLayer((int)UnityLayers.ENTITY);
         rb = GetComponent<Rigidbody2D>();
@@ -156,6 +157,11 @@ public class Entity : Node, Iinteractable
     public void BlockMovement(float time)
     {
         MoveBlockTimer = EntityTimer + time;
+    }
+
+    public void UnlockMovement()
+    {
+        MoveBlockTimer = 0;
     }
 
     /// <summary>

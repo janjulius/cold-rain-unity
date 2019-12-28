@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
     public GameObject EventSystem;
     public DialogueUIHandler DialogeUIHandler;
     public DialogueHandler DialogueHandler;
+    public Player player;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
         DontDestroyOnLoad(EventSystem);
+        player = FindObjectOfType<Player>();
     }
     
     void Start()

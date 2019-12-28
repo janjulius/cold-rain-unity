@@ -21,5 +21,7 @@ namespace Assets.Scripts.contants
         /// The default size of the inventory
         /// </summary>
         public static int INVENTORY_SIZE = 50;
+
+        public static string COMMAND_PREFIX = "/";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.gameinterfaces.dialogue;
+﻿using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.gameinterfaces.dialogue;
 using UnityEngine;
 
 namespace Assets.Scripts.dialogue
@@ -22,6 +23,7 @@ namespace Assets.Scripts.dialogue
                 Open();
             handler.SetSenderText(entity.EntityName);
             handler.SetDialogueText(message);
+            Console.Instance.SendFilteredConsoleMessage($"{entity.EntityName}: {message}");
         }
 
         internal void SetCurrentDialogue(Dialogue dialogue)
