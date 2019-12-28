@@ -12,14 +12,14 @@ namespace Assets.Scripts.gameinterfaces.navigator
 {
     public class EquipmentInterface : GameInterface
     {
-        public Image HeadSlot;
-        public Image AmuletSlot;
-        public Image TorsoSlot;
-        public Image LegSlot;
-        public Image FeetSlot;
-        public Image WeaponSlot;
-        public Image OffHandSlot;
-        public Image AmmoSlot;
+        public Button HeadSlot;
+        public Button AmuletSlot;
+        public Button TorsoSlot;
+        public Button LegSlot;
+        public Button FeetSlot;
+        public Button WeaponSlot;
+        public Button OffHandSlot;
+        public Button AmmoSlot;
         
         public TextMeshProUGUI BonusText;
 
@@ -28,14 +28,14 @@ namespace Assets.Scripts.gameinterfaces.navigator
 
         public override void Refresh()
         {
-            HeadSlot.sprite = equipment.HeadSlot?.InventoryIcon;
-            AmuletSlot.sprite = equipment.AmuletSlot?.InventoryIcon;
-            TorsoSlot.sprite = equipment.TorsoSlot?.InventoryIcon;
-            LegSlot.sprite = equipment.LegSlot?.InventoryIcon;
-            FeetSlot.sprite = equipment.FeetSlot?.InventoryIcon;
-            WeaponSlot.sprite = equipment.WeaponSlot?.InventoryIcon;
-            OffHandSlot.sprite = equipment.OffHandSlot?.InventoryIcon;
-            AmmoSlot.sprite = equipment.AmmoSlot?.InventoryIcon;
+            HeadSlot.image.sprite = equipment.HeadSlot?.InventoryIcon;
+            AmuletSlot.image.sprite = equipment.AmuletSlot?.InventoryIcon;
+            TorsoSlot.image.sprite = equipment.TorsoSlot?.InventoryIcon;
+            LegSlot.image.sprite = equipment.LegSlot?.InventoryIcon;
+            FeetSlot.image.sprite = equipment.FeetSlot?.InventoryIcon;
+            WeaponSlot.image.sprite = equipment.WeaponSlot?.InventoryIcon;
+            OffHandSlot.image.sprite = equipment.OffHandSlot?.InventoryIcon;
+            AmmoSlot.image.sprite = equipment.AmmoSlot?.InventoryIcon;
 
             BonusText.text = ConstructBonusText(stats);
         }
