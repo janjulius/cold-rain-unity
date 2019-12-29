@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.player.Equipment
 {
-    class Equipmentslot : MonoBehaviour, IPointerClickHandler
+    class EquipmentSlotController : MonoBehaviour, IPointerClickHandler
     {
         private ItemSlot parentObject;
         void Awake()
