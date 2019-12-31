@@ -23,6 +23,7 @@ namespace Assets.Scripts.container
         public override void Initiate()
         {
             base.Initiate();
+            DontDestroyOnLoad(this);
         }
 
 
