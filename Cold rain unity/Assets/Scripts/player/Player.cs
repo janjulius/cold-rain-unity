@@ -10,8 +10,10 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
-    private Appearance appearance;
+    private bool singleLoad = false;
 
+    private Appearance appearance;
+    
     #region Interfaces and containers
 
     public Container InventoryContainer { private set; get; }
@@ -53,7 +55,6 @@ public class Player : Entity
         InventoryContainer.Add(itemDatabase.GetItem(2), 1);
         SetLocation(SpawnPosition);
     }
-
 
     #region References
 
@@ -147,10 +148,14 @@ public class Player : Entity
 
     private void LoadInterfaces()
     {
-        LoadNavigator();
-        LoadInventory();
-        LoadSkillsInterface();
-        LoadEquipmentInterface();
+        if (!singleLoad)
+        {
+            LoadNavigator();
+            LoadInventory();
+            LoadSkillsInterface();
+            LoadEquipmentInterface();
+        }
+        singleLoad = true;
     }
 
     private void LoadNavigator()
