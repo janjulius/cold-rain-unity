@@ -17,7 +17,9 @@ namespace Assets.Scripts.container
         public override void StartInitiate()
         {
             base.StartInitiate();
-            parentContainer = GetComponentInParent<ContainerDisplay>().GetContainer();
+            ContainerDisplay containerDisplay = GetComponentInParent<ContainerDisplay>();
+            if(containerDisplay != null)
+                parentContainer = containerDisplay.GetContainer(); 
         }
 
         public void SetItem(Item item)
