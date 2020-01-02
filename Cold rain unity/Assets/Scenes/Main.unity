@@ -2230,8 +2230,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612927984}
   m_HandleRect: {fileID: 612927983}
   m_Direction: 2
-  m_Value: -0.000003561497
-  m_Size: 0.54294205
+  m_Value: -0.0000062326194
+  m_Size: 0.5421875
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4286,7 +4286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 137.10051}
+  m_AnchoredPosition: {x: 0, y: 137.10085}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1246091573
@@ -5260,10 +5260,10 @@ MonoBehaviour:
   PlayerTransform: {fileID: 1408197242}
   Camerazoom: 0
   SmoothFactor: 0.5
-  MaxX: 70
-  MaxY: 40
-  MinX: -65
-  MinY: -58
+  MaxX: 100
+  MaxY: 100
+  MinX: -100
+  MinY: -100
 --- !u!114 &1619068789
 MonoBehaviour:
   m_ObjectHideFlags: 0
