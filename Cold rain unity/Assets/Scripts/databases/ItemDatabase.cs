@@ -316,7 +316,7 @@ namespace Assets.Scripts.databases
                 new Item(283, "Burnt goose", true, new Stats(), new Skills(), "This goose has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
                 new Item(284, "Burnt rabbit", true, new Stats(), new Skills(), "This rabbit has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
                 new Item(285, "Burnt bird", true, new Stats(), new Skills(), "This bird has lost it's taste and color, what a waste.", false, false, EquipmentType.NONE),
-                new Item(286, "Over-fried egg", true, new Stats(), new Skills(), "some would just call it burnt.", false, false, EquipmentType.NONE),
+                new Item(286, "Over-fried egg", true, new Stats(), new Skills(), "Some would just call it burnt.", false, false, EquipmentType.NONE),
                 new Item(287, "Deer with tomato", false, new Stats(), new Skills(), "The tomatoes look homegrown, it would be disrespectful not to eat them.", false, false, EquipmentType.NONE),
                 new Item(288, "Deer with corn", false, new Stats(), new Skills(), "Seems like a solid meal.", false, false, EquipmentType.NONE),
                 new Item(289, "Deer with lettuce", false, new Stats(), new Skills(), "Teasing the dead deer with his favorite grass.", false, false, EquipmentType.NONE),
@@ -413,6 +413,7 @@ namespace Assets.Scripts.databases
                 new Item(380, "Raw marlin", true, new Stats(), new Skills(), "Large saltwater fish with a massive nose.", false, false, EquipmentType.NONE),
                 new Item(381, "Raw red drum", true, new Stats(), new Skills(), "Small saltwater fish.", false, false, EquipmentType.NONE),
                 new Item(382, "Raw salmon", true, new Stats(), new Skills(), "Medium-sized saltwater fish.", false, false, EquipmentType.NONE),
+                new Item(383, "Rope", true, new Stats(), new Skills(), "A length of rope made out of hair, yuck.", false, false, EquipmentType.NONE),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
