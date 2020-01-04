@@ -13,6 +13,8 @@ public class Entity : Node, Iinteractable
     public Vector2 SpawnPosition;
     public string EntityName;
 
+    protected Animator animator;
+
     public Skills skills
     {
         get;
@@ -124,6 +126,8 @@ public class Entity : Node, Iinteractable
         bonusStats = gameObject.AddComponent<Stats>();
         skills = gameObject.AddComponent<Skills>();
         UpdateStats();
+
+        animator = GetComponent<Animator>();
 
         if (this is Player)
         {

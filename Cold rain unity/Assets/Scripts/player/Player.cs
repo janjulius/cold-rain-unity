@@ -132,6 +132,7 @@ public class Player : Entity
     public override void Face(FaceDirection dir)
     {
         base.Face(dir);
+        animator?.SetInteger("FaceDir", (int)dir);
         appearance.UpdateAppearance(dir);
     }
 
