@@ -414,6 +414,7 @@ namespace Assets.Scripts.databases
                 new Item(380, "Raw marlin", true, new Stats(), new SkillRequirement(), "Large saltwater fish with a massive nose.", false, false, EquipmentType.NONE),
                 new Item(381, "Raw red drum", true, new Stats(), new SkillRequirement(), "Small saltwater fish.", false, false, EquipmentType.NONE),
                 new Item(382, "Raw salmon", true, new Stats(), new SkillRequirement(), "Medium-sized saltwater fish.", false, false, EquipmentType.NONE),
+                new Item(383, "Rope", true, new Stats(), new SkillRequirement(), "A length of rope made out of hair, yuck.", false, false, EquipmentType.NONE),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];

@@ -5260,10 +5260,10 @@ MonoBehaviour:
   PlayerTransform: {fileID: 1408197242}
   Camerazoom: 0
   SmoothFactor: 0.5
-  MaxX: 70
-  MaxY: 40
-  MinX: -65
-  MinY: -58
+  MaxX: 100
+  MaxY: 100
+  MinX: -100
+  MinY: -100
 --- !u!114 &1619068789
 MonoBehaviour:
   m_ObjectHideFlags: 0
