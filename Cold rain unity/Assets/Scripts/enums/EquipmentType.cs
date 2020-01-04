@@ -9,6 +9,4 @@
     MAINHAND,
     OFFHAND,
     AMMO
-    
-    
 }

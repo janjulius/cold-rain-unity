@@ -108,6 +108,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
         if (reqResult)
         {
             //equip
+            player.equipment.Equip(item);
         }
 
         //Item item = GetComponent<ItemSlot>().getItem();

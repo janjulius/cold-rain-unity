@@ -26,16 +26,23 @@ namespace Assets.Scripts.gameinterfaces.navigator
         private EquipmentSlots equipment;
         private Stats stats;
 
+        public void Refresh(EquipmentSlots slots, Stats stats)
+        {
+            equipment = slots;
+            this.stats = stats;
+            Refresh();
+        }
+
         public override void Refresh()
         {
-            HeadSlot.image.sprite = equipment.HeadSlot?.InventoryIcon;
-            AmuletSlot.image.sprite = equipment.AmuletSlot?.InventoryIcon;
-            TorsoSlot.image.sprite = equipment.TorsoSlot?.InventoryIcon;
-            LegSlot.image.sprite = equipment.LegSlot?.InventoryIcon;
-            FeetSlot.image.sprite = equipment.FeetSlot?.InventoryIcon;
-            WeaponSlot.image.sprite = equipment.WeaponSlot?.InventoryIcon;
-            OffHandSlot.image.sprite = equipment.OffHandSlot?.InventoryIcon;
-            AmmoSlot.image.sprite = equipment.AmmoSlot?.InventoryIcon;
+            HeadSlot.image.sprite = equipment.Slots[(int)EquipmentType.HEAD]?.InventoryIcon;
+            AmuletSlot.image.sprite = equipment.Slots[(int)EquipmentType.AMULET]?.InventoryIcon;
+            TorsoSlot.image.sprite = equipment.Slots[(int)EquipmentType.TORSO]?.InventoryIcon;
+            LegSlot.image.sprite = equipment.Slots[(int)EquipmentType.LEGS]?.InventoryIcon;
+            FeetSlot.image.sprite = equipment.Slots[(int)EquipmentType.FEET]?.InventoryIcon;
+            WeaponSlot.image.sprite = equipment.Slots[(int)EquipmentType.MAINHAND]?.InventoryIcon;
+            OffHandSlot.image.sprite = equipment.Slots[(int)EquipmentType.OFFHAND]?.InventoryIcon;
+            AmmoSlot.image.sprite = equipment.Slots[(int)EquipmentType.AMMO]?.InventoryIcon;
 
             BonusText.text = ConstructBonusText(stats);
         }

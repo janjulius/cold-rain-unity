@@ -4,6 +4,7 @@ using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
+using Assets.Scripts.stats;
 using Assets.Scripts.styles.hairstyles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -188,6 +189,13 @@ public class Player : Entity
         equipmentInterface.Refresh();
         equipmentInterface.ToggleActive();
     }
+
+    public void RefreshEquipmentInterface(Stats itemStats)
+    {
+        UpdateStats(itemStats);
+        equipmentInterface.Refresh(equipment, stats);
+    }
+    
 
     internal void LoadIntoScene(int sceneId, Vector2 endLocation)
     {

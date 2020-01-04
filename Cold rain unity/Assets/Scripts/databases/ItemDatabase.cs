@@ -32,7 +32,7 @@ namespace Assets.Scripts.databases
 
             items = new List<DbElement>()
             {
-                new Item(0, "Hedgehog plushie", false, new Stats(), new SkillRequirement(), "A nice plushie, it says POG on the label.", false, true, EquipmentType.MAINHAND),
+                new Item(0, "Hedgehog plushie", false, new Stats(0,0,0,20,0,0,0,0,0,0), new SkillRequirement(), "A nice plushie, it says POG on the label.", false, true, EquipmentType.MAINHAND),
                 new Item(1, "Rat plushie", false, new Stats(), new SkillRequirement(), "When you squeeze it, it squeeks!", false, true, EquipmentType.MAINHAND),
                 new Item(2, "Cat plushie", false, new Stats(), new SkillRequirement((int)SKILLS.WARRIOR, 10), "Meeeeeeeow", false, true, EquipmentType.MAINHAND),
                 new Item(3, "Dog plushie", false, new Stats(), new SkillRequirement(), "He doesn't do much but he's a good boy.", false, true, EquipmentType.MAINHAND),

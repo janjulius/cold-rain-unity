@@ -33,7 +33,7 @@ public class Entity : Node, Iinteractable
     public EquipmentSlots equipment
     {
         get;
-        protected set;
+        set;
     }
 
     protected int hitPoints;
@@ -201,7 +201,15 @@ public class Entity : Node, Iinteractable
     /// <summary>
     /// Update the stats of the entity
     /// </summary>
-    private void UpdateStats()
+    protected void UpdateStats(Stats bonusStats)
+    {
+        if(bonusStats != null)
+            this.bonusStats = bonusStats;
+        stats = baseStats + bonusStats;
+        timeToReachTarget = 1 / stats.Speed;
+    }
+
+    protected void UpdateStats()
     {
         stats = baseStats + bonusStats;
         timeToReachTarget = 1 / stats.Speed;
