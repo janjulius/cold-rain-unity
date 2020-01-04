@@ -46,6 +46,8 @@ namespace Assets.Scripts.container
                 if(items[i] == null)
                 {
                     items[i] = item;
+                    if (items[i].Amount == 0)
+                        items[i].Amount = 1;
                     Refresh();
                     return true;
                 }

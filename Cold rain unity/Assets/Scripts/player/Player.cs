@@ -2,6 +2,7 @@
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
+using Assets.Scripts.item;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.stats;
@@ -54,6 +55,7 @@ public class Player : Entity
 
         InventoryContainer.Add(itemDatabase.GetItem(0), 1);
         InventoryContainer.Add(itemDatabase.GetItem(2), 1);
+        InventoryContainer.Add(itemDatabase.GetItem(79), 1);
         SetLocation(SpawnPosition);
     }
 
@@ -194,6 +196,11 @@ public class Player : Entity
     {
         UpdateStats(itemStats);
         equipmentInterface.Refresh(equipment, stats);
+    }
+
+    public void SetEquipmentAppearance(EquipmentType eq, Item item)
+    {
+        appearance.SetEquipment(eq, item, FaceDirection);
     }
     
 

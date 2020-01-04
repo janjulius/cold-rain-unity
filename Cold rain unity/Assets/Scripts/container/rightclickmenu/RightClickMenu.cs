@@ -52,6 +52,6 @@ public class RightClickMenu : MonoBehaviour
 
     public void HideContextMenu()
     {
-        previousObject.gameObject.SetActive(false);
+        previousObject?.gameObject.SetActive(false);
     }
 }

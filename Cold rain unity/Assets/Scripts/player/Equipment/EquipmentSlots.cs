@@ -66,6 +66,9 @@ namespace Assets.Scripts.player.Equipment
             SetSlot(et, slot);
             if (prev != null)
                 player.InventoryContainer.Add(prev, prev.Amount);
+
+            player.SetEquipmentAppearance(et, slot);
+            
             RefreshSlots();
             return prev;
         }
@@ -75,7 +78,14 @@ namespace Assets.Scripts.player.Equipment
             var slot = GetSlot(eqSlot);
             if (slot != null)
                 player.InventoryContainer.Add(slot, slot.Amount);
+            SetSlot(eqSlot, null);
+            player.SetEquipmentAppearance(eqSlot, null);
             RefreshSlots();
+        }
+
+        public void Unequip(int id)
+        {
+            Unequip((EquipmentType)id);
         }
 
         private Item GetSlot(EquipmentType eqSlot)

@@ -34,7 +34,7 @@ namespace Assets.Scripts.databases
             {
                 new Item(0, "Hedgehog plushie", false, new Stats(0,0,0,20,0,0,0,0,0,0), new SkillRequirement(), "A nice plushie, it says POG on the label.", false, true, EquipmentType.MAINHAND),
                 new Item(1, "Rat plushie", false, new Stats(), new SkillRequirement(), "When you squeeze it, it squeeks!", false, true, EquipmentType.MAINHAND),
-                new Item(2, "Cat plushie", false, new Stats(), new SkillRequirement((int)SKILLS.WARRIOR, 10), "Meeeeeeeow", false, true, EquipmentType.MAINHAND),
+                new Item(2, "Cat plushie", false, new Stats(), new SkillRequirement(), "Meeeeeeeow", false, true, EquipmentType.MAINHAND),
                 new Item(3, "Dog plushie", false, new Stats(), new SkillRequirement(), "He doesn't do much but he's a good boy.", false, true, EquipmentType.MAINHAND),
                 new Item(4, "Wood sword", false, new Stats(), new SkillRequirement(), "a regular sword made out of wood.", false, true, EquipmentType.MAINHAND),
                 new Item(5, "Bronze sword", false, new Stats(), new SkillRequirement(), "a regular sword made out of bronze.", false, true, EquipmentType.MAINHAND),
@@ -111,7 +111,7 @@ namespace Assets.Scripts.databases
                 new Item(76, "Wood bow", false, new Stats(), new SkillRequirement(), "a regular bow made out of Wood.", false, true, EquipmentType.MAINHAND),
                 new Item(77, "Bronze bow", false, new Stats(), new SkillRequirement(), "a regular bow made out of bronze.", false, true, EquipmentType.MAINHAND),
                 new Item(78, "Silver bow", false, new Stats(), new SkillRequirement(), "a regular bow made out of silver.", false, true, EquipmentType.MAINHAND),
-                new Item(79, "Gold bow", false, new Stats(), new SkillRequirement(), "a regular bow made out of gold.", false, true, EquipmentType.MAINHAND),
+                new Item(79, "Gold bow", false, new Stats(), new SkillRequirement((int)SKILLS.ARCHER, 30), "a regular bow made out of gold.", false, true, EquipmentType.MAINHAND),
                 new Item(80, "Platinum bow", false, new Stats(), new SkillRequirement(), "a regular bow made out of platinum.", false, true, EquipmentType.MAINHAND),
                 new Item(81, "Ruby bow", false, new Stats(), new SkillRequirement(), "a bow made out of platinum. It's decorated with a ruby close to the arrow rest.", false, true, EquipmentType.MAINHAND),
                 new Item(82, "Emerald bow", false, new Stats(), new SkillRequirement(), "a bow made out of platinum. It's decorated with an emerald close to the arrow rest.", false, true, EquipmentType.MAINHAND),
@@ -426,6 +426,8 @@ namespace Assets.Scripts.databases
                 for (int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
                     InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}");
+                    if(InventoryIcon[i] == null)
+                        InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}_0");
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Item/{i}/item_{i}_{j}");
                     ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);
                 }

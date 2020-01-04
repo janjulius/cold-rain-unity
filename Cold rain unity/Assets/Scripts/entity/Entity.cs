@@ -131,7 +131,7 @@ public class Entity : Node, Iinteractable
 
         if (this is Player)
         {
-            equipment = gameObject.AddComponent<EquipmentSlots>();
+            equipment = gameObject.GetComponent<EquipmentSlots>();
         }
 
     }

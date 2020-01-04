@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.databases.appearance;
 using Assets.Scripts.extensions;
+using Assets.Scripts.item;
 using Assets.Scripts.node;
 using Assets.Scripts.player.Equipment.clothes;
+using Assets.Scripts.player.Equipment.equipment;
 using Assets.Scripts.styles.hairstyles;
 using System;
 using System.Collections.Generic;
@@ -41,11 +43,20 @@ namespace Assets.Scripts.player.Equipment.visual
         private ArmLeftCloth armLeftCloth;
         private ArmRightCloth armRightCloth;
 
+        //weapons
+        private MainHand mainHand;
+        private OffHand offHand;
+        private HeadEquipment headEquipment;
+        private BodyEquipment bodyEquipment;
+        private LegsEquipmentLeft legsEquipmentLeft;
+        private LegsEquipmentRight legsEquipmentRight;
+        
         private Hair hair;
         private Beard beard;
 
         private PlayerEquipVisual[] primitiveVisuals;
         private PlayerEquipVisual[] alterVisuals;
+        private PlayerEquipVisual[] equipmentVisuals;
 
         private List<PlayerEquipVisual> allVisuals = new List<PlayerEquipVisual>();
 
@@ -66,6 +77,8 @@ namespace Assets.Scripts.player.Equipment.visual
             
             LoadAlterVisuals();
             UpdateAlterVisuals();
+
+            LoadEquipmentVisuals();
 
             AdjustLayers(FaceDirection.DOWN);
         }
@@ -98,6 +111,26 @@ namespace Assets.Scripts.player.Equipment.visual
             allVisuals.AddRange(alterVisuals);
         }
 
+        private void LoadEquipmentVisuals()
+        {
+            mainHand = GetComponentInChildren<MainHand>();
+            offHand = GetComponentInChildren<OffHand>();
+            headEquipment = GetComponentInChildren<HeadEquipment>();
+            legsEquipmentLeft = GetComponentInChildren<LegsEquipmentLeft>();
+            legsEquipmentRight = GetComponentInChildren<LegsEquipmentRight>();
+            bodyEquipment = GetComponentInChildren<BodyEquipment>();
+            equipmentVisuals = new PlayerEquipVisual[] {
+                mainHand,
+                offHand,
+                headEquipment,
+                legsEquipmentLeft,
+                legsEquipmentRight,
+                bodyEquipment
+            };
+            allVisuals.AddRange(equipmentVisuals);
+
+        }
+
         private void UpdatePrimitiveVisuals()
         {
             foreach (PlayerEquipVisual pev in primitiveVisuals)
@@ -126,6 +159,18 @@ namespace Assets.Scripts.player.Equipment.visual
             legRightCloth.spriteRenderer.flipX = true;
             legRightCloth.EquipmentSprites.SwapValues(1, 3);
             legRightCloth.UpdateSprite(FaceDirection.DOWN);
+        }
+
+        public void SetEquipment(EquipmentType eqt, Item item, FaceDirection dir)
+        {
+            switch (eqt)
+            {
+                case EquipmentType.MAINHAND:
+                    mainHand.EquipmentSprites = item?.EquipSprites;
+                    break;
+            }
+
+            mainHand.UpdateSprite(dir);
         }
 
         public void UpdateAppearance(FaceDirection dir)

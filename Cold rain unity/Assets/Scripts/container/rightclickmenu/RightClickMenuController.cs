@@ -110,7 +110,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
             //equip
             player.equipment.Equip(item);
         }
-
+        CloseMenu();
         //Item item = GetComponent<ItemSlot>().getItem();
         //if (item.Requirements)
         //EquipmentType equiptype = .EquipmentType;
