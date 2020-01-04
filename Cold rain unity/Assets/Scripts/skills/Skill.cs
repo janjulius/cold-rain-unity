@@ -26,15 +26,17 @@ namespace Assets.Scripts.skills
             CheckForLevelUp();
         }
 
-        //public void SetExp(int xp)
-        //{
-        //
-        //}
+        public void SetExp(int xp)
+        {
+            this.exp = xp;
+            level = ProgressCalculator.GetLevelByExperience(xp);
+        }
 
-        //public void SetLevel(int level)
-        //{
-        //
-        //}
+        public void SetLevel(int level)
+        {
+            this.level = level;
+            exp = ProgressCalculator.getExperienceByLevel(level);
+        }
 
         private void CheckForLevelUp()
         {

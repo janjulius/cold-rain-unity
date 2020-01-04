@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.logger;
 using Assets.Scripts.saving;
 using Assets.Scripts.skills;
 using System.Collections;
@@ -7,7 +8,6 @@ using UnityEngine;
 
 public class Skills : Node, SavingModule
 {
-    public static readonly int WARRIOR = 0, ARCHER = 1, HUNTING = 2, FISHING = 3, FARMING = 4, COOKING = 5, ARTISAN = 6;
 
     [SerializeField]
     public Skill[] skills;
@@ -19,7 +19,7 @@ public class Skills : Node, SavingModule
     private FarmingSkill farmingSkill;
     private CookingSkill cookingSkill;
     private ArtisanSkill artisanSkill;
-    
+
     public override void Initiate()
     {
         base.Initiate();
@@ -44,7 +44,11 @@ public class Skills : Node, SavingModule
             artisanSkill
         };
     }
-
+    
+    public Skill GetSkill(int id)
+    {
+        return skills[id];
+    }
 
     public void Load()
     {

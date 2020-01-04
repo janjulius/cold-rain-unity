@@ -12,9 +12,11 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     public Button sampleButton;
     private List<RightClickMenuItem> contextMenuItems;
     private ItemSlot parentObject;
+    private Player player;
 
     void Awake()
     {
+        player = Camera.main.GetComponent<GameManager>().player;
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
 
@@ -101,9 +103,18 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
 
     private void EquipAction(Image obj)
     {
-        EquipmentType equiptype = GetComponent<ItemSlot>().getItem().EquipmentType;
+        Item item = GetComponent<ItemSlot>().getItem();
+        var reqResult = item.Requirements.MeetsRequirements(player);
+        if (reqResult)
+        {
+            //equip
+        }
 
-        print(equiptype);
+        //Item item = GetComponent<ItemSlot>().getItem();
+        //if (item.Requirements)
+        //EquipmentType equiptype = .EquipmentType;
+        //
+        //print(equiptype);
     }
 
     private void ConsumeAction(Image obj)

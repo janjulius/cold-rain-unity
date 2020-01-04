@@ -22,6 +22,11 @@ namespace Assets.Scripts.contants
         /// </summary>
         public static int INVENTORY_SIZE = 50;
 
+        /// <summary>
+        /// The amount of skills
+        /// </summary>
+        public static int SKILLS_AMOUNT = 7;
+
         public static string COMMAND_PREFIX = "/";
     }
 }

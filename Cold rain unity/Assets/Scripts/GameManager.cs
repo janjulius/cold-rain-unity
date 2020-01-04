@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
         DontDestroyOnLoad(EventSystem);
-        player = FindObjectOfType<Player>();
+
+        if(player == null)
+            player = FindObjectOfType<Player>();
     }
     
     void Start()
