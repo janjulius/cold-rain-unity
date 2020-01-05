@@ -27,6 +27,8 @@ namespace Assets.Scripts.contants
         /// </summary>
         public static int SKILLS_AMOUNT = 7;
 
+        public static bool DEVELOPER_MODE = true;
+
         public static string COMMAND_PREFIX = "/";
     }
 }

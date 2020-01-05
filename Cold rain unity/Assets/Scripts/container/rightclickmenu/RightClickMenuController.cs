@@ -13,10 +13,12 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     private List<RightClickMenuItem> contextMenuItems;
     private ItemSlot parentObject;
     private Player player;
+    private GameManager gameManager;
 
     void Awake()
     {
-        player = Camera.main.GetComponent<GameManager>().player;
+        gameManager = Camera.main.GetComponent<GameManager>();
+        player = gameManager.player;
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
 
@@ -78,16 +80,16 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
 
     private void ExamineAction(Image obj)
     {
-        print(GetComponent<ItemSlot>().getItem().Examine);
+        Assets.Scripts.gameinterfaces.console.Console.Instance.SendConsoleMessage(GetComponent<ItemSlot>().getItem().Examine);
         CloseMenu();
     }
 
     private void DropAction(Image obj)
     {
         print("dropping " + GetComponent<ItemSlot>().getItem());
-        // GetComponent<ItemSlot>().SetItem(null);
-
+        
         ItemSlot slot = GetComponent<ItemSlot>();
+        gameManager.CreateGroundItem(slot.getItem(), player.transform);
         slot.GetParentContainer().Remove(slot.getItem());
         CloseMenu();
     }
