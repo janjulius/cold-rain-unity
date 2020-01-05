@@ -80,7 +80,7 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
 
     private void ExamineAction(Image obj)
     {
-        print(GetComponent<ItemSlot>().getItem().Examine);
+        Assets.Scripts.gameinterfaces.console.Console.Instance.SendConsoleMessage(GetComponent<ItemSlot>().getItem().Examine);
         CloseMenu();
     }
 
