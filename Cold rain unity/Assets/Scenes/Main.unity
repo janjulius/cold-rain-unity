@@ -2267,8 +2267,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612927984}
   m_HandleRect: {fileID: 612927983}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.5414158
+  m_Value: -0.0000016694516
+  m_Size: 0.5429152
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4401,7 +4401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 137.10002}
+  m_AnchoredPosition: {x: 0, y: 137.10022}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1246091573
@@ -5042,6 +5042,7 @@ GameObject:
   - component: {fileID: 1517728436}
   - component: {fileID: 1517728435}
   - component: {fileID: 1517728434}
+  - component: {fileID: 1517728438}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5135,6 +5136,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &1517728438
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517728433}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c753456c5bb87b942be62559be339fa4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1574469929
 GameObject:
   m_ObjectHideFlags: 0
@@ -6989,6 +7009,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 5444071459894247863, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.055
+      objectReference: {fileID: 0}
     - target: {fileID: 5444071460209386904, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7104,6 +7129,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460403351215, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0161
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460403351215, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0057
       objectReference: {fileID: 0}
     - target: {fileID: 5444071460891455600, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
