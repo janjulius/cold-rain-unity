@@ -177,7 +177,7 @@ namespace Assets.Scripts.player.Equipment.visual
         {
             foreach(PlayerEquipVisual vis in allVisuals)
             {
-                vis.UpdateSprite(dir);
+                vis?.UpdateSprite(dir);
             }
             AdjustLayers(dir);
         }

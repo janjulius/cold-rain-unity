@@ -203,7 +203,6 @@ public class Player : Entity
         appearance.SetEquipment(eq, item, FaceDirection);
     }
     
-
     internal void LoadIntoScene(int sceneId, Vector2 endLocation)
     {
         SceneManager.LoadScene(sceneId);

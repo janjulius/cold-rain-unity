@@ -56,6 +56,9 @@ TagManager:
   - name: ObjectUpperLayer
     uniqueID: 602824165
     locked: 0
+  - name: GroundItems
+    uniqueID: 2149997427
+    locked: 0
   - name: Player
     uniqueID: 3172810583
     locked: 0

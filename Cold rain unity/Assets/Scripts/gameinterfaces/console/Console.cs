@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.saving;
+﻿using Assets.Scripts.contants;
+using Assets.Scripts.saving;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -70,6 +71,7 @@ namespace Assets.Scripts.gameinterfaces.console
 
         public void SendConsoleMessage(string text) => ProcessInput(text, false);
         public void SendFilteredConsoleMessage(string text) => ProcessInput(text, true);
+        public void SendDevMessage(string text) { if (Constants.DEVELOPER_MODE) { ProcessInput(text, true); } }
 
         public void OnTextFieldSelected()
         {

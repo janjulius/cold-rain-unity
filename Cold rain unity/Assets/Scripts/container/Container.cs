@@ -150,6 +150,8 @@ namespace Assets.Scripts.container
             return r;
         }
 
+        public bool HasFreeSlots() => GetFreeSlots() <= 0;
+
         /// <summary>
         /// Gets the items in this container
         /// </summary>
