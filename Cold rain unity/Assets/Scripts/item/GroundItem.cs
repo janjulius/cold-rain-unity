@@ -1,5 +1,4 @@
-﻿
-using Assets.Scripts.gameinterfaces.console;
+﻿using Assets.Scripts.gameinterfaces.console;
 using UnityEngine;
 
 namespace Assets.Scripts.item
