@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.dialogue;
+﻿using Assets.Scripts.databases.game.shops;
+using Assets.Scripts.dialogue;
 using Assets.Scripts.gameinterfaces.dialogue;
+using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,11 +16,17 @@ public class GameManager : MonoBehaviour
     public Player player;
     public GameObject groundItemPrefab;
 
+    private ShopInterface shopInterface;
+    private ShopDatabase shopDatabase;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
         DontDestroyOnLoad(EventSystem);
+
+        shopDatabase = GetComponent<ShopDatabase>();
+        shopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
 
         if(player == null)
             player = FindObjectOfType<Player>();
@@ -28,6 +36,12 @@ public class GameManager : MonoBehaviour
     {
         GameObject gItem = Instantiate(groundItemPrefab, new Vector2(pos.position.x, pos.position.y), Quaternion.identity);
         gItem.GetComponent<GroundItem>().Create(item, player);
+    }
+
+    public void LoadShop(int id)
+    {
+        shopInterface.SetActive(true);
+        shopInterface.Load(shopDatabase.GetShop(id));
     }
     
     void Start()

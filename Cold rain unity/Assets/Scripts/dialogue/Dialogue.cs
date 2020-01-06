@@ -56,6 +56,11 @@ namespace Assets.Scripts.dialogue
             handler.SendDialogues(NPC, message.ToString());
         }
 
+        protected void OpenShop(int id)
+        {
+            Camera.main.GetComponent<GameManager>().LoadShop(id);
+        }
+        
         public abstract bool Open(object[] args);
         public abstract void End(object[] args);
 

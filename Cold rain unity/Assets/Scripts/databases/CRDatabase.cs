@@ -15,10 +15,18 @@ namespace Assets.Scripts.databases
 
         protected EquipmentItemMultiArray[] EquipmentArray;
 
+        /// <summary>
+        /// If this is false, the database will not be initiated on startup but requires being 
+        /// initialised by another class.
+        /// This will also need to be called before this <see cref="Initiate()"/> is called.
+        /// </summary>
+        protected bool CallSelf = true;
+
         public override void Initiate()
         {
             base.Initiate();
-            BuildDatabase();
+            if (CallSelf)
+                BuildDatabase();
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.item;
+﻿using Assets.Scripts.databases.game.shops;
+using Assets.Scripts.item;
 using Assets.Scripts.logger;
 using Assets.Scripts.node;
 using Assets.Scripts.skills;
@@ -440,12 +441,25 @@ namespace Assets.Scripts.databases
 
 
             CrLogger.Log(this, "The item database was built succesfully");
+            CrLogger.Log(this, "Now allows for initialisation of: shops database");
+            GetComponent<ShopDatabase>().BuildDatabase();
         }
 
         public Item GetItem(int id)
         {
-            Item it;
-            it = items.Where(i => i.Id == id).FirstOrDefault() as Item;
+            return items.Where(i => i.Id == id).FirstOrDefault() as Item;
+        }
+
+        /// <summary>
+        /// gets the item of id and sets the amount to amount
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public Item GetItem(int id, int amount)
+        {
+            Item it = GetItem(id);
+            it.SetAmount(amount);
             return it;
         }
     }

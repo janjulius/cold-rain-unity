@@ -19,7 +19,11 @@ namespace Assets.Scripts.container
             base.StartInitiate();
             ContainerDisplay containerDisplay = GetComponentInParent<ContainerDisplay>();
             if(containerDisplay != null)
-                parentContainer = containerDisplay.GetContainer(); 
+                parentContainer = containerDisplay.GetContainer();
+            if (slotText == null)
+                slotText = GetComponentInChildren<TextMeshProUGUI>();
+            if (image == null)
+                image = GetComponent<Image>();
         }
 
         public void SetItem(Item item)
@@ -42,9 +46,9 @@ namespace Assets.Scripts.container
             }
             else
             {
-                SetImage(item.InventoryIcon);
-                SetTextActivity(item.Stackable);
-                if (item.Stackable)
+                SetImage(item.InventoryIcon ?? emptyImage);
+                SetTextActivity(item.Amount > 1);
+                if (item.Amount > 1)
                     SetText(item.Amount.ToString());
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.shops.constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,11 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    Npc("Sounds like a plan");
+                    Npc("Heres my shop");
                     stage = 100;
                     break;
                 case 100:
+                    OpenShop(ShopConstants.TEST_SHOP);
                     End();
                     break;
             }
