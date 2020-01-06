@@ -21,9 +21,12 @@ namespace Assets.Scripts.dialogue
         {
             if(!handler.gameObject.activeSelf)
                 Open();
-            handler.SetSenderText(entity.EntityName);
+            if (entity != null)
+                handler.SetSenderText(entity.EntityName);
+            else
+                handler.SetSenderText("");
             handler.SetDialogueText(message);
-            Console.Instance.SendFilteredConsoleMessage($"{entity.EntityName}: {message}");
+            Console.Instance.SendFilteredConsoleMessage($"{entity?.EntityName}: {message}");
         }
 
         internal void SetCurrentDialogue(Dialogue dialogue)

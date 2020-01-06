@@ -10,7 +10,7 @@ namespace Assets.Scripts.interactable
     {
         public virtual void Interact(Entity sender)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
