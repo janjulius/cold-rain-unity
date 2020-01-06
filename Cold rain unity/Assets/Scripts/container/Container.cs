@@ -34,6 +34,17 @@ namespace Assets.Scripts.container
         }
 
         /// <summary>
+        /// construct a container with set items
+        /// </summary>
+        /// <param name="items"></param>
+        public Container(params Item[] items)
+        {
+            this.containerDisplay = null;
+            this.capacity = items.Length;
+            this.items = items;
+        }
+
+        /// <summary>
         /// Add an item to the container
         /// </summary>
         /// <param name="item">The item</param>
