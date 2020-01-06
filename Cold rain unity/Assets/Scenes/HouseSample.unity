@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -53.5, y: -33.5}
-  EntityName: Harrold
+  EntityName: Harold
   facingEntity: {fileID: 0}
   dialogue: {fileID: 0}
 --- !u!114 &363518540
