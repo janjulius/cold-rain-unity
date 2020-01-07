@@ -417,6 +417,19 @@ namespace Assets.Scripts.databases
                 new Item(382, "Raw salmon", true, new Stats(), new SkillRequirement(), "Medium-sized saltwater fish.", false, false, EquipmentType.NONE, 20),
                 new Item(383, "Rope", true, new Stats(), new SkillRequirement(), "A length of rope made out of hair, yuck.", false, false, EquipmentType.NONE, 10),
                 new Item(384, "Coins", true, new Stats(), new SkillRequirement(), "Some type of currency.", false, false, EquipmentType.NONE, 1),
+                new Item(385, "Bird with tomato", false, new Stats(), new SkillRequirement(), "Italian style bird", false, false, EquipmentType.NONE, 100),
+                new Item(386, "Bird with corn", false, new Stats(), new SkillRequirement(), "American style bird.", false, false, EquipmentType.NONE, 100),
+                new Item(387, "Bird with lettuce", false, new Stats(), new SkillRequirement(), "European style bird.", false, false, EquipmentType.NONE, 100),
+                new Item(388, "Bird with onion", false, new Stats(), new SkillRequirement(), "Bird and onion.", false, false, EquipmentType.NONE, 100),
+                new Item(389, "Bird with cheese", false, new Stats(), new SkillRequirement(), "Bird covered in cheese.", false, false, EquipmentType.NONE, 100),
+                new Item(390, "Bird with milk", false, new Stats(), new SkillRequirement(), "Bird with a creamy taste.", false, false, EquipmentType.NONE, 100),
+                new Item(391, "Burnt bird with tomato", true, new Stats(), new SkillRequirement(), "The mafia got to him.", false, false, EquipmentType.NONE, 0),
+                new Item(392, "Burnt bird with corn", true, new Stats(), new SkillRequirement(), "Nice and crunchy.", false, false, EquipmentType.NONE, 0),
+                new Item(393, "Burnt bird with lettuce", true, new Stats(), new SkillRequirement(), "Unlucky cook.", false, false, EquipmentType.NONE, 0),
+                new Item(394, "Burnt bird with onion", true, new Stats(), new SkillRequirement(), "Burnt bird and onion.", false, false, EquipmentType.NONE, 0),
+                new Item(395, "Burnt bird with cheese", true, new Stats(), new SkillRequirement(), "Burnt bird covered in cheese.", false, false, EquipmentType.NONE, 0),
+                new Item(396, "Burnt bird with milk", true, new Stats(), new SkillRequirement(), "Bird with a burnt taste.", false, false, EquipmentType.NONE, 0),
+                new Item(397, "Fried egg", false, new Stats(), new SkillRequirement(), "Sunny side up", false, false, EquipmentType.NONE, 0),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
