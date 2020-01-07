@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
         shopDatabase = GetComponent<ShopDatabase>();
         shopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
+        shopInterface.SetActive(false);
 
         if(player == null)
             player = FindObjectOfType<Player>();
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     public void LoadShop(int id)
     {
         shopInterface.SetActive(true);
-        shopInterface.Load(shopDatabase.GetShop(id));
+        shopInterface.Load(shopDatabase.GetShop(id), player);
     }
     
     void Start()

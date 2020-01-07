@@ -15,6 +15,12 @@ public class Player : Entity
     private bool singleLoad = false;
 
     private Appearance appearance;
+
+    #region Information
+
+    public bool IsInShop = false;
+
+    #endregion
     
     #region Interfaces and containers
 

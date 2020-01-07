@@ -458,7 +458,7 @@ namespace Assets.Scripts.databases
         /// <returns></returns>
         public Item GetItem(int id, int amount)
         {
-            Item it = GetItem(id);
+            Item it = GetItem(id);//new Item(GetItem(id));
             it.SetAmount(amount);
             return it;
         }

@@ -11,7 +11,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.item
 {
-    [Serializable]
     public class Item : DbElement
     {
         public string Name { private set; get; }

@@ -17,5 +17,8 @@ namespace Assets.Scripts.databases.game
                 new Food(0, 0, 0, 0, new ConsumableProperties(12, -1))
             };
         }
+
+        public bool IsEdible(int id)
+        => items.Cast<Food>().ToList().Where(c => c.addedId == id).First() != null;
     }
 }
