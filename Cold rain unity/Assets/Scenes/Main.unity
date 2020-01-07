@@ -7581,12 +7581,12 @@ PrefabInstance:
     - target: {fileID: 500293393119852644, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: DisplaceLocation.Array.data[1].y
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 500293393119852644, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: BaseLocation.y
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5444071459894247863, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
@@ -7727,7 +7727,12 @@ PrefabInstance:
     - target: {fileID: 5444071460808396920, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460808396921, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444071460808396926, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
@@ -7777,12 +7782,32 @@ PrefabInstance:
     - target: {fileID: 5444071460926515518, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5444071460926515518, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460926515518, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460926515518, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460926515518, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460926515519, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444071461106563212, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}
