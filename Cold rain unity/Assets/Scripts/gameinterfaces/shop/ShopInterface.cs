@@ -18,10 +18,11 @@ namespace Assets.Scripts.gameinterfaces.shop
 
         private List<GameObject> shopSlots = new List<GameObject>();
 
-        public void Load(Shop shop)
+        public void Load(Shop shop, Player player)
         {
             Clear();
             this.shop = shop;
+            this.player = this.player ?? player;
             titleText.text = shop.Title;
             
             foreach (Item i in shop.Container.GetItems())
@@ -31,11 +32,15 @@ namespace Assets.Scripts.gameinterfaces.shop
                 itemSlot.SetItem(i);
                 shopSlots.Add(slot);
             }
+            gameObject.SetActive(true);
+            player.IsInShop = gameObject.activeSelf;
         }
 
         public void Close()
         {
             Clear();
+            if (player != null)
+                player.IsInShop = false;
             gameObject.SetActive(false);
         }
 

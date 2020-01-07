@@ -8,11 +8,11 @@ namespace Assets.Scripts.game.consumables.consumable
 {
     public class Food : Consumable
     {
-        int rawId;
-        int addedId;
-        int cookedId;
-        int burntId;
-        ConsumableProperties properties;
+        public int rawId { private set; get; }
+        public int addedId { private set; get; }
+        public int cookedId { private set; get; }
+        public int burntId { private set; get; }
+        public ConsumableProperties properties { private set; get; }
 
         public Food(int rawId, int addedId, int cookedId, int burntId, ConsumableProperties properties)
         {

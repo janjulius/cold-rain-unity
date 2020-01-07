@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.container;
+using Assets.Scripts.databases.game;
+using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
 using System;
 using System.Collections;
@@ -7,75 +9,96 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
+public class RightClickMenuController : Node, IPointerClickHandler
 {
     public Button sampleButton;
     private List<RightClickMenuItem> contextMenuItems;
     private ItemSlot parentObject;
     private Player player;
     private GameManager gameManager;
-
-    void Awake()
+    
+    public override void Initiate()
     {
         gameManager = Camera.main.GetComponent<GameManager>();
         player = gameManager.player;
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
-
-        Action<Image> use = new Action<Image>(UseAction);
-        Action<Image> examine = new Action<Image>(ExamineAction);
-        Action<Image> drop = new Action<Image>(DropAction);
-
-        contextMenuItems.Add(new RightClickMenuItem("Use", sampleButton, use));
-        contextMenuItems.Add(new RightClickMenuItem("Examine", sampleButton, examine));
-        contextMenuItems.Add(new RightClickMenuItem("Drop", sampleButton, drop));
-
+        
+        //contextMenuItems.Add(new RightClickMenuItem("Use", sampleButton, use));
+        //contextMenuItems.Add(new RightClickMenuItem("Examine", sampleButton, examine));
+        //contextMenuItems.Add(new RightClickMenuItem("Drop", sampleButton, drop));
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Item i = GetComponent<ItemSlot>().getItem();
-        if (i != null)
+        ItemSlot slot = GetComponent<ItemSlot>();
+        Item item = slot.getItem();
+        GameInterface parentInterface = GetComponentInParent<GameInterface>();
+        ConstructContextMenu(slot, item, parentInterface, player.IsInShop);
+        if (item != null)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                print("Right click on " + i);
-                if (i.Equipable)
-                {
-                    Action<Image> equip = new Action<Image>(EquipAction);
-                    RightClickMenuItem equipitem = new RightClickMenuItem("Equip", sampleButton, equip);
-
-                    if (contextMenuItems.Count <4)
-                    {
-                        contextMenuItems.Add(equipitem);
-                    }
-                }
-                //else if (i.Consumable)
-                //{
-                //    Action<Image> eat = new Action<Image>(ConsumeAction);
-                //    RightClickMenuItem eatitem = new RightClickMenuItem("Eat", sampleButton, eat);
-
-                //    if (contextMenuItems.Count < 4)
-                //    {
-                //        contextMenuItems.Add(eatitem);
-                //    }
-                //}
-                
                 RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
-                    eventData.position);
+                    eventData.pointerPress.transform.position);
+                //new Vector2(this.GetComponent<RectTransform>().position.x ,
+                //this.GetComponent<RectTransform>().position.y ) );
+                print($"{slot.transform.position} { eventData.pointerPress.transform.position}");
+               //print($"{ parentInterface.name} = {this.GetComponent<RectTransform>().position.x} + {parentInterface.GetComponent<RectTransform>().position.x}" +
+               //    $"{this.GetComponent<RectTransform>().position.y} + {parentInterface.GetComponent<RectTransform>().position.y}) ");
             }
 
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                print("Left click on " + i);
-                if (i.Equipable)
-                    EquipAction(GetComponent<ItemSlot>().image);
-                //else if(i.Consumable)
-                //    ConsumeAction(GetComponent<ItemSlot>().image);
-                else
-                    UseAction(GetComponent<ItemSlot>().image);
+
             }
         }
+    }
+
+    private void ConstructContextMenu(ItemSlot slot, Item item, GameInterface parentInterface, bool isInShop)
+    {
+        ClearContextMenu();
+        if (isInShop)
+        {
+            if (parentInterface is ShopInterface)
+            {
+                contextMenuItems.Add(new RightClickMenuItem($"Buy 1 {item.Name}", sampleButton, BuyOneAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Buy 5 {item.Name}", sampleButton, BuyFiveAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Buy 10 {item.Name}", sampleButton, BuyTenAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Buy All {item.Name}", sampleButton, BuyAllAction));
+            }
+            else
+            {
+                contextMenuItems.Add(new RightClickMenuItem($"Sell 1 {item.Name}", sampleButton, SellOneAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Sell 5 {item.Name}", sampleButton, SellFiveAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Sell 10 {item.Name}", sampleButton, SellTenAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Sell All {item.Name}", sampleButton, SellAllAction));
+            }
+        }
+        else
+        {
+            if(parentInterface is Inventory)
+            {
+                if (item.Equipable)
+                    contextMenuItems.Add(new RightClickMenuItem($"Equip {item.Name}", sampleButton, EquipAction));
+                else if (gameManager.GetComponent<ConsumableDatabase>().IsEdible(item.Id)) //try to keep this as low as possible
+                    contextMenuItems.Add(new RightClickMenuItem($"Consume {item.Name}", sampleButton, ConsumeAction));
+
+                contextMenuItems.Add(new RightClickMenuItem($"Use {item.Name}", sampleButton, UseAction));
+                contextMenuItems.Add(new RightClickMenuItem($"Drop {item.Name}", sampleButton, DropAction));
+            }
+        }
+        contextMenuItems.Add(new RightClickMenuItem($"Examine {item.Name}", sampleButton, ExamineAction));
+    }
+
+    private void ConstructContextMenu(ItemSlot slot, Item item, GameInterface parentInterface)
+    {
+        ConstructContextMenu(slot, item, parentInterface, false);
+    }
+
+    private void ClearContextMenu()
+    {
+        contextMenuItems.Clear();
     }
 
     private void ExamineAction(Image obj)
@@ -97,7 +120,6 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
     private void UseAction(Image obj)
     {
         print("using " + GetComponent<ItemSlot>().getItem());
-        //GetComponent<ItemSlot>().SetItem(null);
         ItemSlot slot = GetComponent<ItemSlot>();
         slot.GetParentContainer().Remove(slot.getItem());
         CloseMenu();
@@ -109,18 +131,72 @@ public class RightClickMenuController : MonoBehaviour, IPointerClickHandler
         var reqResult = item.Requirements.MeetsRequirements(player);
         if (reqResult)
         {
-            //equip
             player.equipment.Equip(item);
         }
         CloseMenu();
-        //Item item = GetComponent<ItemSlot>().getItem();
-        //if (item.Requirements)
-        //EquipmentType equiptype = .EquipmentType;
-        //
-        //print(equiptype);
+    }
+
+    private void ValueAction(Image obj)
+    {
+
+    }
+
+    private void SellOneAction(Image obj)
+    {
+
+    }
+
+    private void SellFiveAction(Image obj)
+    {
+
+    }
+
+    private void SellTenAction(Image obj)
+    {
+
+    }
+
+    private void SellAllAction(Image obj)
+    {
+
+    }
+
+    private void SellX(int amnt)
+    {
+
+    }
+
+    private void BuyOneAction(Image obj)
+    {
+
+    }
+
+    private void BuyFiveAction(Image obj)
+    {
+
+    }
+
+    private void BuyTenAction(Image obj)
+    {
+
+    }
+
+    private void BuyAllAction(Image obj)
+    {
+
+    }
+
+    private void BuyX(int amnt)
+    {
+
     }
 
     private void ConsumeAction(Image obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void SetUpAction(Image obj)
     {
         throw new NotImplementedException();
     }

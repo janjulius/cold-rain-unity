@@ -311,5 +311,8 @@ namespace Assets.Scripts.databases.game
                 new Food(362, 270, 360, -1, new ConsumableProperties(10, -1)),
             };
         }
+
+        public bool IsEdible(int id)
+        => items.Cast<Food>().ToList().Where(c => c.addedId == id).First() != null;
     }
 }
