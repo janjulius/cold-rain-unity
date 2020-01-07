@@ -447,7 +447,7 @@ namespace Assets.Scripts.databases
 
         public Item GetItem(int id)
         {
-            return items.Where(i => i.Id == id).FirstOrDefault() as Item;
+            return new Item(items.Where(i => i.Id == id).FirstOrDefault() as Item);
         }
 
         /// <summary>

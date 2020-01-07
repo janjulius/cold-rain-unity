@@ -14,6 +14,8 @@ namespace Assets.Scripts.shops
     {
         public string Title { private set; get; }
         public Container Container { private set; get; }
+        public float BuyMultiplier { private set; get; } = 1.3f;
+        public float SellMultiplier { private set; get; } = 0.8f;
 
         public Shop(int id, string title, Container container)
         {
@@ -21,6 +23,12 @@ namespace Assets.Scripts.shops
             this.Title = title;
             this.Container = container;
             Load();
+        }
+
+        public Shop(int id, string title, Container container, float buyMultiplier, float sellMultiplier) : this(id, title, container)
+        {
+            this.BuyMultiplier = BuyMultiplier;
+            this.SellMultiplier = SellMultiplier;
         }
 
         public void Load()

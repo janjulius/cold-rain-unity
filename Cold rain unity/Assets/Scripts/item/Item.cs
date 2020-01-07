@@ -5,6 +5,7 @@ using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -47,6 +48,15 @@ namespace Assets.Scripts.item
             Charges = 0;
             Price = price;
         }
+
+        public Item(Item item)
+        {
+            foreach(PropertyInfo propertyInfo in GetType().GetProperties())
+            {
+                propertyInfo.SetValue(this, item.GetType().GetProperty(propertyInfo.Name).GetValue(item), null);
+            }
+        }
+        
 
         public void SetSprites(Sprite inventoryIcon, EquipmentItemMultiArray eqima)
         {
