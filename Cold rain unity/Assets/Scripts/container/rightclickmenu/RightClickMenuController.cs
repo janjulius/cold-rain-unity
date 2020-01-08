@@ -103,7 +103,7 @@ public class RightClickMenuController : Node, IPointerClickHandler
 
     private void ExamineAction(Image obj)
     {
-        Assets.Scripts.gameinterfaces.console.Console.Instance.SendConsoleMessage(GetComponent<ItemSlot>().getItem().Examine);
+        Assets.Scripts.gameinterfaces.console.GameConsole.Instance.SendConsoleMessage(GetComponent<ItemSlot>().getItem().Examine);
         CloseMenu();
     }
 
@@ -138,53 +138,23 @@ public class RightClickMenuController : Node, IPointerClickHandler
 
     private void ValueAction(Image obj)
     {
-
+        Item item = GetComponent<ItemSlot>().getItem();
     }
 
-    private void SellOneAction(Image obj)
-    {
-
-    }
-
-    private void SellFiveAction(Image obj)
-    {
-
-    }
-
-    private void SellTenAction(Image obj)
-    {
-
-    }
-
-    private void SellAllAction(Image obj)
-    {
-
-    }
+    private void SellOneAction(Image obj) => SellX(1);
+    private void SellFiveAction(Image obj) => SellX(5);
+    private void SellTenAction(Image obj) => SellX(10);
+    private void SellAllAction(Image obj) => SellX(int.MaxValue);
 
     private void SellX(int amnt)
     {
 
     }
 
-    private void BuyOneAction(Image obj)
-    {
-
-    }
-
-    private void BuyFiveAction(Image obj)
-    {
-
-    }
-
-    private void BuyTenAction(Image obj)
-    {
-
-    }
-
-    private void BuyAllAction(Image obj)
-    {
-
-    }
+    private void BuyOneAction(Image obj) => BuyX(1);
+    private void BuyFiveAction(Image obj) => BuyX(5);
+    private void BuyTenAction(Image obj) => BuyX(10);
+    private void BuyAllAction(Image obj) => BuyX(int.MaxValue);
 
     private void BuyX(int amnt)
     {
