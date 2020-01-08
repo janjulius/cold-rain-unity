@@ -62,6 +62,8 @@ public class Player : Entity
         InventoryContainer.Add(itemDatabase.GetItem(0), 1);
         InventoryContainer.Add(itemDatabase.GetItem(2), 1);
         InventoryContainer.Add(itemDatabase.GetItem(79), 1);
+        InventoryContainer.Add(itemDatabase.GetItem(4), 1);
+
         SetLocation(SpawnPosition);
     }
 
