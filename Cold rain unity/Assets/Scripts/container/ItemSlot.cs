@@ -13,13 +13,14 @@ namespace Assets.Scripts.container
         public Image image;
         public TextMeshProUGUI slotText;
         public Sprite emptyImage;
+        public ContainerDisplay ContainerDisplay { private set; get; }
 
         public override void StartInitiate()
         {
             base.StartInitiate();
-            ContainerDisplay containerDisplay = GetComponentInParent<ContainerDisplay>();
-            if(containerDisplay != null)
-                parentContainer = containerDisplay.GetContainer();
+            ContainerDisplay = GetComponentInParent<ContainerDisplay>();
+            if(ContainerDisplay != null)
+                parentContainer = ContainerDisplay.GetContainer();
             if (slotText == null)
                 slotText = GetComponentInChildren<TextMeshProUGUI>();
             if (image == null)

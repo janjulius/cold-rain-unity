@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.item;
+﻿using Assets.Scripts.databases;
+using Assets.Scripts.item;
 using Assets.Scripts.logger;
 using Assets.Scripts.saving;
 using System;
@@ -6,13 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.container
 {
     /// <summary>
     /// Repersents a container which can hold items
     /// </summary>
-    public struct Container : SavingModule
+    public class Container : SavingModule
     {
         /// <summary>
         /// The items in the container
@@ -24,13 +26,22 @@ namespace Assets.Scripts.container
         /// </summary>
         private int capacity;
 
+        /// <summary>
+        /// the display for the container
+        /// </summary>
         private ContainerDisplay containerDisplay;
+
+        /// <summary>
+        /// Itemdatabase
+        /// </summary>
+        private ItemDatabase itemDatabase = null;
 
         public Container(int capacity, ContainerDisplay containerDisplay)
         {
             this.capacity = capacity;
             this.containerDisplay = containerDisplay;
             this.items = new Item[capacity];
+            itemDatabase = Camera.main.GetComponent<ItemDatabase>();
         }
 
         /// <summary>
@@ -42,6 +53,7 @@ namespace Assets.Scripts.container
             this.containerDisplay = null;
             this.capacity = items.Length;
             this.items = items;
+            itemDatabase = Camera.main.GetComponent<ItemDatabase>();
         }
 
         /// <summary>
@@ -66,6 +78,53 @@ namespace Assets.Scripts.container
             return false;
         }
 
+        public bool Add(Item item)
+        {
+            if (!HasFreeSlots())
+                return false;
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                if(items[i] == null)
+                {
+                    items[i] = item;
+                    Refresh();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Add(int id, int amount)
+        {
+            Item item = itemDatabase.GetItem(id);
+
+            if (item.Stackable)
+            {
+                item.SetAmount(amount);
+                Refresh();
+                return Add(item);
+            }
+            else
+            {
+                bool result = false;
+                for(int i = 0; i < amount; i++)
+                {
+                    item.SetAmount(1);
+                    result = Add(item);
+                }
+                Refresh();
+                return result;
+            }
+        }
+
+        //public bool Add(int id, int amount)
+        //{
+        //    Item item = itemDatabase.GetItem(id);
+        //     
+        //   
+        //}
+        
         /// <summary>
         /// Remove an item
         /// </summary>
@@ -98,12 +157,76 @@ namespace Assets.Scripts.container
         }
 
         /// <summary>
+        /// removes an amount of given id 
+        /// note: removes items regardless if the player has all the required items
+        /// use: <see cref="GetAmount(int)"/>
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public bool Remove(int id, int amount)
+        {
+            int amnt = amount;
+            for (int it = 0; it < items.Length; it++)
+            {
+                if(items[it] != null)
+                {
+                    if(items[it].Id == id)
+                    {
+                        if (items[it].Stackable)
+                        {
+                            items[it].Amount = items[it].Amount - amount;
+                            if (items[it].Amount <= 0)
+                                items[it] = null;
+                            Refresh();
+                            return true;
+                        }
+                        else
+                        {
+                            items[it] = null;
+                            amnt--;
+                            if (amnt == 0)
+                            {
+                                Refresh();
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// returns the amount of item with given id in the container
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int GetAmount(int id)
+        {
+            int total = 0;
+            foreach(Item it in items)
+            {
+                if(it != null)
+                {
+                    if(it.Id == id)
+                    {
+                        total += it.Amount;
+                        if (!it.Stackable)
+                            break;
+                    }
+                }
+            }
+            return total;
+        }
+
+        /// <summary>
         /// Remove an item
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         public bool Remove(Item item) => Remove(item, 1);
-
+        
         /// <summary>
         /// True if the item is present in the container
         /// </summary>
@@ -122,6 +245,34 @@ namespace Assets.Scripts.container
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// returns true if the container contains an item of given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Contains(int id)
+        {
+            foreach(Item it in items)
+                if(it != null)
+                    if (it.Id == id)
+                        return true;
+            return false;
+        }
+
+        /// <summary>
+        /// returns the first item of the id given, null if not found.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Item GetItem(int id)
+        {
+            foreach (Item it in items)
+                if (it != null)
+                    if (it.Id == id)
+                        return it;
+            return null;
         }
 
         /// <summary>

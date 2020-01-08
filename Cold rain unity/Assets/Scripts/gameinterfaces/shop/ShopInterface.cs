@@ -14,14 +14,14 @@ namespace Assets.Scripts.gameinterfaces.shop
         
         public GameObject ShopSlotPrefab;
 
-        private Shop shop;
+        public Shop Shop { private set; get; }
 
         private List<GameObject> shopSlots = new List<GameObject>();
 
         public void Load(Shop shop, Player player)
         {
             Clear();
-            this.shop = shop;
+            this.Shop = shop;
             this.player = this.player ?? player;
             titleText.text = shop.Title;
             

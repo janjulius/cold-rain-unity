@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public GameObject groundItemPrefab;
 
-    private ShopInterface shopInterface;
+    public ShopInterface ShopInterface { private set; get; }
     private ShopDatabase shopDatabase;
 
     private void Awake()
@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(EventSystem);
 
         shopDatabase = GetComponent<ShopDatabase>();
-        shopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
-        shopInterface.SetActive(false);
+        ShopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
+        ShopInterface.SetActive(false);
 
         if(player == null)
             player = FindObjectOfType<Player>();
@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadShop(int id)
     {
-        shopInterface.SetActive(true);
-        shopInterface.Load(shopDatabase.GetShop(id), player);
+        ShopInterface.SetActive(true);
+        ShopInterface.Load(shopDatabase.GetShop(id), player);
     }
     
     void Start()

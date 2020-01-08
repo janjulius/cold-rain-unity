@@ -2,10 +2,6 @@
 using Assets.Scripts.databases;
 using Assets.Scripts.saving;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.shops
@@ -29,6 +25,14 @@ namespace Assets.Scripts.shops
         {
             this.BuyMultiplier = BuyMultiplier;
             this.SellMultiplier = SellMultiplier;
+        }
+
+        public int GetShopBuyPrice(int val) => (int)Math.Floor(val * BuyMultiplier);
+        public int GetShopSellPrice(int val) => (int)Math.Floor(val * SellMultiplier);
+
+        public void DepleteItem(int id, int amount)
+        {
+            Container.Remove(id, amount);
         }
 
         public void Load()

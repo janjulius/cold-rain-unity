@@ -56,8 +56,8 @@ namespace Assets.Scripts.gameinterfaces.console
                 Destroy(history[0]);
                 history.RemoveAt(0);
             }
-            //if (text.StartsWith(Constants.COMMAND_PREFIX))
-            //    ProcessCommand(inputfield.text);
+            if (text.StartsWith(Constants.COMMAND_PREFIX))
+                ProcessCommand(inputfield.text);
 
             ConsoleMessage obj = Instantiate(textfield, contentField);
             obj.Message = text;
