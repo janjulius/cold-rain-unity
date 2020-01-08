@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Assets.Scripts.npc.FriendlyNPC;
 
 namespace Assets.Scripts.player.Equipment.visual
 {
@@ -64,6 +65,8 @@ namespace Assets.Scripts.player.Equipment.visual
         private LegsDatabase legsDatabase;
         private BeardDatabase beardDatabase;
 
+        public event delegateEventHandler FinishInit;
+
         public override void StartInitiate()
         {
             base.Initiate();
@@ -81,6 +84,8 @@ namespace Assets.Scripts.player.Equipment.visual
             LoadEquipmentVisuals();
 
             AdjustLayers(FaceDirection.DOWN);
+
+            FinishInit?.Invoke();
         }
 
         private void LoadPrimitiveVisuals()

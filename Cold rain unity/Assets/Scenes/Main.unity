@@ -745,7 +745,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 8
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
     spaceCount: 0
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -7841,6 +7841,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.055
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071461106563214, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8986501805510947301, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}

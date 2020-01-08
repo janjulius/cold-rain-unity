@@ -11,5 +11,6 @@ namespace Assets.Scripts.node
     {
         public abstract void Initiate();
         public abstract void StartInitiate();
+        public abstract void DelayedStartInitiate();
     }
 }

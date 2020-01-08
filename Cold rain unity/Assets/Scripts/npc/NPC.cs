@@ -10,5 +10,12 @@ namespace Assets.Scripts.npc
 {
     public abstract class NPC : Entity
     {
+        //public FaceDirection spawnfacedir = FaceDirection.DOWN;
+
+        //public override void StartInitiate()
+        //{
+        //    base.StartInitiate();
+        //    Face(spawnfacedir);
+        //}
     }
 }
