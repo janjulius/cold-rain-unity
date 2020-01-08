@@ -36,6 +36,11 @@ namespace Assets.Scripts.container
         /// </summary>
         private ItemDatabase itemDatabase = null;
 
+        /// <summary>
+        /// wether this container is a shop
+        /// </summary>
+        private bool isShopContainer = false;
+
         public Container(int capacity, ContainerDisplay containerDisplay)
         {
             this.capacity = capacity;
@@ -80,7 +85,7 @@ namespace Assets.Scripts.container
 
         public bool Add(Item item)
         {
-            if (!HasFreeSlots())
+            if (HasFreeSlots())
                 return false;
 
             for (int i = 0; i < items.Length; i++)
@@ -101,6 +106,18 @@ namespace Assets.Scripts.container
 
             if (item.Stackable)
             {
+                for(int i = 0; i < items.Length; i++)
+                {
+                    if(items[i] != null)
+                    {
+                        if(items[i].Id == id)
+                        {
+                            items[i].Amount += amount;
+                            Refresh();
+                            return true;
+                        }
+                    }
+                }
                 item.SetAmount(amount);
                 Refresh();
                 return Add(item);
@@ -175,7 +192,7 @@ namespace Assets.Scripts.container
                     {
                         if (items[it].Stackable)
                         {
-                            items[it].Amount = items[it].Amount - amount;
+                            items[it].Amount -= amount;
                             if (items[it].Amount <= 0)
                                 items[it] = null;
                             Refresh();
@@ -183,8 +200,17 @@ namespace Assets.Scripts.container
                         }
                         else
                         {
-                            items[it] = null;
-                            amnt--;
+                            if (items[it].Amount > 1) //for shops
+                            {
+                                items[it].Amount -= amount;
+                                Refresh();
+                                return true;
+                            }
+                            else
+                            {
+                                items[it] = null;
+                                amnt--;
+                            }
                             if (amnt == 0)
                             {
                                 Refresh();
@@ -278,7 +304,7 @@ namespace Assets.Scripts.container
         /// <summary>
         /// Refreshes the container
         /// </summary>
-        public void Refresh()
+        public virtual void Refresh()
         {
             if (containerDisplay != null)
                 containerDisplay.Refresh(this);
@@ -302,17 +328,16 @@ namespace Assets.Scripts.container
         /// <returns></returns>
         public int GetFreeSlots()
         {
-            int r = 0;
+            int r = capacity;
             foreach(Item i in items)
             {
-                if (i == null)
-                    r++;
+                if (i != null)
+                    r--;
             }
-            r = Math.Abs(r - capacity);
             return r;
         }
 
-        public bool HasFreeSlots() => GetFreeSlots() <= 0;
+        public bool HasFreeSlots() => GetFreeSlots() < 0;
 
         /// <summary>
         /// Gets the items in this container

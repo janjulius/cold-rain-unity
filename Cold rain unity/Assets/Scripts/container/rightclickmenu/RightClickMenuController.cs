@@ -149,7 +149,7 @@ public class RightClickMenuController : Node, IPointerClickHandler
         bool isInShop = slot.ContainerDisplay is ShopInterface;
 
         GameConsole.Instance.SendFilteredConsoleMessage(
-            $"This shop will " + (isInShop ? "sell" : "buy") + $" {item.Name} for " + (isInShop ? shop.GetShopSellPrice(item.Price) : shop.GetShopBuyPrice(item.Price)) + ".");
+            $"This shop will " + (isInShop ? "sell" : "buy") + $" {item.Name} for " + (isInShop ? shop.GetShopBuyPrice(item.Price) : shop.GetShopSellPrice(item.Price)) + ".");
     }
 
     private void SellOneAction(Image obj) => SellX(1);
@@ -165,12 +165,13 @@ public class RightClickMenuController : Node, IPointerClickHandler
         Item item = slot.getItem();
         ShopInterface si = gameManager.ShopInterface;
         Shop shop = si.Shop;
-
-        amount = amount > item.Amount ? item.Amount : amount;
+        
+        amount = amount > player.InventoryContainer.GetAmount(item.Id) ? player.InventoryContainer.GetAmount(item.Id) : amount;
         
         int coinsAmnt = shop.GetShopSellPrice(item.Price) * amount;
 
         slot.GetParentContainer().Remove(item.Id, amount);
+        player.InventoryContainer.Add(384, coinsAmnt);
     }
 
     private void BuyOneAction(Image obj) => BuyX(1);
@@ -215,13 +216,17 @@ public class RightClickMenuController : Node, IPointerClickHandler
             }
 
             //remove the coins and transfer item from teh shop to the plaeyr
-            if (player.InventoryContainer.Remove(384, amount * shop.GetShopBuyPrice(item.Price))) {
+            if (player.InventoryContainer.Remove(384, amount * shop.GetShopBuyPrice(item.Price)))
+            {
                 shop.DepleteItem(item.Id, amount);
                 player.GiveItem(item.Id, amount);
             }
 
         }
-        GameConsole.Instance.SendConsoleMessage("You don't have any money.");
+        else
+        {
+            GameConsole.Instance.SendConsoleMessage("You don't have any money.");
+        }
     }
 
     private void ConsumeAction(Image obj)

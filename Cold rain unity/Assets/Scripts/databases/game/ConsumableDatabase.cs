@@ -10,6 +10,12 @@ namespace Assets.Scripts.databases.game
 {
     public class ConsumableDatabase : CRDatabase
     {
+        public override void Initiate()
+        {
+            CallSelf = false;
+            base.Initiate();
+        }
+
         public override void BuildDatabase()
         {
             items = new List<DbElement>

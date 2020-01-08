@@ -60,11 +60,11 @@ public class Player : Entity
 
         LoadAppearance();
 
-        InventoryContainer.Add(itemDatabase.GetItem(0), 1);
-        InventoryContainer.Add(itemDatabase.GetItem(2), 1);
-        InventoryContainer.Add(itemDatabase.GetItem(79), 1);
-        InventoryContainer.Add(itemDatabase.GetItem(4), 1);
-        InventoryContainer.Add(itemDatabase.GetItem(384), 1000);
+        InventoryContainer.Add(0, 1);
+        InventoryContainer.Add(2, 1);
+        InventoryContainer.Add(79, 1);
+        InventoryContainer.Add(4, 1);
+        InventoryContainer.Add(384, 1000);
         SetLocation(SpawnPosition);
     }
 

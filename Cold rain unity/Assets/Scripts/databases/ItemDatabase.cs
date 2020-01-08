@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.databases.game.shops;
+﻿using Assets.Scripts.databases.game;
+using Assets.Scripts.databases.game.shops;
 using Assets.Scripts.item;
 using Assets.Scripts.logger;
 using Assets.Scripts.node;
@@ -457,6 +458,7 @@ namespace Assets.Scripts.databases
             CrLogger.Log(this, "The item database was built succesfully");
             CrLogger.Log(this, "Now allows for initialisation of: shops database");
             GetComponent<ShopDatabase>().BuildDatabase();
+            GetComponent<ConsumableDatabase>().BuildDatabase();
         }
 
         /// <summary>

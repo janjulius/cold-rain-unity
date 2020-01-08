@@ -57,7 +57,7 @@ namespace Assets.Scripts.gameinterfaces.shop
 
         public override void Refresh()
         {
-            throw new System.NotImplementedException();
+            Load(Shop, player);
         }
     }
 }
