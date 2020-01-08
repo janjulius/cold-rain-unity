@@ -13,13 +13,23 @@ namespace Assets.Scripts.npc
     [RequireComponent(typeof(Appearance))]
     public class FriendlyNPC : NPC
     {
+
         protected Dialogue dialogue;
         private Appearance appearance;
+        public FaceDirection SpawnFaceDir;
+        public delegate void delegateEventHandler();
 
         public override void Initiate()
         {
             base.Initiate();
             appearance = GetComponent<Appearance>();
+            appearance.FinishInit += OnAppearanceLoaded;
+        }
+
+        public void OnAppearanceLoaded()
+        {
+            print("Hola"+ SpawnFaceDir);
+            Face(SpawnFaceDir);
         }
 
         public override void Interact(Entity sender)

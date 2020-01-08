@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Node : Atom
 {
+    protected bool initiated = false;
+    protected bool startInitiated = false;
+    protected bool delayedStartInitiated = false;
+
     public void Awake()
     {
         Initiate();
@@ -13,6 +17,7 @@ public class Node : Atom
     public void Start()
     {
         StartInitiate();
+        DelayedStartInitiate();
     }
 
     /// <summary>
@@ -20,7 +25,14 @@ public class Node : Atom
     /// </summary>
     public override void Initiate()
     {
-
+        if (!initiated)
+        {
+            initiated = true;
+        }
+        else
+        {
+            return;
+        }
     }
 
     /// <summary>
@@ -28,7 +40,29 @@ public class Node : Atom
     /// </summary>
     public override void StartInitiate()
     {
+        if (!startInitiated)
+        {
+            startInitiated = true;
+        }
+        else
+        {
+            return;
+        }
+    }
 
+    /// <summary>
+    /// Used for initialising objects or entities after StartInitiate
+    /// </summary>
+    public override void DelayedStartInitiate()
+    {
+        if (!delayedStartInitiated)
+        {
+            delayedStartInitiated = true;
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void SetLayer(int layer)
