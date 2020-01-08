@@ -217,26 +217,4 @@ public class Player : Entity
         SceneManager.LoadScene(sceneId);
         SetLocation(endLocation);
     }
-
-    internal void GiveItem(int id, int amount)
-    {
-        Item item = itemDatabase.GetItem(id);
-        if (item.Stackable)
-        {
-            item.SetAmount(amount);
-
-            if (!InventoryContainer.Add(item))
-                gameManager.CreateGroundItem(item, transform);
-        }
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                if (!InventoryContainer.Add(item))
-                {
-                    gameManager.CreateGroundItem(item, transform);
-                }
-            }
-        }
-    }
 }

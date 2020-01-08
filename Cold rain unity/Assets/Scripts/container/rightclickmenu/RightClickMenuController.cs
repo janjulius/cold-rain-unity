@@ -25,10 +25,6 @@ public class RightClickMenuController : Node, IPointerClickHandler
         player = gameManager.player;
         contextMenuItems = new List<RightClickMenuItem>();
         parentObject = GetComponent<ItemSlot>();
-        
-        //contextMenuItems.Add(new RightClickMenuItem("Use", sampleButton, use));
-        //contextMenuItems.Add(new RightClickMenuItem("Examine", sampleButton, examine));
-        //contextMenuItems.Add(new RightClickMenuItem("Drop", sampleButton, drop));
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -43,11 +39,7 @@ public class RightClickMenuController : Node, IPointerClickHandler
             {
                 RightClickMenu.Instance.CreateContextMenu(contextMenuItems,
                     eventData.pointerPress.transform.position);
-                //new Vector2(this.GetComponent<RectTransform>().position.x ,
-                //this.GetComponent<RectTransform>().position.y ) );
                 print($"{slot.transform.position} { eventData.pointerPress.transform.position}");
-               //print($"{ parentInterface.name} = {this.GetComponent<RectTransform>().position.x} + {parentInterface.GetComponent<RectTransform>().position.x}" +
-               //    $"{this.GetComponent<RectTransform>().position.y} + {parentInterface.GetComponent<RectTransform>().position.y}) ");
             }
 
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -187,41 +179,37 @@ public class RightClickMenuController : Node, IPointerClickHandler
         ShopInterface si = gameManager.ShopInterface;
         Shop shop = si.Shop;
         Item item = slot.getItem();
-
-        //check if the amount goes over the shop stock, if so set it to that value
+        
         if (amount > item.Amount)
             amount = item.Amount;
-
-        //now that we have the amount, check if the player can afford this.
+        
         if (player.InventoryContainer.Contains(384))
         {
             Item playerCoins = player.InventoryContainer.GetItem(384);
-            //check if the player has enough money for a singular item, if not we can just stop here
             if (playerCoins.Amount < shop.GetShopBuyPrice(item.Price))
             {
                 GameConsole.Instance.SendConsoleMessage("You don't have enough money.");
                 return;
             }
-            //get the maximum amount purchaseable
+
             int canBuyAmount = (int)Math.Floor((double)(playerCoins.Amount / shop.GetShopBuyPrice(item.Price)));
-            //if trying to buy more than can afford, set the amount to the max
+
             if (amount > canBuyAmount)
                 amount = canBuyAmount;
-
-            //set the amount the the player free inventoryslots
-            if (player.InventoryContainer.GetFreeSlots() < amount)
+            
+            if (player.InventoryContainer.GetFreeSlots() < amount && 
+                (!item.Stackable && 
+                (player.InventoryContainer.GetFreeSlots() > 1 || player.InventoryContainer.GetItem(item.Id) != null)))
             {
                 amount = player.InventoryContainer.GetFreeSlots();
                 GameConsole.Instance.SendConsoleMessage("You don't have enough inventory space.");
             }
-
-            //remove the coins and transfer item from teh shop to the plaeyr
+            
             if (player.InventoryContainer.Remove(384, amount * shop.GetShopBuyPrice(item.Price)))
             {
                 shop.DepleteItem(item.Id, amount);
-                player.GiveItem(item.Id, amount);
+                player.InventoryContainer.Add(item.Id, amount);
             }
-
         }
         else
         {

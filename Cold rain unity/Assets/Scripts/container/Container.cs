@@ -36,11 +36,6 @@ namespace Assets.Scripts.container
         /// </summary>
         private ItemDatabase itemDatabase = null;
 
-        /// <summary>
-        /// wether this container is a shop
-        /// </summary>
-        private bool isShopContainer = false;
-
         public Container(int capacity, ContainerDisplay containerDisplay)
         {
             this.capacity = capacity;

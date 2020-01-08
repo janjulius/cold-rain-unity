@@ -20,20 +20,10 @@ namespace Assets.Scripts.gameinterfaces.shop
 
         public void Load(Shop shop, Player player)
         {
-            Clear();
             this.Shop = shop;
             this.player = this.player ?? player;
-            titleText.text = shop.Title;
-            
-            foreach (Item i in shop.Container.GetItems())
-            {
-                GameObject slot = Instantiate(ShopSlotPrefab, Vector2.zero, Quaternion.identity, ItemHolder.transform);
-                ItemSlot itemSlot = slot.GetComponent<ItemSlot>();
-                itemSlot.SetItem(i);
-                shopSlots.Add(slot);
-            }
-            gameObject.SetActive(true);
-            player.IsInShop = gameObject.activeSelf;
+            titleText.text = Shop.Title;
+            Refresh();
         }
 
         public void Close()
@@ -52,12 +42,21 @@ namespace Assets.Scripts.gameinterfaces.shop
 
         public override void Create(Player player)
         {
-            throw new System.NotImplementedException();
+            Refresh();
         }
 
         public override void Refresh()
         {
-            Load(Shop, player);
+            Clear();
+            foreach (Item i in Shop.Container.GetItems())
+            {
+                GameObject slot = Instantiate(ShopSlotPrefab, Vector2.zero, Quaternion.identity, ItemHolder.transform);
+                ItemSlot itemSlot = slot.GetComponent<ItemSlot>();
+                itemSlot.SetItem(i);
+                shopSlots.Add(slot);
+            }
+            gameObject.SetActive(true);
+            player.IsInShop = gameObject.activeSelf;
         }
     }
 }
