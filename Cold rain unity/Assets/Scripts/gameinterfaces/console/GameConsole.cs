@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.gameinterfaces.console
 {
-    public class Console : Node, SavingModule
+    public class GameConsole : Node, SavingModule
     {
-        private Console() { }
-        public static Console Instance;
+        private GameConsole() { }
+        public static GameConsole Instance;
 
         public TMP_InputField inputfield;
         public ConsoleMessage textfield;

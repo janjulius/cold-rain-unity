@@ -26,7 +26,7 @@ namespace Assets.Scripts.dialogue
             else
                 handler.SetSenderText("");
             handler.SetDialogueText(message);
-            Console.Instance.SendFilteredConsoleMessage($"{entity?.EntityName}: {message}");
+            GameConsole.Instance.SendFilteredConsoleMessage($"{entity?.EntityName}: {message}");
         }
 
         internal void SetCurrentDialogue(Dialogue dialogue)
