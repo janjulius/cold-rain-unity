@@ -43,7 +43,7 @@ namespace Assets.Scripts.skills
             {
                 if(fSkills.GetSkill(entry.Key).GetLevel() < entry.Value)
                 {
-                    Console.Instance.SendFilteredConsoleMessage($"You don't meet the requirements to do this, you need a {fSkills.GetSkill(entry.Key).Name} level of at least {entry.Value}.");
+                    GameConsole.Instance.SendFilteredConsoleMessage($"You don't meet the requirements to do this, you need a {fSkills.GetSkill(entry.Key).Name} level of at least {entry.Value}.");
                     return false;
                 }
             }

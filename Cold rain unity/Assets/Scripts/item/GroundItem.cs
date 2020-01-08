@@ -22,14 +22,14 @@ namespace Assets.Scripts.item
         {
             if(Vector2.Distance(player.transform.position, transform.position) > 1.1f)
             {
-                Console.Instance.SendFilteredConsoleMessage("You need to get closer.");
-                Console.Instance.SendDevMessage(Vector2.Distance(player.transform.position, transform.position).ToString());
+                GameConsole.Instance.SendFilteredConsoleMessage("You need to get closer.");
+                GameConsole.Instance.SendDevMessage(Vector2.Distance(player.transform.position, transform.position).ToString());
             }
             else
             {
                 if (player.InventoryContainer.HasFreeSlots())
                 {
-                    Console.Instance.SendFilteredConsoleMessage("You have no room to carry this item.");
+                    GameConsole.Instance.SendFilteredConsoleMessage("You have no room to carry this item.");
                 }
                 else
                 {
