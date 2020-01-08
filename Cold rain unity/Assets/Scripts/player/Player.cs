@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.container;
+﻿using System;
+using Assets.Scripts.container;
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.navigator;
@@ -63,7 +64,7 @@ public class Player : Entity
         InventoryContainer.Add(itemDatabase.GetItem(2), 1);
         InventoryContainer.Add(itemDatabase.GetItem(79), 1);
         InventoryContainer.Add(itemDatabase.GetItem(4), 1);
-
+        InventoryContainer.Add(itemDatabase.GetItem(384), 1000);
         SetLocation(SpawnPosition);
     }
 
@@ -217,4 +218,25 @@ public class Player : Entity
         SetLocation(endLocation);
     }
 
+    internal void GiveItem(int id, int amount)
+    {
+        Item item = itemDatabase.GetItem(id);
+        if (item.Stackable)
+        {
+            item.SetAmount(amount);
+
+            if (!InventoryContainer.Add(item))
+                gameManager.CreateGroundItem(item, transform);
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if (!InventoryContainer.Add(item))
+                {
+                    gameManager.CreateGroundItem(item, transform);
+                }
+            }
+        }
+    }
 }

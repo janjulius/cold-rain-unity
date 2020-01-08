@@ -157,6 +157,7 @@ namespace Assets.Scripts.databases
                 new Item(121, "Ruby arrow", true, new Stats(), new SkillRequirement(), "an arrow made out of platinum. Its tip is made out of ruby.", false, true, EquipmentType.AMMO, 150),
                 new Item(122, "Emerald arrow", true, new Stats(), new SkillRequirement(), "an arrow made out of platinum. Its tip is made out of emerald.", false, true, EquipmentType.AMMO, 150),
                 new Item(123, "Sapphire arrow", true, new Stats(), new SkillRequirement(), "an arrow made out of platinum. Its tip is made out of sapphire.", false, true, EquipmentType.AMMO, 150),
+                new Item(124, "YEET", true, new Stats(), new SkillRequirement(), "wtf is this item", false, false, EquipmentType.NONE, 10),
                 new Item(125, "Wood bolt", true, new Stats(), new SkillRequirement(), "a regular bolt made out of Wood.", false, true, EquipmentType.AMMO, 1),
                 new Item(126, "Bronze bolt", true, new Stats(), new SkillRequirement(), "a regular bolt made out of bronze.", false, true, EquipmentType.AMMO, 5),
                 new Item(127, "Silver bolt", true, new Stats(), new SkillRequirement(), "a regular bolt made out of silver.", false, true, EquipmentType.AMMO, 10),
@@ -458,13 +459,18 @@ namespace Assets.Scripts.databases
             GetComponent<ShopDatabase>().BuildDatabase();
         }
 
+        /// <summary>
+        /// returns a new instance of an item with given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Item GetItem(int id)
         {
             return new Item(items.Where(i => i.Id == id).FirstOrDefault() as Item);
         }
 
         /// <summary>
-        /// gets the item of id and sets the amount to amount
+        /// returns a new instance the item of id and sets the amount to amount
         /// </summary>
         /// <param name="id"></param>
         /// <param name="amount"></param>

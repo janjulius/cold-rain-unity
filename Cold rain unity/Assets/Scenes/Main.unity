@@ -156,10 +156,10 @@ RectTransform:
   m_Father: {fileID: 1517728437}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.109726265, y: 0.081}
-  m_AnchorMax: {x: 0.89179254, y: 0.91972554}
-  m_AnchoredPosition: {x: -0.5, y: 0}
-  m_SizeDelta: {x: -3, y: 2}
+  m_AnchorMin: {x: 0.109726265, y: 0.3708361}
+  m_AnchorMax: {x: 0.6213727, y: 0.91972554}
+  m_AnchoredPosition: {x: -0.6999817, y: 1.2740021}
+  m_SizeDelta: {x: -3.2999878, y: 0.6499939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55324620
 MonoBehaviour:
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 23.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25.25
+  m_fontSize: 25.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 612927983}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.52583975
+  m_Size: 0.543
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3924,10 +3924,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 867816269}
-    characterCount: 301
+    characterCount: 555
     spriteCount: 0
     spaceCount: 0
-    wordCount: 24
+    wordCount: 43
     linkCount: 0
     lineCount: 7
     pageCount: 1
@@ -4707,7 +4707,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31.55
+  m_fontSize: 20.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4831,7 +4831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 137.09999}
+  m_AnchoredPosition: {x: 0, y: 137.1}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1246091573
@@ -5844,6 +5844,7 @@ GameObject:
   - component: {fileID: 1619068791}
   - component: {fileID: 1619068792}
   - component: {fileID: 1619068793}
+  - component: {fileID: 1619068794}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6026,6 +6027,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdec6181be75b1f44a26201f16c0ba6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1619068794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619068782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b021abcaf5bb8146949b2de3859a9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1620924098

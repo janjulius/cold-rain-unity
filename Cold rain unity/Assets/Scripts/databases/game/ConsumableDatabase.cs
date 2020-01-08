@@ -312,7 +312,17 @@ namespace Assets.Scripts.databases.game
             };
         }
 
-        public bool IsEdible(int id)
-        => items.Cast<Food>().ToList().Where(c => c.addedId == id).First() != null;
+        public bool IsEdible(int id)
+        {
+            var foodList = items.Cast<Food>();
+
+            foreach(Food f in foodList)
+            {
+                if (f.cookedId == id)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
