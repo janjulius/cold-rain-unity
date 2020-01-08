@@ -29,7 +29,7 @@ namespace Assets.Scripts.container
         /// <summary>
         /// the display for the container
         /// </summary>
-        private ContainerDisplay containerDisplay;
+        protected ContainerDisplay containerDisplay;
 
         /// <summary>
         /// Itemdatabase

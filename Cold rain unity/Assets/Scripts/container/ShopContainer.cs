@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.gameinterfaces.shop;
+using Assets.Scripts.item;
+using UnityEngine;
 
 namespace Assets.Scripts.container
 {
@@ -10,9 +13,13 @@ namespace Assets.Scripts.container
     {
         public override void Refresh()
         {
-           // if()
-            base.Refresh();
-
+            Camera.main.GetComponent<GameManager>().ShopInterface.Refresh();
         }
+
+        public ShopContainer(params Item[] items) : base(items)
+        {
+            containerDisplay = Camera.main.GetComponent<GameManager>().ShopInterface;
+        }
+
     }
 }
