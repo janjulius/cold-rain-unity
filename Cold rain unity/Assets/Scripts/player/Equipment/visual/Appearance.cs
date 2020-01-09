@@ -211,7 +211,16 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     legRight.SetLayerOrder(torsoLayer + 5);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+                    break;
+                case FaceDirection.DOWN:
+                    armLeft.SetLayerOrder(torsoLayer - 5);
+                    armRight.SetLayerOrder(torsoLayer + 5);
 
+                    legLeft.SetLayerOrder(torsoLayer);
+                    legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+
+                    legRight.SetLayerOrder(torsoLayer);
+                    legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
                     break;
                 default:
                     foreach (PlayerEquipVisual pv in primitiveVisuals)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
-    class WarriorDialogue2 : Dialogue
+    class WarriorDialogue3 : Dialogue
     {
         public override void Initiate()
         {
@@ -20,15 +20,15 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("Ook ook");
+                    Player("Well that was unexpected");
                     stage++;
                     break;
                 case 1:
-                    Npc("Oeh oe ah aah!");
+                    Npc("he");
                     stage = 100;
                     break;
                 case 100:
-                    OpenShop(ShopConstants.WARRION_SHOP_ARMOR);
+                    OpenShop(ShopConstants.WARRION_SHOP_AMMO);
                     End();
                     break;
             }
@@ -41,7 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
-            Npc($"Me warrior");
+            Npc($"WATCH OUT! im so cunning and sharp I might just cut you.");
             stage = 0;
             return true;
         }
