@@ -39,6 +39,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"We dabbing out here");
             stage = 0;
             return true;

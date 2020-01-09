@@ -40,6 +40,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"Hey I am gamer girl from denmark :)");
             stage = 0;
             return true;

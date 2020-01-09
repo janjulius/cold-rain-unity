@@ -39,6 +39,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"Hello there young one, can I help you?");
             stage = 0;
             return true;

@@ -41,6 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"Hello! My name is {NPC.EntityName}.");
             stage = 0;
             return true;

@@ -39,6 +39,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"'Sup boss");
             stage = 0;
             return true;

@@ -41,6 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"Archery is a fine art");
             stage = 0;
             return true;

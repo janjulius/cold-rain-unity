@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.dialogue;
+using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.logger;
 using Assets.Scripts.player.Equipment.visual;
 using System;
@@ -34,6 +35,7 @@ namespace Assets.Scripts.npc
         public override void Interact(Entity sender)
         {
             base.Interact(sender);
+            GameConsole.Instance.SendDevMessage($"Interacting with ({name})");
             CrLogger.Log(this, $"Interacting with ({name})", CrLogger.LogType.DEFAULT);
         }
 

@@ -41,6 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"Oh lord, the sheer beauty of a flying arrow gives me chills down my spine");
             stage = 0;
             return true;

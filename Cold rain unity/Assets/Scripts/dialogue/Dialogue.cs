@@ -20,8 +20,13 @@ namespace Assets.Scripts.dialogue
 
         public override void Initiate()
         {
-            base.StartInitiate();
+            base.Initiate();
             handler = Camera.main.GetComponent<DialogueHandler>();
+        }
+
+        public override void StartInitiate()
+        {
+            base.StartInitiate();
             NPC = GetComponent<Entity>();
             if (player == null)
                 player = NPC?.facingEntity?.GetComponent<Player>() ?? FindObjectOfType<Player>();
@@ -60,11 +65,18 @@ namespace Assets.Scripts.dialogue
         {
             Camera.main.GetComponent<GameManager>().LoadShop(id);
         }
-        
-        public abstract bool Open(object[] args);
+
+        public virtual bool Open(object[] args)
+        {
+            handler.SetCurrentDialogue(this);
+            return true;
+        }
         public abstract void End(object[] args);
 
-        public void End() => handler?.Close();
-
+        public void End()
+        {
+            stage = 0;
+            handler?.Close();
+        }
     }
 }

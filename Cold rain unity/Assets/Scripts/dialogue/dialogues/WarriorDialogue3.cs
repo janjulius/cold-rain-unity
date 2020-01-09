@@ -41,6 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"WATCH OUT! im so cunning and sharp I might just cut you.");
             stage = 0;
             return true;

@@ -41,6 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc($"{NPC.EntityName}'s the name, leader of the LIVESTOCK GANG.");
             stage = 0;
             return true;
