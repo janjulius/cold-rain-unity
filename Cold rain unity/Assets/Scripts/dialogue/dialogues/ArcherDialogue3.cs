@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
-    class HunterDialogue : Dialogue
+    class ArcherDialogue3 : Dialogue
     {
         public override void Initiate()
         {
@@ -20,15 +20,15 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("HELLO THERE");
+                    Player("u ok?");
                     stage++;
                     break;
                 case 1:
-                    Npc("MonkaS who R U");
+                    Npc("Rather magnificent, thank you for asking kind adventurer!");
                     stage = 100;
                     break;
                 case 100:
-                    OpenShop(ShopConstants.HUNTING_SHOP);
+                    OpenShop(ShopConstants.ARCHER_SHOP_AMMO);
                     End();
                     break;
             }
@@ -41,7 +41,7 @@ namespace Assets.Scripts.dialogue.dialogues
 
         public override bool Open(object[] args)
         {
-            Npc($"{NPC.EntityName} the hunter, pleased to meet you.");
+            Npc($"Oh lord, the sheer beauty of a flying arrow gives me chills down my spine");
             stage = 0;
             return true;
         }
