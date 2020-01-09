@@ -201,6 +201,9 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     legRight.SetLayerOrder(torsoLayer - 5);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    mainHand?.SetLayerOrder(torsoLayer + 100);
+                    offHand?.SetLayerOrder(torsoLayer + 90);
                     break;
                 case FaceDirection.RIGHT:
                     armLeft.SetLayerOrder(torsoLayer - 5);
@@ -211,16 +214,35 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     legRight.SetLayerOrder(torsoLayer + 5);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    mainHand?.SetLayerOrder(torsoLayer + 100);
+                    offHand?.SetLayerOrder(torsoLayer + 90);
                     break;
                 case FaceDirection.DOWN:
-                    armLeft.SetLayerOrder(torsoLayer - 5);
-                    armRight.SetLayerOrder(torsoLayer + 5);
+                    armLeft.SetLayerOrder(torsoLayer + 1);
+                    armRight.SetLayerOrder(torsoLayer + 1);
 
                     legLeft.SetLayerOrder(torsoLayer);
                     legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
 
                     legRight.SetLayerOrder(torsoLayer);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    mainHand?.SetLayerOrder(torsoLayer + 100);
+                    offHand?.SetLayerOrder(torsoLayer + 90);
+                    break;
+                case FaceDirection.UP:
+                    armLeft.SetLayerOrder(torsoLayer - 1);
+                    armRight.SetLayerOrder(torsoLayer - 1);
+
+                    legLeft.SetLayerOrder(torsoLayer);
+                    legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+
+                    legRight.SetLayerOrder(torsoLayer);
+                    legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    mainHand?.SetLayerOrder(torsoLayer - 100);
+                    offHand?.SetLayerOrder(torsoLayer - 90);
                     break;
                 default:
                     foreach (PlayerEquipVisual pv in primitiveVisuals)
