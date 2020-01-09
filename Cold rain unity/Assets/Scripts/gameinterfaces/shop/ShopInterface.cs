@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.container;
+using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.item;
 using Assets.Scripts.shops;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.gameinterfaces.shop
             this.Shop = shop;
             this.player = this.player ?? player;
             titleText.text = Shop.Title;
+            GameConsole.Instance.SendDevMessage($"Loaded shop: {Shop.ToString()}");
             Refresh();
         }
 

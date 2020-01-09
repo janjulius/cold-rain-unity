@@ -63,7 +63,6 @@ namespace Assets.Scripts.gameinterfaces.console
             obj.Message = text;
             obj.Filtered = isFiltered;
             obj.GetComponent<TextMeshProUGUI>().text = text;
-            obj.transform.SetSiblingIndex(0);
             history.Add(obj);
 
             inputfield.text = "";
@@ -108,7 +107,7 @@ namespace Assets.Scripts.gameinterfaces.console
             enabled = !enabled;
             inputfield.gameObject.SetActive(enabled);
             contentField.parent.parent.gameObject.SetActive(enabled);
-            HideButton.GetComponentInChildren<TextMeshProUGUI>().text = enabled ? "Hide\nConsole" : "Show\nConsole";
+            HideButton.GetComponentInChildren<TextMeshProUGUI>().text = enabled ? "Hide Console" : "Show Console";
         }
 
         public void ProcessCommand(string text)

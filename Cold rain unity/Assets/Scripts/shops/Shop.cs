@@ -46,5 +46,10 @@ namespace Assets.Scripts.shops
             foreach (var i in Container.GetItems())
                 PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsShopKey(this, Id, i.Id), i.Amount);
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"Id:{Id}, Title:{Title}, Multipliers: B:x{BuyMultiplier} S:x{SellMultiplier}";
+        }
     }
 }
