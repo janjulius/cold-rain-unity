@@ -15,7 +15,7 @@ namespace Assets.Scripts.dialogue.simpledialogue
             base.Handle();
             switch (stage)
             {
-                case 0:
+                case -1:
                     End();
                     break;
             }

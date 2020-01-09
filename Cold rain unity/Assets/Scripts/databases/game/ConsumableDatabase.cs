@@ -318,17 +318,28 @@ namespace Assets.Scripts.databases.game
             };
         }
 
-        public bool IsEdible(int id)
-        {
-            var foodList = items.Cast<Food>();
-
-            foreach(Food f in foodList)
-            {
-                if (f.cookedId == id)
-                    return true;
-            }
-
-            return false;
+        public bool IsEdible(int id)
+
+        {
+
+            var foodList = items.Cast<Food>();
+
+
+
+            foreach(Food f in foodList)
+
+            {
+
+                if (f.cookedId == id)
+
+                    return true;
+
+            }
+
+
+
+            return false;
+
         }
     }
 }

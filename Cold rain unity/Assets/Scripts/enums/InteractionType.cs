@@ -1,5 +1,6 @@
-﻿public enum InteractionType
+﻿[System.Flags]
+public enum InteractionType
 {
-    NONE,
-    DIALOGUE,
+    DIALOGUE = (1 << 0),
+    SHOP = ( 1 << 1),
 }
