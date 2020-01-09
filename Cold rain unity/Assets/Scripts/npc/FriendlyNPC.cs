@@ -28,7 +28,6 @@ namespace Assets.Scripts.npc
 
         public void OnAppearanceLoaded()
         {
-            print("Hola"+ SpawnFaceDir);
             Face(SpawnFaceDir);
         }
 
