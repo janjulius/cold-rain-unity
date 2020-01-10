@@ -24,12 +24,12 @@ namespace Assets.Scripts.dialogue
         {
             base.Initiate();
             handler = Camera.main.GetComponent<DialogueHandler>();
+            NPC = GetComponent<Entity>();
         }
 
         public override void StartInitiate()
         {
             base.StartInitiate();
-            NPC = GetComponent<Entity>();
             if (player == null)
                 player = NPC?.facingEntity?.GetComponent<Player>() ?? FindObjectOfType<Player>();
             handler.SetCurrentDialogue(this);
