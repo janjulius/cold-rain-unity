@@ -101,25 +101,33 @@ public class Player : Entity
         {
             Vector2 offset = new Vector2(transform.position.x - Constants.TILE_SIZE, transform.position.y);
             Face(FaceDirection.LEFT);
+            animator?.SetInteger("KeyCode", (int)3);
             SetDestination(offset);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             Vector2 offset = new Vector2(transform.position.x + Constants.TILE_SIZE, transform.position.y);
             Face(FaceDirection.RIGHT);
+            animator?.SetInteger("KeyCode", (int)1);
             SetDestination(offset);
         }
         else if (Input.GetKey(KeyCode.W))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y + Constants.TILE_SIZE);
             Face(FaceDirection.UP);
+            animator?.SetInteger("KeyCode", (int)2);
             SetDestination(offset);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             Vector2 offset = new Vector2(transform.position.x, transform.position.y - Constants.TILE_SIZE);
             Face(FaceDirection.DOWN);
+            animator?.SetInteger("KeyCode", (int)0);
             SetDestination(offset);
+        }
+        else
+        {
+            animator?.SetInteger("KeyCode", (int)-1);
         }
     }
 
