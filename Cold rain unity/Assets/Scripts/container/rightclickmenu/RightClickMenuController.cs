@@ -107,8 +107,9 @@ public class RightClickMenuController : Node, IPointerClickHandler
         print("dropping " + GetComponent<ItemSlot>().getItem());
         
         ItemSlot slot = GetComponent<ItemSlot>();
+        Item item = slot.getItem();
         gameManager.CreateGroundItem(slot.getItem(), player.transform);
-        slot.GetParentContainer().Remove(slot.getItem());
+        slot.GetParentContainer().Remove(item.Id, item.Amount);
         CloseMenu();
     }
 

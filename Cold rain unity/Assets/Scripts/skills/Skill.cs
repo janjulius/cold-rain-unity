@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.skills
 {
-    public abstract class Skill : SavingModule
+    public abstract class Skill : Node, SavingModule
     {
         protected int level = 1;
         protected int exp = 0;

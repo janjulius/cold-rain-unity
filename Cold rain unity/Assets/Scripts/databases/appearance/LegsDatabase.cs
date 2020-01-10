@@ -23,7 +23,6 @@ namespace Assets.Scripts.databases.appearance
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
             for (int i = 0; i < items.Count; i++)
             {
-                print(i);
                 EquipmentArray[i] = new EquipmentItemMultiArray();
                 EquipmentArray[i].EquipSprites = new Sprite[4];
                 for (int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
