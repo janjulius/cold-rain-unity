@@ -1,14 +1,17 @@
-﻿using Assets.Scripts.shops.constants;
+﻿using Assets.Scripts.contants;
+using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
     class LivestockStoreDialogue : Dialogue
     {
+
+        private int chickenPrice = AnimalPricesConstants.CHICKEN_PRICE;
+        private int goatPrice = AnimalPricesConstants.GOAT_PRICE;
+        private int sheepPrice = AnimalPricesConstants.SHEEP_PRICE;
+        private int cowPrice = AnimalPricesConstants.COW_PRICE;
+
         public override void Initiate()
         {
             base.Initiate();
@@ -27,43 +30,32 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
+                            Player("I'd like to have a look at your shop.");
                             OpenShop(ShopConstants.LIVESTOCK_SHOP);
                             stage = 100;
+                            Continue();
                             break;
                         case 1:
-                            stage = 2;
-                            Continue();
+                            Player("I'd like to purchase a chicken.");
+                            Npc("One chicken, that'll be " + chickenPrice + ". Is that alright?");
+                            stage = 6;
                             break;
                         case 2:
-                            stage = 3;
-                            Continue();
+                            Player("I'd like to purchase a goat.");
+                            Npc("One goat, that'll be " + goatPrice + ". Is that alright?");
+                            stage = 7;
                             break;
                         case 3:
-                            stage = 4;
-                            Continue();
+                            Player("I'd like to purchase a sheep.");
+                            Npc("One sheep, that'll be " + sheepPrice + ". Is that alright?");
+                            stage = 8;
                             break;
                         case 4:
-                            stage = 5;
-                            Continue();
+                            Player("I'd like to purchase a cow.");
+                            Npc("One cow, that'll be " + cowPrice + ". Is that alright?");
+                            stage = 9;
                             break;
                     }
-                    End();
-                    break;
-                case 2:
-                    Npc("One chicken, that'll be 250, is that alright?");
-                    stage = 6;
-                    break;
-                case 3:
-                    Npc("One goat, that'll be 800, is that alright?");
-                    stage = 7;
-                    break;
-                case 4:
-                    Npc("One sheep, that'll be 1000, is that alright?");
-                    stage = 8;
-                    break;
-                case 5:
-                    Npc("One cow, that'll be 1500, is that alright?");
-                    stage = 9;
                     break;
                 case 6:
                     SendOptionsDialogue("Select an option", "Yes", "No");
@@ -85,9 +77,30 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            //remove money add chicken
+                            Player("Yes");
+                            if (player.InventoryContainer.Contains(384))
+                            {
+                                int curMoney = player.InventoryContainer.GetItem(384).Amount;
+                                if (curMoney >= chickenPrice)
+                                {
+                                    player.InventoryContainer.Remove(384, chickenPrice);
+                                    player.InventoryContainer.Refresh();
+                                    //give this homie a chicken
+                                    Npc("The chicken will be added to your barn shortly.");
+                                }
+                                else
+                                {
+                                    Npc("Looks like you don't have enough money for that.");
+                                }
+                            }
+                            else
+                            {
+                                Npc("Looks like you don't have any money with you.");
+                            }
+                            stage = 100;
                             break;
                         case 1:
+                            Player("No");
                             stage = 100;
                             Continue();
                             break;
@@ -97,9 +110,30 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            //remove money add goat
+                            Player("Yes");
+                            if (player.InventoryContainer.Contains(384))
+                            {
+                                int curMoney = player.InventoryContainer.GetItem(384).Amount;
+                                if (curMoney >= goatPrice)
+                                {
+                                    player.InventoryContainer.Remove(384, goatPrice);
+                                    player.InventoryContainer.Refresh();
+                                    //give this homie a goat
+                                    Npc("The goat will be added to your barn shortly.");
+                                }
+                                else
+                                {
+                                    Npc("Looks like you don't have enough money for that.");
+                                }
+                            }
+                            else
+                            {
+                                Npc("Looks like you don't have any money with you.");
+                            }
+                            stage = 100;
                             break;
                         case 1:
+                            Player("No");
                             stage = 100;
                             Continue();
                             break;
@@ -109,9 +143,30 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            //remove money add sheep
+                            Player("Yes");
+                            if (player.InventoryContainer.Contains(384))
+                            {
+                                int curMoney = player.InventoryContainer.GetItem(384).Amount;
+                                if (curMoney >= sheepPrice)
+                                {
+                                    player.InventoryContainer.Remove(384, sheepPrice);
+                                    player.InventoryContainer.Refresh();
+                                    //give this homie a sheep
+                                    Npc("The sheep will be added to your barn shortly.");
+                                }
+                                else
+                                {
+                                    Npc("Looks like you don't have enough money for that.");
+                                }
+                            }
+                            else
+                            {
+                                Npc("Looks like you don't have any money with you.");
+                            }
+                            stage = 100;
                             break;
                         case 1:
+                            Player("No");
                             stage = 100;
                             Continue();
                             break;
@@ -121,9 +176,30 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            //remove money add cow
+                            Player("Yes");
+                            if (player.InventoryContainer.Contains(384))
+                            {
+                                int curMoney = player.InventoryContainer.GetItem(384).Amount;
+                                if (curMoney >= cowPrice)
+                                {
+                                    player.InventoryContainer.Remove(384, cowPrice);
+                                    player.InventoryContainer.Refresh();
+                                    //give this homie a cow
+                                    Npc("The cow will be added to your barn shortly.");
+                                }
+                                else
+                                {
+                                    Npc("Looks like you don't have enough money for that.");
+                                }
+                            }
+                            else
+                            {
+                                Npc("Looks like you don't have any money with you.");
+                            }
+                            stage = 100;
                             break;
                         case 1:
+                            Player("No");
                             stage = 100;
                             Continue();
                             break;
