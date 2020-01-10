@@ -29,6 +29,12 @@ namespace Assets.Scripts.dialogue
             GameConsole.Instance.SendFilteredConsoleMessage($"{entity?.EntityName}: {message}");
         }
 
+        public void SendOptionDialogue(string title, params string[] options)
+        {
+            handler.SetSenderText(title);
+            handler.SetOptionsTexts(options);
+        }
+
         internal void SetCurrentDialogue(Dialogue dialogue)
         {
             CurrentDialogue = dialogue;
@@ -47,6 +53,13 @@ namespace Assets.Scripts.dialogue
         public void Advance()
         {
             CurrentDialogue.Handle();
+        }
+
+        public void HandleOption(int opt)
+        {
+            CurrentDialogue.SelectedOption = opt;
+            handler.OptionButtonPanel.SetActive(false);
+            Advance();
         }
     }
 }
