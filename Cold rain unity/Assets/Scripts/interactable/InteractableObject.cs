@@ -23,7 +23,7 @@ namespace Assets.Scripts.interactable
         public override void Interact(Entity sender)
         {
             base.Interact(sender);
-            switch (this.InteractionType)
+            switch (InteractionType)
             {
                 case InteractionType.DIALOGUE:
                     GetComponent<Dialogue>()?.Open(null);

@@ -18,16 +18,18 @@ namespace Assets.Scripts.dialogue
         private DialogueHandler handler;
         //private DialogueUIHandler handler;
 
+        public int SelectedOption = -1;
+
         public override void Initiate()
         {
             base.Initiate();
             handler = Camera.main.GetComponent<DialogueHandler>();
+            NPC = GetComponent<Entity>();
         }
 
         public override void StartInitiate()
         {
             base.StartInitiate();
-            NPC = GetComponent<Entity>();
             if (player == null)
                 player = NPC?.facingEntity?.GetComponent<Player>() ?? FindObjectOfType<Player>();
             handler.SetCurrentDialogue(this);
@@ -44,6 +46,19 @@ namespace Assets.Scripts.dialogue
                 handler = Camera.main.GetComponent<DialogueHandler>();
             if (stage == -1)
                 handler.Open();
+        }
+
+        /// <summary>
+        /// continues to the next stage without having to call a specific dialogue
+        /// </summary>
+        protected void Continue()
+        {
+            Handle();
+        }
+
+        public void SendOptionsDialogue(string title, params string[] options)
+        {
+            handler?.SendOptionDialogue(title, options);
         }
 
         public void Player(object message)

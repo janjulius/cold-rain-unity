@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.shops.constants;
+﻿using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.shops.constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,43 @@ namespace Assets.Scripts.dialogue.dialogues
             {
                 case 0:
                     Player("Testing dialogue");
-                    stage++;
+                    stage = 2;
                     break;
                 case 1:
                     Npc("Heres my shop");
                     stage = 100;
                     break;
-                case 100:
+                case 2:
+                    SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop");
+                    stage = 3;
+                    break;
+                case 3:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            Npc("Goodbye");
+                            stage = 100;
+                            break;
+                        case 1:
+                            Npc("I dont wanna talk to you");
+                            stage = 4;
+                            break;
+                        case 2:
+                            stage = 5;
+                            GameConsole.Instance.SendDevMessage("3:2  " + stage);
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 4:
+                    Player("Bit rude but ok");
+                    stage = 100;
+                    break;
+                case 5:
                     OpenShop(ShopConstants.TEST_SHOP);
+                    End();
+                    break;
+                case 100:
                     End();
                     break;
             }
