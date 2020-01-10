@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.node;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.saving
@@ -12,26 +16,59 @@ namespace Assets.Scripts.saving
         public override void StartInitiate()
         {
             base.StartInitiate();
-            LoadGame();
+            DontDestroyOnLoad(this);
         }
 
-        void LoadGame()
+        public void LoadGame()
         {
-            GetAssembliesUsingSavingModule();
-            SceneManager.LoadScene(2); //get sceneid from game
+            foreach (var t in GetAssembliesUsingSavingModule())
+            {
+                if (t.IsSubclassOf(typeof(MonoBehaviour))
+                    || t.IsSubclassOf(typeof(Node)) || t.IsSubclassOf(typeof(Atom)))
+                {
+                    object[] ActiveObjectInstances = FindObjectsOfType(t);
+                    foreach (object activeInstance in ActiveObjectInstances)
+                    {
+                        MethodInfo mi = activeInstance.GetType().GetMethod("Load");
+                        if (mi != null)
+                        {
+                            mi.Invoke(activeInstance, null);
+                            GameConsole.Instance.SendDevMessage("[Load] Invoking: " + mi.ToString() + " in " + t.ToString());
+                        }
+                    }
+                }
+            }
         }
 
-        private void GetAssembliesUsingSavingModule()
+        public void SaveGame()
+        {
+            foreach (var t in GetAssembliesUsingSavingModule())
+            {
+                if (t.IsSubclassOf(typeof(MonoBehaviour)) 
+                    || t.IsSubclassOf(typeof(Node)) || t.IsSubclassOf(typeof(Atom)))
+                {
+                    object[] ActiveObjectInstances = FindObjectsOfType(t);
+                    foreach (object activeInstance in ActiveObjectInstances)
+                    {
+                        MethodInfo mi = activeInstance.GetType().GetMethod("Save");
+                        if (mi != null)
+                        {
+                            mi.Invoke(activeInstance, null);
+                            GameConsole.Instance.SendDevMessage("[Load] Invoking: " + mi.ToString() + " in " + t.ToString());
+                        }
+                    }
+                }
+            }
+        }
+
+        private IEnumerable<Type> GetAssembliesUsingSavingModule()
         {
             Type type = typeof(SavingModule);
-            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+            var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p));
-
-            foreach(var t in types)
-            {
-                print("[SAVING MODULE] Loading Class: " + t.Name);
-            }
+            
+            return types;
         }
 
     }

@@ -2,16 +2,18 @@
 using Assets.Scripts.container;
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
+using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
+using Assets.Scripts.saving;
 using Assets.Scripts.stats;
 using Assets.Scripts.styles.hairstyles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : Entity
+public class Player : Entity, SavingModule
 {
     private bool singleLoad = false;
 
@@ -65,7 +67,7 @@ public class Player : Entity
         InventoryContainer.Add(79, 1);
         InventoryContainer.Add(4, 1);
         InventoryContainer.Add(384, 1000);
-        SetLocation(SpawnPosition);
+        //SetLocation(SpawnPosition);
     }
 
     #region References
@@ -147,6 +149,15 @@ public class Player : Entity
                 facingEntity.Interact(this);
             else if (facingInteractable != null)
                 facingInteractable.Interact(this);
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (Constants.DEVELOPER_MODE)
+            {
+                GameConsole.Instance.SendDevMessage("Saving the game...");
+                gameManager.SaveGame();
+                GameConsole.Instance.SendDevMessage("Game was saved.");
+            }
+        }
     }
 
     public override void Face(FaceDirection dir)
@@ -222,7 +233,21 @@ public class Player : Entity
     
     internal void LoadIntoScene(int sceneId, Vector2 endLocation)
     {
+        gameManager.SaveGame();
         SceneManager.LoadScene(sceneId);
         SetLocation(endLocation);
+    }
+
+    public void Load()
+    {
+        Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx")),
+                            PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy")));
+        SpawnPosition = loadPos;
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), transform.position.x);
+        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), transform.position.y);
     }
 }

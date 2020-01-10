@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.quest
 {
-    public class Quest : DbElement
+    public class Quest
     {
+        public string Name { private set; get; }
         public int Stage { private set; get; }
         
         public void Finish(params string[] rewards)

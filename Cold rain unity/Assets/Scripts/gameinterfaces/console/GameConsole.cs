@@ -117,12 +117,12 @@ namespace Assets.Scripts.gameinterfaces.console
 
         public void Load()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

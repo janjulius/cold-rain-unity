@@ -3,11 +3,14 @@ using Assets.Scripts.dialogue;
 using Assets.Scripts.gameinterfaces.dialogue;
 using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
+using Assets.Scripts.saving;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Node
 {
     public GameObject MainCanvas;
     public GameObject EventSystem;
@@ -15,22 +18,30 @@ public class GameManager : MonoBehaviour
     public DialogueHandler DialogueHandler;
     public Player player;
     public GameObject groundItemPrefab;
+    public GameLoader GameLoader;
 
     public ShopInterface ShopInterface { private set; get; }
     private ShopDatabase shopDatabase;
 
-    private void Awake()
+    public override void Initiate()
     {
+        base.Initiate();
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
         DontDestroyOnLoad(EventSystem);
 
         shopDatabase = GetComponent<ShopDatabase>();
         ShopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
-        ShopInterface.SetActive(false);
+        ShopInterface.SetActive(false); 
 
-        if(player == null)
+        if (player == null)
             player = FindObjectOfType<Player>();
+    }
+
+    public override void DelayedStartInitiate()
+    {
+        base.DelayedStartInitiate();
+        LoadGame();
     }
 
     public void CreateGroundItem(Item item, Transform pos)
@@ -44,14 +55,18 @@ public class GameManager : MonoBehaviour
         ShopInterface.SetActive(true);
         ShopInterface.Load(shopDatabase.GetShop(id), player);
     }
-    
-    void Start()
+
+    internal void SaveGame()
     {
-        
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"), SceneManager.GetActiveScene().buildIndex);
+        GameLoader.SaveGame();
+        PlayerPrefs.Save();
     }
-    
-    void Update()
+
+    internal void LoadGame()
     {
-        
+        int loadedScene = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"));
+        SceneManager.LoadScene(loadedScene == 0 ? 2 : loadedScene);
+        GameLoader.LoadGame();
     }
 }
