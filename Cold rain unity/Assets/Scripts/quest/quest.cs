@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.databases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.quest
 {
-    class Quest
+    public class Quest : DbElement
     {
+        public int Stage { private set; get; }
+        
+        public void Finish(params string[] rewards)
+        {
+
+        }
+
+        public void SetStage(int stage)
+        {
+
+        }
+
+        public bool IsStarted() {
+            return Stage >= 0 && Stage <= 100;
+        }
     }
 }
