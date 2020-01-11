@@ -108,7 +108,7 @@ public class RightClickMenuController : Node, IPointerClickHandler
         
         ItemSlot slot = GetComponent<ItemSlot>();
         Item item = slot.getItem();
-        gameManager.CreateGroundItem(slot.getItem(), player.transform);
+        gameManager.CreateGroundItem(new Item(slot.getItem()), player.transform);
         slot.GetParentContainer().Remove(item.Id, item.Amount);
         CloseMenu();
     }

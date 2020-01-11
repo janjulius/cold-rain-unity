@@ -54,7 +54,7 @@ namespace Assets.Scripts.saving
                         if (mi != null)
                         {
                             mi.Invoke(activeInstance, null);
-                            GameConsole.Instance.SendDevMessage("[Load] Invoking: " + mi.ToString() + " in " + t.ToString());
+                            GameConsole.Instance.SendDevMessage("[Save] Invoking: " + mi.ToString() + " in " + t.ToString());
                         }
                     }
                 }
