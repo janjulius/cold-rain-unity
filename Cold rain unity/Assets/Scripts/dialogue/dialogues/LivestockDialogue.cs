@@ -298,7 +298,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 2;
                     break;
                 case 21:
-                    Npc("Both methods have their own unique rewards, it might be smart to do a bit of both. But if you only like farming livestock, thats cool too.");
+                    Npc("Both methods have their own unique rewards so it might be smart to do a bit of both. But if you only like farming livestock, thats cool too.");
                     stage = 22;
                     break;
                 case 22:
