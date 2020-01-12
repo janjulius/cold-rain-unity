@@ -84,6 +84,7 @@ namespace Assets.Scripts.dialogue
         public virtual bool Open(object[] args)
         {
             handler.SetCurrentDialogue(this);
+            NPC.Lock();
             return true;
         }
         public abstract void End(object[] args);
@@ -91,6 +92,7 @@ namespace Assets.Scripts.dialogue
         public void End()
         {
             stage = 0;
+            NPC.Unlock();
             handler?.Close();
         }
     }

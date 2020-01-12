@@ -4,13 +4,20 @@ using Assets.Scripts.logger;
 using Assets.Scripts.npc;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.stats;
+using System;
 using UnityEngine;
 using static Assets.Scripts.contants.Constants;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Entity : Node, Iinteractable
 {
-    public Vector2 SpawnPosition;
+    private Vector2 spawnPosition;
+    public Vector2 SpawnPosition { protected set {
+        spawnPosition = new Vector2(
+            (float)Math.Round(value.x, MidpointRounding.AwayFromZero) / 2,
+            (float)Math.Round(value.y, MidpointRounding.AwayFromZero) / 2);
+        }
+        get { return spawnPosition; } }
     public string EntityName;
 
     protected Animator animator;
@@ -103,7 +110,7 @@ public class Entity : Node, Iinteractable
     protected Interactable facingInteractable;
     #endregion
 
-    private string[] NonPassableLayers = new string[]
+    protected string[] NonPassableLayers = new string[]
     {
         "ObjectCollision", "Entity"
     };
@@ -178,6 +185,19 @@ public class Entity : Node, Iinteractable
     }
 
     /// <summary>
+    /// Locks for a very long time, requires <see cref="Unlock"/>
+    /// </summary>
+    public void Lock()
+    {
+        LockTimer = EntityTimer + 100_000_000f;
+    }
+
+    public void Unlock()
+    {
+        LockTimer = 0;
+    }
+
+    /// <summary>
     /// Updates all the movement code
     /// </summary>
     private void MovementUpdate()
@@ -196,6 +216,22 @@ public class Entity : Node, Iinteractable
             transform.position = targetPosition;
             ForceDestination = false;
         }
+    }
+    
+    protected Vector2 GetNextTargetPosition(FaceDirection faceDirection)
+    {
+        switch (faceDirection)
+        {
+            case FaceDirection.DOWN:
+                return new Vector2(transform.position.x, transform.position.y - TILE_SIZE);
+            case FaceDirection.UP:
+                return new Vector2(transform.position.x, transform.position.y + TILE_SIZE);
+            case FaceDirection.LEFT:
+                return new Vector2(transform.position.x - TILE_SIZE, transform.position.y);
+            case FaceDirection.RIGHT:
+                return new Vector2(transform.position.x + TILE_SIZE, transform.position.y);
+        }
+        return transform.position;
     }
 
     /// <summary>
@@ -219,10 +255,11 @@ public class Entity : Node, Iinteractable
     /// Set the next destination of this entity
     /// </summary>
     /// <param name="loc"></param>
-    public void SetDestination(Vector2 loc)
+    public virtual void SetDestination(Vector2 loc)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorDirection(FaceDirection), Constants.TILE_SIZE, LayerMask.GetMask(NonPassableLayers));
-        if (hit.collider == null)
+
+        if (hit.collider == null || this is NPC)
         {
             if (CanMove)
             {
@@ -233,7 +270,7 @@ public class Entity : Node, Iinteractable
         }
     }
 
-    private Vector2 GetVectorDirection(FaceDirection dir)
+    protected Vector2 GetVectorDirection(FaceDirection dir)
     {
         if (dir == FaceDirection.DOWN)
             return Vector2.down;
