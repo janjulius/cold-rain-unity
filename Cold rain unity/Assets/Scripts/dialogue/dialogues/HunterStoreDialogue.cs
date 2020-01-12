@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -29,13 +25,13 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 0:
                             OpenShop(ShopConstants.HUNTING_SHOP);
                             stage = 100;
+                            Continue();
                             break;
                         case 1:
                             stage = 100;
                             Continue();
                             break;
                     }
-                    End();
                     break;
                 case 100:
                     End();
