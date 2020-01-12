@@ -14,7 +14,6 @@ namespace Assets.Scripts.npc
     [RequireComponent(typeof(Appearance))]
     public class FriendlyNPC : NPC
     {
-
         protected Dialogue dialogue;
         private Appearance appearance;
         public FaceDirection SpawnFaceDir;
