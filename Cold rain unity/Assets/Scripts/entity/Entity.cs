@@ -11,13 +11,8 @@ using static Assets.Scripts.contants.Constants;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Entity : Node, Iinteractable
 {
-    private Vector2 spawnPosition;
-    public Vector2 SpawnPosition { protected set {
-        spawnPosition = new Vector2(
-            (float)Math.Round(value.x, MidpointRounding.AwayFromZero) / 2,
-            (float)Math.Round(value.y, MidpointRounding.AwayFromZero) / 2);
-        }
-        get { return spawnPosition; } }
+    public Vector2 SpawnPosition;
+    public FaceDirection SpawnFaceDirection;
     public string EntityName;
 
     protected Animator animator;

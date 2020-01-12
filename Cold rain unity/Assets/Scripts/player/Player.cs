@@ -48,6 +48,13 @@ public class Player : Entity, SavingModule
 
     #endregion
 
+    #region Saving
+
+    //This is to ensure the player will not be sitting in an immovable object
+    private bool savingNewScene = false;
+
+    #endregion
+
 
     public override void StartInitiate()
     {
@@ -61,6 +68,7 @@ public class Player : Entity, SavingModule
         LoadInterfaces();
 
         LoadAppearance();
+        Face(SpawnFaceDirection);
 
         InventoryContainer.Add(0, 1);
         InventoryContainer.Add(2, 1);
@@ -233,6 +241,7 @@ public class Player : Entity, SavingModule
     
     internal void LoadIntoScene(int sceneId, Vector2 endLocation)
     {
+        savingNewScene = true;
         gameManager.SaveGame();
         SceneManager.LoadScene(sceneId);
         SetLocation(endLocation);
@@ -243,11 +252,27 @@ public class Player : Entity, SavingModule
         Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx")),
                             PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy")));
         SpawnPosition = loadPos;
+        SpawnFaceDirection = (FaceDirection)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), 0);
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), transform.position.x);
-        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), transform.position.y);
+        Vector2 savingPlayerPos = new Vector2(transform.position.x, transform.position.y);
+        if (savingNewScene)
+        {
+            if (FaceDirection == FaceDirection.DOWN)
+                savingPlayerPos.y += Constants.TILE_SIZE;
+            else if (FaceDirection == FaceDirection.UP)
+                savingPlayerPos.y -= Constants.TILE_SIZE;
+            else if (FaceDirection == FaceDirection.LEFT)
+                savingPlayerPos.x += Constants.TILE_SIZE;
+            else
+                savingPlayerPos.x -= Constants.TILE_SIZE;
+        }
+
+        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), savingPlayerPos.x);
+        PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), savingPlayerPos.y);
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), (int)FaceDirection);
+        savingNewScene = false;
     }
 }
