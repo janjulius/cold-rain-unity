@@ -10,6 +10,7 @@ using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.saving;
 using Assets.Scripts.stats;
 using Assets.Scripts.styles.hairstyles;
+using Assets.Scripts.util;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -258,6 +259,7 @@ public class Player : Entity, SavingModule
     public void Save()
     {
         Vector2 savingPlayerPos = new Vector2(transform.position.x, transform.position.y);
+        savingPlayerPos = MathUtilities.RoundToNearestHalves(savingPlayerPos);
         if (savingNewScene)
         {
             if (FaceDirection == FaceDirection.DOWN)
@@ -269,7 +271,7 @@ public class Player : Entity, SavingModule
             else
                 savingPlayerPos.x -= Constants.TILE_SIZE;
         }
-
+        
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), savingPlayerPos.x);
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), savingPlayerPos.y);
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), (int)FaceDirection);

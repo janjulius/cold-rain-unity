@@ -11,7 +11,7 @@ using static Assets.Scripts.contants.Constants;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Entity : Node, Iinteractable
 {
-    public Vector2 SpawnPosition;
+    public Vector2 SpawnPosition = new Vector2(0.5f, 0.5f);
     public FaceDirection SpawnFaceDirection;
     public string EntityName;
 
