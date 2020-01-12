@@ -124,7 +124,8 @@ public class Entity : Node, Iinteractable
     {
         base.Initiate();
         IsLocked = false;
-        startPosition = SpawnPosition; targetPosition = SpawnPosition;
+        startPosition = SpawnPosition;
+        targetPosition = SpawnPosition;
         SetLayer((int)UnityLayers.ENTITY);
         rb = GetComponent<Rigidbody2D>();
         SetLocation(SpawnPosition);
@@ -157,8 +158,8 @@ public class Entity : Node, Iinteractable
 
     private void UpdateTimers()
     {
-        CanMove = EntityTimer >= MoveBlockTimer;
-        IsLocked = EntityTimer >= LockTimer;
+        CanMove = EntityTimer <= MoveBlockTimer;
+        IsLocked = EntityTimer <= LockTimer;
     }
 
     /// <summary>
@@ -261,7 +262,7 @@ public class Entity : Node, Iinteractable
 
         if (hit.collider == null || this is NPC)
         {
-            if (CanMove)
+            if (!CanMove)
             {
                 timeM = 0;
                 startPosition = transform.position;

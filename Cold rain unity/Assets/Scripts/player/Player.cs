@@ -90,7 +90,7 @@ public class Player : Entity, SavingModule
         base.EntityUpdate();
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
-        if (!IsMoving || !IsLocked)
+        if (!IsMoving || IsLocked)
             CheckMovementKeys();
         
         CheckInterfaceToggleKeys();
