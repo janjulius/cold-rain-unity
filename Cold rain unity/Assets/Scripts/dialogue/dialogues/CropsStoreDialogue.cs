@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -35,7 +31,7 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 100;
                             Continue();
                             break;
-                    } 
+                    }
                     break;
                 case 100:
                     End();
