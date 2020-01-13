@@ -127,7 +127,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 9;
                     break;
                 case 15:
-                    Npc("I've been lookin' to leave this town behind as my cover has been blown. I oughtta find me a place where I can get me some peaceful huntin' without animal protection scum 'round watching my every move.");
+                    Npc("I've been lookin' to leave this town behind as my cover has been blown. I oughtta find me a place where I can get me some peaceful huntin' without animal protection scum 'round watching me every move.");
                     stage = 9;
                     break;
                 case 100:
