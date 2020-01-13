@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -20,7 +16,7 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option","Browse shop", "Why fish?", "How to fish", "Where to fish?", "Progression");
+                    SendOptionsDialogue("Select an option", "Browse shop", "Why fish?", "How to fish", "Where to fish?", "Progression");
                     stage++;
                     break;
                 case 1:
@@ -39,7 +35,7 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 2:
                             Player("How do I fish?");
                             Npc("You buy a fishing rod, harpoon, or arrow on a rope and some bait from me, then you find a good spot, and then you start fishing.");
-                            stage = 2; 
+                            stage = 2;
                             break;
                         case 3:
                             Player("Where can I fish?");
