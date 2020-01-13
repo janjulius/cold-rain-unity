@@ -79,6 +79,8 @@ public class Player : Entity, SavingModule
         //SetLocation(SpawnPosition);
     }
 
+    
+
     #region References
 
     private void GetReferences()
@@ -98,13 +100,15 @@ public class Player : Entity, SavingModule
     {
         base.EntityUpdate();
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
-
-        if (!IsMoving || IsLocked)
+        
+        if (!IsMoving && !IsLocked)
             CheckMovementKeys();
         
         CheckInterfaceToggleKeys();
-        CheckOtherKeys();
+        if (!IsLocked)
+            CheckOtherKeys();
     }
+
 
     private void CheckMovementKeys()
     {
@@ -239,7 +243,20 @@ public class Player : Entity, SavingModule
     {
         appearance.SetEquipment(eq, item, FaceDirection);
     }
-    
+
+    #region Quests
+    internal void SetQuestStage(int id, int stage)
+    {
+        gameManager.SetQuestStage(id, stage);
+    }
+
+    internal int GetQuestStage(int id)
+    {
+        return gameManager.GetQuestStage(id);
+    }
+    #endregion
+
+
     internal void LoadIntoScene(int sceneId, Vector2 endLocation)
     {
         savingNewScene = true;
@@ -247,6 +264,8 @@ public class Player : Entity, SavingModule
         SceneManager.LoadScene(sceneId);
         SetLocation(endLocation);
     }
+
+
 
     public void Load()
     {

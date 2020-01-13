@@ -45,11 +45,12 @@ public class Skills : Node, SavingModule
         };
     }
     
-    public Skill GetSkill(int id)
-    {
-        return skills[id];
-    }
+    public Skill GetSkill(int id) =>
+        skills[id];
 
+    public Skill GetSkill(SKILLS skill) =>
+        GetSkill((int)skill);
+    
     public void Load()
     {
 

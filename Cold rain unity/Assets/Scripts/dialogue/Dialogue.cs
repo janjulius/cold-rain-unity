@@ -18,12 +18,15 @@ namespace Assets.Scripts.dialogue
         private DialogueHandler handler;
         //private DialogueUIHandler handler;
 
+        protected GameManager gameManager;
+
         public int SelectedOption = -1;
 
         public override void Initiate()
         {
             base.Initiate();
             handler = Camera.main.GetComponent<DialogueHandler>();
+            gameManager = Camera.main.GetComponent<GameManager>();
             NPC = GetComponent<Entity>();
         }
 

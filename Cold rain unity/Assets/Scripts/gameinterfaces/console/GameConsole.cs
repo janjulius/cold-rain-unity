@@ -36,6 +36,8 @@ namespace Assets.Scripts.gameinterfaces.console
             UnFilterMessages(); //TODO: make savingmodule load this from prev session
             enabled = true;
             player = Camera.main.GetComponent<GameManager>().player;
+            inputfield.onSelect.AddListener(OnTextFieldSelected);
+            inputfield.onDeselect.AddListener(OnTextFieldDeselected);
         }
 
         private void Update()
@@ -71,15 +73,17 @@ namespace Assets.Scripts.gameinterfaces.console
         public void SendConsoleMessage(string text) => ProcessInput(text, false);
         public void SendFilteredConsoleMessage(string text) => ProcessInput(text, true);
         public void SendDevMessage(string text) { if (Constants.DEVELOPER_MODE) { ProcessInput(text, true); } }
-
-        public void OnTextFieldSelected()
+        
+        private void OnTextFieldSelected(string args0)
         {
-            player.BlockMovement(float.MaxValue);
+            print("Player locked");
+            player.Lock();
         }
 
-        public void OnTextFieldDeselected()
+        public void OnTextFieldDeselected(string args0)
         {
-            player.UnlockMovement();
+            print("Player unlocked");
+            player.Unlock();
         }
 
         public void FilterMessages()
@@ -112,7 +116,7 @@ namespace Assets.Scripts.gameinterfaces.console
 
         public void ProcessCommand(string text)
         {
-
+            CommandHandler.ProcessCommand(player,text);
         }
 
         public void Load()

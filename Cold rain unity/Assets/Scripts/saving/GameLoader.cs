@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.node;
+using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Assets.Scripts.saving
 
         public void LoadGame()
         {
-            foreach (var t in GetAssembliesUsingSavingModule())
+            foreach (var t in Utilities.GetAssembliesOfType(typeof(SavingModule)))
             {
                 if (t.IsSubclassOf(typeof(MonoBehaviour))
                     || t.IsSubclassOf(typeof(Node)) || t.IsSubclassOf(typeof(Atom)))
@@ -42,7 +43,7 @@ namespace Assets.Scripts.saving
 
         public void SaveGame()
         {
-            foreach (var t in GetAssembliesUsingSavingModule())
+            foreach (var t in Utilities.GetAssembliesOfType(typeof(SavingModule)))
             {
                 if (t.IsSubclassOf(typeof(MonoBehaviour)) 
                     || t.IsSubclassOf(typeof(Node)) || t.IsSubclassOf(typeof(Atom)))
@@ -60,16 +61,5 @@ namespace Assets.Scripts.saving
                 }
             }
         }
-
-        private IEnumerable<Type> GetAssembliesUsingSavingModule()
-        {
-            Type type = typeof(SavingModule);
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
-            
-            return types;
-        }
-
     }
 }

@@ -8,15 +8,15 @@ namespace Assets.Scripts.saving
 {
     public static class SavingHelper
     {
-        public static string ConstructPlayerPrefsKey(object caller, string key)
-        {
-            return $"{caller.ToString()}:{key}";
-        }
-
-        public static string ConstructPlayerPrefsShopKey(object caller, int shopId, int itemId)
-        {
-            return $"{caller.ToString()}:{shopId}:{itemId}";
-        }
+        public static string ConstructPlayerPrefsKey(object caller, string key)=>
+            $"{caller.ToString()}:{key}";
+        
+        public static string ConstructPlayerPrefsShopKey(object caller, int shopId, int itemId)=>
+            $"{caller.ToString()}:{shopId}:{itemId}";
+        
+        public static string ConstructPlayerPrefsQuestKey(object caller, string questName)=>
+            $"{caller.ToString()}:{questName}";
+        
 
     }
 }

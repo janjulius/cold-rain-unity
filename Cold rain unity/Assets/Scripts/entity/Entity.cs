@@ -4,6 +4,7 @@ using Assets.Scripts.logger;
 using Assets.Scripts.npc;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.stats;
+using Assets.Scripts.util;
 using System;
 using UnityEngine;
 using static Assets.Scripts.contants.Constants;
@@ -280,11 +281,14 @@ public class Entity : Node, Iinteractable
 
     public void SetLocation(Vector2 loc)
     {
-        print($"Setting location for {name} to {loc}");
+        Vector2 l = MathUtilities.RoundToNearestHalves(loc);
         ForceDestination = true;
-        startPosition = loc;
-        targetPosition = loc;
+        startPosition = l;
+        targetPosition = l;
     }
+
+    public void SetLocation(float x, float y)
+        => SetLocation(new Vector2(x, y));
 
     public virtual void Face(FaceDirection dir)
     {
