@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -55,7 +51,7 @@ namespace Assets.Scripts.dialogue.dialogues
                             Npc("See ya");
                             stage = 100;
                             break;
-                    } 
+                    }
                     break;
                 case 4:
                     Npc("I've been hunting 'round this town for all my goddamn life and the wildlife has been doing perfectly well regardless! But then the pests appeared.");
