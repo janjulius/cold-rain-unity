@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
-    class TestDialogue : Dialogue
+    class TitoDialogue : Dialogue
     {
         public override void Initiate()
         {
@@ -18,6 +19,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
@@ -29,7 +31,10 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 2:
-                    SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop");
+                    if (!titoTutorialQuest.IsStarted())
+                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "Do you have any quests?");
+                    else
+                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "About my quest...");
                     stage = 3;
                     break;
                 case 3:
@@ -45,8 +50,24 @@ namespace Assets.Scripts.dialogue.dialogues
                             break;
                         case 2:
                             stage = 5;
-                            GameConsole.Instance.SendDevMessage("3:2  " + stage);
                             Continue();
+                            break;
+                        case 3:
+                            if (gameManager.GetQuestById(0).IsStarted())
+                            {
+                                switch (titoTutorialQuest.Stage)
+                                {
+                                    case 1:
+                                        stage = 100;
+                                        Npc("Glad you are helping, please get my package from the hunter, he lives south west from here.");
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                stage = 6;
+                                Npc("I do, actually perhaps you wanna go ahead and meet all the towns folks and whilst you do that you can go ahead and grab my package?");
+                            }
                             break;
                     }
                     break;
@@ -56,6 +77,10 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 5:
                     OpenShop(ShopConstants.TEST_SHOP);
+                    End();
+                    break;
+                case 6:
+                    gameManager.ProposeQuest(0);
                     End();
                     break;
                 case 100:
