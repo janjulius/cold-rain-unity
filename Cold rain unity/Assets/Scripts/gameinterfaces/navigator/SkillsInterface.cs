@@ -13,7 +13,8 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public GameObject slotPrefab;
         private SkillSlot[] savedSlots;
         private Skills skills;
-        
+        public GameObject InformationPanel;
+
         //public void Refresh(Skills skills)
         //{
         //    this.skills = skills;
@@ -30,8 +31,8 @@ namespace Assets.Scripts.gameinterfaces.navigator
             {
                 GameObject slot = Instantiate(slotPrefab, Vector2.zero, Quaternion.identity, transform);
                 savedSlots[i] = slot.GetComponent<SkillSlot>();
-                savedSlots[i].SkillText.text = skills.skills[i].Name;
-                //savedSlots[i].SkillImage
+                savedSlots[i].Load(skills.GetSkill(i), InformationPanel);
+                savedSlots[i].SkillImage.sprite = Resources.Load<Sprite>($"Skills/{i}");
             }
             Refresh();
         }
@@ -40,7 +41,7 @@ namespace Assets.Scripts.gameinterfaces.navigator
         {
             for(int i = 0; i < savedSlots.Length; i++)
             {
-                savedSlots[i].Refresh(skills.skills[i].GetLevel().ToString());
+                savedSlots[i].Refresh();
             }
         }
     }

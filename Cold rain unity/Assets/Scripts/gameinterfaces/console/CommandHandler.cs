@@ -55,6 +55,8 @@ namespace Assets.Scripts.gameinterfaces.console
                         int id = Convert.ToInt32(cmd[1]);
                         int stage = Convert.ToInt32(cmd[2]);
                         player.SetQuestStage(id, stage);
+                        GameConsole.Instance.SendDevMessage($"Set quest ({id}) stage to: {player.GetQuestStage(id).ToString()}");
+
                         return true;
                     }
 
@@ -66,14 +68,14 @@ namespace Assets.Scripts.gameinterfaces.console
                             return false;
                         }
                         int id = Convert.ToInt32(cmd[1]);
-                        GameConsole.Instance.SendDevMessage(player.GetQuestStage(id).ToString());
+                        GameConsole.Instance.SendDevMessage($"Set quest ({id}) stage to: {player.GetQuestStage(id).ToString()}");
 
                         return true;
                     }
             }
 
 
-
+            GameConsole.Instance.SendDevMessage("Command not recognized.");
             return false;
         }
 
