@@ -1,13 +1,13 @@
 ﻿using Assets.Scripts.databases.game.shops;
 using Assets.Scripts.dialogue;
 using Assets.Scripts.gameinterfaces.dialogue;
+using Assets.Scripts.gameinterfaces.quest;
 using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
 using Assets.Scripts.quest;
 using Assets.Scripts.saving;
 using Assets.Scripts.util;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -28,6 +28,7 @@ public class GameManager : Node
     private ShopDatabase shopDatabase;
 
     private List<Quest> questList = new List<Quest>();
+    public QuestRequestInterface QuestRequestInterface { private set; get; }
 
     public override void Initiate()
     {
@@ -40,36 +41,13 @@ public class GameManager : Node
         ShopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
         ShopInterface.SetActive(false);
 
+        QuestRequestInterface = MainCanvas.GetComponentInChildren<QuestRequestInterface>();
+        QuestRequestInterface.SetActive(false);
+
         InitializeQuests();
 
         if (player == null)
             player = FindObjectOfType<Player>();
-    }
-
-    private void InitializeQuests()
-    {
-        IEnumerable<Type> quests = Utilities.GetAssembliesOfType(typeof(Quest));
-        foreach(var q in quests)
-        {
-            if (!q.GetTypeInfo().IsAbstract)
-            {
-                Quest quest = (Quest)Activator.CreateInstance(q);
-                questList.Add(quest.Initialize());
-                quest.Load();
-            }
-        }
-
-        for(int i = 0; i < questList.Count(); i++)
-        {
-            print(i + " quest: " + questList[i].Name + " " + questList[i].Id + " stage: " + questList[i].Stage);
-        }
-
-        questList.OrderBy(q => q.Id);
-    }
-
-    public Quest GetQuestByType(Type t)
-    {
-        return questList.Where(q => q.GetType() == t).FirstOrDefault();
     }
 
     public override void DelayedStartInitiate()
@@ -105,6 +83,33 @@ public class GameManager : Node
         GameLoader.LoadGame();
     }
 
+    #region Quests
+    private void InitializeQuests()
+    {
+        IEnumerable<Type> quests = Utilities.GetAssembliesOfType(typeof(Quest));
+        foreach (var q in quests)
+        {
+            if (!q.GetTypeInfo().IsAbstract)
+            {
+                Quest quest = (Quest)Activator.CreateInstance(q);
+                questList.Add(quest.Initialize());
+                quest.Load();
+            }
+        }
+
+        questList.OrderBy(q => q.Id);
+    }
+
+    public Quest GetQuestByType(Type t)
+    {
+        return questList.Where(q => q.GetType() == t).FirstOrDefault();
+    }
+
+    public Quest GetQuestById(int id)
+    {
+        return questList.Where(q => q.Id == id).FirstOrDefault();
+    }
+
     internal void SetQuestStage(int id, int stage)
     {
         Quest quest = questList.Where(q => q.Id == id).FirstOrDefault();
@@ -115,4 +120,11 @@ public class GameManager : Node
     {
         return questList.Where(q => q.Id == id).FirstOrDefault().Stage;
     }
+
+    internal void ProposeQuest(int id)
+    {
+        QuestRequestInterface.SetActive(true);
+        QuestRequestInterface.Load(GetQuestById(id), player);
+    }
+    #endregion
 }

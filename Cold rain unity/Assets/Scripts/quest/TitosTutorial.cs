@@ -12,7 +12,7 @@ namespace Assets.Scripts.quest
         {
             Id = 0;
             Name = "Tito's tutorial";
-            Description = "Tito will tell you to meet the locals of the town.";
+            Description = "Tito will tell you to meet the locals of the town and get some of his items to him.";
             Rewards = "100 coins\nA plushie of your choice\n150 Artisan experience.";
             return this;
         }

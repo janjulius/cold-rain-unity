@@ -1,10 +1,6 @@
-﻿using Assets.Scripts.databases;
+﻿using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.saving;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.quest
@@ -24,7 +20,7 @@ namespace Assets.Scripts.quest
 
         public void Finish(params string[] rewards)
         {
-
+            Stage = 1000;
         }
 
         public void SetStage(int stage)
@@ -32,8 +28,22 @@ namespace Assets.Scripts.quest
             Stage = stage;
         }
 
-        public bool IsStarted() {
-            return Stage >= 0 && Stage <= 100;
+        public bool IsStarted()
+        {
+            return Stage >= 1 && Stage <= 1000;
+        }
+
+        public bool IsCompleted() =>
+            Stage >= 1000;
+
+
+        internal void Accept()
+        {
+            if (Stage == 0)
+            {
+                GameConsole.Instance.SendConsoleMessage($"You accepted the quest: {Name}");
+                Stage++;
+            }
         }
 
         public void Load()
