@@ -18,6 +18,7 @@ namespace Assets.Scripts.gameinterfaces.console
         public Transform contentField;
         private const int maxTextFields = 100;
         private List<ConsoleMessage> history = new List<ConsoleMessage>();
+        private GameManager gameManager;
         private Player player;
 
         public Button FilterButton;
@@ -35,7 +36,8 @@ namespace Assets.Scripts.gameinterfaces.console
             base.StartInitiate();
             UnFilterMessages(); //TODO: make savingmodule load this from prev session
             enabled = true;
-            player = Camera.main.GetComponent<GameManager>().player;
+            gameManager = Camera.main.GetComponent<GameManager>();
+            player = gameManager.player;
             inputfield.onSelect.AddListener(OnTextFieldSelected);
             inputfield.onDeselect.AddListener(OnTextFieldDeselected);
         }
@@ -68,6 +70,9 @@ namespace Assets.Scripts.gameinterfaces.console
             history.Add(obj);
 
             inputfield.text = "";
+
+
+
         }
 
         public void SendConsoleMessage(string text) => ProcessInput(text, false);
@@ -76,13 +81,11 @@ namespace Assets.Scripts.gameinterfaces.console
         
         private void OnTextFieldSelected(string args0)
         {
-            print("Player locked");
             player.Lock();
         }
 
         public void OnTextFieldDeselected(string args0)
         {
-            print("Player unlocked");
             player.Unlock();
         }
 
@@ -116,7 +119,7 @@ namespace Assets.Scripts.gameinterfaces.console
 
         public void ProcessCommand(string text)
         {
-            CommandHandler.ProcessCommand(player,text);
+            CommandHandler.ProcessCommand(gameManager,text);
         }
 
         public void Load()

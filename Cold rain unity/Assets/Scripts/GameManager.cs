@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,15 @@ public class GameManager : Node
     private List<Quest> questList = new List<Quest>();
     public QuestRequestInterface QuestRequestInterface { private set; get; }
 
+    [SerializeField] public int gameTime { private set; get; }
+    [SerializeField] public int day { private set; get; } = 0;
+    /// <summary>
+    /// The amount of seconds delay when the time gets updated again
+    /// </summary>
+    private int UpdateTimeDelay = 1;
+    public TextMeshProUGUI TimeText;
+    public TextMeshProUGUI DayText; 
+
     public override void Initiate()
     {
         base.Initiate();
@@ -46,8 +56,48 @@ public class GameManager : Node
 
         InitializeQuests();
 
+        SetDayText();
+        InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
+        UpdateClock();
+
         if (player == null)
             player = FindObjectOfType<Player>();
+    }
+    
+    public void UpdateClock()
+    {
+        gameTime += UpdateTimeDelay * 5;
+        SetClockText();
+        if (gameTime > 1440)
+        {
+            gameTime = 0;
+            day++;
+            SetDayText();
+        }
+    }
+
+    private void SetClockText()
+    {
+        int hrs = (int)gameTime / 60;
+        int mins = (int)gameTime - (hrs * 60);
+        TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}";
+    }
+
+    private void SetDayText()
+    {
+        DayText.text = $"Day {day}";
+    }
+    
+    internal void SetTime(int time)
+    {
+        gameTime = time;
+        SetClockText();
+    }
+
+    internal void SetDay(int day)
+    {
+        this.day = day;
+        SetDayText();
     }
 
     public override void DelayedStartInitiate()
@@ -72,6 +122,11 @@ public class GameManager : Node
     {
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"), SceneManager.GetActiveScene().buildIndex);
         questList.ForEach(q => q.Save());
+
+        //time and day
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), day);
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), gameTime);
+
         GameLoader.SaveGame();
         PlayerPrefs.Save();
     }
@@ -80,8 +135,15 @@ public class GameManager : Node
     {
         int loadedScene = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"));
         SceneManager.LoadScene(loadedScene == 0 ? 2 : loadedScene);
+        questList.ForEach(q => q.Load());
+
+        //time and day
+        day = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), 0);
+        gameTime = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), 0);
+
         GameLoader.LoadGame();
     }
+
 
     #region Quests
     private void InitializeQuests()
