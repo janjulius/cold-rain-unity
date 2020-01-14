@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.quest;
+using System;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -12,6 +13,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
@@ -52,12 +54,37 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 0;
                     break;
                 case 3:
-                    SendOptionsDialogue("Select an option", "How do I make cheese?", "How do I make jam?", "How do I make leather armor?", "Goodbye", "-previous page-");
+                    SendOptionsDialogue("Select an option", "-previous page-", "How to work the machines", "About a quest", "Goodbye");
                     stage++;
                     break;
                 case 4:
                     switch (SelectedOption)
                     {
+                        case 1:
+                            Player("How do I work the machines?");
+                            stage++;
+                            break;
+                        case 2:
+                            Player("About a quest..");
+                            stage = 7;
+                            break;
+                        case 3:
+                            Player("Goodbye");
+                            Npc("Oh, you're leaving..");
+                            stage = 100;
+                            break;
+                        case 0:
+                            stage = 0;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 5:
+                    SendOptionsDialogue("Select an option", "How to make cheese", "How to make jam", "How to make leather armor", "-previous page-");
+                    stage++;
+                    break;
+                case 6:
+                    switch (SelectedOption){
                         case 0:
                             Player("How do I make cheese?");
                             Npc("You don't"); //write this when artisan has been fully worked out.
@@ -71,12 +98,42 @@ namespace Assets.Scripts.dialogue.dialogues
                             Npc("You don't"); //write this when artisan has been fully worked out.
                             break;
                         case 3:
-                            Player("Goodbye");
-                            Npc("Oh, you're leaving?");
-                            stage = 100;
+                            stage = 3;
+                            Continue();
                             break;
-                        case 4:
-                            stage = 0;
+                    }
+                    break;
+                case 7:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 2)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 3;
+                    }
+                    else if (titoTutorialQuest.Stage >= 2)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 8:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Harold sent me here to borrow your ladder.");
+                            if (titoTutorialQuest.Stage == 2)
+                            {
+                                Npc("Ah, my ladder is over at Blake's. Blake runs the livestock shop east of here. If you can get my ladder from him you can use it but be sure to bring it back to me afterwards.");
+                                stage = 100;
+                                titoTutorialQuest.SetStage(3);
+                            }
+                            else
+                            {
+                                Npc("Blake has my ladder right now, you can find him in the livestock shop east of here.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 3;
                             Continue();
                             break;
                     }

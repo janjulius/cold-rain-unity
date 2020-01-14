@@ -27,7 +27,7 @@ namespace Assets.Scripts.item
             }
             else
             {
-                if (player.InventoryContainer.HasFreeSlots())
+                if (!player.InventoryContainer.HasFreeSlots())
                 {
                     GameConsole.Instance.SendFilteredConsoleMessage("You have no room to carry this item.");
                 }

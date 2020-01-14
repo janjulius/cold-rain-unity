@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.shops.constants;
+﻿using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -13,10 +14,11 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Browse store", "What's wrong with warriors", "Weaponry", "Progression", "Goodbye");
+                    SendOptionsDialogue("Select an option", "Browse store", "What's wrong with warriors", "Weaponry", "Progression", "-Next page-");
                     stage++;
                     break;
                 case 1:
@@ -43,9 +45,8 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 12;
                             break;
                         case 4:
-                            Player("Goodbye");
-                            Npc("It fare thee well");
-                            stage = 100;
+                            stage = 13;
+                            Continue();
                             break;
                     }
                     break;
@@ -93,6 +94,67 @@ namespace Assets.Scripts.dialogue.dialogues
                     Npc("If you manage to defeat the giant slime, we will obtain leadership over the guild with you at the top.");
                     stage = 0;
                     break;
+                case 13:
+                    SendOptionsDialogue("Select an option", "-Previous page-", "About a quest..", "Goodbye");
+                    stage++;
+                    break;
+                case 14:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            stage = 0;
+                            Continue();
+                            break;
+                        case 1:
+                            Player("About a quest..");
+                            stage++;
+                            break;
+                        case 2:
+                            Player("Goodbye");
+                            Npc("It fare thee well");
+                            stage = 100;
+                            break;
+                    }
+                    break;
+                case 15:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 7)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 13;
+                    }
+                    else if (titoTutorialQuest.Stage >= 7)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 16:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Clara sent me to fetch her a poem written by you.");
+                            if (titoTutorialQuest.Stage == 7)
+                            {
+                                Npc("Alas, I forgot. I was ment to write her a poem. I will write a poem right now, could you do me a favor in the meantime and fetch my husband's ring?");
+                                stage++;
+                            }
+                            else
+                            {
+                                Npc("I'm writing the poem, go and fetch my husband's marriage ring. His name is Sword and he runs the warrior section in this building.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 13;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 17:
+                    Npc("The man's dumber than a fish so I can hardly imagine he is emotionally invested in the marriage ring and we could really use some extra money. Sword, my husband, runs the warrior section in this building.");
+                    titoTutorialQuest.SetStage(8);
+                    stage = 100;
+                    break;
                 case 100:
                     End();
                     break;
@@ -107,10 +169,18 @@ namespace Assets.Scripts.dialogue.dialogues
         public override bool Open(object[] args)
         {
             base.Open(args);
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             if (player.Combatstate == Combatstate.WARRIOR)
             {
-                Npc("Shoo, get away, ape.");
-                stage = 100;
+                if (titoTutorialQuest.Stage >= 7)
+                {
+                    stage = 16;
+                }
+                else
+                {
+                    Npc("Shoo, get away, ape.");
+                    stage = 100;
+                }
             }
             else
             {

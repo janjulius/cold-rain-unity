@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.shops.constants;
+﻿using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -13,6 +14,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
@@ -24,7 +26,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 2:
-                    SendOptionsDialogue("Select an option", "Browse store", "Animal protection?", "Hunting?", "Goodbye");
+                    SendOptionsDialogue("Select an option", "Browse store", "Animal protection?", "Hunting?", "About a quest", "Goodbye");
                     stage++;
                     break;
                 case 3:
@@ -46,6 +48,10 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 9;
                             break;
                         case 3:
+                            Player("About a quest..");
+                            stage = 16;
+                            break;
+                        case 4:
                             Player("Goodbye");
                             Npc("See ya");
                             stage = 100;
@@ -124,6 +130,45 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 15:
                     Npc("I've been lookin' to leave this town behind as my cover has been blown. I oughtta find me a place where I can get me some peaceful huntin' without animal protection scum 'round watching me every move.");
                     stage = 9;
+                    break;
+                case 16:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 1)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 2;
+                    }
+                    else if (titoTutorialQuest.Stage >= 1)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 17:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Tito sent me here to pick up a package.");
+                            if (titoTutorialQuest.Stage == 1)
+                            {
+                                Npc("That damned package is up on me roof, I slipped when I was rushing back into me shop and threw the package up there. I was in a rush 'cause those damn animal protection people were chasin' me again.");
+                                stage++;
+                            }
+                            else
+                            {
+                                Npc("I told ya I need a ladder to get it for ya. go see laysee the artisan north of here.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 2;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 18:
+                    Npc("I'm gonna be needin' a ladder to get it back for ya. I think Laysee the artisan has a ladder, go and ask him for it. He lives north of here");
+                    titoTutorialQuest.SetStage(2);
+                    stage = 100;
                     break;
                 case 100:
                     End();

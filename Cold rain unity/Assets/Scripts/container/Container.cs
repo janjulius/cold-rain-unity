@@ -80,7 +80,7 @@ namespace Assets.Scripts.container
 
         public bool Add(Item item)
         {
-            if (HasFreeSlots())
+            if (!HasFreeSlots())
                 return false;
 
             for (int i = 0; i < items.Length; i++)
@@ -332,7 +332,7 @@ namespace Assets.Scripts.container
             return r;
         }
 
-        public bool HasFreeSlots() => GetFreeSlots() < 0;
+        public bool HasFreeSlots() => GetFreeSlots() > 0;
 
         /// <summary>
         /// Gets the items in this container

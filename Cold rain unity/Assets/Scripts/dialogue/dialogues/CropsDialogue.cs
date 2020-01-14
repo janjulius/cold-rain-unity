@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.shops.constants;
+﻿using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -13,10 +14,11 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Browse store", "Crops gang?", "CROPS GANG!", "Farming?", "Goodbye");
+                    SendOptionsDialogue("Select an option", "Browse store", "Crops gang?", "CROPS GANG!", "Farming?", "-Next page-");
                     stage = 1;
                     break;
                 case 1:
@@ -43,44 +45,42 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 2;
                             break;
                         case 4:
-                            Player("Goodbye");
-                            Npc("See ya");
-                            stage = 100;
+                            stage = 2;
+                            Continue();
                             break;
                     }
                     break;
                 case 2:
-                    SendOptionsDialogue("Select an option", "Why farm?", "Crops?", "Farming progression?", "Where to farm?", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Why farm?", "Crops?", "Farming progression?", "-Next page-");
                     stage = 3;
                     break;
                 case 3:
                     switch (SelectedOption)
                     {
                         case 0:
+                            stage = 0;
+                            Continue();
+                            break;
+                        case 1:
                             Player("What's the point of farming?");
                             Npc("It is important for the town that there are farmers because farming is the only way to obtain secondaries for a solid meal. The town would be nothing without meals.");
                             stage = 4;
                             break;
-                        case 1:
+                        case 2:
                             Player("So you farm crops?");
                             Npc("Yes, there are two farming methods; Livestock and crops. My brother next door runs the livestock gang if you're interested in that.");
                             stage = 7;
                             break;
-                        case 2:
+                        case 3:
                             Player("How do I become a good farmer?");
                             Npc("Both farming livestock and farming crops should give you plenty of credibility as a good farmer, so you could do either... or both!");
                             stage = 11;
                             break;
-                        case 3:
-                            Player("Where do I farm crops?");
-                            Npc("You can start off by using my greenhouse, it's behind the shop. once you've gotten experienced enough you can get your own greenhouse.");
-                            stage = 13;
-                            break;
                         case 4:
-                            Player("Goodbye");
-                            Npc("See ya");
-                            stage = 100;
+                            stage = 14;
+                            Continue();
                             break;
+
                     }
                     break;
                 case 4:
@@ -121,7 +121,73 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 13:
                     Npc("Once you have your own greenhouse you will have more patches, more patches means more plants so that should increase you produce.");
-                    stage = 2;
+                    stage = 14;
+                    break;
+                case 14:
+                    SendOptionsDialogue("Select an option", "-Previous Page-", "Where to farm ?", "About a quest..", "Goodbye");
+                    stage++;
+                    break;
+                case 15:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Where do I farm crops?");
+                            Npc("You can start off by using my greenhouse, it's behind the shop. once you've gotten experienced enough you can get your own greenhouse.");
+                            stage = 13;
+                            break;
+                        case 2:
+                            Player("About a quest..");
+                            stage = 16;
+                            break;
+                        case 3:
+                            Player("Goodbye");
+                            Npc("See ya");
+                            stage = 100;
+                            break;
+                        case 0:
+                            stage = 2;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 16:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 4)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 14;
+                    }
+                    else if (titoTutorialQuest.Stage >= 4)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 17:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Blake sent me take back his spoon.");
+                            if (titoTutorialQuest.Stage == 4)
+                            {
+                                Npc("HIS spoon?? I don't understand, mom always said I was her favorite... But I guess she did give to him.. You can take the spoon if you get me something in return.");
+                                stage++;
+                            }
+                            else
+                            {
+                                Npc("Go and get me a permit to grow tomatoes from the mayor. The mayor's house is in the center of town, south west from here.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 14;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 18:
+                    Npc("The mayor hates tomatoes so he refuses to give me a permit to grow tomatoes. Please go and get me a permit anyway.");
+                    stage = 100;
+                    titoTutorialQuest.SetStage(5);
                     break;
                 case 100:
                     End();

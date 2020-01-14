@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.quest;
+using System;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -12,6 +13,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
@@ -96,29 +98,68 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 2;
                     break;
                 case 14:
-                    SendOptionsDialogue("Select an option", "Where to cook?", "Progression", "Goodbye", "-previous page-");
+                    SendOptionsDialogue("Select an option", "-previous page-", "Where to cook?", "Progression", "About a quest..", "Goodbye");
                     stage++;
                     break;
                 case 15:
                     switch (SelectedOption)
                     {
-                        case 0:
+                        case 1:
                             Player("Where can I cook?");
                             Npc("You can cook in your own house when you have one. Once you've become exerienced enough you can even buy a kitchen upgrade and really get cooking.");
                             stage = 14;
                             break;
-                        case 1:
+                        case 2:
                             Player("When can I be called master chef?");
                             Npc("When you've reached the highest possible skill in cooking you can be called master chef. You'll never burn a meal again.");
                             stage = 14;
                             break;
-                        case 2:
+                        case 3:
+                            Player("About a quest..");
+                            stage++;
+                            break;
+                        case 4:
                             Player("Goodbye");
                             Npc("So long");
                             stage = 100;
                             break;
-                        case 3:
+                        case 0:
                             stage = 2;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 16:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 6)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 14;
+                    }
+                    else if (titoTutorialQuest.Stage >= 6)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 17:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Gunther sent me get him an answer to his love letter.");
+                            if (titoTutorialQuest.Stage == 6)
+                            {
+                                Npc("Ugh I was hoping he'd just forget about it if I don't answer. Alright I'll write him an answer, could you go and fetch me a lovely poem from Susan in the meantime? she's a great poet.");
+                                stage = 100;
+                                titoTutorialQuest.SetStage(7);
+                            }
+                            else
+                            {
+                                Npc("I'll write an answer for Gunter if you go and fetch me a poem from Susan. She runs the archery section of the combat guild east from here.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 14;
                             Continue();
                             break;
                     }
