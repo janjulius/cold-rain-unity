@@ -432,6 +432,15 @@ namespace Assets.Scripts.databases
                 new Item(395, "Burnt bird with cheese", true, new Stats(), new SkillRequirement(), "Burnt bird covered in cheese.", false, false, EquipmentType.NONE, 0),
                 new Item(396, "Burnt bird with milk", true, new Stats(), new SkillRequirement(), "Bird with a burnt taste.", false, false, EquipmentType.NONE, 0),
                 new Item(397, "Fried egg", false, new Stats(), new SkillRequirement(), "Sunny side up.", false, false, EquipmentType.NONE, 0),
+                new Item(398, "Tito's package", false, new Stats(), new SkillRequirement(), "I wonder what is in here...", true, false, EquipmentType.NONE, 0),
+                new Item(399, "Laysee's ladder", false, new Stats(), new SkillRequirement(), "That goes up pretty high.", true, false, EquipmentType.NONE, 0),
+                new Item(400, "Blake's milk", false, new Stats(), new SkillRequirement(), "Good for your bones.", true, false, EquipmentType.NONE, 0),
+                new Item(401, "Jake's Blake's spoon", false, new Stats(), new SkillRequirement(), "Filty thief!", true, false, EquipmentType.NONE, 0),
+                new Item(402, "Tomato permit", false, new Stats(), new SkillRequirement(), "This will finally allow Jake to farm tomatoes!", true, false, EquipmentType.NONE, 0),
+                new Item(403, "Clara's answer", false, new Stats(), new SkillRequirement(), "He's not gonna be happy...", true, false, EquipmentType.NONE, 0),
+                new Item(404, "Susan's poem", false, new Stats(), new SkillRequirement(), "Beautifully written.", true, false, EquipmentType.NONE, 0),
+                new Item(405, "Sword's ring", false, new Stats(), new SkillRequirement(), "Yuck.", true , false, EquipmentType.NONE, 0),
+                new Item(406, "Finch's marlin", false, new Stats(), new SkillRequirement(), "Big fish, bit stinky, but big.", true, false, EquipmentType.NONE, 0)
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];

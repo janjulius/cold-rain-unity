@@ -13,7 +13,7 @@ namespace Assets.Scripts.npc.npcs
         public override void Interact(Entity sender)
         {
             base.Interact(sender);
-            dialogue = gameObject.GetComponent<TestDialogue>() ?? gameObject.AddComponent<TestDialogue>();
+            dialogue = gameObject.GetComponent<TitoDialogue>() ?? gameObject.AddComponent<TitoDialogue>();
             dialogue.Open(null);
         }
     }
