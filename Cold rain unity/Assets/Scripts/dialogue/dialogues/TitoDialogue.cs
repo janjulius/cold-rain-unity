@@ -31,11 +31,13 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 2:
-                    if (!titoTutorialQuest.IsStarted())
+                    if (titoTutorialQuest.IsCompleted())
+                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop");
+                    else if (!titoTutorialQuest.IsStarted())
                         SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "Do you have any quests?");
                     else
                         SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "About my quest...");
-                    stage = 3;
+                    stage++;
                     break;
                 case 3:
                     switch (SelectedOption)

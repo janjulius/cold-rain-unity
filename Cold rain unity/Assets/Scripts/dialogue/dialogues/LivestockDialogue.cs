@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.contants;
+using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
 
@@ -20,11 +21,12 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+            Quest titoTutorialQuest = gameManager.GetQuestById(0);
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Browse store", "Buy livestock", "Livestock gang?", "LIVESTOCK GANG!", "Farming?");
-                    stage = 1;
+                    SendOptionsDialogue("Select an option", "Browse store", "Buy livestock", "Livestock gang?", "LIVESTOCK GANG!", "-Next page-");
+                    stage++;
                     break;
                 case 1:
                     switch (SelectedOption)
@@ -42,23 +44,21 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 2:
                             Player("What is this livestock gang thing?");
                             Npc("The livestock gang is a way of living, I can't be bother to explain such a complicated matter to a simpleton like yourself.");
-                            stage = 100;
+                            stage--;
                             break;
                         case 3:
                             Player("LIVESTOCK GANG!");
                             Npc("G A N G  G A N G  L I V E S T O C K  G A N G  H O M E  D O G!");
-                            stage = 100;
+                            stage--;
                             break;
                         case 4:
-                            Player("Can you tell me something about farming?");
-                            Npc("What would you like to hear about?");
                             stage = 2;
+                            Continue();
                             break;
-
                     }
                     break;
                 case 2:
-                    SendOptionsDialogue("Select an option", "Why farm?", "Livestock?", "Farming progression?", "Where to farm?", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-Previous Page-", "Why farm?", "Livestock?", "Farming progression?", "-Next page-");
                     stage = 4;
                     break;
                 case 3:
@@ -69,29 +69,27 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
+                            stage = 0;
+                            Continue();
+                            break;
+                        case 1:
                             Player("What's the point of farming?");
                             Npc("It is important for the town that there are farmers because farming is the only way to obtain secondaries for a solid meal. The town would be nothing without meals.");
                             stage = 14;
                             break;
-                        case 1:
+                        case 2:
                             Player("So you farm livestock?");
                             Npc("Yes, there are two farming methods; Livestock and crops. My brother next door runs the crops gang if you're interested in that.");
                             stage = 17;
                             break;
-                        case 2:
+                        case 3:
                             Player("How do I become a good farmer?");
                             Npc("Both farming livestock and farming crops should give you plenty of credibility as a good farmer, so you could do either... or both!");
                             stage = 21;
                             break;
-                        case 3:
-                            Player("Where do I farm livestock?");
-                            Npc("You can start off by taking care of my livestock, they're in the barn behind the shop. once you've gotten experienced enough you can get your own barn.");
-                            stage = 23;
-                            break;
                         case 4:
-                            Player("Goodbye");
-                            Npc("See ya");
-                            stage = 100;
+                            stage = 24;
+                            Continue();
                             break;
                     }
                     break;
@@ -306,7 +304,73 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 23:
                     Npc("Once you have your own barn you can keep more animals, you can buy the animals from me personally.");
-                    stage = 2;
+                    stage = 24;
+                    break;
+                case 24:
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Where to farm?", "About a quest", "Goodbye");
+                    stage++;
+                    break;
+                case 25:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Where do I farm livestock?");
+                            Npc("You can start off by taking care of my livestock, they're in the barn behind the shop. once you've gotten experienced enough you can get your own barn.");
+                            stage = 23;
+                            break;
+                        case 2:
+                            Player("About a quest..");
+                            stage = 26;
+                            break;
+                        case 3:
+                            Player("Goodbye");
+                            Npc("See ya");
+                            stage = 100;
+                            break;
+                        case 0:
+                            stage = 2;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 26:
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 3)
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 24;
+                    }
+                    else if (titoTutorialQuest.Stage >= 3)
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 27:
+                    switch (SelectedOption)
+                    {
+                        case 1:
+                            Player("Laysee sent me here to retrieve his ladder.");
+                            if (titoTutorialQuest.Stage == 3)
+                            {
+                                Npc("His ladder? I got that stored away quite far.. I'll dig it up if you go and do something for me.");
+                                stage++;
+                            }
+                            else
+                            {
+                                Npc("Go and get my mother's spoon from Jake, he nicked it and I want it back. Jake lives next door on the east.");
+                                stage = 100;
+                            }
+                            break;
+                        case 0:
+                            stage = 24;
+                            Continue();
+                            break;
+                    }
+                    break;
+                case 28:
+                    Npc("My mother always told me that I was her favorite son so she gave me the spoon she got from her mother. But Jake got jealous and nicked my spoon, please get it back for me. Jake lives next door.");
+                    stage = 100;
+                    titoTutorialQuest.SetStage(4);
                     break;
                 case 100:
                     End();
