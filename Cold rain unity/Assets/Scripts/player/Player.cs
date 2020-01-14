@@ -56,6 +56,11 @@ public class Player : Entity, SavingModule
 
     #endregion
 
+    #region playerinfo
+
+    public Combatstate Combatstate { get; private set; }
+    #endregion
+
 
     public override void StartInitiate()
     {
@@ -273,6 +278,7 @@ public class Player : Entity, SavingModule
                             PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy")));
         SpawnPosition = loadPos;
         SpawnFaceDirection = (FaceDirection)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), 0);
+        Combatstate = (Combatstate)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "combatstate"), 0);
     }
 
     public void Save()
@@ -294,6 +300,7 @@ public class Player : Entity, SavingModule
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), savingPlayerPos.x);
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), savingPlayerPos.y);
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), (int)FaceDirection);
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "combatstate"), (int)Combatstate);
         savingNewScene = false;
     }
 }

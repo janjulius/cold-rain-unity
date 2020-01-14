@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -20,8 +16,20 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    OpenShop(ShopConstants.ARCHER_SHOP_ARMOR);
-                    End();
+                    SendOptionsDialogue("Select an option", "Yes", "No");
+                    stage++;
+                    break;
+                case 1:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            OpenShop(ShopConstants.ARCHER_SHOP_ARMOR);
+                            End();
+                            break;
+                        case 1:
+                            End();
+                            break;
+                    }
                     break;
             }
         }
@@ -34,7 +42,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override bool Open(object[] args)
         {
             base.Open(args);
-            Npc($"Would you Like to browse our selection?");
+            Npc($"Would you Like to browse the archer armor shop?");
             stage = 0;
             return true;
         }

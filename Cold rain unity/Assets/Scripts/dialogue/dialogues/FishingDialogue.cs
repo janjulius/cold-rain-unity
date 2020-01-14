@@ -23,9 +23,9 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            Player("I'd like to have a look at your shop");
                             OpenShop(ShopConstants.FISHING_SHOP);
                             stage = 100;
+                            Continue();
                             break;
                         case 1:
                             Player("What's the point of fishing?");

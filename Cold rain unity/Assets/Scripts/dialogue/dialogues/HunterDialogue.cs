@@ -31,7 +31,6 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            Player("I'd like to have a look at your shop.");
                             OpenShop(ShopConstants.HUNTING_SHOP);
                             stage = 100;
                             Continue();
