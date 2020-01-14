@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using Assets.Scripts.skills;
+using Assets.Scripts.math;
 
 namespace Assets.Scripts.gameinterfaces.skills
 {
@@ -13,10 +16,34 @@ namespace Assets.Scripts.gameinterfaces.skills
         public Image SkillImage;
         public TextMeshProUGUI SkillText;
         public TextMeshProUGUI LevelText;
+        private GameObject informationPanel;
 
-        public void Refresh(string levelText)
+        private Skill skill;
+
+        public void Load(Skill skill, GameObject informationPanel)
         {
-            LevelText.text = levelText;
+            this.skill = skill;
+            this.informationPanel = informationPanel;
+        }
+
+        public void MouseEnter()
+        {
+            informationPanel.SetActive(true);
+            var rect = informationPanel.GetComponent<RectTransform>();
+            informationPanel.transform.position = transform.position - new Vector3(-(rect.sizeDelta.x / 2), rect.sizeDelta.y / 2 + GetComponent<RectTransform>().sizeDelta.y, 0);
+            TextMeshProUGUI txt = informationPanel.GetComponentInChildren<TextMeshProUGUI>();
+            txt.text = $"Current Exp: {skill.GetExp()}\nNext level: {ProgressCalculator.getExperienceByLevel(skill.GetLevel() + 1) - skill.GetExp()}";
+        }
+
+        public void MouseExit()
+        {
+            informationPanel.SetActive(false);
+        }
+
+        public void Refresh()
+        {
+            SkillText.text = skill.Name;
+            LevelText.text = skill.GetLevel().ToString();
         }
     }
 }

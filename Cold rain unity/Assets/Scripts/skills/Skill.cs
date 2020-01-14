@@ -38,6 +38,11 @@ namespace Assets.Scripts.skills
             exp = ProgressCalculator.getExperienceByLevel(level);
         }
 
+        internal int GetExp()
+        {
+            return exp;
+        }
+
         private void CheckForLevelUp()
         {
             if (ProgressCalculator.GetLevelByExperience(exp) > level)
