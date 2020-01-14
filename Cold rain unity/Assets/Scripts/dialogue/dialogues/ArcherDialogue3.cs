@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -20,15 +16,30 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("u ok?");
+                    SendOptionsDialogue("Select an option", "Browse store", "About archery", "Goodbye");
                     stage++;
                     break;
                 case 1:
-                    Npc("Rather magnificent, thank you for asking kind adventurer!");
-                    stage = 100;
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            OpenShop(ShopConstants.ARCHER_SHOP_AMMO);
+                            stage = 100;
+                            Continue();
+                            break;
+                        case 1:
+                            Player("I have some questions about archery");
+                            Npc("Unfortunately I cannot provide you with the best information, for that you should visit Susan. Susan can be found in the corner behind the counter");
+                            stage = 0;
+                            break;
+                        case 2:
+                            Player("Goodbye");
+                            Npc("So long");
+                            stage = 100;
+                            break;
+                    }
                     break;
                 case 100:
-                    OpenShop(ShopConstants.ARCHER_SHOP_AMMO);
                     End();
                     break;
             }
@@ -42,8 +53,16 @@ namespace Assets.Scripts.dialogue.dialogues
         public override bool Open(object[] args)
         {
             base.Open(args);
-            Npc($"Oh lord, the sheer beauty of a flying arrow gives me chills down my spine");
-            stage = 0;
+            if (player.Combatstate == Combatstate.WARRIOR)
+            {
+                Npc("Shoo, get away, ape.");
+                stage = 100;
+            }
+            else
+            {
+                Npc($"Good day, elegant visitor. Can I help you?");
+                stage = 0;
+            }
             return true;
         }
     }

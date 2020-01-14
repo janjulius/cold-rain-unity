@@ -28,13 +28,14 @@ namespace Assets.Scripts.dialogue
             handler = Camera.main.GetComponent<DialogueHandler>();
             gameManager = Camera.main.GetComponent<GameManager>();
             NPC = GetComponent<Entity>();
+            if (player == null)
+                player = NPC?.facingEntity?.GetComponent<Player>() ?? FindObjectOfType<Player>();
         }
 
         public override void StartInitiate()
         {
             base.StartInitiate();
-            if (player == null)
-                player = NPC?.facingEntity?.GetComponent<Player>() ?? FindObjectOfType<Player>();
+            
             handler.SetCurrentDialogue(this);
         }
 

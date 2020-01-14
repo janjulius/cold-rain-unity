@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -20,15 +16,30 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("Well that was unexpected");
+                    SendOptionsDialogue("Select an option", "Browse store", "Ask about warriors", "Goodbye");
                     stage++;
                     break;
                 case 1:
-                    Npc("he");
-                    stage = 100;
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            OpenShop(ShopConstants.WARRION_SHOP_AMMO);
+                            stage = 100;
+                            Continue();
+                            break;
+                        case 1:
+                            Player("I have some questions about being a warrior.");
+                            Npc("GO ASK SWORD, HE IN CORNER.");
+                            stage = 0;
+                            break;
+                        case 2:
+                            Player("Goodbye");
+                            Npc("BYE");
+                            stage = 100;
+                            break;
+                    }
                     break;
                 case 100:
-                    OpenShop(ShopConstants.WARRION_SHOP_AMMO);
                     End();
                     break;
             }
@@ -42,8 +53,16 @@ namespace Assets.Scripts.dialogue.dialogues
         public override bool Open(object[] args)
         {
             base.Open(args);
-            Npc($"WATCH OUT! im so cunning and sharp I might just cut you.");
-            stage = 0;
+            if (player.Combatstate == Combatstate.ARCHER)
+            {
+                Npc("BACK OFF SMARTASS.");
+                stage = 100;
+            }
+            else
+            {
+                Npc($"HELLO I HELP?");
+                stage = 0;
+            }
             return true;
         }
     }
