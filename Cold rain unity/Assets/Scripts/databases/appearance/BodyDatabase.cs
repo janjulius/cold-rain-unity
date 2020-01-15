@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.logger;
 using Assets.Scripts.styles.clothingstyles;
-using Assets.Scripts.styles.hairstyles;
 using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
@@ -11,14 +10,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.databases.appearance
 {
-    public class LegsDatabase : CRDatabase
+    public class BodyDatabase : CRDatabase
     {
         public override void BuildDatabase()
         {
-            CrLogger.Log(this, "Building legs database...");
+            CrLogger.Log(this, "Building body database...");
             items = new List<DbElement>()
             {
-                new LegStyle(0, "Back skirt"),
+                new BodyStyle(0, "Default shirt"),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
@@ -28,13 +27,13 @@ namespace Assets.Scripts.databases.appearance
                 EquipmentArray[i].EquipSprites = new Sprite[4];
                 for (int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
-                    string lookfor = $"Legs/{i}/legs_{i}_{GetSideLetter(j)}";
+                    string lookfor = $"Body/{i}/body_{i}_{GetSideLetter(j)}";
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>(lookfor);
                 }
             }
         }
 
-        public Sprite[] GetLegStyleEquipements(int id)
+        public Sprite[] GetBodyStyleEquipements(int id)
         {
             //catch exception because legs could not be added
             return EquipmentArray[id].EquipSprites;
