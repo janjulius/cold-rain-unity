@@ -15,7 +15,7 @@ namespace Assets.Scripts.dialogue.simpledialogue
             base.Handle();
             switch (stage)
             {
-                case -1:
+                case 0:
                     End();
                     break;
             }
@@ -28,6 +28,7 @@ namespace Assets.Scripts.dialogue.simpledialogue
 
         public override bool Open(object[] args)
         {
+            base.Open(args);
             Npc(dialogue);
             stage = 0;
             return true;
