@@ -4,6 +4,7 @@ using Assets.Scripts.gameinterfaces.dialogue;
 using Assets.Scripts.gameinterfaces.quest;
 using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
+using Assets.Scripts.managers;
 using Assets.Scripts.quest;
 using Assets.Scripts.saving;
 using Assets.Scripts.util;
@@ -14,6 +15,7 @@ using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Assets.Scripts.managers.WorldStateManager;
 
 public class GameManager : Node
 {
@@ -30,6 +32,8 @@ public class GameManager : Node
 
     private List<Quest> questList = new List<Quest>();
     public QuestRequestInterface QuestRequestInterface { private set; get; }
+
+    private WorldStateManager worldStateManager;
 
     [SerializeField] public int gameTime { private set; get; }
     [SerializeField] public int day { private set; get; } = 0;
@@ -53,6 +57,8 @@ public class GameManager : Node
 
         QuestRequestInterface = MainCanvas.GetComponentInChildren<QuestRequestInterface>();
         QuestRequestInterface.SetActive(false);
+
+        worldStateManager = GetComponent<WorldStateManager>();
 
         InitializeQuests();
 
@@ -107,6 +113,11 @@ public class GameManager : Node
         gameTime = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), 0);
 
         GameLoader.LoadGame();
+    }
+
+    internal void SetWorldState(int id, int state)
+    {
+        worldStateManager[id] = new WorldState(state);
     }
 
     #region Quests

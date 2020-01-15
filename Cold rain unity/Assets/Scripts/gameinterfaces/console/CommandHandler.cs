@@ -118,9 +118,19 @@ namespace Assets.Scripts.gameinterfaces.console
                 case "day":
 
                     return true;
+
+                case "setstate":
+
+                    if(cmd.Length < 2)
+                    {
+                        GameConsole.Instance.SendDevMessage($"Incorrect command, use: setstate id state");
+                        return false;
+                    }
+                    gameManager.SetWorldState(Convert.ToInt32(cmd[1]), Convert.ToInt32(cmd[2]));
+                    GameConsole.Instance.SendDevMessage($"Set world state: {cmd[1]} to state {cmd[2]}");
+                    break;
             }
-
-
+            
             GameConsole.Instance.SendDevMessage("Command not recognized.");
             return false;
         }
