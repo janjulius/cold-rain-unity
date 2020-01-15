@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28.4
+  m_fontSize: 28.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5583,7 +5583,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 867816269}
-    characterCount: 841
+    characterCount: 702
     spriteCount: 0
     spaceCount: 0
     wordCount: 65
@@ -7486,7 +7486,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.45
+  m_fontSize: 19.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8776,6 +8776,8 @@ GameObject:
   - component: {fileID: 1619068792}
   - component: {fileID: 1619068793}
   - component: {fileID: 1619068794}
+  - component: {fileID: 1619068795}
+  - component: {fileID: 1619068796}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8973,6 +8975,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b021abcaf5bb8146949b2de3859a9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1619068795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619068782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236c34e1e56534842a346fd4c2c67e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1619068796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619068782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64399f2fb520802478ca05d8ac2d92ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1620924098
@@ -11764,6 +11790,21 @@ PrefabInstance:
         type: 3}
       propertyPath: BeardId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460891455600, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: TopColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460891455600, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: TopColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444071460891455600, guid: 67215a82b3b0cb54da43fcb186533229,
+        type: 3}
+      propertyPath: TopColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444071460926515516, guid: 67215a82b3b0cb54da43fcb186533229,
         type: 3}

@@ -26,6 +26,7 @@ namespace Assets.Scripts.player.Equipment.visual
         public int HairId;
         public int BeardId;
         public int LegsId;
+        public int BodyId;
 
         public bool IsMale;
 
@@ -62,6 +63,7 @@ namespace Assets.Scripts.player.Equipment.visual
         private List<PlayerEquipVisual> allVisuals = new List<PlayerEquipVisual>();
 
         private HairDatabase hairDatabase;
+        private BodyDatabase bodyDatabase;
         private LegsDatabase legsDatabase;
         private BeardDatabase beardDatabase;
 
@@ -72,6 +74,7 @@ namespace Assets.Scripts.player.Equipment.visual
             base.Initiate();
 
             hairDatabase = Camera.main.GetComponent<HairDatabase>();
+            bodyDatabase = Camera.main.GetComponent<BodyDatabase>();
             legsDatabase = Camera.main.GetComponent<LegsDatabase>();
             beardDatabase = Camera.main.GetComponent<BeardDatabase>();
 
@@ -109,6 +112,7 @@ namespace Assets.Scripts.player.Equipment.visual
             beard = GetComponentInChildren<Beard>();
             legLeftCloth = GetComponentInChildren<LegLeftCloth>();
             legRightCloth = GetComponentInChildren<LegRightCloth>();
+            torsoCloth = GetComponentInChildren<TorsoCloth>();
             alterVisuals = new PlayerEquipVisual[]
             {
                 hair, beard, legLeftCloth, legRightCloth
@@ -164,6 +168,10 @@ namespace Assets.Scripts.player.Equipment.visual
             legRightCloth.spriteRenderer.flipX = true;
             legRightCloth.EquipmentSprites.SwapValues(1, 3);
             legRightCloth.UpdateSprite(FaceDirection.DOWN);
+
+            torsoCloth.SetColor(TopColor);
+            torsoCloth.EquipmentSprites = bodyDatabase.GetBodyStyleEquipements(BodyId).ToArray();
+            torsoCloth.UpdateSprite(FaceDirection.DOWN);
         }
 
         public void SetEquipment(EquipmentType eqt, Item item, FaceDirection dir)

@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.managers
 {
-    class WorldStateManager : Node
+    public class WorldStateManager : Node
     {
-        public Dictionary<int, short> worldStateDict = new Dictionary<int, short>();
-        public short currentWorldState = 0;
-        public event EventHandler worldStateChanged;
-
-        public override void Initiate()
-        {
-
-        }
-
-        public int this[int id]
+        private Dictionary<int, WorldState> worldStateDict = new Dictionary<int, WorldState>();
+        
+        public WorldState this[int id]
         {
             get
             {
                 if (!worldStateDict.ContainsKey(id))
                 {
-                    worldStateDict.Add(id, currentWorldState);
+                    worldStateDict.Add(id, new WorldState(0));
                 }
                 return worldStateDict[id];
             }
+            set
+            {
+                if (!worldStateDict.ContainsKey(id))
+                {
+                    worldStateDict.Add(id, new WorldState(0));
+                }
+                worldStateDict[id] = value;
+            }
         }
         
-        private void RaiseWorldState(int id)
+        private void RaiseWorldStateChanged(int id)
         {
-            if (worldStateDict.ContainsKey(id))
-            {
-                currentWorldState++;
-            }
+            WorldState state;
+            if (worldStateDict.TryGetValue(id, out state))
+                state.RaiseWorldStateChanged();
         }
     }
 }
