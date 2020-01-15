@@ -14,6 +14,7 @@ namespace Assets.Scripts.managers
         {
             base.OnUpdateState(e, args);
             print("Stateswitchobject called");
+           
         }
     }
 }
