@@ -9,8 +9,8 @@ namespace Assets.Scripts.managers
     class WorldStateManager : Node
     {
         public Dictionary<int, short> worldStateDict = new Dictionary<int, short>();
-        private short currentWorldState = 0;
-
+        public short currentWorldState = 0;
+        public event EventHandler worldStateChanged;
 
         public override void Initiate()
         {
@@ -28,10 +28,13 @@ namespace Assets.Scripts.managers
                 return worldStateDict[id];
             }
         }
-
-        public void setWorldState(int id, short worldState)
+        
+        private void RaiseWorldState(int id)
         {
-            
+            if (worldStateDict.ContainsKey(id))
+            {
+                currentWorldState++;
+            }
         }
     }
 }
