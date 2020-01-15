@@ -465,7 +465,7 @@ namespace Assets.Scripts.databases
 
 
             CrLogger.Log(this, "The item database was built succesfully");
-            CrLogger.Log(this, "Now allows for initialisation of: shops database");
+            CrLogger.Log(this, "Now allows for initialisation of: shops, consumeable database");
             GetComponent<ShopDatabase>().BuildDatabase();
             GetComponent<ConsumableDatabase>().BuildDatabase();
         }
