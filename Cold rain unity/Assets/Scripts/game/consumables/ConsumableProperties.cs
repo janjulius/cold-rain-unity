@@ -16,22 +16,19 @@ namespace Assets.Scripts.game.consumables
 
         private ItemDatabase itemDatabase;
 
-        public override void StartInitiate()
+        public override void Initiate()
         {
-            base.StartInitiate();
+            base.Initiate();
             itemDatabase = Camera.main.GetComponent<GameManager>().GetComponent<ItemDatabase>();
         }
-
-        public ConsumableProperties(int healing, Item newItem)
-        {
-            this.healing = healing;
-            this.newItem = newItem;
-        }
-
+        
         public ConsumableProperties(int healing, int newItem)
         {
             this.healing = healing;
-            this.newItem = itemDatabase.GetItem(newItem);
+            if (newItem == -1)
+                this.newItem = null;
+            else
+                this.newItem = itemDatabase.GetItem(newItem);
         }
     }
 }
