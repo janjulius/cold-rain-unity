@@ -26,7 +26,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 2:
-                    SendOptionsDialogue("Select an option", "Browse store", "Animal protection?", "Hunting?", "About a quest", "Goodbye");
+                    SendOptionsDialogue("Select an option", "Browse store", "Animal protection?", "Why hunt?", "Hunting progression", "-Next page-");
                     stage++;
                     break;
                 case 3:
@@ -43,18 +43,18 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 4;
                             break;
                         case 2:
-                            Player("Tell me something about hunting.");
-                            Npc("What would you like to know?");
-                            stage = 9;
+                            Player("What's the point of hunting?");
+                            Npc("Oh boy where do I begin.. Mother nature is incapable of creating a balanced natural cycle of life and death, and that where the hunter comes in.");
+                            stage = 11;
                             break;
                         case 3:
-                            Player("About a quest..");
-                            stage = 16;
+                            Player("How do I become a good hunter?");
+                            Npc("Huntin' Deer, rodents, ducks, geese and birds is what makes you a good hunter. Once you've hunted down plenty of them you can come and talk to me.");
+                            stage = 15;
                             break;
                         case 4:
-                            Player("Goodbye");
-                            Npc("See ya");
-                            stage = 100;
+                            stage = 9;
+                            Continue();
                             break;
                     }
                     break;
@@ -79,35 +79,33 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 2;
                     break;
                 case 9:
-                    SendOptionsDialogue("Select an option", "Why hunt?", "Hunting progression", "Where do I hunt?", "Hunting methods", "-back-");
+                    SendOptionsDialogue("Select an option", "-Previous Page", "Where do I hunt?", "Hunting methods", "About a quest..", "-Next Page-");
                     stage++;
                     break;
                 case 10:
                     switch (SelectedOption)
                     {
                         case 0:
-                            Player("What's the point of hunting?");
-                            Npc("Oh boy where do I begin.. Mother nature is incapable of creating a balanced natural cycle of life and death, and that where the hunter comes in.");
-                            stage++;
+                            stage = 2;
+                            Continue();
                             break;
                         case 1:
-                            Player("How do I become a good hunter?");
-                            Npc("Huntin' Deer, rodents, ducks, geese and birds is what makes you a good hunter. Once you've hunted down plenty of them you can come and talk to me.");
-                            stage = 15;
-                            break;
-                        case 2:
                             Player("Where can I hunt?");
                             Npc("If yer follow the path out of this store all the way west, there'll be a dirt path i've made over the years draggin' me gear 'round. Follow that.");
                             stage = 9;
                             break;
-                        case 3:
+                        case 2:
                             Player("Tell me about hunting methods.");
                             Npc("No.");// Write this shit with accurate information once the hunter skill's functionality has been added to the game.
                             stage = 9;
                             break;
+                        case 3:
+                            Player("About a quest..");
+                            stage = 16;
+                            break;
                         case 4:
-                            Player("Nevermind");
-                            stage = 2;
+                            stage = 20;
+                            Continue();
                             break;
                     }
                     break;
@@ -197,10 +195,39 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 19:
-                    Npc("Oh yeah that was a joke, I got me that package right here harhar. I'll take that ladder back to Laysee for ya.");
+                    Npc("HAR HAR HAR, that was just a joke me ol' chum, I got me that package right here. I'll take that ladder back to Laysee for ya.");
                     player.InventoryContainer.Remove(399, 1);
                     player.InventoryContainer.Add(398, 1);
                     titoTutorialQuest.SetStage(18);
+                    stage = 100;
+                    break;
+                case 20:
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Master hunter", "Goodbye");
+                    stage++;
+                    break;
+                case 21:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            stage = 9;
+                            Continue();
+                            break;
+                        case 1:
+                            Player("I think I've mastered hunting!");
+                            stage++;
+                            break;
+                        case 2:
+                            Player("Goodbye");
+                            Npc("See ya");
+                            stage = 100;
+                            break;
+                    }
+                    break;
+                case 22:
+                    //if(player.skills.GetSkill(SKILLS.HUNTING).GetLevel()
+                    //{
+                    //    print(player.skills.GetSkill(SKILLS.HUNTING));
+                    //}
                     stage = 100;
                     break;
                 case 100:
