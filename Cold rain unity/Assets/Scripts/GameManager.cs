@@ -63,42 +63,7 @@ public class GameManager : Node
         if (player == null)
             player = FindObjectOfType<Player>();
     }
-    
-    public void UpdateClock()
-    {
-        gameTime += UpdateTimeDelay * 5;
-        SetClockText();
-        if (gameTime > 1440)
-        {
-            gameTime = 0;
-            day++;
-            SetDayText();
-        }
-    }
 
-    private void SetClockText()
-    {
-        int hrs = (int)gameTime / 60;
-        int mins = (int)gameTime - (hrs * 60);
-        TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}";
-    }
-
-    private void SetDayText()
-    {
-        DayText.text = $"Day {day}";
-    }
-    
-    internal void SetTime(int time)
-    {
-        gameTime = time;
-        SetClockText();
-    }
-
-    internal void SetDay(int day)
-    {
-        this.day = day;
-        SetDayText();
-    }
 
     public override void DelayedStartInitiate()
     {
@@ -144,7 +109,6 @@ public class GameManager : Node
         GameLoader.LoadGame();
     }
 
-
     #region Quests
     private void InitializeQuests()
     {
@@ -189,4 +153,45 @@ public class GameManager : Node
         QuestRequestInterface.Load(GetQuestById(id), player);
     }
     #endregion
+
+    #region Clock stuff
+
+    public void UpdateClock()
+    {
+        gameTime += UpdateTimeDelay * 5;
+        SetClockText();
+        if (gameTime > 1440)
+        {
+            gameTime = 0;
+            day++;
+            SetDayText();
+        }
+    }
+
+    private void SetClockText()
+    {
+        int hrs = (int)gameTime / 60;
+        int mins = (int)gameTime - (hrs * 60);
+        TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}";
+    }
+
+    private void SetDayText()
+    {
+        DayText.text = $"Day {day}";
+    }
+
+    internal void SetTime(int time)
+    {
+        gameTime = time;
+        SetClockText();
+    }
+
+    internal void SetDay(int day)
+    {
+        this.day = day;
+        SetDayText();
+    }
+
+    #endregion
+
 }
