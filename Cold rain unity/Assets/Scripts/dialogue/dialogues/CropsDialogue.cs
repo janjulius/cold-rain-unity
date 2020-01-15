@@ -151,7 +151,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 4)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 4 || titoTutorialQuest.Stage > 15)
                     {
                         Npc("I don't have any quests for you");
                         stage = 14;
@@ -166,15 +166,41 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 1:
-                            Player("Blake sent me take back his spoon.");
+                            Player("Blake sent me to take back his spoon.");
                             if (titoTutorialQuest.Stage == 4)
                             {
                                 Npc("HIS spoon?? I don't understand, mom always said I was her favorite... But I guess she did give to him.. You can take the spoon if you get me something in return.");
                                 stage++;
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 5 && titoTutorialQuest.Stage < 14)
                             {
                                 Npc("Go and get me a permit to grow tomatoes from the mayor. The mayor's house is in the center of town, south west from here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 14 && player.InventoryContainer.Contains(402))
+                            {
+                                Player("Here's a permit to grow tomatoes.");
+                                stage = 19;
+                            }
+                            else if (titoTutorialQuest.Stage == 14 && !player.InventoryContainer.Contains(402))
+                            {
+                                Npc("It seems you didn't bring the permit. Go get a new one from Gunther south west of here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 15 && !player.InventoryContainer.Contains(401) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the spoon, you're lucky I gave you a fake one. Here's a new one.");
+                                player.InventoryContainer.Add(401, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 15 && !player.InventoryContainer.Contains(401) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the spoon, you're lucky I gave you a fake one. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 15 && player.InventoryContainer.Contains(401))
+                            {
+                                Npc("You've got the spoon, go and take it to Blake.");
                                 stage = 100;
                             }
                             break;
@@ -188,6 +214,13 @@ namespace Assets.Scripts.dialogue.dialogues
                     Npc("The mayor hates tomatoes so he refuses to give me a permit to grow tomatoes. Please go and get me a permit anyway.");
                     stage = 100;
                     titoTutorialQuest.SetStage(5);
+                    break;
+                case 19:
+                    Npc("Thanks, here's the spoon.");
+                    player.InventoryContainer.Remove(402, 1);
+                    player.InventoryContainer.Add(401, 1);
+                    titoTutorialQuest.SetStage(15);
+                    stage = 100;
                     break;
                 case 100:
                     End();

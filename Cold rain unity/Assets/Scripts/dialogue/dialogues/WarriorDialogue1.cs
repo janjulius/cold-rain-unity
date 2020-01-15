@@ -77,7 +77,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 5:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 8)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 8 || titoTutorialQuest.Stage > 11)
                     {
                         Npc("NO QUEST FOR YOU");
                         stage = 3;
@@ -98,9 +98,35 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("WEDDING RING? WEDDING RING EXPENSIVE. WEDDING RING NOT FOR FREE, ONLY TRADE FOR EXPENSIVE ITEM LIKE MARLIN.");
                                 stage++;
                             }
-                            else
+                            else if (titoTutorialQuest.Stage == 10 && player.InventoryContainer.Contains(406))
+                            {
+                                Player("Here's your marlin.");
+                                stage = 8;
+                            }
+                            else if (titoTutorialQuest.Stage == 10 && !player.InventoryContainer.Contains(406))
+                            {
+                                Npc("YOU DON'T HAVE MARLIN, GO BACK TO FINCH.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 11 && !player.InventoryContainer.Contains(405) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("I SEE YOU LOST RING BUT NO PROBLEM I FOUND.");
+                                player.InventoryContainer.Add(405, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 11 && !player.InventoryContainer.Contains(405) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("I SEE YOU LOST RING BUT NO PROBLEM I FOUND. COME GET IT WHEN YOU HAVE SPACE TO HOLD.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 9)
                             {
                                 Npc("YOU GET ME MARLIN FROM FINCH EAST OF HERE THEN YOU GET RING.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 11 && player.InventoryContainer.Contains(405))
+                            {
+                                Npc("YOU HAVE RING, GO BRING TO SUSAN IN ARCHER CORNER.");
                                 stage = 100;
                             }
                             break;
@@ -113,6 +139,13 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 7:
                     Player("Alright I'll get you a marlin from Finch's fish shop east of here.");
                     titoTutorialQuest.SetStage(9);
+                    stage = 100;
+                    break;
+                case 8:
+                    Npc("THANK YOU HERES RING.");
+                    player.InventoryContainer.Remove(406, 1);
+                    player.InventoryContainer.Add(405, 1);
+                    titoTutorialQuest.SetStage(11);
                     stage = 100;
                     break;
                 case 100:
@@ -132,7 +165,7 @@ namespace Assets.Scripts.dialogue.dialogues
             Quest titoTutorialQuest = gameManager.GetQuestById(0);
             if (player.Combatstate == Combatstate.ARCHER)
             {
-                if (titoTutorialQuest.Stage >= 8)
+                if (titoTutorialQuest.Stage >= 8 && titoTutorialQuest.Stage < 12)
                 {
                     stage = 6;
                 }

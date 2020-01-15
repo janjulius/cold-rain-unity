@@ -130,7 +130,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 6)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 6 || titoTutorialQuest.Stage > 13)
                     {
                         Npc("I don't have any quests for you");
                         stage = 14;
@@ -152,9 +152,35 @@ namespace Assets.Scripts.dialogue.dialogues
                                 stage = 100;
                                 titoTutorialQuest.SetStage(7);
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 7 && titoTutorialQuest.Stage < 12)
                             {
                                 Npc("I'll write an answer for Gunter if you go and fetch me a poem from Susan. She runs the archery section of the combat guild east from here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 12 && player.InventoryContainer.Contains(404))
+                            {
+                                Player("Here's a poem written by Susan.");
+                                stage = 18;
+                            }
+                            else if (titoTutorialQuest.Stage == 12 && !player.InventoryContainer.Contains(404))
+                            {
+                                Npc("It seems you lost the poem.. could you please go back to Susan?");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 13 && !player.InventoryContainer.Contains(403) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the reply letter, good thing I made an extra. Here you go.");
+                                player.InventoryContainer.Add(403, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 13 && !player.InventoryContainer.Contains(403) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the reply letter, good thing I made an extra. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 13 && player.InventoryContainer.Contains(403))
+                            {
+                                Npc("You've got my letter, go and bring it to Gunter north east of here.");
                                 stage = 100;
                             }
                             break;
@@ -163,6 +189,13 @@ namespace Assets.Scripts.dialogue.dialogues
                             Continue();
                             break;
                     }
+                    break;
+                case 18:
+                    Npc("I appreciate it. I just finished the reply letter, here you go.");
+                    player.InventoryContainer.Remove(404, 1);
+                    player.InventoryContainer.Add(403, 1);
+                    titoTutorialQuest.SetStage(13);
+                    stage = 100;
                     break;
                 case 100:
                     End();

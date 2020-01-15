@@ -132,7 +132,7 @@ namespace Assets.Scripts.dialogue.dialogues
                             {
                                 Npc("Alright here you go.");
                                 player.InventoryContainer.Add(406, 1);
-                                titoTutorialQuest.SetStage(9);
+                                titoTutorialQuest.SetStage(10);
                                 stage = 100;
                             }
                             else

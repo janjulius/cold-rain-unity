@@ -132,7 +132,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 9;
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 1)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 1 || titoTutorialQuest.Stage > 18)
                     {
                         Npc("I don't have any quests for you");
                         stage = 2;
@@ -153,9 +153,35 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("That damned package is up on me roof, I slipped when I was rushing back into me shop and threw the package up there. I was in a rush 'cause those damn animal protection people were chasin' me again.");
                                 stage++;
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 2 && titoTutorialQuest.Stage < 17)
                             {
-                                Npc("I told ya I need a ladder to get it for ya. go see laysee the artisan north of here.");
+                                Npc("I told ya I need a ladder to get it for ya. go see laysee the artisan north east of here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 17 && player.InventoryContainer.Contains(399))
+                            {
+                                Player("Here's the ladder.");
+                                stage = 19;
+                            }
+                            else if (titoTutorialQuest.Stage == 17 && !player.InventoryContainer.Contains(399))
+                            {
+                                Npc("It seems you didn't bring the ladder. Go and get it from Laysee in the workshop north east from here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 18 && !player.InventoryContainer.Contains(398) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the package, good thing I have another one. Here you go.");
+                                player.InventoryContainer.Add(398, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 18 && !player.InventoryContainer.Contains(398) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the package, good thing I have another one. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 18 && player.InventoryContainer.Contains(398))
+                            {
+                                Npc("You've got the package, go and take it to Tito.");
                                 stage = 100;
                             }
                             break;
@@ -168,6 +194,13 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 18:
                     Npc("I'm gonna be needin' a ladder to get it back for ya. I think Laysee the artisan has a ladder, go and ask him for it. He lives north of here");
                     titoTutorialQuest.SetStage(2);
+                    stage = 100;
+                    break;
+                case 19:
+                    Npc("Oh yeah that was a joke, I got me that package right here harhar. I'll take that ladder back to Laysee for ya.");
+                    player.InventoryContainer.Remove(399, 1);
+                    player.InventoryContainer.Add(398, 1);
+                    titoTutorialQuest.SetStage(18);
                     stage = 100;
                     break;
                 case 100:

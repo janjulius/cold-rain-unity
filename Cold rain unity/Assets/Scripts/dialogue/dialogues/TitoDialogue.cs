@@ -1,11 +1,6 @@
-﻿using Assets.Scripts.gameinterfaces.console;
-using Assets.Scripts.quest;
+﻿using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -55,20 +50,36 @@ namespace Assets.Scripts.dialogue.dialogues
                             Continue();
                             break;
                         case 3:
-                            if (gameManager.GetQuestById(0).IsStarted())
+                            if (titoTutorialQuest.Stage > 0 && titoTutorialQuest.Stage < 19)
                             {
-                                switch (titoTutorialQuest.Stage)
+                                if (titoTutorialQuest.Stage < 18)
                                 {
-                                    case 1:
-                                        stage = 100;
-                                        Npc("Glad you are helping, please get my package from the hunter, he lives south west from here.");
-                                        break;
+                                    stage = 100;
+                                    Npc("Glad you are helping, please get my package from the hunter, he lives south west from here.");
+                                }
+                                else if (titoTutorialQuest.Stage == 18 && player.InventoryContainer.Contains(398))
+                                {
+                                    Npc("Ah there's my package, thanks");
+                                    titoTutorialQuest.Finish();
+                                    player.InventoryContainer.Remove(398, 1);
+                                    stage = 100;
+                                }
+                                else if (titoTutorialQuest.Stage == 18 && !player.InventoryContainer.Contains(398))
+                                {
+                                    Npc("You forgot to bring my package.. whatever I don't need it anyway.");
+                                    titoTutorialQuest.Finish();
+                                    stage = 100;
                                 }
                             }
-                            else
+                            else if(!titoTutorialQuest.IsStarted())
                             {
                                 stage = 6;
                                 Npc("I do, actually perhaps you wanna go ahead and meet all the towns folks and whilst you do that you can go ahead and grab my package?");
+                            }
+                            else
+                            {
+                                Npc("No");
+                                stage = 100;
                             }
                             break;
                     }

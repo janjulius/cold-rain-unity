@@ -334,7 +334,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 26:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 3)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 3 || titoTutorialQuest.Stage > 16)
                     {
                         Npc("I don't have any quests for you");
                         stage = 24;
@@ -349,15 +349,41 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 1:
-                            Player("Laysee sent me here to retrieve his ladder.");
+                            Player("Laysee sent me here to get him some milk.");
                             if (titoTutorialQuest.Stage == 3)
                             {
-                                Npc("His ladder? I got that stored away quite far.. I'll dig it up if you go and do something for me.");
+                                Npc("Some milk? You've come to the right place.. But I won't give it for free. I'll give you some milk if you go and do something for me.");
                                 stage++;
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 4 && titoTutorialQuest.Stage < 15)
                             {
                                 Npc("Go and get my mother's spoon from Jake, he nicked it and I want it back. Jake lives next door on the east.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 15 && player.InventoryContainer.Contains(401))
+                            {
+                                Player("Here's your mother's spoon.");
+                                stage = 29;
+                            }
+                            else if (titoTutorialQuest.Stage == 15 && !player.InventoryContainer.Contains(401))
+                            {
+                                Npc("It seems you didn't bring the spoon. Go and get it from Jake in the house directly east from here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 16 && !player.InventoryContainer.Contains(400) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the milk, good thing I have some extra.");
+                                player.InventoryContainer.Add(400, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 16 && !player.InventoryContainer.Contains(400) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the milk, good thing I have some extra. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 16 && player.InventoryContainer.Contains(400))
+                            {
+                                Npc("You've got the milk, go and take it to Laysee.");
                                 stage = 100;
                             }
                             break;
@@ -371,6 +397,13 @@ namespace Assets.Scripts.dialogue.dialogues
                     Npc("My mother always told me that I was her favorite son so she gave me the spoon she got from her mother. But Jake got jealous and nicked my spoon, please get it back for me. Jake lives next door.");
                     stage = 100;
                     titoTutorialQuest.SetStage(4);
+                    break;
+                case 29:
+                    Npc("Thanks, heres some milk.");
+                    player.InventoryContainer.Remove(401, 1);
+                    player.InventoryContainer.Add(400, 1);
+                    titoTutorialQuest.SetStage(16);
+                    stage = 100;
                     break;
                 case 100:
                     End();
