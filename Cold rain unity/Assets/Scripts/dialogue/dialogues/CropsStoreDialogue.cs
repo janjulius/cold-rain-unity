@@ -47,7 +47,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override bool Open(object[] args)
         {
             base.Open(args);
-            Npc($"Would you Like to browse the crops shop?");
+            Npc($"Would you like to browse the crops shop?");
             stage = 0;
             return true;
         }

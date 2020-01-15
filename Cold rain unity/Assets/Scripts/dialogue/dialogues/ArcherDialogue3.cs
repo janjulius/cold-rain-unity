@@ -55,7 +55,7 @@ namespace Assets.Scripts.dialogue.dialogues
             base.Open(args);
             if (player.Combatstate == Combatstate.WARRIOR)
             {
-                Npc("Shoo, get away, ape.");
+                Npc("Shoo, get back you dirty ape.");
                 stage = 100;
             }
             else

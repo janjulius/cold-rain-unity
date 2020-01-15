@@ -104,7 +104,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 7:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 2)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 2 || titoTutorialQuest.Stage > 17)
                     {
                         Npc("I don't have any quests for you");
                         stage = 3;
@@ -122,13 +122,39 @@ namespace Assets.Scripts.dialogue.dialogues
                             Player("Harold sent me here to borrow your ladder.");
                             if (titoTutorialQuest.Stage == 2)
                             {
-                                Npc("Ah, my ladder is over at Blake's. Blake runs the livestock shop east of here. If you can get my ladder from him you can use it but be sure to bring it back to me afterwards.");
+                                Npc("Ah, Harold knows I don't lend out my ladder for free though. Blake runs the livestock shop east of here, if you can get me some of his milk I'll let you use my ladder.");
                                 stage = 100;
                                 titoTutorialQuest.SetStage(3);
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 3 && titoTutorialQuest.Stage < 16)
                             {
-                                Npc("Blake has my ladder right now, you can find him in the livestock shop east of here.");
+                                Npc("Get me some milk from Blake's livestock shop east of here if you want to borrow my ladder.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 16 && player.InventoryContainer.Contains(400))
+                            {
+                                Player("Here's some milk.");
+                                stage = 9;
+                            }
+                            else if (titoTutorialQuest.Stage == 16 && !player.InventoryContainer.Contains(400))
+                            {
+                                Npc("It seems you didn't me any milk. Go and get some from blake in the house east from here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 17 && !player.InventoryContainer.Contains(399) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the ladder, good thing it found it's way back to me. Here you go.");
+                                player.InventoryContainer.Add(399, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 17 && !player.InventoryContainer.Contains(399) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the ladder, good thing it found it's way back to me. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 17 && player.InventoryContainer.Contains(399))
+                            {
+                                Npc("You've got my ladder, go and take it to Harold.");
                                 stage = 100;
                             }
                             break;
@@ -137,6 +163,13 @@ namespace Assets.Scripts.dialogue.dialogues
                             Continue();
                             break;
                     }
+                    break;
+                case 9:
+                    Npc("Thanks, heres the ladder.");
+                    player.InventoryContainer.Remove(400, 1);
+                    player.InventoryContainer.Add(399, 1);
+                    titoTutorialQuest.SetStage(17);
+                    stage = 100;
                     break;
                 case 100:
                     End();

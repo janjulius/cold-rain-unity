@@ -117,7 +117,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 15:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 7)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 7 || titoTutorialQuest.Stage > 12)
                     {
                         Npc("I don't have any quests for you");
                         stage = 13;
@@ -138,9 +138,35 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("Alas, I forgot. I was ment to write her a poem. I will write a poem right now, could you do me a favor in the meantime and fetch my husband's ring?");
                                 stage++;
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 8 && titoTutorialQuest.Stage < 11)
                             {
                                 Npc("I'm writing the poem, go and fetch my husband's marriage ring. His name is Sword and he runs the warrior section in this building.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 11 && player.InventoryContainer.Contains(405))
+                            {
+                                Player("Here's your husband's weddingring.");
+                                stage = 18;
+                            }
+                            else if (titoTutorialQuest.Stage == 11 && !player.InventoryContainer.Contains(405))
+                            {
+                                Npc("It seems you forgot to bring the ring, go ask Sword for it.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 12 && !player.InventoryContainer.Contains(404) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the poem, good thing I made an extra. Here you go.");
+                                player.InventoryContainer.Add(404, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 12 && !player.InventoryContainer.Contains(404) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the poem, good thing I made an extra. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 12 && player.InventoryContainer.Contains(404))
+                            {
+                                Npc("You've got my poem, go and bring it to Clara west of here.");
                                 stage = 100;
                             }
                             break;
@@ -153,6 +179,13 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 17:
                     Npc("The man's dumber than a fish so I can hardly imagine he is emotionally invested in the marriage ring and we could really use some extra money. Sword, my husband, runs the warrior section in this building.");
                     titoTutorialQuest.SetStage(8);
+                    stage = 100;
+                    break;
+                case 18:
+                    Npc("I appreciate it. I just finished the poem too, here you go.");
+                    player.InventoryContainer.Remove(405, 1);
+                    player.InventoryContainer.Add(404, 1);
+                    titoTutorialQuest.SetStage(12);
                     stage = 100;
                     break;
                 case 100:
@@ -172,13 +205,13 @@ namespace Assets.Scripts.dialogue.dialogues
             Quest titoTutorialQuest = gameManager.GetQuestById(0);
             if (player.Combatstate == Combatstate.WARRIOR)
             {
-                if (titoTutorialQuest.Stage >= 7)
+                if (titoTutorialQuest.Stage >= 7 && titoTutorialQuest.Stage < 13)
                 {
                     stage = 16;
                 }
                 else
                 {
-                    Npc("Shoo, get away, ape.");
+                    Npc("Shoo, get back you dirty ape.");
                     stage = 100;
                 }
             }

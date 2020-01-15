@@ -44,21 +44,21 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 2:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 5)
+                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 5 || titoTutorialQuest.Stage > 14)
                     {
                         Npc("I don't have any quests for you");
                         stage = 0;
                     }
                     else if (titoTutorialQuest.Stage >= 5)
                     {
-                        SendOptionsDialogue("Select an option", "Tito's tutorial", "Previous page");
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
                     }
                     break;
                 case 3:
                     switch (SelectedOption)
                     {
-                        case 0:
+                        case 1:
                             Player("Jake sent me to get a permit for growing tomatoes.");
                             if (titoTutorialQuest.Stage == 5)
                             {
@@ -66,17 +66,50 @@ namespace Assets.Scripts.dialogue.dialogues
                                 stage = 100;
                                 titoTutorialQuest.SetStage(6);
                             }
-                            else
+                            else if (titoTutorialQuest.Stage >= 6 && titoTutorialQuest.Stage < 13)
                             {
-                                Npc("Go and get me an asnwer from Clara, she lives in the house south west of here.");
+                                Npc("Go and get me an answer from Clara, she lives in the house south west of here.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 13 && player.InventoryContainer.Contains(403))
+                            {
+                                Player("Here's a reply from Clara.");
+                                stage = 4;
+                            }
+                            else if (titoTutorialQuest.Stage == 13 && !player.InventoryContainer.Contains(403))
+                            {
+                                Npc("It seems you lost the letter.. go get a new one from Clara");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 14 && !player.InventoryContainer.Contains(402) && player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the permit. You're lucky I always make a backup.");
+                                player.InventoryContainer.Add(402, 1);
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 14 && !player.InventoryContainer.Contains(402) && !player.InventoryContainer.HasFreeSlots())
+                            {
+                                Npc("It seems you have lost the permit. You're lucky I always make a backup. You don't seem to have space for it though, make some space and talk to me again.");
+                                stage = 100;
+                            }
+                            else if (titoTutorialQuest.Stage == 14 && player.InventoryContainer.Contains(402))
+                            {
+                                Npc("You've got your permit. Scram, back to where you came from north east of here.");
                                 stage = 100;
                             }
                             break;
-                        case 1:
+                        case 0:
                             stage = 0;
                             Continue();
                             break;
                     }
+                    break;
+                case 4:
+                    Npc("Thanks, here's your permit.");
+                    player.InventoryContainer.Remove(403, 1);
+                    player.InventoryContainer.Add(402, 1);
+                    titoTutorialQuest.SetStage(14);
+                    stage = 100;
                     break;
                 case 100:
                     End();
