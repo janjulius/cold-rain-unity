@@ -80,6 +80,7 @@ public class Player : Entity, SavingModule
         InventoryContainer.Add(79, 1);
         InventoryContainer.Add(4, 1);
         InventoryContainer.Add(384, 1000);
+        InventoryContainer.Add(192, 3);
         //SetLocation(SpawnPosition);
     }
 

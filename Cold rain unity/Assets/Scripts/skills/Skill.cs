@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.math;
+﻿using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.math;
 using Assets.Scripts.saving;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace Assets.Scripts.skills
         {
             get;
         }
-
-        public event EventHandler LevelUp;
+        
+        public event Action LevelUp;
 
         public void AddExp(int toAdd)
         {
@@ -26,16 +27,21 @@ namespace Assets.Scripts.skills
             CheckForLevelUp();
         }
 
+        public void AddExp(float toAdd)
+        {
+            AddExp((int)Math.Floor(toAdd));
+        }
+
         public void SetExp(int xp)
         {
-            this.exp = xp;
+            exp = xp;
             level = ProgressCalculator.GetLevelByExperience(xp);
         }
 
         public void SetLevel(int level)
         {
             this.level = level;
-            exp = ProgressCalculator.getExperienceByLevel(level);
+            exp = ProgressCalculator.GetExperienceByLevel(level);
         }
 
         internal int GetExp()
@@ -47,16 +53,18 @@ namespace Assets.Scripts.skills
         {
             if (ProgressCalculator.GetLevelByExperience(exp) > level)
             {
-                //player levels up
-                level = ProgressCalculator.getExperienceByLevel(exp);
+                level = ProgressCalculator.GetLevelByExperience(exp);
+                OnLevelUp();
                 return;
             }
         }
 
-        public virtual void OnLevelUp(EventArgs args)
+        public virtual void OnLevelUp()
         {
-            EventHandler handler = LevelUp;
-            handler?.Invoke(this, args);
+            GameConsole.Instance.SendConsoleMessage($"Congratulations, you leveled up to level {level} {Name}.");
+            LevelUp?.Invoke();
+            //EventHandler handler = LevelUp;
+            //handler?.Invoke(this, args);
         }
 
         public int GetLevel() => level;

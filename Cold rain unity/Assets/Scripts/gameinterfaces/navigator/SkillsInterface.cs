@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.gameinterfaces.skills;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.skills;
 using UnityEngine;
 
 namespace Assets.Scripts.gameinterfaces.navigator
@@ -20,6 +16,12 @@ namespace Assets.Scripts.gameinterfaces.navigator
         //    this.skills = skills;
         //    Refresh();
         //}
+
+        public override void StartInitiate()
+        {
+            base.StartInitiate();
+            Refresh();
+        }
 
         public override void Create(Player player)
         {
@@ -39,9 +41,31 @@ namespace Assets.Scripts.gameinterfaces.navigator
 
         public override void Refresh()
         {
-            for(int i = 0; i < savedSlots.Length; i++)
+            for (int i = 0; i < savedSlots.Length; i++)
             {
                 savedSlots[i].Refresh();
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (skills != null)
+            {
+                foreach (Skill s in skills?.skills)
+                {
+                    s.LevelUp += Refresh;
+                }
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (skills != null)
+            {
+                foreach (Skill s in skills?.skills)
+                {
+                    s.LevelUp -= Refresh;
+                }
             }
         }
     }

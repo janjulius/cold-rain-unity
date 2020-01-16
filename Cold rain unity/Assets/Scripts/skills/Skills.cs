@@ -25,13 +25,13 @@ public class Skills : Node, SavingModule
         base.Initiate();
 
         //TODO loading logic
-        warriorSkill = new WarriorSkill();
-        archerSkill = new ArcherSkill();
-        huntingSkill = new HuntingSkill();
-        fishingSkill = new FishingSkill();
-        farmingSkill = new FarmingSkill();
-        cookingSkill = new CookingSkill();
-        artisanSkill = new ArtisanSkill();
+        warriorSkill = gameObject.AddComponent<WarriorSkill>();
+        archerSkill = gameObject.AddComponent< ArcherSkill>();
+        huntingSkill = gameObject.AddComponent< HuntingSkill>();
+        fishingSkill = gameObject.AddComponent< FishingSkill>();
+        farmingSkill = gameObject.AddComponent< FarmingSkill>();
+        cookingSkill = gameObject.AddComponent< CookingSkill>();
+        artisanSkill = gameObject.AddComponent< ArtisanSkill>();
 
         skills = new Skill[]
         {

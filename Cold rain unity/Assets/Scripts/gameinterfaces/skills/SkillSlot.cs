@@ -32,7 +32,7 @@ namespace Assets.Scripts.gameinterfaces.skills
             var rect = informationPanel.GetComponent<RectTransform>();
             informationPanel.transform.position = transform.position - new Vector3(-(rect.sizeDelta.x / 2), rect.sizeDelta.y / 2 + GetComponent<RectTransform>().sizeDelta.y, 0);
             TextMeshProUGUI txt = informationPanel.GetComponentInChildren<TextMeshProUGUI>();
-            txt.text = $"Current Exp: {skill.GetExp()}\nNext level: {ProgressCalculator.getExperienceByLevel(skill.GetLevel() + 1) - skill.GetExp()}";
+            txt.text = $"Current Exp: {skill.GetExp()}\nNext level: {ProgressCalculator.GetExperienceByLevel(skill.GetLevel() + 1) - skill.GetExp()}";
         }
 
         public void MouseExit()

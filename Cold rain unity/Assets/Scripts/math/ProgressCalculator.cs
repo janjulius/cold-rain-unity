@@ -40,28 +40,33 @@ namespace Assets.Scripts.math
             return lvlExpValues;
         }
 
+        public static int GetExperienceByLevel(int level)
+        {
+            return (int)Math.Floor(Curve()[level]);
+        }
+
         /// <summary>
         /// Returns the minumum experience for the given level
         /// </summary>
         /// <param name="level">Level</param>
         /// <returns></returns>
-        public static int getExperienceByLevel(int level)
-        {
-            double points = 0;
-            double output = 0;
-
-            for (int lvl = minlevel; lvl <= level; lvl++)
-            {
-                points += Math.Floor(lvl + increase
-                        * Math.Pow(difference, lvl / div));
-                if (lvl >= level)
-                {
-                    return (int)Math.Floor(output);
-                }
-                output = (int)Math.Floor(points / divider);
-            }
-            return 0;
-        }
+        //public static int getExperienceByLevel(int level)
+        //{
+        //    double points = 0;
+        //    double output = 0;
+        //
+        //    for (int lvl = minlevel; lvl <= level; lvl++)
+        //    {
+        //        points += Math.Floor(lvl + increase
+        //                * Math.Pow(difference, lvl / div));
+        //        if (lvl >= level)
+        //        {
+        //            return (int)Math.Floor(output);
+        //        }
+        //        output = (int)Math.Floor(points / divider);
+        //    }
+        //    return 0;
+        //}
 
         /// <summary>
         /// Returns the level of the given experience

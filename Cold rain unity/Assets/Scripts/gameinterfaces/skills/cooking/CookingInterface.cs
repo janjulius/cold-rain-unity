@@ -50,12 +50,13 @@ namespace Assets.Scripts.gameinterfaces.skills.cooking
         public override void Refresh()
         {
             Clear();
-            CookButton.enabled = false;
+            CookButton.interactable = false;
 
             foreach (Food food in consumeableDatabase.GetItems())
             {
                 if (player.InventoryContainer.Contains(food.rawId) 
-                    && (food.addedId == -1 ? true : player.InventoryContainer.Contains(food.addedId)))
+                    && (food.addedId == -1 ? true : player.InventoryContainer.Contains(food.addedId))
+                    && player.skills.GetSkill(SKILLS.COOKING).GetLevel() >= food.reqLevel)
                 {
                     GameObject slot = Instantiate(CookingSlotPrefab, ScrollViewContent.transform);
                     slot.GetComponent<CookingSlot>().Load(itemDatabase, food, this);
@@ -65,7 +66,8 @@ namespace Assets.Scripts.gameinterfaces.skills.cooking
 
         public void ProcessSelectedFood(Food food)
         {
-            CookButton.enabled = true;
+            CookButton.interactable = true;
+            RecipeImage.gameObject.SetActive(true);
             selectedFood = food;
             itemResult = itemDatabase.GetItem(selectedFood.cookedId);
 
@@ -87,7 +89,7 @@ namespace Assets.Scripts.gameinterfaces.skills.cooking
 
         private string GetRecipeDescription()
         {
-            return RecipeDescription.text = $"{itemResult.Examine}\nCooking Time: {AmountSlider.value * ReqBaseTime} minutes.";
+            return RecipeDescription.text = $"{itemResult.Examine}\nCooking Time: {AmountSlider.value * ReqBaseTime} minutes\nExp: {selectedFood.givenExperience * AmountSlider.value}.";
         }
 
         private void UpdateRecipeDescription()
@@ -135,18 +137,30 @@ namespace Assets.Scripts.gameinterfaces.skills.cooking
                     if (pass)
                     {
                         player.InventoryContainer.Add(itemResult.Id, amount);
-                        //cooking exp
+                        player.skills.GetSkill(SKILLS.COOKING).AddExp((int)Math.Floor(AmountSlider.value * selectedFood.givenExperience));
                         Camera.main.GetComponent<GameManager>().IncreaseTime((int)(AmountSlider.value * ReqBaseTime));
+                        Clear();
                         ToggleActive();
                     }
                 }
             }
         }
 
+        public void OnEnable()
+        {
+        }
+
         public void Clear()
         {
             foreach (Transform t in ScrollViewContent.transform)
                 Destroy(t.gameObject);
+            AmountSlider.minValue = 0;
+            AmountSlider.maxValue = 0;
+            MinText.text = "-";
+            MaxText.text = "-";
+            RecipeDescription.text = "";
+            RecipeTitle.text = "";
+            RecipeImage.gameObject.SetActive(false);
         }
     }
 }
