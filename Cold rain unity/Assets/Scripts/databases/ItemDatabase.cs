@@ -2,15 +2,11 @@
 using Assets.Scripts.databases.game.shops;
 using Assets.Scripts.item;
 using Assets.Scripts.logger;
-using Assets.Scripts.node;
 using Assets.Scripts.skills;
 using Assets.Scripts.stats;
 using Assets.Scripts.util;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.databases
@@ -24,7 +20,7 @@ namespace Assets.Scripts.databases
         /// The inventory icons
         /// </summary>
         private Sprite[] InventoryIcon;
-        
+
         /// <summary>
         /// Builds the item database
         /// </summary>
@@ -455,7 +451,7 @@ namespace Assets.Scripts.databases
                 for (int j = 0; j < EquipmentArray[i].EquipSprites.Length; j++)
                 {
                     InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}");
-                    if(InventoryIcon[i] == null)
+                    if (InventoryIcon[i] == null)
                         InventoryIcon[i] = Resources.Load<Sprite>($"Item/{i}/item_{i}_0");
                     EquipmentArray[i].EquipSprites[j] = Resources.Load<Sprite>($"Item/{i}/item_{i}_{j}");
                     ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RainDrops
+  m_Controller: {fileID: 9100000, guid: 753cd2fe5368c6b4eaf9bacd13bc3d3a, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f7cbce375e01c3b40848936b45b7d0e2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aa7174af369f4884f9f23e5887a806a7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 83ff0ea52a967d74fbdf5ce75978a983, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 57945836a83c3094687f2f860fcf2182, type: 2}
