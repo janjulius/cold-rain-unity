@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.contants;
+using Assets.Scripts.databases;
 using System;
 using UnityEngine;
 
@@ -40,6 +41,20 @@ namespace Assets.Scripts.gameinterfaces.console
                         player.SetLocation(x, y);
                         return true;
                     }
+                case "give":
+                case "item":
+                    {
+                        if(cmd.Length < 2)
+                        {
+                            GameConsole.Instance.SendDevMessage("Invalid format, requires: item id amnt");
+                            return false;
+                        }
+                        int id = Convert.ToInt32(cmd[1]);
+                        int quant = Convert.ToInt32(cmd[2]);
+                        player.InventoryContainer.Add(id, quant);
+                        return true;
+                    }
+
                 case "setqueststage":
                     {
                         if (cmd.Length < 2)

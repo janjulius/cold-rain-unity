@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class GameInterface : Node
 {
     protected Player player;
-
+    
     public bool ToggleActive()
     {
         gameObject.SetActive(!gameObject.activeSelf);

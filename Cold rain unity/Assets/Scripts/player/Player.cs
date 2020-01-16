@@ -5,6 +5,7 @@ using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
+using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.saving;
@@ -59,8 +60,7 @@ public class Player : Entity, SavingModule
     #region playerinfo
     public Combatstate Combatstate { get; private set; }
     #endregion
-
-
+    
     public override void StartInitiate()
     {
         base.StartInitiate();

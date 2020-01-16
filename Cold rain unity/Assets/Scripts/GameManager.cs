@@ -5,6 +5,7 @@ using Assets.Scripts.gameinterfaces.quest;
 using Assets.Scripts.gameinterfaces.shop;
 using Assets.Scripts.item;
 using Assets.Scripts.managers;
+using Assets.Scripts.managers.skilling;
 using Assets.Scripts.quest;
 using Assets.Scripts.saving;
 using Assets.Scripts.util;
@@ -26,6 +27,7 @@ public class GameManager : Node
     public Player player;
     public GameObject groundItemPrefab;
     public GameLoader GameLoader;
+    public SkillingInterfaceManager skillingInterfaceManager;
 
     public ShopInterface ShopInterface { private set; get; }
     private ShopDatabase shopDatabase;
@@ -165,7 +167,7 @@ public class GameManager : Node
     }
     #endregion
 
-    #region Clock stuff
+    #region Clock/time/day
 
     public void UpdateClock()
     {
@@ -201,6 +203,17 @@ public class GameManager : Node
     {
         this.day = day;
         SetDayText();
+    }
+
+    internal void IncreaseTime(int time)
+    {
+        int newTime = gameTime + time;
+        if(newTime > 1440)
+        {
+            SetDay(day + (int)Mathf.Floor(time / 1440));
+            newTime -= 1440;
+        }
+        SetTime(newTime);
     }
 
     #endregion

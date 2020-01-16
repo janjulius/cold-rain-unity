@@ -1,15 +1,14 @@
 ﻿using Assets.Scripts.game.consumables;
 using Assets.Scripts.game.consumables.consumable;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.databases.game
 {
     public class ConsumableDatabase : CRDatabase
     {
+        private List<Food> foodList = new List<Food>();
+
         public override void Initiate()
         {
             CallSelf = false;
@@ -316,30 +315,22 @@ namespace Assets.Scripts.databases.game
                 new Food(362, 269, 360, -1, new ConsumableProperties(10, -1)),
                 new Food(362, 270, 360, -1, new ConsumableProperties(10, -1)),
             };
+            foodList = items.Cast<Food>().ToList();
+        }
+
+        public List<Food> GetItems()
+        {
+            return foodList;
         }
 
         public bool IsEdible(int id)
-
         {
-
-            var foodList = items.Cast<Food>();
-
-
-
-            foreach(Food f in foodList)
-
+            foreach (Food f in foodList)
             {
-
                 if (f.cookedId == id)
-
                     return true;
-
             }
-
-
-
             return false;
-
         }
     }
 }
