@@ -130,12 +130,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 6 || titoTutorialQuest.Stage > 13)
+                    if (titoTutorialQuest.Stage < 6 || titoTutorialQuest.Stage > 13)
                     {
                         Npc("I don't have any quests for you");
                         stage = 14;
                     }
-                    else if (titoTutorialQuest.Stage >= 6)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -183,6 +183,11 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("You've got my letter, go and bring it to Gunter north east of here.");
                                 stage = 100;
                             }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 14;
+                            }
                             break;
                         case 0:
                             stage = 14;
@@ -191,7 +196,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 18:
-                    Npc("I appreciate it. I just finished the reply letter, here you go.");
+                    Npc("I appreciate it. I just finished the reply letter, here you go. Go and bring it to Gunther north east of here");
                     player.InventoryContainer.Remove(404, 1);
                     player.InventoryContainer.Add(403, 1);
                     titoTutorialQuest.SetStage(13);

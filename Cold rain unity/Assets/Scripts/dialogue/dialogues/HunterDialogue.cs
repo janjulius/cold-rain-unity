@@ -130,12 +130,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 9;
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 1 || titoTutorialQuest.Stage > 18)
+                    if ( titoTutorialQuest.Stage < 1 || titoTutorialQuest.Stage > 18)
                     {
                         Npc("I don't have any quests for you");
                         stage = 2;
                     }
-                    else if (titoTutorialQuest.Stage >= 1)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -182,6 +182,11 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("You've got the package, go and take it to Tito.");
                                 stage = 100;
                             }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 2;
+                            }
                             break;
                         case 0:
                             stage = 2;
@@ -195,7 +200,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 19:
-                    Npc("HAR HAR HAR, that was just a joke me ol' chum, I got me that package right here. I'll take that ladder back to Laysee for ya.");
+                    Npc("HAR HAR HAR, that was just a joke me ol' chum, I got that package right here behind the counter. Here you go. Oh yeah, I'll take that ladder back to Laysee for ya.");
                     player.InventoryContainer.Remove(399, 1);
                     player.InventoryContainer.Add(398, 1);
                     titoTutorialQuest.SetStage(18);

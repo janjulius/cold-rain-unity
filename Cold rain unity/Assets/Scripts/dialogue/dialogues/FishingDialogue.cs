@@ -82,12 +82,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 5:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 9)
+                    if (titoTutorialQuest.Stage < 9)
                     {
                         Npc("Nope");
                         stage = 3;
                     }
-                    else if (titoTutorialQuest.Stage >= 9)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;

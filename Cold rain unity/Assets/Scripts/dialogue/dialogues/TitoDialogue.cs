@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.quest;
-using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -18,38 +17,66 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("Testing dialogue");
-                    stage = 2;
+                    Player("Hello there!");
+                    stage++;
                     break;
                 case 1:
-                    Npc("Heres my shop");
-                    stage = 100;
+                    Npc("What do you want");
+                    stage++;
                     break;
                 case 2:
-                    if (titoTutorialQuest.IsCompleted())
-                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop");
-                    else if (!titoTutorialQuest.IsStarted())
-                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "Do you have any quests?");
-                    else
-                        SendOptionsDialogue("Select an option", "Goodbye", "I wanna talk to you", "Open the shop", "About my quest...");
+                    SendOptionsDialogue("Select an option", "I want to talk to you", "About a quest..", "Goodbye");
                     stage++;
                     break;
                 case 3:
                     switch (SelectedOption)
                     {
                         case 0:
-                            Npc("Goodbye");
+                            Player("I want to talk to you.");
+                            Npc("I dont wanna talk to you");
                             stage = 100;
                             break;
                         case 1:
-                            Npc("I dont wanna talk to you");
-                            stage = 4;
+                            Player("About a quest..");
+                            stage = 5;
                             break;
                         case 2:
-                            stage = 5;
+                            Player("Goodbye");
+                            Npc("Bye bye");
+                            stage = 100;
+                            break;
+
+                    }
+                    break;
+                case 4:
+                    Player("Bit rude but ok");
+                    stage = 100;
+                    break;
+                case 5:
+                    if (titoTutorialQuest.IsCompleted())
+                    {
+                        Npc("I don't have any quests for you");
+                        stage = 2;
+                    }
+                    else
+                    {
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        stage++;
+                    }
+                    break;
+                case 6:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            stage = 2;
                             Continue();
                             break;
-                        case 3:
+                        case 1:
+                            if (!titoTutorialQuest.IsStarted())
+                            {
+                                stage = 7;
+                                Npc("You could go fetch a package for me? I know it's not much of a quest but it should keep you busy for a little bit.");
+                            }
                             if (titoTutorialQuest.Stage > 0 && titoTutorialQuest.Stage < 19)
                             {
                                 if (titoTutorialQuest.Stage < 18)
@@ -71,28 +98,15 @@ namespace Assets.Scripts.dialogue.dialogues
                                     stage = 100;
                                 }
                             }
-                            else if(!titoTutorialQuest.IsStarted())
-                            {
-                                stage = 6;
-                                Npc("I do, actually perhaps you wanna go ahead and meet all the towns folks and whilst you do that you can go ahead and grab my package?");
-                            }
                             else
                             {
-                                Npc("No");
-                                stage = 100;
+                                Npc("I can't help you with that right now.");
+                                stage = 2;
                             }
                             break;
                     }
                     break;
-                case 4:
-                    Player("Bit rude but ok");
-                    stage = 100;
-                    break;
-                case 5:
-                    OpenShop(ShopConstants.TEST_SHOP);
-                    End();
-                    break;
-                case 6:
+                case 7:
                     gameManager.ProposeQuest(0);
                     End();
                     break;

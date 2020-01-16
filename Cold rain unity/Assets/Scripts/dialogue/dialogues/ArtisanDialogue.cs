@@ -104,12 +104,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 7:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 2 || titoTutorialQuest.Stage > 17)
+                    if (titoTutorialQuest.Stage < 2 || titoTutorialQuest.Stage > 17)
                     {
                         Npc("I don't have any quests for you");
                         stage = 3;
                     }
-                    else if (titoTutorialQuest.Stage >= 2)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -154,8 +154,13 @@ namespace Assets.Scripts.dialogue.dialogues
                             }
                             else if (titoTutorialQuest.Stage == 17 && player.InventoryContainer.Contains(399))
                             {
-                                Npc("You've got my ladder, go and take it to Harold.");
+                                Npc("You've got my ladder, go and take it to Harold south of here.");
                                 stage = 100;
+                            }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 3;
                             }
                             break;
                         case 0:
@@ -165,7 +170,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 9:
-                    Npc("Thanks, heres the ladder.");
+                    Npc("Thanks, heres the ladder. Go and bring it to Harold south of here.");
                     player.InventoryContainer.Remove(400, 1);
                     player.InventoryContainer.Add(399, 1);
                     titoTutorialQuest.SetStage(17);

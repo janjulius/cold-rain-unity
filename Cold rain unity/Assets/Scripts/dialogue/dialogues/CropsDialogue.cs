@@ -151,12 +151,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 16:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 4 || titoTutorialQuest.Stage > 15)
+                    if (titoTutorialQuest.Stage < 4 || titoTutorialQuest.Stage > 15)
                     {
                         Npc("I don't have any quests for you");
                         stage = 14;
                     }
-                    else if (titoTutorialQuest.Stage >= 4)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -200,8 +200,13 @@ namespace Assets.Scripts.dialogue.dialogues
                             }
                             else if (titoTutorialQuest.Stage == 15 && player.InventoryContainer.Contains(401))
                             {
-                                Npc("You've got the spoon, go and take it to Blake.");
+                                Npc("You've got the spoon, go and take it to Blake nextdoor.");
                                 stage = 100;
+                            }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 14;
                             }
                             break;
                         case 0:
@@ -211,12 +216,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 18:
-                    Npc("The mayor hates tomatoes so he refuses to give me a permit to grow tomatoes. Please go and get me a permit anyway.");
+                    Npc("The mayor hates tomatoes so he refuses to give me a permit to grow tomatoes. Please go and get me a permit anyway. The mayor lives in the large house south west from here.");
                     stage = 100;
                     titoTutorialQuest.SetStage(5);
                     break;
                 case 19:
-                    Npc("Thanks, here's the spoon.");
+                    Npc("Thanks, here's the spoon. Bring it to my brother next door.");
                     player.InventoryContainer.Remove(402, 1);
                     player.InventoryContainer.Add(401, 1);
                     titoTutorialQuest.SetStage(15);
