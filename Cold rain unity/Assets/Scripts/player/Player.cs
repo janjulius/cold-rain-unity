@@ -57,7 +57,6 @@ public class Player : Entity, SavingModule
     #endregion
 
     #region playerinfo
-
     public Combatstate Combatstate { get; private set; }
     #endregion
 
