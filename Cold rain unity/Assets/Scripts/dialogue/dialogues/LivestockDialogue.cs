@@ -334,12 +334,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 26:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 3 || titoTutorialQuest.Stage > 16)
+                    if (titoTutorialQuest.Stage < 3 || titoTutorialQuest.Stage > 16)
                     {
                         Npc("I don't have any quests for you");
                         stage = 24;
                     }
-                    else if (titoTutorialQuest.Stage >= 3)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -383,8 +383,13 @@ namespace Assets.Scripts.dialogue.dialogues
                             }
                             else if (titoTutorialQuest.Stage == 16 && player.InventoryContainer.Contains(400))
                             {
-                                Npc("You've got the milk, go and take it to Laysee.");
+                                Npc("You've got the milk, go and take it to Laysee west of here.");
                                 stage = 100;
+                            }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 24;
                             }
                             break;
                         case 0:
@@ -399,7 +404,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     titoTutorialQuest.SetStage(4);
                     break;
                 case 29:
-                    Npc("Thanks, heres some milk.");
+                    Npc("Thanks, heres some milk. Go and take it to Laysee west of here.");
                     player.InventoryContainer.Remove(401, 1);
                     player.InventoryContainer.Add(400, 1);
                     titoTutorialQuest.SetStage(16);

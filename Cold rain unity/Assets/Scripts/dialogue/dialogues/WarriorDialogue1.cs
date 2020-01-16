@@ -77,12 +77,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 5:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 8 || titoTutorialQuest.Stage > 11)
+                    if (titoTutorialQuest.Stage < 8 || titoTutorialQuest.Stage > 11)
                     {
                         Npc("NO QUEST FOR YOU");
                         stage = 3;
                     }
-                    else if (titoTutorialQuest.Stage >= 8)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -128,6 +128,11 @@ namespace Assets.Scripts.dialogue.dialogues
                             {
                                 Npc("YOU HAVE RING, GO BRING TO SUSAN IN ARCHER CORNER.");
                                 stage = 100;
+                            }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 3;
                             }
                             break;
                         case 0:

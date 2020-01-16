@@ -44,12 +44,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 2:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 5 || titoTutorialQuest.Stage > 14)
+                    if (titoTutorialQuest.Stage < 5 || titoTutorialQuest.Stage > 14)
                     {
                         Npc("I don't have any quests for you");
                         stage = 0;
                     }
-                    else if (titoTutorialQuest.Stage >= 5)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -97,6 +97,11 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("You've got your permit. Scram, back to where you came from north east of here.");
                                 stage = 100;
                             }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 0;
+                            }
                             break;
                         case 0:
                             stage = 0;
@@ -105,7 +110,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 4:
-                    Npc("Thanks, here's your permit.");
+                    Npc("Thanks, here's your permit. Go and bring it to Jake north east of here.");
                     player.InventoryContainer.Remove(403, 1);
                     player.InventoryContainer.Add(402, 1);
                     titoTutorialQuest.SetStage(14);

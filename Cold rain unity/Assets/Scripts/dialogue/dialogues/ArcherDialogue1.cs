@@ -117,12 +117,12 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 15:
-                    if (titoTutorialQuest.IsCompleted() || !titoTutorialQuest.IsStarted() || titoTutorialQuest.Stage < 7 || titoTutorialQuest.Stage > 12)
+                    if (titoTutorialQuest.Stage < 7 || titoTutorialQuest.Stage > 12)
                     {
                         Npc("I don't have any quests for you");
                         stage = 13;
                     }
-                    else if (titoTutorialQuest.Stage >= 7)
+                    else
                     {
                         SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
                         stage++;
@@ -169,6 +169,11 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("You've got my poem, go and bring it to Clara west of here.");
                                 stage = 100;
                             }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 13;
+                            }
                             break;
                         case 0:
                             stage = 13;
@@ -182,7 +187,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 18:
-                    Npc("I appreciate it. I just finished the poem too, here you go.");
+                    Npc("I appreciate it. I just finished the poem too, here you go. Go and deliver that to Clara west of here.");
                     player.InventoryContainer.Remove(405, 1);
                     player.InventoryContainer.Add(404, 1);
                     titoTutorialQuest.SetStage(12);
