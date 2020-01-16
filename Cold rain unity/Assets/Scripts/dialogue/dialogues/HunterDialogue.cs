@@ -22,8 +22,16 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    Npc("Oh.. I thought you were one of those animal protection pests. How can I help?");
-                    stage++;
+                    if (stage == 1000)//fishingstate == 1)
+                    {
+                        Npc("Ah, right. anyway, I told you to go and find an intern or something in the youth center south of town.");
+                        stage = 100;
+                    }
+                    else
+                    {
+                        Npc("Oh.. I thought you were one of those animal protection pests. How can I help?");
+                        stage++;
+                    }
                     break;
                 case 2:
                     SendOptionsDialogue("Select an option", "Browse store", "Animal protection?", "Why hunt?", "Hunting progression", "-Next page-");
@@ -130,7 +138,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 9;
                     break;
                 case 16:
-                    if ( titoTutorialQuest.Stage < 1 || titoTutorialQuest.Stage > 18)
+                    if (titoTutorialQuest.Stage < 1 || titoTutorialQuest.Stage > 18)
                     {
                         Npc("I don't have any quests for you");
                         stage = 2;
@@ -229,10 +237,46 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 22:
-                    //if(player.skills.GetSkill(SKILLS.HUNTING).GetLevel()
-                    //{
-                    //    print(player.skills.GetSkill(SKILLS.HUNTING));
-                    //}
+                    if (player.skills.GetSkill(SKILLS.HUNTING).GetLevel() >= 50)
+                    {
+                        Npc("Looks like it yeah. Well I'll leave the store in your hands then, if you don't mind?");
+                        stage++;
+                    }
+                    else
+                    {
+                        Npc("Now, my instinct might be deceiving me. But it don't look like you reached level 50 huntin' yet.");
+                        stage = 20;
+                    }
+                    break;
+                case 23:
+                    SendOptionsDialogue("Select an option", "Yes", "No, not yet");
+                    stage++;
+                    break;
+                case 24:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            Npc("Alright, though you seem like someone who has a lot on their hands, why don't ya go and find an intern to watch the shop for ya?");
+                            stage++;
+                            break;
+                        case 1:
+                            Npc("Oh... Well, hurry it up I wanna get out of this place.");
+                            stage = 20;
+                            break;
+                    }
+                    break;
+                case 25:
+                    Npc("I see the youngsters go into the woods south east from here every morning, I reckon one of them wouldn't mind watching the shop for ya.");
+                    stage++;
+                    break;
+                case 26:
+                    Npc("By the time you hire one of them, I'll be out of this place so I guess this is goodbye.");
+                    stage++;
+                    break;
+                case 27:
+                    Player("Goodbye");
+                    Npc("See ya");
+                    //SET HUNTING STATE TO 1
                     stage = 100;
                     break;
                 case 100:

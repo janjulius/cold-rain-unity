@@ -18,8 +18,16 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Browse shop", "Why fish?", "How to fish", "Where to fish?", "-Next page-");
-                    stage++;
+                    if ( stage == 1000 )//fishingstate == 1)
+                    {
+                        Npc("I told you, go and find an intern or something in the youth center south of town.");
+                        stage = 100;
+                    }
+                    else
+                    {
+                        SendOptionsDialogue("Select an option", "Browse shop", "Why fish?", "How to fish", "Where to fish?", "-Next page-");
+                        stage++;
+                    }
                     break;
                 case 1:
                     switch (SelectedOption)
@@ -55,7 +63,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 3:
-                    SendOptionsDialogue("Select an option", "-Previous page-", "Progression", "About a quest..", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Progression", "About a quest..", "Master fishing", "Goodbye");
                     stage++;
                     break;
                 case 4:
@@ -75,6 +83,10 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage++;
                             break;
                         case 3:
+                            Player("I think I've mastered hunting!");
+                            stage = 9;
+                            break;
+                        case 4:
                             Player("Goodbye");
                             Npc("Finally");
                             stage = 100;
@@ -147,6 +159,49 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 3;
                             break;
                     }
+                    break;
+                case 9:
+                    if (player.skills.GetSkill(SKILLS.FISHING).GetLevel() >= 50)
+                    {
+                        Npc("You seem good an experienced enough fisher to me. I'll be leaving the store in your hands then.");
+                        stage++;
+                    }
+                    else
+                    {
+                        Npc("Don't think so. Try again when you reach level 50.");
+                        stage = 3;
+                    }
+                    break;
+                case 23:
+                    SendOptionsDialogue("Select an option", "Yes", "No, not yet");
+                    stage++;
+                    break;
+                case 24:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            Npc("Alright, you don't have enough time on your hands to run the store on your own though. Go find an intern or something, I'd try the youth center personally.");
+                            stage++;
+                            break;
+                        case 1:
+                            Npc("Oh... Well, hurry it up I'm tired of working.");
+                            stage = 20;
+                            break;
+                    }
+                    break;
+                case 25:
+                    Npc("You know where the youth center is, right? It's south of town somewhere in the woods.");
+                    stage++;
+                    break;
+                case 26:
+                    Npc("By the time you hire one of them, I'll be out of this place, so .. goodbye.");
+                    stage++;
+                    break;
+                case 27:
+                    Player("Goodbye");
+                    Npc("See ya");
+                    //SET FISHING STATE TO 1
+                    stage = 100;
                     break;
                 case 100:
                     End();
