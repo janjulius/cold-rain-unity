@@ -12,14 +12,18 @@ namespace Assets.Scripts.game.consumables.consumable
         public int addedId { private set; get; }
         public int cookedId { private set; get; }
         public int burntId { private set; get; }
+        public int reqLevel { private set; get; }
+        public int givenExperience { private set; get; }
         public ConsumableProperties properties { private set; get; }
 
-        public Food(int rawId, int addedId, int cookedId, int burntId, ConsumableProperties properties)
+        public Food(int rawId, int addedId, int cookedId, int burntId, int reqLevel, int givenExperience, ConsumableProperties properties)
         {
             this.rawId = rawId;
             this.addedId = addedId;
             this.cookedId = cookedId;
             this.burntId = burntId;
+            this.reqLevel = reqLevel;
+            this.givenExperience = givenExperience;
             this.properties = properties;
         }
 

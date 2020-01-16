@@ -440,7 +440,10 @@ namespace Assets.Scripts.databases
                 new Item(403, "Clara's answer", false, new Stats(), new SkillRequirement(), "He's not gonna be happy...", true, false, EquipmentType.NONE, 0),
                 new Item(404, "Susan's poem", false, new Stats(), new SkillRequirement(), "Beautifully written.", true, false, EquipmentType.NONE, 0),
                 new Item(405, "Sword's ring", false, new Stats(), new SkillRequirement(), "Yuck.", true , false, EquipmentType.NONE, 0),
-                new Item(406, "Finch's marlin", false, new Stats(), new SkillRequirement(), "Big fish, bit stinky, but big.", true, false, EquipmentType.NONE, 0)
+                new Item(406, "Finch's marlin", false, new Stats(), new SkillRequirement(), "Big fish, bit stinky, but big.", true, false, EquipmentType.NONE, 0),
+                new Item(407, "Ruby", true, new Stats(), new SkillRequirement(), "A big red gemstone", false, false, EquipmentType.NONE, 500),
+                new Item(408, "Emerald", true, new Stats(), new SkillRequirement(), "A big green gemstone", false, false, EquipmentType.NONE, 500),
+                new Item(409, "Sapphire", true, new Stats(), new SkillRequirement(), "A big blue gemstone", false, false, EquipmentType.NONE, 500)
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
