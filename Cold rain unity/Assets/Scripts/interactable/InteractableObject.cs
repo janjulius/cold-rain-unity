@@ -11,15 +11,9 @@ namespace Assets.Scripts.interactable
 {
     public class InteractableObject : Interactable
     {
-        [Header("NOTE: If using this make sure the corresponding class is added.")]
+        [Header("NOTE: If using this make sure the corresponding class is added or assigned.")]
         public InteractionType InteractionType;
-
-        public override void StartInitiate()
-        {
-            base.StartInitiate();
-            gameObject.layer = (int)UnityLayers.INTERACTABLE;
-        }
-
+        
         public override void Interact(Entity sender)
         {
             base.Interact(sender);

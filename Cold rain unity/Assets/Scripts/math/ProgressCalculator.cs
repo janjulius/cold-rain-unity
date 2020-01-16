@@ -26,7 +26,7 @@ namespace Assets.Scripts.math
             double points = 0;
             double output = 0;
 
-            for (int lvl = minlevel; lvl <= maxlevel; lvl++)
+            for (int lvl = minlevel; lvl <= maxlevel+1; lvl++)
             {
                 points += Math.Floor(lvl + increase * Math.Pow(difference, lvl / div));
                 output = (int)Math.Floor(points / divider);
