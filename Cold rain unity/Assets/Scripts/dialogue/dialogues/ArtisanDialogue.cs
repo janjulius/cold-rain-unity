@@ -17,8 +17,16 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Wheelchair?", "What is an artisan?", "Progression", "Where can I work?", "-next page-");
-                    stage++;
+                    if (stage == 1000)//Artisanstate == 1)
+                    {
+                        Npc("I told you to find an intern in the youth center south of town, Remember?");
+                        stage = 100;
+                    }
+                    else
+                    {
+                        SendOptionsDialogue("Select an option", "Wheelchair?", "What is an artisan?", "Progression", "Where can I work?", "-next page-");
+                        stage++;
+                    } 
                     break;
                 case 1:
                     switch (SelectedOption)
@@ -54,7 +62,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 0;
                     break;
                 case 3:
-                    SendOptionsDialogue("Select an option", "-previous page-", "How to work the machines", "About a quest", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-previous page-", "How to work the machines", "Master artisan", "About a quest", "Goodbye");
                     stage++;
                     break;
                 case 4:
@@ -69,6 +77,10 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 7;
                             break;
                         case 3:
+                            Player("I think I've become a master artisan!");
+                            stage = 10;
+                            break;
+                        case 4:
                             Player("Goodbye");
                             Npc("Oh, you're leaving..");
                             stage = 100;
@@ -174,6 +186,49 @@ namespace Assets.Scripts.dialogue.dialogues
                     player.InventoryContainer.Remove(400, 1);
                     player.InventoryContainer.Add(399, 1);
                     titoTutorialQuest.SetStage(17);
+                    stage = 100;
+                    break;
+                case 10:
+                    if (player.skills.GetSkill(SKILLS.ARTISAN).GetLevel() >= 50)
+                    {
+                        Npc("You've become quite the master artisan. I'll be leaving the store in your hands then.");
+                        stage++;
+                    }
+                    else
+                    {
+                        Npc("I beg to differ. Try again when you reach level 50 though!");
+                        stage = 3;
+                    }
+                    break;
+                case 11:
+                    SendOptionsDialogue("Select an option", "Yes", "No, not yet");
+                    stage++;
+                    break;
+                case 12:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            Npc("Alright, I think you haven't got the time to run this shop on your own though, why don't you go find an intern in the youth center?");
+                            stage++;
+                            break;
+                        case 1:
+                            Npc("Oh... Well, please hurry! I'm struggling out here.");
+                            stage = 3;
+                            break;
+                    }
+                    break;
+                case 13:
+                    Npc("You know where the youth center is, right? It's south of town somewhere in the woods.");
+                    stage++;
+                    break;
+                case 14:
+                    Npc("By the time you hire one of them, I'll be out of this place, so I guess this will be goodbye. I'm moving to a facility that can properly take care of me.");
+                    stage++;
+                    break;
+                case 15:
+                    Player("Goodbye");
+                    Npc("See ya");
+                    //SET ARTISAN STATE TO 1
                     stage = 100;
                     break;
                 case 100:
