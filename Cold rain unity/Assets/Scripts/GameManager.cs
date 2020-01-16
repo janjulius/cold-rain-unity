@@ -37,6 +37,8 @@ public class GameManager : Node
 
     private WorldStateManager worldStateManager;
 
+    public ScreenTransitioner screenTransitioner;
+
     [SerializeField] public int gameTime { private set; get; }
     [SerializeField] public int day { private set; get; } = 0;
     /// <summary>
@@ -218,4 +220,8 @@ public class GameManager : Node
 
     #endregion
 
+    public void FadeScreen(float time)
+    {
+        //StartCoroutine(screenTransitioner.FadeScreen(time));
+    }
 }
