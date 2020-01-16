@@ -322,7 +322,6 @@ namespace Assets.Scripts.databases.game
         {
             return foodList;
         }
-
         public bool IsEdible(int id)
         {
             foreach (Food f in foodList)
