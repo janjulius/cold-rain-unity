@@ -54,7 +54,7 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
         {
             Clear();
             AddToPrepButton.interactable = false;
-            StartButton.interactable = false;
+            StartButton.interactable = readyRecipes.Count > 0;
 
             foreach (ArtisanRecipe ar in artisanRecipes.GetItems())
             {
@@ -113,9 +113,10 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
             foreach(ArtisanRecipe ar in readyRecipes)
             {
                 player.InventoryContainer.Add(ar.materialId, ar.materialAmount);
-                if (ar.materialId2 == -1)
+                if (ar.materialId2 != -1)
                     player.InventoryContainer.Add(ar.materialId2, ar.materialAmount2);
             }
+            readyRecipes.Clear();
         }
 
         public void AddToPreperation()
@@ -132,10 +133,11 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
             for (int i = 0; i < amnt; i++)
             {
                 if (player.InventoryContainer.Remove(recipe.materialId, recipe.materialAmount) 
-                    && player.InventoryContainer.Remove(recipe.materialId2, recipe.materialAmount2))
+                    && recipe.materialId2 != -1 ? player.InventoryContainer.Remove(recipe.materialId2, recipe.materialAmount2) : true)
                 {
                     readyRecipes.Add(recipe);
                     slotObj.SetText($"{amnt}x");
+                    print("added recipe to readyrecipes size " + readyRecipes.Count);
                 }
             }
             Refresh();

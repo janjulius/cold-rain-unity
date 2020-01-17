@@ -144,12 +144,20 @@ namespace Assets.Scripts.gameinterfaces.console
                     }
                     gameManager.SetWorldState(Convert.ToInt32(cmd[1]), Convert.ToInt32(cmd[2]));
                     GameConsole.Instance.SendDevMessage($"Set world state: {cmd[1]} to state {cmd[2]}");
-                    break;
+                    return true;
                 case "getworldstate":
 
                     GameConsole.Instance.SendDevMessage(WorldStateManager.Instance.GetState(Convert.ToInt32(cmd[1])).ToString());
 
-                    break;
+                    return true;
+                case "setlevel":
+                    if (cmd.Length < 2)
+                    {
+                        GameConsole.Instance.SendDevMessage($"Incorrect command, use: setlevel id level");
+                        return false;
+                    }
+                    player.skills.GetSkill(Convert.ToInt32(cmd[1])).SetLevel(Convert.ToInt32(cmd[2]));
+                    return true;
             }
            
             

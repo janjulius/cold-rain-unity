@@ -71,12 +71,12 @@ namespace Assets.Scripts.skills
         
         public void Load()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
