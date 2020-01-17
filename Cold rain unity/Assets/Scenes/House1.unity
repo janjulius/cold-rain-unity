@@ -23529,7 +23529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &656376088
 Grid:
   m_ObjectHideFlags: 0
@@ -25219,7 +25219,17 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 713177686}
+    m_ColliderPaths:
+    - - X: 449999971
+        Y: -530000000
+      - X: 449999971
+        Y: -520000000
+      - X: 380000000
+        Y: -520000029
+      - X: 380000029
+        Y: -530000000
   m_CompositePaths:
     m_Paths:
     - - {x: 44.999992, y: -53}
@@ -37478,6 +37488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelLoader 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910441855818543953, guid: 900913ef6914b7d4e9f97b9ce8e26a74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5448974131162881759, guid: 900913ef6914b7d4e9f97b9ce8e26a74,
         type: 3}
@@ -51367,107 +51382,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1363365709}
-    m_ColliderPaths:
-    - - X: 399999971
-        Y: -530000000
-      - X: 400000029
-        Y: -529062496
-      - X: 410000000
-        Y: -529062525
-      - X: 410000029
-        Y: -530000000
-      - X: 450000000
-        Y: -529999971
-      - X: 449999971
-        Y: -520000000
-      - X: 440000000
-        Y: -520000029
-      - X: 439999916
-        Y: -521874757
-      - X: 439374987
-        Y: -520000000
-      - X: 431249975
-        Y: -520000012
-      - X: 430000000
-        Y: -521874879
-      - X: 429999971
-        Y: -520000000
-      - X: 410000000
-        Y: -520000029
-      - X: 409999971
-        Y: -520937504
-      - X: 400000000
-        Y: -520937475
-      - X: 399999971
-        Y: -520000000
-      - X: 390000000
-        Y: -520000029
-      - X: 389999971
-        Y: -520624992
-      - X: 380624985
-        Y: -520625007
-      - X: 380000000
-        Y: -521875014
-      - X: 380000029
-        Y: -530000000
-    - - X: 449999971
-        Y: -550000000
-      - X: 449999971
-        Y: -540000000
-      - X: 440624986
-        Y: -540000008
-      - X: 440000000
-        Y: -540624938
-      - X: 439999971
-        Y: -540000000
-      - X: 430624986
-        Y: -540000008
-      - X: 430000000
-        Y: -540624938
-      - X: 429999971
-        Y: -540000000
-      - X: 420624986
-        Y: -540000008
-      - X: 420000000
-        Y: -540624938
-      - X: 419999971
-        Y: -540000000
-      - X: 410000000
-        Y: -540000029
-      - X: 410000029
-        Y: -550000000
-    - - X: 406874996
-        Y: -550000000
-      - X: 408750016
-        Y: -548124980
-      - X: 408750008
-        Y: -542499962
-      - X: 406874996
-        Y: -540625024
-      - X: 402499994
-        Y: -540625032
-      - X: 400624992
-        Y: -542499980
-      - X: 400625000
-        Y: -548124998
-      - X: 402500012
-        Y: -550000000
-    - - X: 447499996
-        Y: -560000000
-      - X: 449375008
-        Y: -559374955
-      - X: 449374979
-        Y: -550625024
-      - X: 442499995
-        Y: -550625027
-      - X: 441249984
-        Y: -551250001
-      - X: 441249985
-        Y: -558124996
-      - X: 441875029
-        Y: -560000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 39.999992, y: -53}
@@ -77385,6 +77300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717745070}
+  - component: {fileID: 1717745071}
   m_Layer: 0
   m_Name: CookingInteractables
   m_TagString: Untagged
@@ -77408,6 +77324,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717745071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717745069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3c249de3bd6e54e83737d402a7f7f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listeningId: 1
+  triggers:
+  - EnableAt: 0
+    GameObjects:
+    - {fileID: 1878663722}
+  - EnableAt: 1
+    GameObjects:
+    - {fileID: 656376087}
 --- !u!1 &1723232111
 GameObject:
   m_ObjectHideFlags: 0
@@ -103023,7 +102959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1878663723
 Grid:
   m_ObjectHideFlags: 0

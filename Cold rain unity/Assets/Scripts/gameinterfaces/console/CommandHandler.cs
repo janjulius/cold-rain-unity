@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.contants;
 using Assets.Scripts.databases;
+using Assets.Scripts.managers;
 using System;
 using UnityEngine;
 
@@ -134,7 +135,7 @@ namespace Assets.Scripts.gameinterfaces.console
 
                     return true;
 
-                case "setstate":
+                case "setworldstate":
 
                     if(cmd.Length < 2)
                     {
@@ -144,7 +145,13 @@ namespace Assets.Scripts.gameinterfaces.console
                     gameManager.SetWorldState(Convert.ToInt32(cmd[1]), Convert.ToInt32(cmd[2]));
                     GameConsole.Instance.SendDevMessage($"Set world state: {cmd[1]} to state {cmd[2]}");
                     break;
+                case "getworldstate":
+
+                    GameConsole.Instance.SendDevMessage(WorldStateManager.Instance.GetState(Convert.ToInt32(cmd[1])).ToString());
+
+                    break;
             }
+           
             
             GameConsole.Instance.SendDevMessage("Command not recognized.");
             return false;
