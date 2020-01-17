@@ -228,14 +228,22 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 21:
-                    if (player.skills.GetSkill(SKILLS.COOKING).GetLevel() >= 50)
+                    if (stage == 21) //IF COOKINGSTATE == 0
                     {
-                        Npc("You've become quite the master chef indeed.");
-                        stage++;
+                        if (player.skills.GetSkill(SKILLS.COOKING).GetLevel() >= 50)
+                        {
+                            Npc("You've become quite the master chef indeed.");
+                            stage++;
+                        }
+                        else
+                        {
+                            Npc("I don't think so quite yet. Perhaps try again when you reach level 50.");
+                            stage = 19;
+                        }
                     }
                     else
                     {
-                        Npc("I don't think so quite yet. Perhaps try again when you reach level 50.");
+                        Npc("Yes I would agree so, we spoke about this, remember? I told you a little secret that makes it so you'll never burn any food again.");
                         stage = 19;
                     }
                     break;
