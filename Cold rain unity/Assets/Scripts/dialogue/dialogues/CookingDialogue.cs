@@ -17,11 +17,11 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    Player("I was told that I can learn how to cook here.");
+                    Player("For sure, oldie. I've got a question for you.");
                     stage++;
                     break;
                 case 1:
-                    Npc("Quite so. Ask away!");
+                    Npc("Ask away.");
                     stage++;
                     break;
                 case 2:
@@ -98,7 +98,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 2;
                     break;
                 case 14:
-                    SendOptionsDialogue("Select an option", "-previous page-", "Where to cook?", "Progression", "About a quest..", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Where to cook?", "Progression", "About a quest..", "-Next page-");
                     stage++;
                     break;
                 case 15:
@@ -119,6 +119,9 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage++;
                             break;
                         case 4:
+                            stage = 19;
+                            Continue();
+                            break;
                             Player("Goodbye");
                             Npc("So long");
                             stage = 100;
@@ -200,6 +203,58 @@ namespace Assets.Scripts.dialogue.dialogues
                     player.InventoryContainer.Remove(404, 1);
                     player.InventoryContainer.Add(403, 1);
                     titoTutorialQuest.SetStage(13);
+                    stage = 100;
+                    break;
+                case 19:
+                    SendOptionsDialogue("Select an option", "-Previous page-", "Master chef", "Goodbye");
+                    stage++;
+                    break;
+                case 20:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            stage = 14;
+                            Continue();
+                            break;
+                        case 1:
+                            Player("I think I am a real master chef now.");
+                            stage++;
+                            break;
+                        case 2:
+                            Player("Goodbye");
+                            Npc("So long");
+                            stage = 100;
+                            break;
+                    }
+                    break;
+                case 21:
+                    if (player.skills.GetSkill(SKILLS.COOKING).GetLevel() >= 50)
+                    {
+                        Npc("You've become quite the master chef indeed.");
+                        stage++;
+                    }
+                    else
+                    {
+                        Npc("I don't think so quite yet. Perhaps try again when you reach level 50.");
+                        stage = 19;
+                    }
+                    break;
+                case 22:
+                    Npc("I'll Teach you a little trick then, I learned it from my husband before he passed away.");
+                    //Make transition for dramatic effect
+                    //SET COOKINGSTATE TO 1
+                    stage++;
+                    break;
+                case 23:
+                    Npc("Alright, if you keep this trick in mind you'll never burn a piece of food again.");
+                    stage++;
+                    break;
+                case 24:
+                    Npc("And thank you a lot for being our town's master chef, it really means a lot to me.");
+                    stage++;
+                    break;
+                case 25:
+                    Player("Yeah no problem.");
                     stage = 100;
                     break;
                 case 100:

@@ -256,7 +256,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            Npc("Alright, though you seem like someone who has a lot on their hands, why don't ya go and find an intern to watch the shop for ya?");
+                            Npc("Alright, you seem like someone who has a lot on their hands though. Why don't ya go and find an intern to watch the shop for ya?");
                             stage++;
                             break;
                         case 1:

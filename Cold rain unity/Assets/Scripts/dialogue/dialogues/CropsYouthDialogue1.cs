@@ -23,8 +23,22 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    Npc("Get out boomer");
+                    switch (stage) // SWITCH (FARMINGSTATE)
+                    {
+                        case 0:
+                            Npc("Get out boomer");
+                            stage = 100;
+                            break;
+                        case 1:
+                            Player("Hey, would you be interested in running the artisan workshop for me as an intern?");
+                            stage++;
+                            break;
+                    }
+                    break;
+                case 2:
+                    Npc("Yeah sure that sounds good. I'll start today.");
                     stage = 100;
+                    //SET FARMINGSTATE TO 2
                     break;
                 case 100:
                     End();
