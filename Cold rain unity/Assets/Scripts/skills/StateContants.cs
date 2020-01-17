@@ -19,5 +19,10 @@ namespace Assets.Scripts.shops.constants
         public static int ARTISAN_MILK_DONE = 8;
         public static int ARTISAN_CHEESE_IDLE = 9;
         public static int ARTISAN_CHEESE_DONE = 10;
+        public static int ARTISAN_NPC_STATE = 11;
+        public static int FISHING_NPC_STATE = 12;
+        public static int HUNTING_NPC_STATE = 13;
+        public static int FARMING_NPC_STATE = 14;
+        public static int COOKING_NPC_STATE = 15;
     }
 }

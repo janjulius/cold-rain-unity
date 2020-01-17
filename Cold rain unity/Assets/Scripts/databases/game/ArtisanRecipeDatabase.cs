@@ -11,7 +11,6 @@ namespace Assets.Scripts.databases.game
 
         public override void Initiate()
         {
-            CallSelf = false;
             base.Initiate();
         }
 

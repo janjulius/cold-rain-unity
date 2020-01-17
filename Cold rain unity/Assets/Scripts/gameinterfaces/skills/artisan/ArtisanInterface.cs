@@ -30,6 +30,9 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
 
         public GameObject ArtisanSlotPrefab;
 
+        public Button StartButton;
+        public Button AddToPrepButton;
+
         public List<ArtisanRecipe> readyRecipes = new List<ArtisanRecipe>();
         private ArtisanRecipe selectedRecipe;
         private Item itemResult;
@@ -50,6 +53,8 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
         public override void Refresh()
         {
             Clear();
+            AddToPrepButton.interactable = false;
+            StartButton.interactable = false;
 
             foreach (ArtisanRecipe ar in artisanRecipes.GetItems())
             {
@@ -59,12 +64,19 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
                     GameObject slot = Instantiate(ArtisanSlotPrefab, ScrollViewContent.transform);
                     slot.GetComponent<ArtisanSlot>().Load(itemDatabase, ar, this, itemDatabase.GetItem(ar.resultId).Examine);
                 }
+            }
 
+            foreach(ArtisanRecipe ar in readyRecipes)
+            {
+                GameObject slot = Instantiate(ArtisanSlotPrefab, ToMakeScrollViewContent.transform);
+                slot.GetComponent<ArtisanSlot>().Load(itemDatabase, ar, this, itemDatabase.GetItem(ar.resultId).Examine);
+                
             }
         }
 
         internal void ProcessSelectedRecipe(ArtisanRecipe recipe)
         {
+            AddToPrepButton.interactable = true;
             RecipeImage.gameObject.SetActive(true);
             selectedRecipe = recipe;
             itemResult = itemDatabase.GetItem(recipe.resultId);
@@ -81,24 +93,52 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
 
         private float MinAmountOfMaterials(ArtisanRecipe recipe)
         {
-            return Mathf.Min(
-                Mathf.Floor(player.InventoryContainer.GetAmount(recipe.materialId) / recipe.materialAmount),
-                Mathf.Floor(player.InventoryContainer.GetAmount(recipe.materialId2) / recipe.materialAmount2));
+            int mat1amnt = player.InventoryContainer.GetAmount(recipe.materialId);
+            int mat2amnt = player.InventoryContainer.GetAmount(recipe.materialId2);
+
+            if(recipe.materialId2 == -1)
+            {
+                return mat1amnt / recipe.materialAmount;
+            }
+
+            if(mat1amnt > 0 && mat2amnt > 0)
+            {
+                return Mathf.Min(Mathf.Floor(mat1amnt / recipe.materialAmount), Mathf.Floor(mat2amnt / recipe.materialAmount2));
+            }
+            return 0;
         }
 
-        internal void AddToPreparation(ArtisanRecipe recipe, int amnt)
+        public void Refund()
+        {
+            foreach(ArtisanRecipe ar in readyRecipes)
+            {
+                player.InventoryContainer.Add(ar.materialId, ar.materialAmount);
+                if (ar.materialId2 == -1)
+                    player.InventoryContainer.Add(ar.materialId2, ar.materialAmount2);
+            }
+        }
+
+        public void AddToPreperation()
+        {
+            AddToPreparation(selectedRecipe, (int)AmountSlider.value);
+        }
+
+        public void AddToPreparation(ArtisanRecipe recipe, int amnt)
         {
             GameObject slot = Instantiate(ArtisanSlotPrefab, ToMakeScrollViewContent.transform);
             ArtisanSlot slotObj = slot.GetComponent<ArtisanSlot>();
             slotObj.Load(itemDatabase, recipe, this, "1x");
+            StartButton.interactable = true;
             for (int i = 0; i < amnt; i++)
             {
                 if (player.InventoryContainer.Remove(recipe.materialId, recipe.materialAmount) 
                     && player.InventoryContainer.Remove(recipe.materialId2, recipe.materialAmount2))
                 {
+                    readyRecipes.Add(recipe);
                     slotObj.SetText($"{amnt}x");
                 }
             }
+            Refresh();
         }
 
         public void SetCurText(float i)
@@ -112,6 +152,13 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
                 Destroy(t.gameObject);
             foreach (Transform t in ToMakeScrollViewContent.transform)
                 Destroy(t.gameObject);
+            AmountSlider.minValue = 0;
+            AmountSlider.maxValue = 0;
+            MinText.text = "-";
+            MaxText.text = "-";
+            RecipeDescription.text = "";
+            RecipeTitle.text = "";
+            RecipeImage.gameObject.SetActive(false);
         }
     }
 }

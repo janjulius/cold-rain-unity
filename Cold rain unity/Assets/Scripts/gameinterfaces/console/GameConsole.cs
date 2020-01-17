@@ -16,6 +16,7 @@ namespace Assets.Scripts.gameinterfaces.console
         public TMP_InputField inputfield;
         public ConsoleMessage textfield;
         public Transform contentField;
+        public Scrollbar Scrollbar;
         private const int maxTextFields = 100;
         private List<ConsoleMessage> history = new List<ConsoleMessage>();
         private GameManager gameManager;
@@ -68,11 +69,9 @@ namespace Assets.Scripts.gameinterfaces.console
             obj.Filtered = isFiltered;
             obj.GetComponent<TextMeshProUGUI>().text = text;
             history.Add(obj);
+            GetComponentInChildren<ScrollRect>().normalizedPosition = new Vector2(0, 0);
 
             inputfield.text = "";
-
-
-
         }
 
         public void SendConsoleMessage(string text) => ProcessInput(text, false);
