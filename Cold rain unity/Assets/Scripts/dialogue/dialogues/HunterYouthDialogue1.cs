@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
 using System;
+using UnityEngine;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -36,6 +37,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 2:
                     Npc("Yeah sure that sounds good. I'll start today.");
                     stage = 100;
+                    gameManager.FadeScreen(1);
                     WorldStateManager.Instance.SetState(StateConstants.HUNTING_NPC_STATE, 2);
                     break;
                 case 100:

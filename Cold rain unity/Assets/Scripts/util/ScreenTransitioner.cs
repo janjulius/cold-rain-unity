@@ -10,11 +10,6 @@ namespace Assets.Scripts.util
         public float transitionTime = 1f;
         public int sceneToLoad;
 
-        public override void Initiate()
-        {
-            DontDestroyOnLoad(this);
-        }
-
         public IEnumerator LoadLevel(int levelIndex)
         {
             Transition.SetTrigger("Start");
@@ -28,6 +23,7 @@ namespace Assets.Scripts.util
         {
             Transition.SetTrigger("Start");
             yield return new WaitForSeconds(time);
+            Transition.SetTrigger("End");
         }
     }
 }
