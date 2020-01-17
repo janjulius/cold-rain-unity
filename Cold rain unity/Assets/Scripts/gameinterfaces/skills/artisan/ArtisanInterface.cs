@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.databases;
+﻿using Assets.Scripts.activity.minigame;
+using Assets.Scripts.databases;
 using Assets.Scripts.databases.game;
 using Assets.Scripts.game.consumables.consumable;
 using Assets.Scripts.item;
@@ -137,10 +138,16 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
                 {
                     readyRecipes.Add(recipe);
                     slotObj.SetText($"{amnt}x");
-                    print("added recipe to readyrecipes size " + readyRecipes.Count);
                 }
             }
             Refresh();
+        }
+
+        public void StartButtonAction()
+        {
+            ArtisanActivity activity = Camera.main.GetComponent<GameManager>().ActivitiesObject.GetComponent<ArtisanActivity>();
+            activity.SetArtisanRecipes(readyRecipes.ToArray());
+            player.StartActivity(activity);
         }
 
         public void SetCurText(float i)

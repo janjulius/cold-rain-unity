@@ -26,6 +26,7 @@ public class GameManager : Node
     public Player player;
     public GameObject groundItemPrefab;
     public GameLoader GameLoader;
+    public GameObject ActivitiesObject;
     public SkillingInterfaceManager skillingInterfaceManager;
 
     public ShopInterface ShopInterface { private set; get; }
@@ -168,7 +169,7 @@ public class GameManager : Node
 
     public void UpdateClock()
     {
-        gameTime += UpdateTimeDelay * 5;
+        gameTime += UpdateTimeDelay;
         SetClockText();
         if (gameTime > 1440)
         {

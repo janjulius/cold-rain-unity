@@ -1,10 +1,12 @@
 ﻿using System;
+using Assets.Scripts.activity.minigame;
 using Assets.Scripts.container;
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
+using Assets.Scripts.managers;
 using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
@@ -47,6 +49,7 @@ public class Player : Entity, SavingModule
     #region Other References
 
     private GameManager gameManager;
+    private ActivityManager ActivityManager;
 
     #endregion
 
@@ -98,6 +101,7 @@ public class Player : Entity, SavingModule
     private void GetOtherReferences()
     {
         gameManager = Camera.main.GetComponent<GameManager>();
+        ActivityManager = gameManager.ActivitiesObject.GetComponent<ActivityManager>();
     }
 
     #endregion
@@ -271,8 +275,12 @@ public class Player : Entity, SavingModule
         SetLocation(endLocation);
     }
 
-
-
+    public void StartActivity(Activity activity)
+    {
+        ActivityManager.Activity = activity;
+        activity.StartActivity(ActivityManager, this);
+    }
+    
     public void Load()
     {
         Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx")),
