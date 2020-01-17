@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
 
@@ -22,7 +23,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    if (stage == 1000)//fishingstate == 1)
+                    if (WorldStateManager.Instance.GetState(StateConstants.HUNTING_NPC_STATE) == 1)
                     {
                         Npc("Ah, right. anyway, I told you to go and find an intern or something in the youth center south of town.");
                         stage = 100;
@@ -276,7 +277,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 27:
                     Player("Goodbye");
                     Npc("See ya");
-                    //SET HUNTING STATE TO 1
+                    WorldStateManager.Instance.SetState(StateConstants.HUNTING_NPC_STATE, 1);
                     stage = 100;
                     break;
                 case 100:

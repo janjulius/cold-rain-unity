@@ -14,13 +14,20 @@ namespace Assets.Scripts.world
 
         public override void OnUpdateState(int newVal)
         {
-            foreach(EnableTrigger et in triggers)
+            foreach (EnableTrigger et in triggers)
             {
                 foreach (var go in et.GameObjects)
+                {
                     go?.SetActive(false);
+                }
                 if (et.EnableAt == newVal)
+                {
                     foreach (var go in et.GameObjects)
+                    {
                         go?.SetActive(true);
+                    }
+                    break;
+                }
             }
         }
     }

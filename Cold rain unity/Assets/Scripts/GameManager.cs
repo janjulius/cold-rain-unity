@@ -52,6 +52,7 @@ public class GameManager : Node
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(MainCanvas);
         DontDestroyOnLoad(EventSystem);
+        DontDestroyOnLoad(screenTransitioner);
 
         shopDatabase = GetComponent<ShopDatabase>();
         ShopInterface = MainCanvas.GetComponentInChildren<ShopInterface>();
@@ -218,6 +219,6 @@ public class GameManager : Node
 
     public void FadeScreen(float time)
     {
-        //StartCoroutine(screenTransitioner.FadeScreen(time));
+        StartCoroutine(screenTransitioner.FadeScreen(time));
     }
 }
