@@ -7,6 +7,8 @@ namespace Assets.Scripts.databases.game
 {
     public class ArtisanRecipeDatabase : CRDatabase
     {
+        public List<ArtisanRecipe> recipeList = new List<ArtisanRecipe>();
+
         public override void Initiate()
         {
             CallSelf = false;
@@ -68,6 +70,12 @@ namespace Assets.Scripts.databases.game
                 new ArtisanRecipe(183, 7, 409, 1, 162),
                 new ArtisanRecipe(183, 4, 409, 1, 172),
             };
+            recipeList = items.Cast<ArtisanRecipe>().ToList();
+        }
+
+        public List<ArtisanRecipe> GetItems()
+        {
+            return recipeList;
         }
     }
 }
