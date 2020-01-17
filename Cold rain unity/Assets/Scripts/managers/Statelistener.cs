@@ -12,18 +12,13 @@ namespace Assets.Scripts.managers
         [Header("Make sure this is unique")]
         public int listeningId;
         
-        private WorldStateManager stateManager;
-
         public override void StartInitiate()
         {
             base.StartInitiate();
-            stateManager = Camera.main.GetComponent<WorldStateManager>();
-            stateManager[listeningId].worldStateChanged += OnUpdateState;
+            WorldStateManager.Instance.Register(listeningId);
+            WorldStateManager.Instance.ActionDictionary[listeningId] += OnUpdateState;
         }
-        
-        public virtual void OnUpdateState(object e, EventArgs args)
-        {
-            print("onupdatestate was called");
-        }
+
+        public abstract void OnUpdateState(int newVal);
     }
 }

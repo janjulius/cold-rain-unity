@@ -16,7 +16,6 @@ using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Assets.Scripts.managers.WorldStateManager;
 
 public class GameManager : Node
 {
@@ -34,9 +33,7 @@ public class GameManager : Node
 
     private List<Quest> questList = new List<Quest>();
     public QuestRequestInterface QuestRequestInterface { private set; get; }
-
-    private WorldStateManager worldStateManager;
-
+    
     public ScreenTransitioner screenTransitioner;
 
     [SerializeField] public int gameTime { private set; get; }
@@ -61,9 +58,7 @@ public class GameManager : Node
 
         QuestRequestInterface = MainCanvas.GetComponentInChildren<QuestRequestInterface>();
         QuestRequestInterface.SetActive(false);
-
-        worldStateManager = GetComponent<WorldStateManager>();
-
+        
         InitializeQuests();
 
         SetDayText();
@@ -121,7 +116,7 @@ public class GameManager : Node
 
     internal void SetWorldState(int id, int state)
     {
-        worldStateManager[id] = new WorldState(state);
+        WorldStateManager.Instance.SetState(id, state);
     }
 
     #region Quests
