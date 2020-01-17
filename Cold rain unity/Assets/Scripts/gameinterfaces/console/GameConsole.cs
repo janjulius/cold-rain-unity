@@ -69,7 +69,6 @@ namespace Assets.Scripts.gameinterfaces.console
             obj.Filtered = isFiltered;
             obj.GetComponent<TextMeshProUGUI>().text = text;
             history.Add(obj);
-            GetComponentInChildren<ScrollRect>().normalizedPosition = new Vector2(0, 0);
 
             inputfield.text = "";
         }
