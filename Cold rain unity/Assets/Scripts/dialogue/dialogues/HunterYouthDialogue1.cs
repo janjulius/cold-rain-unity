@@ -26,7 +26,7 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 100;
                             break;
                         case 1:
-                            Player("Hey, would be interested in running the hunting shop for me as an intern?");
+                            Player("Hey, would you be interested in running the hunting shop for me as an intern?");
                             stage++;
                             break;
                     }

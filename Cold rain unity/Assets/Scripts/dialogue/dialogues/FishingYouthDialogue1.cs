@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -23,14 +19,14 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    switch (stage) // SWITCH (HUNTINGSTATE)
+                    switch (stage) // SWITCH (FISHINGSTATE)
                     {
                         case 0:
                             Npc("Get out boomer");
                             stage = 100;
                             break;
                         case 1:
-                            Player("Hey, would be interested in running the fishing shop for me as an intern?");
+                            Player("Hey, would be you interested in running the fishing shop for me as an intern?");
                             stage++;
                             break;
                     }
@@ -38,7 +34,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 2:
                     Npc("Yeah sure that sounds good. I'll start today.");
                     stage = 100;
-                    //SET HUNTINGSTATE TO 2
+                    //SET FISHINGSTATE TO 2
                     break;
                 case 100:
                     End();

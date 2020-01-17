@@ -72,11 +72,11 @@ namespace Assets.Scripts.dialogue.dialogues
                             Player("How do I work the machines?");
                             stage++;
                             break;
-                        case 2:
+                        case 3:
                             Player("About a quest..");
                             stage = 7;
                             break;
-                        case 3:
+                        case 2:
                             Player("I think I've become a master artisan!");
                             stage = 10;
                             break;

@@ -18,8 +18,16 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    SendOptionsDialogue("Select an option", "Browse store", "Crops gang?", "CROPS GANG!", "Farming?", "-Next page-");
-                    stage = 1;
+                    if (stage == 1000)//farmingstate == 1)
+                    {
+                        Npc("I told you to find an intern in the youth center south of town, Remember?");
+                        stage = 100;
+                    }
+                    else
+                    {
+                        SendOptionsDialogue("Select an option", "Browse store", "Crops gang?", "CROPS GANG!", "Farming?", "-Next page-");
+                        stage = 1;
+                    }
                     break;
                 case 1:
                     switch (SelectedOption)
@@ -124,7 +132,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 14;
                     break;
                 case 14:
-                    SendOptionsDialogue("Select an option", "-Previous Page-", "Where to farm ?", "About a quest..", "Goodbye");
+                    SendOptionsDialogue("Select an option", "-Previous Page-", "Where to farm ?", "Master farming", "About a quest..", "Goodbye");
                     stage++;
                     break;
                 case 15:
@@ -136,10 +144,14 @@ namespace Assets.Scripts.dialogue.dialogues
                             stage = 13;
                             break;
                         case 2:
+                            Player("I think I've become a master farmer.");
+                            stage = 20;
+                            break;
+                        case 3:
                             Player("About a quest..");
                             stage = 16;
                             break;
-                        case 3:
+                        case 4:
                             Player("Goodbye");
                             Npc("See ya");
                             stage = 100;
@@ -225,6 +237,49 @@ namespace Assets.Scripts.dialogue.dialogues
                     player.InventoryContainer.Remove(402, 1);
                     player.InventoryContainer.Add(401, 1);
                     titoTutorialQuest.SetStage(15);
+                    stage = 100;
+                    break;
+                case 20:
+                    if (player.skills.GetSkill(SKILLS.FARMING).GetLevel() >= 50)
+                    {
+                        Npc("It seems you've been a capable master farmer. Me and my brother will be leaving the stores in your hands then. Together with the CROPS GANG and LIVESTOCK GANG.");
+                        stage++;
+                    }
+                    else
+                    {
+                        Npc("Debatable. Try again when you reach level 50.");
+                        stage = 3;
+                    }
+                    break;
+                case 21:
+                    SendOptionsDialogue("Select an option", "Yes", "No, not yet");
+                    stage++;
+                    break;
+                case 22:
+                    switch (SelectedOption)
+                    {
+                        case 0:
+                            Npc("Alright, there's no way you can run two shops all on your own though, why don't you go find some interns at the youth center?");
+                            stage++;
+                            break;
+                        case 1:
+                            Npc("Oh... soon though? I hope.");
+                            stage = 3;
+                            break;
+                    }
+                    break;
+                case 23:
+                    Npc("You know where the youth center is, right? It's south of town somewhere in the woods.");
+                    stage++;
+                    break;
+                case 24:
+                    Npc("By the time you hire some interns, we'll be out of this place, so I guess this will be goodbye. We're going to mexico!");
+                    stage++;
+                    break;
+                case 25:
+                    Player("Goodbye");
+                    Npc("See ya");
+                    //SET FARMING STATE TO 1
                     stage = 100;
                     break;
                 case 100:
