@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.gameinterfaces.skills.cooking;
+﻿using Assets.Scripts.gameinterfaces.skills.artisan;
+using Assets.Scripts.gameinterfaces.skills.cooking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Assets.Scripts.managers.skilling
     public class SkillingInterfaceManager : Node
     {
         public CookingInterface cookingInterface;
+        public ArtisanInterface artisanInterface;
 
         public override void Initiate()
         {
@@ -21,6 +23,12 @@ namespace Assets.Scripts.managers.skilling
         {
             cookingInterface.gameObject.SetActive(true);
             cookingInterface.Create(player);
+        }
+
+        public void OpenArtisanInterface(Player player)
+        {
+            artisanInterface.gameObject.SetActive(true);
+            artisanInterface.Create(player);
         }
     }
 }
