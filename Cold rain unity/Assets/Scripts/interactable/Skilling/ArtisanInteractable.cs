@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.managers.skilling;
+﻿using Assets.Scripts.activity.minigame;
+using Assets.Scripts.managers.skilling;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.interactable.Skilling
@@ -12,6 +9,7 @@ namespace Assets.Scripts.interactable.Skilling
     {
         SkillingInterfaceManager skillingInterfaceManager;
         public ArtisanInteractableType interactableType;
+        private int berryAmount;
 
         public override void Initiate()
         {
@@ -22,15 +20,24 @@ namespace Assets.Scripts.interactable.Skilling
         public override void Interact(Entity sender)
         {
             base.Interact(sender);
-            if (sender is Player)
+            Player player = (Player)sender;
+            switch (interactableType)
             {
-                switch (interactableType)
-                {
-                    case ArtisanInteractableType.LEATHER:
-                        skillingInterfaceManager.OpenArtisanInterface((Player)sender);
-                        break;
-                }
+                case ArtisanInteractableType.LEATHER:
+                    skillingInterfaceManager.OpenArtisanInterface(player);
+                    break;
+                case ArtisanInteractableType.JAM_START:
+                    if (player.InventoryContainer.Contains(271))
+                    {
+                        if (player.InventoryContainer.GetAmount(271) >= berryAmount)
+                        {
+                            player.InventoryContainer.Remove(271, berryAmount);
+                            //ArtisanFoodActivity.StartActivity( player);
+                        }
+                    }
+                    break;
             }
+
         }
 
     }
@@ -39,8 +46,11 @@ namespace Assets.Scripts.interactable.Skilling
     public enum ArtisanInteractableType
     {
         LEATHER = (1 << 0),
-        JAM = (1 << 1),
-        MILK = (1 << 2),
-        CHEESE = (1 << 3)
+        JAM_START = (1 << 1),
+        MILK_START = (1 << 2),
+        CHEESE_START = (1 << 3),
+        JAM_DONE = (1 << 4),
+        MILK_DONE = (1 << 5),
+        CHEESE_DONE = (1 << 6)
     }
 }
