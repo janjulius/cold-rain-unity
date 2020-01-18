@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -17,7 +19,7 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    if (stage == 1000)//Artisanstate == 1)
+                    if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_NPC_STATE) == 1)
                     {
                         Npc("I told you to find an intern in the youth center south of town, Remember?");
                         stage = 100;
@@ -228,7 +230,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 15:
                     Player("Goodbye");
                     Npc("See ya");
-                    //SET ARTISAN STATE TO 1
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_NPC_STATE, 1);
                     stage = 100;
                     break;
                 case 100:

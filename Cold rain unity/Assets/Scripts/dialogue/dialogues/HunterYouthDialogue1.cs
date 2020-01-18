@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
 using System;
-using UnityEngine;
 
 namespace Assets.Scripts.dialogue.dialogues
 {

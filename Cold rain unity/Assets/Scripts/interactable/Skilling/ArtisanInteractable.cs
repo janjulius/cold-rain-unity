@@ -1,5 +1,8 @@
 ﻿using Assets.Scripts.activity.minigame;
+using Assets.Scripts.gameinterfaces.console;
+using Assets.Scripts.managers;
 using Assets.Scripts.managers.skilling;
+using Assets.Scripts.shops.constants;
 using System;
 using UnityEngine;
 
@@ -9,7 +12,9 @@ namespace Assets.Scripts.interactable.Skilling
     {
         SkillingInterfaceManager skillingInterfaceManager;
         public ArtisanInteractableType interactableType;
-        private int berryAmount;
+        private int berryAmount = 3;
+        private int milkAmount = 1;
+        private int cheeseAmount = 1;
 
         public override void Initiate()
         {
@@ -21,10 +26,20 @@ namespace Assets.Scripts.interactable.Skilling
         {
             base.Interact(sender);
             Player player = (Player)sender;
+            var manager = Camera.main.GetComponent<GameManager>();
+            ArtisanFoodActivity foodActivity = manager.ActivitiesObject.GetComponent<ArtisanFoodActivity>();
             switch (interactableType)
             {
                 case ArtisanInteractableType.LEATHER:
                     skillingInterfaceManager.OpenArtisanInterface(player);
+                    break;
+                case ArtisanInteractableType.FIREPLACE_1:
+                    print("FIREPLACE ONE");
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_1, 1);
+                    break;
+                case ArtisanInteractableType.FIREPLACE_2:
+                    print("FIREPLACE TWO");
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 1);
                     break;
                 case ArtisanInteractableType.JAM_START:
                     if (player.InventoryContainer.Contains(271))
@@ -32,14 +47,133 @@ namespace Assets.Scripts.interactable.Skilling
                         if (player.InventoryContainer.GetAmount(271) >= berryAmount)
                         {
                             player.InventoryContainer.Remove(271, berryAmount);
-                            //ArtisanFoodActivity.StartActivity( player);
+                            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_IDLE, 1);
+                            foodActivity.StartJamActivity(player);
+                            GameConsole.Instance.SendConsoleMessage("You put some berries in the machine.");
+                        }
+                        else
+                        {
+                            GameConsole.Instance.SendConsoleMessage("You don't have enough berries to make jam.");
                         }
                     }
+                    else
+                    {
+                        GameConsole.Instance.SendConsoleMessage("You don't have any berries.");
+                    }
+                    break;
+                case ArtisanInteractableType.JAM_DONE:
+                    player.InventoryContainer.Add(363, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_DONE, 0);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_IDLE, 0);
+                    break;
+                case ArtisanInteractableType.MILK_START:
+                    //SendOptionDialogue("What would you like to make?", "Unripe cheese", "Unripe goat cheese");
+                    switch (1)
+                    {
+                        case 0:
+                            if (player.InventoryContainer.Contains(275))
+                            {
+                                if (player.InventoryContainer.GetAmount(275) >= milkAmount)
+                                {
+                                    player.InventoryContainer.Remove(275, milkAmount);
+                                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_IDLE, 1);
+                                    player.StartActivity(foodActivity, false);
+                                    GameConsole.Instance.SendConsoleMessage("You put some milk in the barrel.");
+                                }
+                                else
+                                {
+                                    GameConsole.Instance.SendConsoleMessage("You don't have enough milk to make unripe cheese.");
+                                }
+                            }
+                            else
+                            {
+                                GameConsole.Instance.SendConsoleMessage("You don't have any milk.");
+                            }
+                            break;
+                        case 1:
+                            if (player.InventoryContainer.Contains(276))
+                            {
+                                if (player.InventoryContainer.GetAmount(276) >= milkAmount)
+                                {
+                                    player.InventoryContainer.Remove(276, milkAmount);
+                                    foodActivity.RunMilkClock(1);
+                                }
+                                else
+                                {
+                                    GameConsole.Instance.SendConsoleMessage("You don't have enough goat milk to make unripe goat cheese.");
+                                }
+                            }
+                            else
+                            {
+                                GameConsole.Instance.SendConsoleMessage("You don't have any goat milk.");
+                            }
+                            break;
+                    }
+                    break;
+                case ArtisanInteractableType.MILK_DONE:
+                    player.InventoryContainer.Add(410, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_DONE, 0);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    break;
+                case ArtisanInteractableType.GOAT_MILK_DONE:
+                    player.InventoryContainer.Add(411, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_MILK_DONE, 0);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    break;
+                case ArtisanInteractableType.CHEESE_START:
+                    //SendOptionDialogue("What would you like to make?", "Cheese", "Goat cheese");
+                    switch (1)
+                    {
+                        case 0:
+                            if (player.InventoryContainer.Contains(410))
+                            {
+                                if (player.InventoryContainer.GetAmount(410) >= cheeseAmount)
+                                {
+                                    player.InventoryContainer.Remove(410, cheeseAmount);
+                                    foodActivity.RunCheeseClock(0);
+                                }
+                                else
+                                {
+                                    GameConsole.Instance.SendConsoleMessage("You don't have enough unripe cheese to make cheese.");
+                                }
+                            }
+                            else
+                            {
+                                GameConsole.Instance.SendConsoleMessage("You don't have any unripe cheese.");
+                            }
+                            break;
+                        case 1:
+                            if (player.InventoryContainer.Contains(411))
+                            {
+                                if (player.InventoryContainer.GetAmount(411) >= cheeseAmount)
+                                {
+                                    player.InventoryContainer.Remove(411, cheeseAmount);
+                                    foodActivity.RunMilkClock(1);
+                                }
+                                else
+                                {
+                                    GameConsole.Instance.SendConsoleMessage("You don't have enough unripe goat cheese to make goat cheese.");
+                                }
+                            }
+                            else
+                            {
+                                GameConsole.Instance.SendConsoleMessage("You don't have any unripe goat cheese.");
+                            }
+                            break;
+                    }
+                    break;
+                case ArtisanInteractableType.CHEESE_DONE:
+                    player.InventoryContainer.Add(361, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 0);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    break;
+                case ArtisanInteractableType.GOAT_CHEESE_DONE:
+                    player.InventoryContainer.Add(362, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_CHEESE_DONE, 0);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
                     break;
             }
-
         }
-
     }
 
     [Flags]
@@ -51,6 +185,10 @@ namespace Assets.Scripts.interactable.Skilling
         CHEESE_START = (1 << 3),
         JAM_DONE = (1 << 4),
         MILK_DONE = (1 << 5),
-        CHEESE_DONE = (1 << 6)
+        GOAT_MILK_DONE = (1 << 6),
+        CHEESE_DONE = (1 << 7),
+        GOAT_CHEESE_DONE = (1 << 8),
+        FIREPLACE_1 = (1 << 9),
+        FIREPLACE_2 = (1 << 10)
     }
 }
