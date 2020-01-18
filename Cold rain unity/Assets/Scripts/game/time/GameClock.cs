@@ -15,7 +15,7 @@ namespace Assets.Scripts.game.time
         /// <summary>
         /// The amount of seconds delay when the time gets updated again
         /// </summary>
-        private int UpdateTimeDelay = 1;
+        private int UpdateTimeDelay = 5;
         public TextMeshProUGUI TimeText;
         public TextMeshProUGUI DayText;
 
