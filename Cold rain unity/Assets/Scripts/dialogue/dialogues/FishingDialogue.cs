@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
 
@@ -18,7 +19,7 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    if ( stage == 1000 )//fishingstate == 1)
+                    if (WorldStateManager.Instance.GetState(StateConstants.FISHING_NPC_STATE) == 1)
                     {
                         Npc("I told you, go and find an intern or something in the youth center south of town.");
                         stage = 100;
@@ -136,7 +137,8 @@ namespace Assets.Scripts.dialogue.dialogues
                     {
                         case 0:
                             Player("Yes");
-                            if (player.InventoryContainer.Contains(406)){
+                            if (player.InventoryContainer.Contains(406))
+                            {
                                 Npc("You already have my marlin...");
                                 stage = 100;
                             }
@@ -200,26 +202,26 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 14:
                     Player("Goodbye");
                     Npc("See ya");
-                    //SET FISHING STATE TO 1
+                    WorldStateManager.Instance.SetState(StateConstants.FISHING_NPC_STATE, 1);
                     stage = 100;
                     break;
                 case 100:
                     End();
-            break;
+                    break;
+            }
+        }
+
+        public override void End(object[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Open(object[] args)
+        {
+            base.Open(args);
+            Npc($"What do you want.");
+            stage = 0;
+            return true;
         }
     }
-
-    public override void End(object[] args)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override bool Open(object[] args)
-    {
-        base.Open(args);
-        Npc($"What do you want.");
-        stage = 0;
-        return true;
-    }
-}
 }

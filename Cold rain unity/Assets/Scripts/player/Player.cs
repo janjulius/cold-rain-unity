@@ -275,10 +275,10 @@ public class Player : Entity, SavingModule
         SetLocation(endLocation);
     }
 
-    public void StartActivity(Activity activity)
+    public void StartActivity(Activity activity, bool useClock)
     {
         ActivityManager.Activity = activity;
-        activity.StartActivity(ActivityManager, this);
+        activity.StartActivity(ActivityManager, this, useClock);
     }
     
     public void Load()
