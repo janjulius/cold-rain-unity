@@ -80,6 +80,11 @@ namespace Assets.Scripts.dialogue
             handler.SendDialogues(NPC, message.ToString());
         }
 
+        public void DialogueNoTitle(object message)
+        {
+            handler.SendDialogues(null, message.ToString());
+        }
+
         protected void OpenShop(int id)
         {
             Camera.main.GetComponent<GameManager>().LoadShop(id);

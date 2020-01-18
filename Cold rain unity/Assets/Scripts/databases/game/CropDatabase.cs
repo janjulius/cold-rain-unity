@@ -27,13 +27,23 @@ namespace Assets.Scripts.databases.game
 
             for (int i = 0; i < items.Count; i++)
             {
-                Sprite[] sprites = null;
+                Sprite[] sprites = new Sprite[5];
                 for(int j = 0; j < 5; j++)
                 {
                     sprites[i] = Resources.Load<Sprite>($"Crops/{i}/crop_{i}_{j}");
                 }
                 CropList[i].SetSprites(sprites);
             }
+        }
+        
+        public Crop GetCropBySeed(int id)
+        {
+            return CropList.Where(c => c.SeedId == id).FirstOrDefault();
+        }
+
+        public bool IsSeed(int id)
+        {
+            return CropList.Where(c => c.SeedId == id).FirstOrDefault() != null;
         }
     }
 }
