@@ -8,9 +8,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.interactable.Skilling
 {
-    class ArtisanInteractable : Interactable
+    public class ArtisanInteractable : Interactable
     {
         SkillingInterfaceManager skillingInterfaceManager;
+        public ArtisanInteractableType interactableType;
 
         public override void Initiate()
         {
@@ -22,8 +23,24 @@ namespace Assets.Scripts.interactable.Skilling
         {
             base.Interact(sender);
             if (sender is Player)
-                skillingInterfaceManager.OpenArtisanInterface((Player)sender);
+            {
+                switch (interactableType)
+                {
+                    case ArtisanInteractableType.LEATHER:
+                        skillingInterfaceManager.OpenArtisanInterface((Player)sender);
+                        break;
+                }
+            }
         }
 
+    }
+
+    [Flags]
+    public enum ArtisanInteractableType
+    {
+        LEATHER = (1 << 0),
+        JAM = (1 << 1),
+        MILK = (1 << 2),
+        CHEESE = (1 << 3)
     }
 }
