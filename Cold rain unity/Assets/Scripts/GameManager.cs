@@ -221,4 +221,8 @@ public class GameManager : Node
     {
         StartCoroutine(screenTransitioner.FadeScreen(time));
     }
+    public void FadeScreenWarp(float time, Player player, int SceneId, Vector2 endLocation)
+    {
+        StartCoroutine(screenTransitioner.FadeScreenWarp(time, player, SceneId, endLocation));
+    }
 }

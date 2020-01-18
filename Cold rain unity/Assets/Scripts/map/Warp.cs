@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,11 @@ namespace Assets.Scripts.map
         private BoxCollider2D coll;
         private Rigidbody2D rb;
         private Player player;
+        private GameManager gameManager;
 
         public bool GoesToOtherScene;
         public int SceneId = 0;
+        public int TransitionTime = 0;
 
         [Header("How long should the player be immobilized during this action.")]
         public float LockTimeInSeconds = 0;
@@ -38,6 +41,7 @@ namespace Assets.Scripts.map
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             Sound = GetComponent<AudioSource>();
+            gameManager = Camera.main.GetComponent<GameManager>();
         }
 
         void OnTriggerEnter2D(Collider2D collision)
@@ -64,7 +68,8 @@ namespace Assets.Scripts.map
         {
             if (GoesToOtherScene)
             {
-                player.LoadIntoScene(SceneId, endLocation);
+                gameManager.FadeScreenWarp(TransitionTime, player, SceneId, endLocation);
+                //player.LoadIntoScene(SceneId, endLocation);
             }
             else
             {

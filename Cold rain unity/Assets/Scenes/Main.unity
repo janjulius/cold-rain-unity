@@ -1958,7 +1958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.67966604, y: 0.7164083}
   m_AnchorMax: {x: 0.74500006, y: 0.79429597}
-  m_AnchoredPosition: {x: 0.30000305, y: -0.6800003}
+  m_AnchoredPosition: {x: 0.30000305, y: -0.6799927}
   m_SizeDelta: {x: -1.3700027, y: -0.36999512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &192774233
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30.8
+  m_fontSize: 28.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7494,7 +7494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15166162, y: 0.09633288}
   m_AnchorMax: {x: 0.84900004, y: 0.98285705}
-  m_AnchoredPosition: {x: 0, y: -14.589}
+  m_AnchoredPosition: {x: 0, y: -14.588989}
   m_SizeDelta: {x: 0, y: 27.816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830243119
@@ -7925,7 +7925,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 23.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7942,7 +7942,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -8031,7 +8031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6905574, y: 0.90988755}
   m_AnchorMax: {x: 0.97666615, y: 0.961}
-  m_AnchoredPosition: {x: -0.08000183, y: 0.18000793}
+  m_AnchoredPosition: {x: -0.08000183, y: 0.17999268}
   m_SizeDelta: {x: -0.23, y: -0.15999985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850859981
@@ -8374,12 +8374,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 867816269}
-    characterCount: 760
+    characterCount: 841
     spriteCount: 0
     spaceCount: 0
-    wordCount: 59
+    wordCount: 65
     linkCount: 0
-    lineCount: 10
+    lineCount: 12
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -9178,7 +9178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7947767, y: 0.019000001}
   m_AnchorMax: {x: 0.97666615, y: 0.14370413}
-  m_AnchoredPosition: {x: -0.10507202, y: 0.8999939}
+  m_AnchoredPosition: {x: -0.10507202, y: 0.8999634}
   m_SizeDelta: {x: -0.17999268, y: -0.19000244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953992857
@@ -10974,7 +10974,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.6
+  m_fontSize: 27
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11599,7 +11599,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 19.1
+  m_fontSize: 24.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13317,7 +13317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5536681, y: 0.019000001}
   m_AnchorMax: {x: 0.7341107, y: 0.14370413}
-  m_AnchoredPosition: {x: 0.41000366, y: 0.8999939}
+  m_AnchoredPosition: {x: 0.41000366, y: 0.8999634}
   m_SizeDelta: {x: 0.8199997, y: -2.1900024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568810108
@@ -16300,7 +16300,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 11.65
+  m_fontSize: 13.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16508,7 +16508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15166162, y: 0.04036609}
   m_AnchorMax: {x: 0.84900004, y: 0.98285705}
-  m_AnchoredPosition: {x: 0, y: -0.08900452}
+  m_AnchoredPosition: {x: 0, y: -0.089019775}
   m_SizeDelta: {x: 0, y: -1.184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873005669
@@ -16688,7 +16688,7 @@ PrefabInstance:
     - target: {fileID: 2910441855818543953, guid: 900913ef6914b7d4e9f97b9ce8e26a74,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5448974131162881759, guid: 900913ef6914b7d4e9f97b9ce8e26a74,
         type: 3}
@@ -16744,6 +16744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304765913098054994, guid: 900913ef6914b7d4e9f97b9ce8e26a74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 900913ef6914b7d4e9f97b9ce8e26a74, type: 3}

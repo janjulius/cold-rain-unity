@@ -25,5 +25,14 @@ namespace Assets.Scripts.util
             yield return new WaitForSeconds(time);
             Transition.SetTrigger("End");
         }
+
+        public IEnumerator FadeScreenWarp(float time, Player player, int SceneId, Vector2 endlocation)
+        {
+            Transition.SetTrigger("Start");
+            yield return new WaitForSeconds(1f);
+            player.LoadIntoScene(SceneId, endlocation);
+            yield return new WaitForSeconds(time);
+            Transition.SetTrigger("End");
+        }
     }
 }
