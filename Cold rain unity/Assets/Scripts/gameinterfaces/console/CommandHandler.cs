@@ -99,7 +99,7 @@ namespace Assets.Scripts.gameinterfaces.console
                                 if (canParse)
                                 {
                                     if (number > 0 && number < 1440)
-                                        gameManager.SetTime(number);
+                                        gameManager.GameClock.SetTime(number);
                                     else
                                         GameConsole.Instance.SendDevMessage($"Invalid number, needs to be between 0 and 1440");
                                 }
@@ -108,22 +108,22 @@ namespace Assets.Scripts.gameinterfaces.console
                                     switch (cmd[2])
                                     {
                                         case "morning":
-                                            gameManager.SetTime(360);
+                                            gameManager.GameClock.SetTime(360);
                                             break;
                                         case "night":
-                                            gameManager.SetTime(1380);
+                                            gameManager.GameClock.SetTime(1380);
                                             break;
                                         case "noon":
-                                            gameManager.SetTime(720);
+                                            gameManager.GameClock.SetTime(720);
                                             break;
                                         case "evening":
-                                            gameManager.SetTime(1040);
+                                            gameManager.GameClock.SetTime(1040);
                                             break;
                                     }
                                 }
                                 break;
                             case "get":
-                                GameConsole.Instance.SendDevMessage($"{gameManager.gameTime}");
+                                GameConsole.Instance.SendDevMessage($"{gameManager.GameClock.GameTime}");
 
                                 break;
                         }

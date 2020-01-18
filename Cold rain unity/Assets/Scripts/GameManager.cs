@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.databases.game.shops;
 using Assets.Scripts.dialogue;
+using Assets.Scripts.game.time;
 using Assets.Scripts.gameinterfaces.dialogue;
 using Assets.Scripts.gameinterfaces.quest;
 using Assets.Scripts.gameinterfaces.shop;
@@ -37,15 +38,8 @@ public class GameManager : Node
     
     public ScreenTransitioner screenTransitioner;
 
-    [SerializeField] public int gameTime { private set; get; }
-    [SerializeField] public int day { private set; get; } = 0;
-    /// <summary>
-    /// The amount of seconds delay when the time gets updated again
-    /// </summary>
-    private int UpdateTimeDelay = 1;
-    public TextMeshProUGUI TimeText;
-    public TextMeshProUGUI DayText; 
-
+    public GameClock GameClock;
+    
     public override void Initiate()
     {
         base.Initiate();
@@ -63,10 +57,8 @@ public class GameManager : Node
         
         InitializeQuests();
 
-        SetDayText();
-        InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
-        UpdateClock();
-
+        GameClock.StartClock();
+        
         if (player == null)
             player = FindObjectOfType<Player>();
     }
@@ -96,8 +88,8 @@ public class GameManager : Node
         questList.ForEach(q => q.Save());
 
         //time and day
-        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), day);
-        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), gameTime);
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), GameClock.Day);
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), GameClock.GameTime);
 
         GameLoader.SaveGame();
         PlayerPrefs.Save();
@@ -110,8 +102,8 @@ public class GameManager : Node
         questList.ForEach(q => q.Load());
 
         //time and day
-        day = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), 0);
-        gameTime = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), 0);
+        GameClock.SetDay(PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "day"), 0));
+        GameClock.SetTime(PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "time"), 0));
 
         GameLoader.LoadGame();
     }
@@ -165,58 +157,7 @@ public class GameManager : Node
         QuestRequestInterface.Load(GetQuestById(id), player);
     }
     #endregion
-
-    #region Clock/time/day
-
-    public void UpdateClock()
-    {
-        gameTime += UpdateTimeDelay;
-        SetClockText();
-        if (gameTime > 1440)
-        {
-            gameTime = 0;
-            day++;
-            SetDayText();
-        }
-    }
-
-    private void SetClockText()
-    {
-        int hrs = (int)gameTime / 60;
-        int mins = (int)gameTime - (hrs * 60);
-        TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}";
-    }
-
-    private void SetDayText()
-    {
-        DayText.text = $"Day {day}";
-    }
-
-    internal void SetTime(int time)
-    {
-        gameTime = time;
-        SetClockText();
-    }
-
-    internal void SetDay(int day)
-    {
-        this.day = day;
-        SetDayText();
-    }
-
-    internal void IncreaseTime(int time)
-    {
-        int newTime = gameTime + time;
-        if(newTime > 1440)
-        {
-            SetDay(day + (int)Mathf.Floor(time / 1440));
-            newTime -= 1440;
-        }
-        SetTime(newTime);
-    }
-
-    #endregion
-
+    
     public void FadeScreen(float time)
     {
         StartCoroutine(screenTransitioner.FadeScreen(time));
