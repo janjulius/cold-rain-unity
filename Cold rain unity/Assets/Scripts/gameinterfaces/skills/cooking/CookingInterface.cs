@@ -139,7 +139,7 @@ namespace Assets.Scripts.gameinterfaces.skills.cooking
                         player.InventoryContainer.Add(itemResult.Id, amount);
                         player.skills.GetSkill(SKILLS.COOKING).AddExp((int)Math.Floor(AmountSlider.value * selectedFood.givenExperience));
                         var manager = Camera.main.GetComponent<GameManager>();
-                        manager.IncreaseTime((int)(AmountSlider.value * ReqBaseTime));
+                        manager.GameClock.IncreaseTime((int)(AmountSlider.value * ReqBaseTime));
                         manager.FadeScreen(2f);
                         Clear();
                         ToggleActive();

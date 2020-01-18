@@ -21,12 +21,15 @@ namespace Assets.Scripts.activity.minigame
             base.StartActivity(manager, player);
             InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
             UpdateClock();
+            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 0);
         }
 
         public override void EndActivity()
         {
             base.EndActivity();
             currentRecipes = null;
+            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 1);
+            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_1, 0);
         }
 
         public void SetArtisanRecipes(ArtisanRecipe[] recipes)
@@ -74,7 +77,7 @@ namespace Assets.Scripts.activity.minigame
             {
                 player.InventoryContainer.Add(ar.resultId, 1);
                 GameConsole.Instance.SendConsoleMessage($"{player.InventoryContainer.GetItem(ar.resultId).Name}");
-                //TODO: player.skills.GetSkill(SKILLS.ARTISAN).AddExp(ar.)
+                player.skills.GetSkill(SKILLS.ARTISAN).AddExp(ar.experience);
             }
             EndActivity();
         }

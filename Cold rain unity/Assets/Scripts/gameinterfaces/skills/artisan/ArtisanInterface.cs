@@ -97,16 +97,18 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
             int mat1amnt = player.InventoryContainer.GetAmount(recipe.materialId);
             int mat2amnt = player.InventoryContainer.GetAmount(recipe.materialId2);
 
+            float result = 0;
+
             if(recipe.materialId2 == -1)
             {
-                return mat1amnt / recipe.materialAmount;
+                result = mat1amnt / recipe.materialAmount;
             }
 
             if(mat1amnt > 0 && mat2amnt > 0)
             {
-                return Mathf.Min(Mathf.Floor(mat1amnt / recipe.materialAmount), Mathf.Floor(mat2amnt / recipe.materialAmount2));
+                result = Mathf.Min(Mathf.Floor(mat1amnt / recipe.materialAmount), Mathf.Floor(mat2amnt / recipe.materialAmount2));
             }
-            return 0;
+            return Mathf.Min(player.InventoryContainer.GetFreeSlots(), result);
         }
 
         public void Refund()

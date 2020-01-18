@@ -87,9 +87,7 @@ public class Player : Entity, SavingModule
         InventoryContainer.Add(177, 10);
         //SetLocation(SpawnPosition);
     }
-
     
-
     #region References
 
     private void GetReferences()

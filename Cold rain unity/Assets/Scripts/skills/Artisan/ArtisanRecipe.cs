@@ -17,7 +17,7 @@ namespace Assets.Scripts.game.consumables.consumable
         public int experience { private set; get; }
         public int resultId { private set; get; }
         
-        public ArtisanRecipe(int materialId, int materialAmount, int materialId2, int materialAmount2, int level, int experience, int resultId)
+        public ArtisanRecipe(int materialId, int materialAmount, int materialId2, int materialAmount2, int resultId, int level, int experience)
         {
             this.materialId = materialId;
             this.materialAmount = materialAmount;
