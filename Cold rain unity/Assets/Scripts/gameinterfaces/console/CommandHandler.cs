@@ -79,7 +79,7 @@ namespace Assets.Scripts.gameinterfaces.console
                             return false;
                         }
                         int id = Convert.ToInt32(cmd[1]);
-                        GameConsole.Instance.SendDevMessage($"Set quest ({id}) stage to: {player.GetQuestStage(id).ToString()}");
+                        GameConsole.Instance.SendDevMessage($"quest ({id}) stage is: {player.GetQuestStage(id).ToString()}");
 
                         return true;
                     }

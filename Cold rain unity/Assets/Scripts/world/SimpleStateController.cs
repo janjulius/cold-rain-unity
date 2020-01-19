@@ -22,16 +22,16 @@ namespace Assets.Scripts.world
                 }
             }
 
-            foreach (EnableTrigger et in triggers)
+            foreach(EnableTrigger et in triggers)
             {
                 if (et.EnableAt == newVal)
-                {
-                    foreach (var go in et.GameObjects)
                     {
-                        go?.SetActive(true);
+                        foreach (var go in et.GameObjects)
+                        {
+                            go?.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
     }

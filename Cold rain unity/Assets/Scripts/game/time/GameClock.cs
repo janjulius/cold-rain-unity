@@ -18,7 +18,7 @@ namespace Assets.Scripts.game.time
         private int UpdateTimeDelay = 5;
         public TextMeshProUGUI TimeText;
         public TextMeshProUGUI DayText;
-
+        
         public override void Initiate()
         {
             base.Initiate();

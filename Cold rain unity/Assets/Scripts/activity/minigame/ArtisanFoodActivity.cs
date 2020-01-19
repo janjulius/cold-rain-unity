@@ -2,6 +2,7 @@
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.activity.minigame
