@@ -15,6 +15,9 @@ namespace Assets.Scripts.interactable.Skilling
         private int berryAmount = 3;
         private int milkAmount = 1;
         private int cheeseAmount = 1;
+        private int jamExp = 100;
+        private int milkExp = 100;
+        private int cheeseExp = 100;
 
         public override void Initiate()
         {
@@ -63,6 +66,7 @@ namespace Assets.Scripts.interactable.Skilling
                     break;
                 case ArtisanInteractableType.JAM_DONE:
                     player.InventoryContainer.Add(363, 1);
+                    player.skills.GetSkill(SKILLS.ARTISAN).AddExp(jamExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_DONE, 0);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_IDLE, 0);
                     break;
@@ -112,11 +116,13 @@ namespace Assets.Scripts.interactable.Skilling
                     break;
                 case ArtisanInteractableType.MILK_DONE:
                     player.InventoryContainer.Add(410, 1);
+                    player.skills.GetSkill(SKILLS.ARTISAN).AddExp(milkExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_DONE, 0);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
                     break;
                 case ArtisanInteractableType.GOAT_MILK_DONE:
                     player.InventoryContainer.Add(411, 1);
+                    player.skills.GetSkill(SKILLS.ARTISAN).AddExp(milkExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_MILK_DONE, 0);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
                     break;
@@ -164,11 +170,13 @@ namespace Assets.Scripts.interactable.Skilling
                     break;
                 case ArtisanInteractableType.CHEESE_DONE:
                     player.InventoryContainer.Add(361, 1);
+                    player.skills.GetSkill(SKILLS.ARTISAN).AddExp(cheeseExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 0);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
                     break;
                 case ArtisanInteractableType.GOAT_CHEESE_DONE:
                     player.InventoryContainer.Add(362, 1);
+                    player.skills.GetSkill(SKILLS.ARTISAN).AddExp(cheeseExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_CHEESE_DONE, 0);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
                     break;

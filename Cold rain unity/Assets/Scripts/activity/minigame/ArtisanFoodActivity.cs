@@ -8,7 +8,7 @@ namespace Assets.Scripts.activity.minigame
 {
     public class ArtisanFoodActivity : Activity
     {
-        private int fireplaceBreakingChance = 3;
+        private int fireplaceBreakingChance = 30;
         int UpdateTimeDelay = 1;
         int jamTime = 10;
         int milkTime = 10;
