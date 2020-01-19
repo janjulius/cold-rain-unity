@@ -18,10 +18,10 @@ namespace Assets.Scripts.databases.game
             items = new List<DbElement>
             {
                 //       seed res  time exp lvl yield
-                new Crop(266, 270, 60, 100, 0, 10), //onion
-                new Crop(263, 267, 420, 210, 0, 20), //tomato
-                new Crop(264, 268, 320, 150, 0, 15), //corn
-                new Crop(265, 269, 210, 90, 0, 10), //lettuce
+                new Crop(0, "Onion", 266, 270, 60, 100, 0, 10), //onion
+                new Crop(1, "Tomato", 263, 267, 420, 210, 0, 20), //tomato
+                new Crop(2, "Corn", 264, 268, 320, 150, 0, 15), //corn
+                new Crop(3, "Lettuce", 265, 269, 210, 90, 0, 10), //lettuce
             };
             CropList = items.Cast<Crop>().ToList();
 
@@ -30,7 +30,7 @@ namespace Assets.Scripts.databases.game
                 Sprite[] sprites = new Sprite[5];
                 for(int j = 0; j < 5; j++)
                 {
-                    sprites[i] = Resources.Load<Sprite>($"Crops/{i}/crop_{i}_{j}");
+                    sprites[j] = Resources.Load<Sprite>($"Crops/{i}/crop_{i}_{j}");
                 }
                 CropList[i].SetSprites(sprites);
             }
@@ -39,6 +39,11 @@ namespace Assets.Scripts.databases.game
         public Crop GetCropBySeed(int id)
         {
             return CropList.Where(c => c.SeedId == id).FirstOrDefault();
+        }
+
+        public Crop GetCropById(int id)
+        {
+            return CropList.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public bool IsSeed(int id)

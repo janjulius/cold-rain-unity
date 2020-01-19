@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.game.time;
+﻿using Assets.Scripts.databases.game;
+using Assets.Scripts.game.time;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers.skilling;
 using Assets.Scripts.saving;
@@ -13,6 +14,8 @@ namespace Assets.Scripts.skills.farming
 {
     public class FarmingCrop : Node, SavingModule
     {
+        [Header("NEEDS TO BE UNIQUE")]
+        public int Id;
         private int stage;
         public Crop CurrentCrop;
         public SpriteRenderer CropSprite;
@@ -23,22 +26,32 @@ namespace Assets.Scripts.skills.farming
         public List<FarmingTime> stageTimes = new List<FarmingTime>();
 
         private GameManager gameManager;
+        private CropDatabase cropDatabase;
+        public bool IsWatered { private set; get; }
+        public bool IsComposted { private set; get; }
 
-        public override void StartInitiate()
+        public override void Initiate()
         {
-            base.StartInitiate();
+            base.Initiate();
             FarmingManager.Instance.Register(this);
             gameManager = Camera.main.GetComponent<GameManager>();
+            cropDatabase = gameObject.GetComponent<CropDatabase>();
+            Load();
+            CheckForGrowing(gameManager.GameClock.Day, gameManager.GameClock.GameTime);
         }
 
         public void Plant(Crop crop)
         {
             this.CurrentCrop = crop;
-            TimeDone = crop.TakesTime;
+            GameConsole.Instance.SendDevMessage($"Planting crop: {crop.Name}");
             for (int i = 0; i < 5; i++)
             {
-                stageTimes.Add(GetTimeAndDay(crop.TakesTime / (Math.Abs(i - 5))));
+                stageTimes.Add(GetTimeAndDay((crop.TakesTime / 5) * i + 1));
+                GameConsole.Instance.SendDevMessage($"Time set to {stageTimes.Last().Day} at {stageTimes.Last().Time}");
             }
+            TimeDone = stageTimes.Last().Time;
+            DayDone = stageTimes.Last().Day;
+            FarmingManager.Instance.Register(this);
         }
 
         internal string GetStatus()
@@ -52,24 +65,29 @@ namespace Assets.Scripts.skills.farming
 
         public void SetStage(int s)
         {
+            print("setting plant stage to: " + s);
             stage = s;
-            CropSprite.sprite = CurrentCrop.StageSprites[s];
+            CropSprite.sprite = CurrentCrop?.StageSprites[s-1];
         }
 
         public void CheckForGrowing(int day, int time)
         {
-            if(DayDone >= day && TimeDone >= time)
+            if (CurrentCrop != null)
             {
-                SetStage(5);
-            }
-            else
-            {
-                for(int st = 0; st < stageTimes.Count; st++)
+                if (day > DayDone || (DayDone == day && time >= TimeDone))
                 {
-                    if(stageTimes[st].Day >= day && stageTimes[st].Time >= time)
+                    SetStage(5);
+                }
+                else
+                {
+                    for (int st = 0; st < stageTimes.Count; st++)
                     {
-                        SetStage(st);
-                        return;
+                        if (stageTimes[st].Day >= day && stageTimes[st].Time >= time)
+                        {
+                            if (stage != st)
+                                SetStage(st);
+                            return;
+                        }
                     }
                 }
             }
@@ -101,17 +119,71 @@ namespace Assets.Scripts.skills.farming
             {
                 GameConsole.Instance.SendConsoleMessage($"The plant is not fully grown, currently at stage {stage}/5");
             }
+            ResetCrop();
             CurrentCrop = null;
+        }
+
+        private void ResetCrop()
+        {
+            FarmingManager.Instance.Unregister(this);
+            CurrentCrop = null;
+            CropSprite.sprite = null;
+            stage = 0;
+        }
+
+        public bool CanHarvest()
+        {
+            return stage >= 5;
+        }
+
+        public void WaterPlant()
+        {
+            IsWatered = true;
+        }
+
+        public void CompostPlant()
+        {
+            IsComposted = true;
         }
 
         public void Load()
         {
+            print("Loading crop");
+            stage = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}stage"), 0);
 
+            for (int i = 0; i < stageTimes.Count; i++)
+            {
+                stageTimes[i].Day = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}day"), 0);
+                stageTimes[i].Time = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}time"), 0);
+            }
+            
+            TimeDone = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-timedone"), 0);
+            DayDone = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-daydone"), 0);
+
+            cropDatabase = cropDatabase ?? FindObjectOfType<CropDatabase>();
+            CurrentCrop = cropDatabase.GetCropById(PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"crop"), 0));
+
+            IsWatered = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-watered"), 0) != 0;
+            IsComposted = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-composted"), 0) != 0;
         }
 
         public void Save()
         {
+            print("saving crop");
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-stage"), stage);
+            
+            for(int i = 0; i < stageTimes.Count; i++)
+            {
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}day"), stageTimes[i].Day);
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}time"), stageTimes[i].Time);
+            }
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-timedone"), TimeDone);
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-daydone"), DayDone);
+            
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-crop"), CurrentCrop.Id);
 
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-watered"), IsWatered ? 1 : 0);
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-composted"), IsComposted ? 1 : 0);
         }
     }
 

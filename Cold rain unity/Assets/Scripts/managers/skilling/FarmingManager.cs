@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.databases.game;
 using Assets.Scripts.interactable.Skilling.farming;
+using Assets.Scripts.saving;
 using Assets.Scripts.skills.farming;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.managers.skilling
 {
-    public class FarmingManager : Node
+    public class FarmingManager : Node, SavingModule
     {
         private FarmingManager() { }
         public static FarmingManager Instance;
@@ -32,6 +33,11 @@ namespace Assets.Scripts.managers.skilling
             RegisteredCrops.Add(crop);
         }
 
+        public void Unregister(FarmingCrop crop)
+        {
+            RegisteredCrops.Remove(crop);
+        }
+
         public void CheckCrops()
         {
             foreach(FarmingCrop c in RegisteredCrops)
@@ -44,6 +50,16 @@ namespace Assets.Scripts.managers.skilling
         {
             FarmingDialogue dial = GetComponent<FarmingDialogue>();
             dial.Open(new object[] { crop, GameManager.GetComponent<CropDatabase>() });
+        }
+
+        public void Load()
+        {
+
+        }
+
+        public void Save()
+        {
+
         }
     }
 }

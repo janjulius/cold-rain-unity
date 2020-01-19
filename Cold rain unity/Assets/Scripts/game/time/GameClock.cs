@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.Scripts.contants;
+using Assets.Scripts.managers.skilling;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,19 +40,21 @@ namespace Assets.Scripts.game.time
         {
             GameTime += UpdateTimeDelay;
             SetClockText();
-            if (GameTime > 1440)
+            if (GameTime >= 1440)
             {
                 GameTime = 0;
                 Day++;
+                SetClockText();
                 SetDayText();
             }
+            FarmingManager.Instance.CheckCrops();
         }
 
         private void SetClockText()
         {
             int hrs = (int)GameTime / 60;
             int mins = (int)GameTime - (hrs * 60);
-            TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}";
+            TimeText.text = $"{(hrs >= 24 ? "00" : hrs.ToString())}:{(mins < 10 ? "0" : "")}{mins}{(Constants.DEVELOPER_MODE ? $" {GameTime}" : "")}";
         }
 
         private void SetDayText()

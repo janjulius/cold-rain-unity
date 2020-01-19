@@ -18,8 +18,10 @@ namespace Assets.Scripts.skills.farming
         public int MaxYield { private set; get; }
         public Sprite[] StageSprites { private set; get; }
 
-        public Crop(int seedId, int resultId, int takesTime, int experience, int level, int maxYield)
+        public Crop(int id, string name, int seedId, int resultId, int takesTime, int experience, int level, int maxYield)
         {
+            this.Id = id;
+            this.Name = name;
             SeedId = seedId;
             ResultId = resultId;
             TakesTime = takesTime;

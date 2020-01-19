@@ -273,6 +273,13 @@ public class Player : Entity, SavingModule
         SetLocation(endLocation);
     }
 
+    internal void LoadIntoScene(int sceneId)
+    {
+        savingNewScene = true;
+        gameManager.SaveGame();
+        SceneManager.LoadScene(sceneId);
+    }
+
     public void StartActivity(Activity activity, bool useClock)
     {
         ActivityManager.Activity = activity;

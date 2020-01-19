@@ -158,6 +158,20 @@ namespace Assets.Scripts.gameinterfaces.console
                     }
                     player.skills.GetSkill(Convert.ToInt32(cmd[1])).SetLevel(Convert.ToInt32(cmd[2]));
                     return true;
+                case "farming":
+                    player.InventoryContainer.Add(259, 1);
+                    player.InventoryContainer.Add(260, 1);
+                    player.InventoryContainer.Add(262, 1);
+                    player.InventoryContainer.Add(261, 1);
+                    player.InventoryContainer.Add(266, 10);
+                    player.InventoryContainer.Add(263, 10);
+                    player.InventoryContainer.Add(264, 10);
+                    player.InventoryContainer.Add(265, 10);
+
+                    return true;
+                case "home":
+                    player.LoadIntoScene(2, new Vector2(0, 10));
+                    return true;
             }
            
             

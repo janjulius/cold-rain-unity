@@ -24,7 +24,7 @@ namespace Assets.Scripts.interactable.Skilling
             base.Initiate();
             skillingInterfaceManager = Camera.main.GetComponent<GameManager>().skillingInterfaceManager;
         }
-
+        
         public override void Interact(Entity sender)
         {
             base.Interact(sender);
