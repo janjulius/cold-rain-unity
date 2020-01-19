@@ -31,6 +31,7 @@ namespace Assets.Scripts.dialogue
 
         public void SendOptionDialogue(string title, params string[] options)
         {
+            Open();
             handler.SetSenderText(title);
             handler.SetOptionsTexts(options);
         }

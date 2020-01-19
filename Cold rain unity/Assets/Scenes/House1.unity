@@ -5897,11 +5897,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 162033884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62102a1cb68dc8240bc3034d9faba1c2, type: 3}
+  m_Script: {fileID: 11500000, guid: b595a0088a86fd5428b73738f4d84a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedOption: -1
-  dialogue: 
 --- !u!1 &168760786
 GameObject:
   m_ObjectHideFlags: 0
@@ -9396,7 +9395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &264935559
 Transform:
   m_ObjectHideFlags: 0
@@ -33022,10 +33021,10 @@ MonoBehaviour:
   listeningId: 2
   triggers:
   - EnableAt: 0
-    GameObjects: []
-  - EnableAt: 1
     GameObjects:
     - {fileID: 367636805}
+  - EnableAt: 1
+    GameObjects: []
 --- !u!1 &979144989
 GameObject:
   m_ObjectHideFlags: 0
@@ -105075,10 +105074,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1901684049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c0396b51031504e90e74eb4431db8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 14cd23dea6edbea46ac47a33fedbcb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionType: 1
+  interactableType: 2048
 --- !u!61 &1901684052
 BoxCollider2D:
   m_ObjectHideFlags: 0

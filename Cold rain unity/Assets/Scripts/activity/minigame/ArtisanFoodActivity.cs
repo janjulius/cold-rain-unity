@@ -17,6 +17,8 @@ namespace Assets.Scripts.activity.minigame
         bool jamIsRunning;
         bool milkIsRunning;
         bool cheeseIsRunning;
+        int SelectedMilkType;
+        int SelectedCheeseType;
 
         public void StartJamActivity(Player player)
         {
@@ -25,19 +27,23 @@ namespace Assets.Scripts.activity.minigame
             InvokeRepeating("RunJamClock", UpdateTimeDelay, UpdateTimeDelay);
             RunJamClock();
         }
+
         public void StartMilkActivity(Player player, int milkType)
         {
             IsRunning = true;
             milkIsRunning = true;
+            SelectedMilkType = milkType;
             InvokeRepeating("RunMilkClock", UpdateTimeDelay, UpdateTimeDelay);
-            RunMilkClock(milkType);
+            RunMilkClock();
         }
-        public void StartCheeseActivity(Player player)
+
+        public void StartCheeseActivity(Player player, int cheeseType)
         {
             IsRunning = true;
             cheeseIsRunning = true;
+            SelectedCheeseType = cheeseType;
             InvokeRepeating("RunCheeseClock", UpdateTimeDelay, UpdateTimeDelay);
-            RunCheeseClock(0);
+            RunCheeseClock();
         }
 
         private void checkRunning()
@@ -46,6 +52,7 @@ namespace Assets.Scripts.activity.minigame
             {
                 IsRunning = false;
                 WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
+                GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
             }
         }
 
@@ -70,14 +77,14 @@ namespace Assets.Scripts.activity.minigame
             }
         }
 
-        public void RunMilkClock(int milkType)
+        public void RunMilkClock()
         {
             if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
             {
                 if (milkTime <= 0)
                 {
                     CancelInvoke();
-                    switch (milkType)
+                    switch (SelectedMilkType)
                     {
                         case 0:
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_DONE, 1);
@@ -99,12 +106,12 @@ namespace Assets.Scripts.activity.minigame
             }
         }
 
-        public void RunCheeseClock(int cheeseType)
+        public void RunCheeseClock()
         {
             if (cheeseTime <= 0)
             {
                 CancelInvoke();
-                switch (cheeseType)
+                switch (SelectedCheeseType)
                 {
                     case 0:
                         WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 1);
