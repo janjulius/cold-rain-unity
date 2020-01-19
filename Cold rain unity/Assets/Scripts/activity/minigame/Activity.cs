@@ -13,11 +13,14 @@ namespace Assets.Scripts.activity.minigame
         protected ActivityManager activityManager;
         protected Player player;
 
-        public virtual void StartActivity(ActivityManager manager, Player player)
+        public virtual void StartActivity(ActivityManager manager, Player player, bool useClock)
         {
             activityManager = manager;
             this.player = player;
-            activityManager.ActivityInterface.SetActive(true);
+            if (useClock)
+            {
+                activityManager.ActivityInterface.SetActive(true);
+            }
             IsRunning = true;
         }
 

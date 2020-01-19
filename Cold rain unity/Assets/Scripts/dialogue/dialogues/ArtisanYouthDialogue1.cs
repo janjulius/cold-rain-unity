@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.shops.constants;
+using System;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -23,7 +21,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    switch (stage) // SWITCH (ARTISANSTATE)
+                    switch (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_NPC_STATE))
                     {
                         case 0:
                             Npc("Get out boomer");
@@ -38,7 +36,8 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 2:
                     Npc("Yeah sure that sounds good. I'll start today.");
                     stage = 100;
-                    //SET ARTISANSTATE TO 2
+                    gameManager.FadeScreen(1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_NPC_STATE, 2);
                     break;
                 case 100:
                     End();

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.game.consumables.consumable;
+﻿using System;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
@@ -9,86 +9,115 @@ namespace Assets.Scripts.activity.minigame
 {
     public class ArtisanFoodActivity : Activity
     {
-        int reqTime;
-        int timeRemaining;
-        int UpdateTimeDelay = 1;
-
-        private int machineBreakingChance = 30;
         private int fireplaceBreakingChance = 30;
+        int UpdateTimeDelay = 1;
+        int jamTime = 10;
+        int milkTime = 10;
+        int cheeseTime = 10;
+        bool jamIsRunning;
+        bool milkIsRunning;
+        bool cheeseIsRunning;
 
-        public override void StartActivity(ActivityManager manager, Player player)
+        public void StartJamActivity(Player player)
         {
-            base.StartActivity(manager, player);
-            InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
-            UpdateClock();
+            IsRunning = true;
+            jamIsRunning = true;
+            InvokeRepeating("RunJamClock", UpdateTimeDelay, UpdateTimeDelay);
+            RunJamClock();
+        }
+        public void StartMilkActivity(Player player, int milkType)
+        {
+            IsRunning = true;
+            milkIsRunning = true;
+            InvokeRepeating("RunMilkClock", UpdateTimeDelay, UpdateTimeDelay);
+            RunMilkClock(milkType);
+        }
+        public void StartCheeseActivity(Player player)
+        {
+            IsRunning = true;
+            cheeseIsRunning = true;
+            InvokeRepeating("RunCheeseClock", UpdateTimeDelay, UpdateTimeDelay);
+            RunCheeseClock(0);
         }
 
-        public override void EndActivity()
+        private void checkRunning()
         {
-            base.EndActivity();
-        }
-
-        public IEnumerator RunClock(int time)
-        {
-            int curTime = time;
-            while (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
+            if (jamIsRunning == false && milkIsRunning == false && cheeseIsRunning == false)
             {
-                curTime -= 1;
-                yield return new WaitForSeconds(1);
-                if (Random.Range(0, fireplaceBreakingChance) == 1)
+                IsRunning = false;
+                WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
+            }
+        }
+
+        public void RunJamClock()
+        {
+            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
+            {
+                if (jamTime <= 0)
+                {
+                    CancelInvoke();
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_DONE, 1);
+                    jamTime = 10;
+                    jamIsRunning = false;
+                    checkRunning();
+                }
+                jamTime -= 1;
+                if (UnityEngine.Random.Range(0, fireplaceBreakingChance) == 1)
                 {
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
                     GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
                 }
             }
         }
-        //public void SetArtisanRecipes(ArtisanRecipe[] recipes)
-        //{
-        //    currentRecipes = recipes;
-        //    foreach(var rep in recipes)
-        //    {
-        //        reqTime += rep.materialAmount * 2;
-        //    }
-        //    timeRemaining = reqTime;
-        //}
 
-        public void UpdateClock()
+        public void RunMilkClock(int milkType)
         {
-            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_1) == 1)
+            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
             {
-                timeRemaining -= UpdateTimeDelay;
-                if (timeRemaining <= 0)
+                if (milkTime <= 0)
                 {
                     CancelInvoke();
-                    //RewardPlayer();
+                    switch (milkType)
+                    {
+                        case 0:
+                            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_DONE, 1);
+                            break;
+                        case 1:
+                            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_MILK_DONE, 1);
+                            break;
+                    }
+                    milkTime = 10;
+                    milkIsRunning = false;
+                    checkRunning();
                 }
-                if (Random.Range(0, machineBreakingChance) == 1) //machine
+                milkTime -= 1;
+                if (UnityEngine.Random.Range(0, fireplaceBreakingChance) == 1)
                 {
-                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MACHINE, 1);
-                    GameConsole.Instance.SendConsoleMessage("The machine broke down! Repair it!");
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
+                    GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
                 }
             }
-            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_1) == 1)
-            {
-                if (Random.Range(0, fireplaceBreakingChance) == 1) //fireplace
-                {
-                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_1, 0);
-                    GameConsole.Instance.SendConsoleMessage("The fire is out, light it again.");
-                }
-            }
-            activityManager.ActivityInterface.SetText($"Time remaining:\n{timeRemaining}");
         }
 
-        //public void RewardPlayer()
-        //{
-        //    GameConsole.Instance.SendConsoleMessage("You have completed your activity and are awarded: ");
-        //    foreach(ArtisanRecipe ar in currentRecipes)
-        //    {
-        //        player.InventoryContainer.Add(ar.resultId, 1);
-        //        GameConsole.Instance.SendConsoleMessage($"{player.InventoryContainer.GetItem(ar.resultId).Name}");
-        //        //TODO: player.skills.GetSkill(SKILLS.ARTISAN).AddExp(ar.)
-        //    }
-        //    EndActivity();
-        //}
+        public void RunCheeseClock(int cheeseType)
+        {
+            if (cheeseTime <= 0)
+            {
+                CancelInvoke();
+                switch (cheeseType)
+                {
+                    case 0:
+                        WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 1);
+                        break;
+                    case 1:
+                        WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_CHEESE_DONE, 1);
+                        break;
+                }
+                cheeseTime = 10;
+                cheeseIsRunning = false;
+                checkRunning();
+            }
+            cheeseTime -= 1;
+        }
     }
 }

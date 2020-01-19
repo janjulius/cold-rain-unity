@@ -148,8 +148,9 @@ namespace Assets.Scripts.gameinterfaces.skills.artisan
         public void StartButtonAction()
         {
             ArtisanActivity activity = Camera.main.GetComponent<GameManager>().ActivitiesObject.GetComponent<ArtisanActivity>();
+            bool useClock = true;
             activity.SetArtisanRecipes(readyRecipes.ToArray());
-            player.StartActivity(activity);
+            player.StartActivity(activity, useClock);
         }
 
         public void SetCurText(float i)

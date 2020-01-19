@@ -20,14 +20,18 @@ namespace Assets.Scripts.world
                 {
                     go?.SetActive(false);
                 }
+            }
+
+            foreach(EnableTrigger et in triggers)
+            {
                 if (et.EnableAt == newVal)
-                {
-                    foreach (var go in et.GameObjects)
                     {
-                        go?.SetActive(true);
+                        foreach (var go in et.GameObjects)
+                        {
+                            go?.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
     }

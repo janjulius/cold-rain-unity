@@ -76,6 +76,7 @@ namespace Assets.Scripts.dialogue.dialogues
                             {
                                 stage = 7;
                                 Npc("You could go fetch a package for me? I know it's not much of a quest but it should keep you busy for a little bit.");
+                                break;
                             }
                             if (titoTutorialQuest.Stage > 0 && titoTutorialQuest.Stage < 19)
                             {

@@ -16,9 +16,9 @@ namespace Assets.Scripts.activity.minigame
         private int machineBreakingChance = 30;
         private int fireplaceBreakingChance = 30;
 
-        public override void StartActivity(ActivityManager manager, Player player)
+        public override void StartActivity(ActivityManager manager, Player player, bool useClock)
         {
-            base.StartActivity(manager, player);
+            base.StartActivity(manager, player, useClock);
             InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
             UpdateClock();
             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 0);

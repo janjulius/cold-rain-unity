@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -17,7 +19,7 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    if (stage == 1000)//Artisanstate == 1)
+                    if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_NPC_STATE) == 1)
                     {
                         Npc("I told you to find an intern in the youth center south of town, Remember?");
                         stage = 100;
@@ -99,15 +101,18 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption){
                         case 0:
                             Player("How do I make cheese?");
-                            Npc("You don't"); //write this when artisan has been fully worked out.
+                            Npc("You can make cheese and jam at the same time in the smaller room in the back. You need some milk if you're going to make cheese. If you'd like to make some jam at the same time you should bring some berries.");
+                            stage = 23;
                             break;
                         case 1:
                             Player("How do I make jam?");
-                            Npc("You don't"); //write this when artisan has been fully worked out.
+                            Npc("You can make jam and cheese at the same time in the smaller room in the back. For jam you're just going to need a few berries. If you want to make cheese you should also bring some milk.");
+                            stage = 21;
                             break;
                         case 2:
                             Player("How do I make leather armor?");
-                            Npc("You don't"); //write this when artisan has been fully worked out.
+                            Npc("Do you see the big machine in the main room? That machine does all the work really. All you need to do is gather the materials neccesary to craft the armor that you want and bring it here.");
+                            stage = 16;
                             break;
                         case 3:
                             stage = 3;
@@ -228,8 +233,48 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 15:
                     Player("Goodbye");
                     Npc("See ya");
-                    //SET ARTISAN STATE TO 1
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_NPC_STATE, 1);
                     stage = 100;
+                    break;
+                case 16:
+                    Npc("When you bring the required materials to craft what you need, you should interact with the table to the left of the machine. On the table you can make a list of things you want to make.");
+                    stage++;
+                    break;
+                case 17:
+                    Npc("When the list is complete you can start the machine. The machine will be running for a certain amount of time depending on how much armor you are making.");
+                    stage++;
+                    break;
+                case 18:
+                    Npc("The fire in the back of the room needs to be running if you want to keep the machine going. The machine will pause when the fire isn't burning, so try to keep it going.");
+                    stage++;
+                    break;
+                case 19:
+                    Npc("While the machine is running it could also break.. it does quite commonly actually. It can't make progress while it broken, but all you need to do to fix it is walk over to the right spot and fix it.");
+                    stage++;
+                    break;
+                case 20:
+                    Npc("Once you've kept the machine running long enough you will get the armor you selected at the table at the start, and that'll be the end of it.");
+                    stage = 5;
+                    break;
+                case 21:
+                    Npc("The jam machine is in the left corner. When the machine is idle, you should be able to tell when that is, you can put some berries in it. The machine won't work without power so keep the fire close to it lit as much as possible.");
+                    stage++;
+                    break;
+                case 22:
+                    Npc("The machine only takes about ten seconds, while the fire is on, to mash the berries together and put them in a little pot. You can grab the jam from the little basket next to the machine once it's done.");
+                    stage = 5;
+                    break;
+                case 23:
+                    Npc("Making cheese has multiple stages. You start off by putting some milk in the big barrel, while it is powered, for about ten seconds. You can then collect unripened cheese from the barrel.");
+                    stage++;
+                    break;
+                case 24:
+                    Npc("Then you can bring the unripened cheese to the shelves close to the fire. It should also take around ten seconds to ripen the cheese. Once it's ripened you can grab your delicious cheese.");
+                    stage++;
+                    break;
+                case 25:
+                    Npc("I should mention that the cheese will ripen regardless of the fire, unlike the machine's that stop working when the fire is off. Also, making goat cheese is the exact same as normal cheese but you need to use goat milk.");
+                    stage = 5;
                     break;
                 case 100:
                     End();
