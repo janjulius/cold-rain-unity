@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.activity.minigame;
+﻿using Assets.Scripts.activity.minigame;
 using Assets.Scripts.container;
 using Assets.Scripts.contants;
 using Assets.Scripts.databases;
@@ -7,7 +6,6 @@ using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.gameinterfaces.navigator;
 using Assets.Scripts.item;
 using Assets.Scripts.managers;
-using Assets.Scripts.math;
 using Assets.Scripts.player.Equipment;
 using Assets.Scripts.player.Equipment.visual;
 using Assets.Scripts.saving;
@@ -28,7 +26,7 @@ public class Player : Entity, SavingModule
     public bool IsInShop = false;
 
     #endregion
-    
+
     #region Interfaces and containers
 
     public Container InventoryContainer { private set; get; }
@@ -63,7 +61,7 @@ public class Player : Entity, SavingModule
     #region playerinfo
     public Combatstate Combatstate { get; private set; }
     #endregion
-    
+
     public override void StartInitiate()
     {
         base.StartInitiate();
@@ -87,7 +85,7 @@ public class Player : Entity, SavingModule
         InventoryContainer.Add(177, 10);
         //SetLocation(SpawnPosition);
     }
-    
+
     #region References
 
     private void GetReferences()
@@ -108,10 +106,10 @@ public class Player : Entity, SavingModule
     {
         base.EntityUpdate();
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
-        
+
         if (!IsMoving && !IsLocked)
             CheckMovementKeys();
-        
+
         CheckInterfaceToggleKeys();
         if (!IsLocked)
             CheckOtherKeys();
@@ -164,12 +162,19 @@ public class Player : Entity, SavingModule
     }
 
     public void CheckOtherKeys()
-    { 
+    {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnIsMovingChanged(true);
             if (facingEntity != null)
+            {
                 facingEntity.Interact(this);
+            }
             else if (facingInteractable != null)
+            {
                 facingInteractable.Interact(this);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (Constants.DEVELOPER_MODE)
@@ -278,7 +283,7 @@ public class Player : Entity, SavingModule
         ActivityManager.Activity = activity;
         activity.StartActivity(ActivityManager, this, useClock);
     }
-    
+
     public void Load()
     {
         Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx")),
@@ -303,7 +308,7 @@ public class Player : Entity, SavingModule
             else
                 savingPlayerPos.x -= Constants.TILE_SIZE;
         }
-        
+
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), savingPlayerPos.x);
         PlayerPrefs.SetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), savingPlayerPos.y);
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), (int)FaceDirection);

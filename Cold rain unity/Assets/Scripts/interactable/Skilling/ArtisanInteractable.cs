@@ -87,7 +87,7 @@ namespace Assets.Scripts.interactable.Skilling
                     player.InventoryContainer.Add(411, 1);
                     player.skills.GetSkill(SKILLS.ARTISAN).AddExp(milkExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_MILK_DONE, 0);
-                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 0);
                     break;
                 case ArtisanInteractableType.CHEESE_START:
                     GetComponent<CheeseShelf>().Open(new object[] { foodActivity });
@@ -96,13 +96,13 @@ namespace Assets.Scripts.interactable.Skilling
                     player.InventoryContainer.Add(361, 1);
                     player.skills.GetSkill(SKILLS.ARTISAN).AddExp(cheeseExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 0);
-                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_IDLE, 0);
                     break;
                 case ArtisanInteractableType.GOAT_CHEESE_DONE:
                     player.InventoryContainer.Add(362, 1);
                     player.skills.GetSkill(SKILLS.ARTISAN).AddExp(cheeseExp);
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_GOAT_CHEESE_DONE, 0);
-                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_IDLE, 0);
                     break;
             }
         }
@@ -118,7 +118,7 @@ namespace Assets.Scripts.interactable.Skilling
                         {
                             player.InventoryContainer.Remove(275, milkAmount);
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
-                            foodActivity.StartMilkActivity(player, 0);
+                            foodActivity.StartMilkActivity(player, milkType);
                             GameConsole.Instance.SendConsoleMessage("You put some milk in the barrel.");
                         }
                         else
@@ -138,7 +138,7 @@ namespace Assets.Scripts.interactable.Skilling
                         {
                             player.InventoryContainer.Remove(276, milkAmount);
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_IDLE, 1);
-                            foodActivity.StartMilkActivity(player, 0);
+                            foodActivity.StartMilkActivity(player, milkType);
                             GameConsole.Instance.SendConsoleMessage("You put some milk in the barrel.");
                         }
                         else
@@ -164,7 +164,7 @@ namespace Assets.Scripts.interactable.Skilling
                         {
                             player.InventoryContainer.Remove(410, cheeseAmount);
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_IDLE, 1);
-                            foodActivity.StartCheeseActivity(player, 0);
+                            foodActivity.StartCheeseActivity(player, cheeseType);
                             GameConsole.Instance.SendConsoleMessage("You put some cheese on the shelf.");
                         }
                         else
@@ -184,7 +184,7 @@ namespace Assets.Scripts.interactable.Skilling
                         {
                             player.InventoryContainer.Remove(411, cheeseAmount);
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_IDLE, 1);
-                            foodActivity.StartCheeseActivity(player, 1);
+                            foodActivity.StartCheeseActivity(player, cheeseType);
                             GameConsole.Instance.SendConsoleMessage("You put some goat cheese on the shelf.");
                         }
                         else
