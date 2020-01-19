@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.gameinterfaces.console;
+﻿using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
 using System.Collections;
@@ -17,27 +16,36 @@ namespace Assets.Scripts.activity.minigame
         bool jamIsRunning;
         bool milkIsRunning;
         bool cheeseIsRunning;
+        int SelectedMilkType;
+        int SelectedCheeseType;
 
         public void StartJamActivity(Player player)
         {
             IsRunning = true;
             jamIsRunning = true;
-            InvokeRepeating("RunJamClock", UpdateTimeDelay, UpdateTimeDelay);
-            RunJamClock();
+            StartCoroutine(RunJamClock(jamTime));
+            //InvokeRepeating("RunJamClock", UpdateTimeDelay, UpdateTimeDelay);
+            //RunJamClock();
         }
+
         public void StartMilkActivity(Player player, int milkType)
         {
             IsRunning = true;
             milkIsRunning = true;
-            InvokeRepeating("RunMilkClock", UpdateTimeDelay, UpdateTimeDelay);
-            RunMilkClock(milkType);
+            SelectedMilkType = milkType;
+            StartCoroutine(RunMilkClock(milkTime));
+            //InvokeRepeating("RunMilkClock", UpdateTimeDelay, UpdateTimeDelay);
+            //RunMilkClock();
         }
-        public void StartCheeseActivity(Player player)
+
+        public void StartCheeseActivity(Player player, int cheeseType)
         {
             IsRunning = true;
             cheeseIsRunning = true;
-            InvokeRepeating("RunCheeseClock", UpdateTimeDelay, UpdateTimeDelay);
-            RunCheeseClock(0);
+            SelectedCheeseType = cheeseType;
+            StartCoroutine(RunCheeseClock(cheeseTime));
+            //InvokeRepeating("RunCheeseClock", UpdateTimeDelay, UpdateTimeDelay);
+            //RunCheeseClock();
         }
 
         private void checkRunning()
@@ -46,38 +54,48 @@ namespace Assets.Scripts.activity.minigame
             {
                 IsRunning = false;
                 WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
+                GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
             }
         }
 
-        public void RunJamClock()
+        public IEnumerator RunJamClock(int time)
         {
+            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
             if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
             {
                 if (jamTime <= 0)
                 {
-                    CancelInvoke();
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_JAM_DONE, 1);
                     jamTime = 10;
                     jamIsRunning = false;
                     checkRunning();
+                    yield break;
                 }
                 jamTime -= 1;
+                yield return new WaitForSeconds(1);
                 if (UnityEngine.Random.Range(0, fireplaceBreakingChance) == 1)
                 {
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
                     GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
                 }
             }
+            StartCoroutine(RunJamClock(time));
         }
 
-        public void RunMilkClock(int milkType)
+        public IEnumerator RunMilkClock(int time)
         {
+            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
             if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_2) == 1)
             {
                 if (milkTime <= 0)
                 {
-                    CancelInvoke();
-                    switch (milkType)
+                    switch (SelectedMilkType)
                     {
                         case 0:
                             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_MILK_DONE, 1);
@@ -89,22 +107,25 @@ namespace Assets.Scripts.activity.minigame
                     milkTime = 10;
                     milkIsRunning = false;
                     checkRunning();
+                    yield break;
                 }
                 milkTime -= 1;
+                yield return new WaitForSeconds(1);
                 if (UnityEngine.Random.Range(0, fireplaceBreakingChance) == 1)
                 {
                     WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_2, 0);
                     GameConsole.Instance.SendConsoleMessage("The fire burned out, relight it.");
                 }
             }
+            StartCoroutine(RunMilkClock(time));
         }
 
-        public void RunCheeseClock(int cheeseType)
+        public IEnumerator RunCheeseClock(int time)
         {
             if (cheeseTime <= 0)
             {
-                CancelInvoke();
-                switch (cheeseType)
+                print(SelectedCheeseType);
+                switch (SelectedCheeseType)
                 {
                     case 0:
                         WorldStateManager.Instance.SetState(StateConstants.ARTISAN_CHEESE_DONE, 1);
@@ -116,8 +137,11 @@ namespace Assets.Scripts.activity.minigame
                 cheeseTime = 10;
                 cheeseIsRunning = false;
                 checkRunning();
+                yield break;
             }
             cheeseTime -= 1;
+            yield return new WaitForSeconds(1);
+            StartCoroutine(RunCheeseClock(time));
         }
     }
 }

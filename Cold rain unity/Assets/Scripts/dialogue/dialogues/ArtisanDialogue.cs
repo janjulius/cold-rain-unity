@@ -249,7 +249,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 19:
-                    Npc("While the machine is running it could also break.. it does quite commonly actually. It can't make progress while it broken, but all you need to do to fix it is walk over to the right spot and fix it.");
+                    Npc("While the machine is running it could also break.. it does quite commonly actually. It can't make progress while it is broken, but all you need to do to fix it is walk over to the right spot, and fix it.");
                     stage++;
                     break;
                 case 20:

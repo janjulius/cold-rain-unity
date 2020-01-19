@@ -21,14 +21,14 @@ namespace Assets.Scripts.activity.minigame
             base.StartActivity(manager, player, useClock);
             InvokeRepeating("UpdateClock", UpdateTimeDelay, UpdateTimeDelay);
             UpdateClock();
-            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 0);
+            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 1);
         }
 
         public override void EndActivity()
         {
             base.EndActivity();
             currentRecipes = null;
-            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 1);
+            WorldStateManager.Instance.SetState(StateConstants.ARTISAN_INTERFACEINTERACT, 0);
             WorldStateManager.Instance.SetState(StateConstants.ARTISAN_FIREPLACE_1, 0);
         }
 
