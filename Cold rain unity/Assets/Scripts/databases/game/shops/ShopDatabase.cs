@@ -1,12 +1,9 @@
-﻿using Assets.Scripts.item;
+﻿using Assets.Scripts.container;
+using Assets.Scripts.item;
 using Assets.Scripts.logger;
 using Assets.Scripts.shops;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.container;
 
 namespace Assets.Scripts.databases.game.shops
 {
@@ -59,7 +56,9 @@ namespace Assets.Scripts.databases.game.shops
                                                                         itemDb.GetItem(125, 100) , itemDb.GetItem(126,100),
                                                                         itemDb.GetItem(127, 100) , itemDb.GetItem(128,100),
                                                                         itemDb.GetItem(129, 100) , itemDb.GetItem(130,100),
-                                                                        itemDb.GetItem(131, 100) , itemDb.GetItem(132,100)})),
+                                                                        itemDb.GetItem(131, 100) , itemDb.GetItem(132,100),
+                                                                        itemDb.GetItem(407, 5), itemDb.GetItem(408, 5),
+                                                                        itemDb.GetItem(409, 5)})),
                 new Shop(6, "Archery Armor Shop", new ShopContainer(new Item[] {itemDb.GetItem(133, 1) , itemDb.GetItem(134,1),
                                                                         itemDb.GetItem(135, 1) , itemDb.GetItem(136,1),
                                                                         itemDb.GetItem(137, 1) , itemDb.GetItem(138,1),
@@ -79,7 +78,9 @@ namespace Assets.Scripts.databases.game.shops
                                                                         itemDb.GetItem(165, 1) , itemDb.GetItem(166,1),
                                                                         itemDb.GetItem(167, 1) , itemDb.GetItem(168,1),
                                                                         itemDb.GetItem(169, 1) , itemDb.GetItem(170,1),
-                                                                        itemDb.GetItem(171, 1) , itemDb.GetItem(172,1)})),
+                                                                        itemDb.GetItem(171, 1) , itemDb.GetItem(172,1),
+                                                                        itemDb.GetItem(407, 5), itemDb.GetItem(408, 5),
+                                                                        itemDb.GetItem(409, 5)})),
                 new Shop(7, "Archery Weaponry Shop", new ShopContainer(new Item[] { itemDb.GetItem(12, 1), itemDb.GetItem(13, 1),
                                                                         itemDb.GetItem(14, 1) , itemDb.GetItem(15,1),
                                                                         itemDb.GetItem(16, 1) , itemDb.GetItem(17,1),
@@ -103,8 +104,11 @@ namespace Assets.Scripts.databases.game.shops
                                                                         itemDb.GetItem(108, 100) , itemDb.GetItem(109,100),
                                                                         itemDb.GetItem(110, 100) , itemDb.GetItem(111,100),
                                                                         itemDb.GetItem(112, 100) , itemDb.GetItem(113,100),
-                                                                        itemDb.GetItem(114, 100) , itemDb.GetItem(115,100)})),
-                new Shop(8, "Warrior Ammo Shop", new ShopContainer(new Item[] { itemDb.GetItem(75,100)})),
+                                                                        itemDb.GetItem(114, 100) , itemDb.GetItem(115,100),
+                                                                        itemDb.GetItem(407, 5), itemDb.GetItem(408, 5),
+                                                                        itemDb.GetItem(409, 5)})),
+                new Shop(8, "Warrior Ammo Shop", new ShopContainer(new Item[] { itemDb.GetItem(75,100), itemDb.GetItem(407, 5),
+                                                                        itemDb.GetItem(408, 5), itemDb.GetItem(409, 5)})),
                 new Shop(9, "Warrior Armor Shop", new ShopContainer(new Item[] { itemDb.GetItem(44, 1), itemDb.GetItem(45, 1),
                                                                         itemDb.GetItem(46, 1) , itemDb.GetItem(47,1),
                                                                         itemDb.GetItem(48, 1) , itemDb.GetItem(49,1),
@@ -120,7 +124,8 @@ namespace Assets.Scripts.databases.game.shops
                                                                         itemDb.GetItem(68, 1), itemDb.GetItem(69, 1),
                                                                         itemDb.GetItem(70, 1) , itemDb.GetItem(71,1),
                                                                         itemDb.GetItem(72, 1) , itemDb.GetItem(73,1),
-                                                                        itemDb.GetItem(74, 1)})),
+                                                                        itemDb.GetItem(74, 1), itemDb.GetItem(407, 5),
+                                                                        itemDb.GetItem(408, 5), itemDb.GetItem(409, 5)})),
                 new Shop(10, "Warrior Weaponry Shop", new ShopContainer(new Item[] {itemDb.GetItem(4, 1) , itemDb.GetItem(5,1),
                                                                         itemDb.GetItem(6, 1) , itemDb.GetItem(7,1),
                                                                         itemDb.GetItem(8, 1) , itemDb.GetItem(9,1),
@@ -140,7 +145,9 @@ namespace Assets.Scripts.databases.game.shops
                                                                         itemDb.GetItem(36, 1), itemDb.GetItem(37, 1),
                                                                         itemDb.GetItem(38, 1) , itemDb.GetItem(39,1),
                                                                         itemDb.GetItem(40, 1) , itemDb.GetItem(41,1),
-                                                                        itemDb.GetItem(42, 1) , itemDb.GetItem(43,1)})),
+                                                                        itemDb.GetItem(42, 1) , itemDb.GetItem(43,1),
+                                                                        itemDb.GetItem(407, 5), itemDb.GetItem(408, 5),
+                                                                        itemDb.GetItem(409, 5)})),
             };
         }
 
