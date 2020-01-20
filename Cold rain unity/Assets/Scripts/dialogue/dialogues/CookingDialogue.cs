@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
+using Assets.Scripts.shops.constants;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -228,7 +230,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     }
                     break;
                 case 21:
-                    if (stage == 21) //IF COOKINGSTATE == 0
+                    if (WorldStateManager.Instance.GetState(StateConstants.COOKING_NPC_STATE) == 0)
                     {
                         if (player.skills.GetSkill(SKILLS.COOKING).GetLevel() >= 50)
                         {
@@ -249,8 +251,8 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 22:
                     Npc("I'll Teach you a little trick then, I learned it from my husband before he passed away.");
-                    //Make transition for dramatic effect
-                    //SET COOKINGSTATE TO 1
+                    gameManager.FadeScreen(1);
+                    WorldStateManager.Instance.SetState(StateConstants.FARMING_NPC_STATE, 1);
                     stage++;
                     break;
                 case 23:
