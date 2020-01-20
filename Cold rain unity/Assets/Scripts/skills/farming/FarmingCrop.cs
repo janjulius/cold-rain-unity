@@ -1,13 +1,9 @@
 ﻿using Assets.Scripts.databases.game;
-using Assets.Scripts.game.time;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers.skilling;
 using Assets.Scripts.saving;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.skills.farming
@@ -56,18 +52,26 @@ namespace Assets.Scripts.skills.farming
 
         internal string GetStatus()
         {
-            if(CurrentCrop != null)
+            if (CurrentCrop != null)
             {
-                return $"There is currently something growing in this patch, it is at stage {stage}/5.";
+                return $"There is currently something growing in this patch, it is at stage {stage}/5. {(IsComposted ? "There is compost on the patch." : "")} {(IsWatered ? "The patch is watered." : "")}";
             }
             return "There is currently nothing growing in this patch.";
         }
 
         public void SetStage(int s)
         {
-            print("setting plant stage to: " + s);
+            if (!IsWatered && stage < 5)
+            {
+                if (UnityEngine.Random.Range(0, 5) == 1)
+                {
+                    GameConsole.Instance.SendConsoleMessage($"Your {CurrentCrop.Name.ToLower()} plant has perished, it was too dry.");
+                    ResetCrop();
+                }
+            }
             stage = s;
-            CropSprite.sprite = CurrentCrop?.StageSprites[s-1];
+            if(CropSprite != null)
+                CropSprite.sprite = CurrentCrop?.StageSprites[s - 1];
         }
 
         public void CheckForGrowing(int day, int time)
@@ -98,7 +102,7 @@ namespace Assets.Scripts.skills.farming
             int day = gameManager.GameClock.Day;
             int time = gameManager.GameClock.GameTime;
             bool dayIncr = false;
-            if((time + timeIncrease) > 1440)
+            if ((time + timeIncrease) > 1440)
             {
                 day++;
                 dayIncr = true;
@@ -106,7 +110,8 @@ namespace Assets.Scripts.skills.farming
             if (dayIncr)
             {
                 time += timeIncrease - 1440;
-            } else
+            }
+            else
             {
                 time += timeIncrease;
             }
@@ -136,6 +141,11 @@ namespace Assets.Scripts.skills.farming
             return stage >= 5;
         }
 
+        public bool FullyGrown()
+        {
+            return stage >= 5;
+        }
+
         public void WaterPlant()
         {
             IsWatered = true;
@@ -156,7 +166,7 @@ namespace Assets.Scripts.skills.farming
                 stageTimes[i].Day = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}day"), 0);
                 stageTimes[i].Time = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}time"), 0);
             }
-            
+
             TimeDone = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-timedone"), 0);
             DayDone = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-daydone"), 0);
 
@@ -171,15 +181,15 @@ namespace Assets.Scripts.skills.farming
         {
             print("saving crop");
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-stage"), stage);
-            
-            for(int i = 0; i < stageTimes.Count; i++)
+
+            for (int i = 0; i < stageTimes.Count; i++)
             {
                 PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}day"), stageTimes[i].Day);
                 PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-{i}time"), stageTimes[i].Time);
             }
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-timedone"), TimeDone);
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-daydone"), DayDone);
-            
+
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-crop"), CurrentCrop.Id);
 
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-watered"), IsWatered ? 1 : 0);
@@ -187,7 +197,8 @@ namespace Assets.Scripts.skills.farming
         }
     }
 
-    public class FarmingTime {
+    public class FarmingTime
+    {
         public int Day;
         public int Time;
 
