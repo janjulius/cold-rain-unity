@@ -213,7 +213,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     switch (SelectedOption)
                     {
                         case 0:
-                            Npc("Alright, I think you haven't got the time to run this shop on your own though, why don't you go find an intern in the youth center?");
+                            Npc("Alright, I think you haven't got the time to run this shop on your own though. Why don't you go find an intern in the youth center?");
                             stage++;
                             break;
                         case 1:

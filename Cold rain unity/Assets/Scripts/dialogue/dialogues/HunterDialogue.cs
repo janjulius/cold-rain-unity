@@ -240,7 +240,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 22:
                     if (player.skills.GetSkill(SKILLS.HUNTING).GetLevel() >= 50)
                     {
-                        Npc("Looks like it yeah. Well I'll leave the store in your hands then, if you don't mind?");
+                        Npc("Looks like it yeah. Well, I'll leave the store in your hands then. If you don't mind?");
                         stage++;
                     }
                     else

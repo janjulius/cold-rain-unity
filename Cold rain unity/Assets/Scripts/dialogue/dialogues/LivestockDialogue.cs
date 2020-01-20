@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.contants;
+using Assets.Scripts.managers;
 using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
 using System;
@@ -25,9 +26,14 @@ namespace Assets.Scripts.dialogue.dialogues
             switch (stage)
             {
                 case 0:
-                    if (stage == 1000)//farmingstate == 1)
+                    if (WorldStateManager.Instance.GetState(StateConstants.FARMING_NPC_STATE) == 1)
                     {
                         Npc("I told you to find an intern in the youth center south of town, Remember?");
+                        stage = 100;
+                    }
+                    else if (WorldStateManager.Instance.GetState(StateConstants.FARMING_NPC_STATE) == 2)
+                    {
+                        Npc("My brother told you to find some interns in the youth center south of town, Right?");
                         stage = 100;
                     }
                     else
@@ -425,7 +431,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 30:
                     if (player.skills.GetSkill(SKILLS.FARMING).GetLevel() >= 50)
                     {
-                        Npc("It seems you've been a capable master farmer. Me and my brother will be leaving the stores in your hands then. Together with the LIVESTOCK GANG and CROPS GANG.");
+                        Npc("It seems you've become a capable master farmer. Me and my brother will be leaving the stores in your hands then. Together with the LIVESTOCK GANG and CROPS GANG.");
                         stage++;
                     }
                     else
@@ -462,7 +468,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 35:
                     Player("Goodbye");
                     Npc("See ya");
-                    //SET FARMING STATE TO 1
+                    WorldStateManager.Instance.SetState(StateConstants.FARMING_NPC_STATE, 1);
                     stage = 100;
                     break;
                 case 100:

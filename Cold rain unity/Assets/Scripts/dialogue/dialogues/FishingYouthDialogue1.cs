@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.managers;
 using Assets.Scripts.shops.constants;
 using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -35,14 +37,24 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 2:
                     Npc("Yeah sure that sounds good. I'll start today.");
-                    stage = 100;
+                    stage++;
+                    break;
+                case 3:
+                    player.BlockMovement(1.5f);
                     gameManager.FadeScreen(1);
-                    WorldStateManager.Instance.SetState(StateConstants.FISHING_NPC_STATE, 2);
+                    StartCoroutine(SetFishingState(2));
+                    End();
                     break;
                 case 100:
                     End();
                     break;
             }
+        }
+
+        public IEnumerator SetFishingState(int state)
+        {
+            yield return new WaitForSeconds(1);
+            WorldStateManager.Instance.SetState(StateConstants.FISHING_NPC_STATE, state);
         }
 
         public override void End(object[] args)

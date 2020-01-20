@@ -24,8 +24,6 @@ namespace Assets.Scripts.activity.minigame
             IsRunning = true;
             jamIsRunning = true;
             StartCoroutine(RunJamClock(jamTime));
-            //InvokeRepeating("RunJamClock", UpdateTimeDelay, UpdateTimeDelay);
-            //RunJamClock();
         }
 
         public void StartMilkActivity(Player player, int milkType)
@@ -34,8 +32,6 @@ namespace Assets.Scripts.activity.minigame
             milkIsRunning = true;
             SelectedMilkType = milkType;
             StartCoroutine(RunMilkClock(milkTime));
-            //InvokeRepeating("RunMilkClock", UpdateTimeDelay, UpdateTimeDelay);
-            //RunMilkClock();
         }
 
         public void StartCheeseActivity(Player player, int cheeseType)
@@ -44,8 +40,6 @@ namespace Assets.Scripts.activity.minigame
             cheeseIsRunning = true;
             SelectedCheeseType = cheeseType;
             StartCoroutine(RunCheeseClock(cheeseTime));
-            //InvokeRepeating("RunCheeseClock", UpdateTimeDelay, UpdateTimeDelay);
-            //RunCheeseClock();
         }
 
         private void checkRunning()

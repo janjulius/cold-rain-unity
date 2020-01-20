@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.shops.constants;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.dialogue.dialogues
 {
@@ -16,6 +20,7 @@ namespace Assets.Scripts.dialogue.dialogues
         public override void Handle()
         {
             base.Handle();
+
             switch (stage)
             {
                 case 0:
@@ -23,27 +28,39 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 1:
-                    switch (stage) // SWITCH (FARMINGSTATE)
+                    switch (WorldStateManager.Instance.GetState(StateConstants.FARMING_NPC_STATE))
                     {
                         case 0:
                             Npc("Get out boomer");
                             stage = 100;
                             break;
                         case 1:
-                            Player("Hey, would you be interested in running the artisan workshop for me as an intern?");
+                        case 2:
+                            Player("Hey, would be you and your brother be interested in running the farming shop for me as interns?");
                             stage++;
                             break;
                     }
                     break;
                 case 2:
-                    Npc("Yeah sure that sounds good. I'll start today.");
-                    stage = 100;
-                    //SET FARMINGSTATE TO 2
+                    Npc("Yeah sure that sounds good. We'll start right now.");
+                    stage++;
+                    break;
+                case 3:
+                    player.BlockMovement(1.5f);
+                    gameManager.FadeScreen(1);
+                    StartCoroutine(SetFarmingState(3));
+                    End();
                     break;
                 case 100:
                     End();
                     break;
             }
+        }
+
+        public IEnumerator SetFarmingState(int state)
+        {
+            yield return new WaitForSeconds(1);
+            WorldStateManager.Instance.SetState(StateConstants.FARMING_NPC_STATE, state);
         }
 
         public override void End(object[] args)
