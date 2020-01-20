@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.managers;
 using Assets.Scripts.quest;
-using Assets.Scripts.shops.constants;
+using Assets.Scripts.skills;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -28,7 +28,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     {
                         SendOptionsDialogue("Select an option", "Wheelchair?", "What is an artisan?", "Progression", "Where can I work?", "-next page-");
                         stage++;
-                    } 
+                    }
                     break;
                 case 1:
                     switch (SelectedOption)
@@ -98,7 +98,8 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 6:
-                    switch (SelectedOption){
+                    switch (SelectedOption)
+                    {
                         case 0:
                             Player("How do I make cheese?");
                             Npc("You can make cheese and jam at the same time in the smaller room in the back. You need some milk if you're going to make cheese. If you'd like to make some jam at the same time you should bring some berries.");

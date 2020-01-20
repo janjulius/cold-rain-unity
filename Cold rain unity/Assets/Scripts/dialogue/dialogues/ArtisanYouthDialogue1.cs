@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.managers;
-using Assets.Scripts.shops.constants;
+using Assets.Scripts.skills;
 using System;
 using System.Collections;
 using UnityEngine;

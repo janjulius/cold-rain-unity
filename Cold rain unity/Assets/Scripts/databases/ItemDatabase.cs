@@ -441,7 +441,8 @@ namespace Assets.Scripts.databases
                 new Item(408, "Emerald", true, new Stats(), new SkillRequirement(), "A big green gemstone", false, false, EquipmentType.NONE, 500),
                 new Item(409, "Sapphire", true, new Stats(), new SkillRequirement(), "A big blue gemstone", false, false, EquipmentType.NONE, 500),
                 new Item(410, "Unripe cheese", true, new Stats(), new SkillRequirement(), "Cheese that still needs to be ripened.", false, false, EquipmentType.NONE, 0),
-                new Item(411, "Unripe goat cheese", true, new Stats(), new SkillRequirement(), "Goat cheese that still needs to be ripened", false, false, EquipmentType.NONE, 0)
+                new Item(411, "Unripe goat cheese", true, new Stats(), new SkillRequirement(), "Goat cheese that still needs to be ripened", false, false, EquipmentType.NONE, 0),
+                new Item(412, "Santa's sleigh", false, new Stats(), new SkillRequirement(), "I cannot believe this, it's actually santa's sleigh!", true, false, EquipmentType.NONE, 0)
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];

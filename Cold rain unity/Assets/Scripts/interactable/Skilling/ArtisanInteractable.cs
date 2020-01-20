@@ -2,7 +2,7 @@
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers;
 using Assets.Scripts.managers.skilling;
-using Assets.Scripts.shops.constants;
+using Assets.Scripts.skills;
 using Assets.Scripts.skills.Artisan;
 using System;
 using UnityEngine;
@@ -27,7 +27,7 @@ namespace Assets.Scripts.interactable.Skilling
             base.Initiate();
             skillingInterfaceManager = Camera.main.GetComponent<GameManager>().skillingInterfaceManager;
         }
-        
+
         public override void Interact(Entity sender)
         {
             base.Interact(sender);

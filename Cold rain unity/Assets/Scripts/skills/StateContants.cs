@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.shops.constants
+﻿namespace Assets.Scripts.skills
 {
     public class StateConstants
     {
@@ -20,5 +20,6 @@
         public static int HUNTING_NPC_STATE = 15;
         public static int FARMING_NPC_STATE = 16;
         public static int COOKING_NPC_STATE = 17;
+        public static int HOUSE_STATE = 18;
     }
 }

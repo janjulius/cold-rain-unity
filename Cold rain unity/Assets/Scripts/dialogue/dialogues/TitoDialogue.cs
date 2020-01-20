@@ -14,6 +14,7 @@ namespace Assets.Scripts.dialogue.dialogues
         {
             base.Handle();
             Quest titoTutorialQuest = gameManager.GetQuestById(0);
+            Quest theHouseQuest = gameManager.GetQuestById(1);
             switch (stage)
             {
                 case 0:
@@ -53,14 +54,14 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage = 100;
                     break;
                 case 5:
-                    if (titoTutorialQuest.IsCompleted())
+                    if ((titoTutorialQuest.IsCompleted()) && (!theHouseQuest.IsStarted() || theHouseQuest.IsCompleted()))
                     {
                         Npc("I don't have any quests for you");
                         stage = 2;
                     }
                     else
                     {
-                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial");
+                        SendOptionsDialogue("Select an option", "Previous page", "Tito's tutorial", "The house");
                         stage++;
                     }
                     break;
@@ -78,7 +79,7 @@ namespace Assets.Scripts.dialogue.dialogues
                                 Npc("You could go fetch a package for me? I know it's not much of a quest but it should keep you busy for a little bit.");
                                 break;
                             }
-                            if (titoTutorialQuest.Stage > 0 && titoTutorialQuest.Stage < 19)
+                            else if (titoTutorialQuest.Stage > 0 && titoTutorialQuest.Stage < 19)
                             {
                                 if (titoTutorialQuest.Stage < 18)
                                 {
@@ -105,11 +106,44 @@ namespace Assets.Scripts.dialogue.dialogues
                                 stage = 2;
                             }
                             break;
+                        case 2:
+                            if (theHouseQuest.IsStarted())
+                            {
+                                if(theHouseQuest.Stage == 0)
+                                {
+                                    Player("I heard you've been looking for santa's sleigh, care to share what you know with me? I'm also looking for it.");
+                                    stage = 8;
+                                }
+                                else
+                                {
+                                    Npc("I told you that the sleigh is somewhere in a tree somewhere around town. And that you should go see Tita, my sister. She should be roaming the neighborhood west of here.");
+                                    stage = 100;
+                                }
+                            }
+                            else
+                            {
+                                Npc("I can't help you with that right now.");
+                                stage = 2;
+                            }
+                            break;
                     }
                     break;
                 case 7:
                     gameManager.ProposeQuest(0);
                     End();
+                    break;
+                case 8:
+                    Npc("I'd love to share my knowledge with you, I am exceptionally generous. I might not have much but I still share anything that I do have (except for my box)(stay out). I am a giver, not a taker.");
+                    stage++;
+                    break;
+                case 9:
+                    Npc("However, I hope you are not dissapointed to hear that all I know is that the sleigh is in a tree somewhere around town. I'm not sure about the location of this tree.");
+                    stage++;
+                    break;
+                case 10:
+                    Npc("My sister Tita is also looking for the sleigh, she told me she's checking the neighborhood west of here. Maybe you should go ask her if she's found anything out.");
+                    theHouseQuest.SetStage(1);
+                    stage = 100;
                     break;
                 case 100:
                     End();

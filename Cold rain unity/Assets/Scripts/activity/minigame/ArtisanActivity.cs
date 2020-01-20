@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.game.consumables.consumable;
 using Assets.Scripts.gameinterfaces.console;
 using Assets.Scripts.managers;
-using Assets.Scripts.shops.constants;
+using Assets.Scripts.skills;
 using UnityEngine;
 
 namespace Assets.Scripts.activity.minigame
@@ -35,7 +35,7 @@ namespace Assets.Scripts.activity.minigame
         public void SetArtisanRecipes(ArtisanRecipe[] recipes)
         {
             currentRecipes = recipes;
-            foreach(var rep in recipes)
+            foreach (var rep in recipes)
             {
                 reqTime += rep.materialAmount * 2;
             }
@@ -44,7 +44,7 @@ namespace Assets.Scripts.activity.minigame
 
         public void UpdateClock()
         {
-            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_1) == 1 
+            if (WorldStateManager.Instance.GetState(StateConstants.ARTISAN_FIREPLACE_1) == 1
                 && WorldStateManager.Instance.GetState(StateConstants.ARTISAN_MACHINE) == 0)
             {
                 timeRemaining -= UpdateTimeDelay;
@@ -73,7 +73,7 @@ namespace Assets.Scripts.activity.minigame
         public void RewardPlayer()
         {
             GameConsole.Instance.SendConsoleMessage("You have completed your activity and are awarded: ");
-            foreach(ArtisanRecipe ar in currentRecipes)
+            foreach (ArtisanRecipe ar in currentRecipes)
             {
                 player.InventoryContainer.Add(ar.resultId, 1);
                 GameConsole.Instance.SendConsoleMessage($"{player.InventoryContainer.GetItem(ar.resultId).Name}");

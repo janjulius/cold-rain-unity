@@ -30,6 +30,11 @@ public class Entity : Node, Iinteractable
         protected set;
     }
 
+    public void SetEntityName (string name)
+    {
+        EntityName = name;
+    }
+
     private Stats baseStats;
     private Stats bonusStats;
 

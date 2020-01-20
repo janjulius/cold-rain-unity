@@ -2,6 +2,7 @@
 using Assets.Scripts.managers;
 using Assets.Scripts.quest;
 using Assets.Scripts.shops.constants;
+using Assets.Scripts.skills;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
