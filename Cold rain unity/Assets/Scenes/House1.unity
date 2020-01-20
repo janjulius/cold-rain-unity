@@ -5141,8 +5141,8 @@ MonoBehaviour:
   EntityName: Gunther
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 6, y: 4}
-  WalkBoundaryNE: {x: -6, y: -4}
+  WalkBoundaryNE: {x: 6, y: 4}
+  WalkBoundarySW: {x: -6, y: -4}
   SpawnFaceDir: 0
 --- !u!114 &147761972
 MonoBehaviour:
@@ -5619,8 +5619,8 @@ MonoBehaviour:
   EntityName: Amy
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &160933589
 GameObject:
@@ -9933,8 +9933,8 @@ MonoBehaviour:
   EntityName: Finnick
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &276774469
 GameObject:
@@ -13000,8 +13000,8 @@ MonoBehaviour:
   EntityName: Harold
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &363518540
 MonoBehaviour:
@@ -18169,8 +18169,8 @@ MonoBehaviour:
   EntityName: Clara
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: -12, y: -12}
-  WalkBoundaryNE: {x: -20, y: -19}
+  WalkBoundaryNE: {x: -12, y: -12}
+  WalkBoundarySW: {x: -20, y: -19}
   SpawnFaceDir: 3
 --- !u!114 &441913357
 MonoBehaviour:
@@ -19419,8 +19419,8 @@ MonoBehaviour:
   EntityName: Sword
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &478423603
 MonoBehaviour:
@@ -22211,8 +22211,8 @@ MonoBehaviour:
   EntityName: Laysee
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &584348236
 MonoBehaviour:
@@ -22402,8 +22402,8 @@ MonoBehaviour:
   EntityName: Finnick
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 0, y: -59}
-  WalkBoundaryNE: {x: -12, y: -68}
+  WalkBoundaryNE: {x: 0, y: -59}
+  WalkBoundarySW: {x: -12, y: -68}
   SpawnFaceDir: 1
 --- !u!1 &587357042
 GameObject:
@@ -26533,8 +26533,8 @@ MonoBehaviour:
   EntityName: Scythe
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 28, y: -15}
-  WalkBoundaryNE: {x: 35, y: -20}
+  WalkBoundaryNE: {x: 35, y: -15}
+  WalkBoundarySW: {x: 28, y: -20}
   SpawnFaceDir: 1
 --- !u!114 &718315678
 MonoBehaviour:
@@ -27989,8 +27989,8 @@ MonoBehaviour:
   EntityName: Henry
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &787450645
 GameObject:
@@ -36979,8 +36979,8 @@ MonoBehaviour:
   EntityName: Great axe
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &1076059537
 MonoBehaviour:
@@ -37416,8 +37416,8 @@ MonoBehaviour:
   EntityName: Susan
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &1096570750
 GameObject:
@@ -40354,8 +40354,8 @@ MonoBehaviour:
   EntityName: Nathaniel
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &1174171437
 GameObject:
@@ -41568,8 +41568,8 @@ MonoBehaviour:
   EntityName: Daniel
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!1 &1205584132
 GameObject:
@@ -42948,8 +42948,8 @@ MonoBehaviour:
   EntityName: Nathaniel
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 0, y: -59}
-  WalkBoundaryNE: {x: -12, y: -68}
+  WalkBoundaryNE: {x: 0, y: -59}
+  WalkBoundarySW: {x: -12, y: -68}
   SpawnFaceDir: 3
 --- !u!1 &1237631530
 GameObject:
@@ -51257,8 +51257,8 @@ MonoBehaviour:
   EntityName: Yumpee
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &1305004071
 MonoBehaviour:
@@ -58328,8 +58328,8 @@ MonoBehaviour:
   EntityName: Sigfried
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 26, y: -15}
-  WalkBoundaryNE: {x: 19, y: -20}
+  WalkBoundaryNE: {x: 26, y: -15}
+  WalkBoundarySW: {x: 19, y: -20}
   SpawnFaceDir: 3
 --- !u!1 &1490456974
 GameObject:
@@ -60302,8 +60302,8 @@ MonoBehaviour:
   EntityName: Jake
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &1563683348
 MonoBehaviour:
@@ -60902,8 +60902,8 @@ MonoBehaviour:
   EntityName: Yumpee
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 0, y: -59}
-  WalkBoundaryNE: {x: -12, y: -68}
+  WalkBoundaryNE: {x: 0, y: -59}
+  WalkBoundarySW: {x: -12, y: -68}
   SpawnFaceDir: 3
 --- !u!114 &1574956637
 MonoBehaviour:
@@ -61717,8 +61717,8 @@ MonoBehaviour:
   EntityName: Daniel
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 0, y: -59}
-  WalkBoundaryNE: {x: -12, y: -68}
+  WalkBoundaryNE: {x: 0, y: -59}
+  WalkBoundarySW: {x: -12, y: -68}
   SpawnFaceDir: 1
 --- !u!1 &1609748590
 GameObject:
@@ -81599,8 +81599,8 @@ MonoBehaviour:
   EntityName: Blake
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &1778486087
 MonoBehaviour:
@@ -83716,8 +83716,8 @@ MonoBehaviour:
   EntityName: Finch
   facingEntity: {fileID: 0}
   RandomlyWalk: 0
-  WalkBoundarySW: {x: 0, y: 0}
   WalkBoundaryNE: {x: 0, y: 0}
+  WalkBoundarySW: {x: 0, y: 0}
   SpawnFaceDir: 0
 --- !u!114 &1820655491
 MonoBehaviour:
@@ -106529,8 +106529,8 @@ MonoBehaviour:
   EntityName: Henry
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: 0, y: -59}
-  WalkBoundaryNE: {x: -12, y: -68}
+  WalkBoundaryNE: {x: 0, y: -59}
+  WalkBoundarySW: {x: -12, y: -68}
   SpawnFaceDir: 0
 --- !u!1 &1919584275
 GameObject:
@@ -109461,8 +109461,8 @@ MonoBehaviour:
   EntityName: Lea
   facingEntity: {fileID: 0}
   RandomlyWalk: 1
-  WalkBoundarySW: {x: -39, y: -12}
-  WalkBoundaryNE: {x: -31, y: -19}
+  WalkBoundaryNE: {x: -31, y: -12}
+  WalkBoundarySW: {x: -39, y: -19}
   SpawnFaceDir: 2
 --- !u!114 &1941247463
 MonoBehaviour:
