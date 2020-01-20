@@ -52,10 +52,48 @@ namespace Assets.Scripts.interactable.Skilling.farming
                             stage = 2;
                             break;
                         case 1:
-                            stage = 3;
+                            End();
+                            if (farmingCrop.FullyGrown())
+                            {
+                                DialogueNoTitle($"The {farmingCrop.CurrentCrop.Name} plant is already fully grown.");
+                                break;
+                            }
+                            if (farmingCrop.IsWatered)
+                            {
+                                DialogueNoTitle("The plant is already sufficiently watered, this would not be a good idea.");
+                                break;
+                            }
+                            if (player.InventoryContainer.Contains(262))
+                            {
+                                farmingCrop.WaterPlant();
+                                DialogueNoTitle("You water the plant.");
+                            }
+                            else
+                            {
+                                DialogueNoTitle("You need a watering can to do this.");
+                            }
                             break;
                         case 2:
-                            stage = 4;
+                            End();
+                            if (farmingCrop.FullyGrown())
+                            {
+                                DialogueNoTitle($"The {farmingCrop.CurrentCrop.Name} plant is already fully grown.");
+                                break;
+                            }
+                            if (farmingCrop.IsComposted)
+                            {
+                                DialogueNoTitle("There is already compost on this patch.");
+                                break;
+                            }
+                            if (player.InventoryContainer.Remove(261, 1))
+                            {
+                                farmingCrop.CompostPlant();
+                                DialogueNoTitle("You put compost on the patch.");
+                            }
+                            else
+                            {
+                                DialogueNoTitle("You need compost to do this.");
+                            }
                             break;
                         case 3:
                             End();
@@ -99,42 +137,6 @@ namespace Assets.Scripts.interactable.Skilling.farming
                             
                     }
                     break;
-                case 3: //water plant
-                    End();
-                    if (farmingCrop.IsWatered)
-                    {
-                        DialogueNoTitle("The plant is already sufficiently watered, this would not be a good idea.");
-                        break;
-                    }
-                    if (player.InventoryContainer.Contains(262))
-                    {
-                        farmingCrop.WaterPlant();
-                        DialogueNoTitle("You water the plant.");
-                    }
-                    else
-                    {
-                        DialogueNoTitle("You need a watering can to do this.");
-                    }
-
-                    break;
-
-                case 4:
-                    stage = 100;
-                    if(farmingCrop.IsComposted)
-                    {
-                        DialogueNoTitle("There is already compost on this patch.");
-                        break;
-                    }
-                    if (player.InventoryContainer.Remove(261, 1))
-                    {
-                        farmingCrop.CompostPlant();
-                        DialogueNoTitle("You put compost on the patch.");
-                    }
-                    else
-                    {
-                        DialogueNoTitle("You need compost to do this.");
-                    }
-                    break;
                 case 100:
                     End();
                     break;
@@ -145,6 +147,8 @@ namespace Assets.Scripts.interactable.Skilling.farming
         private void RewardPlayer()
         {
             int amnt = UnityEngine.Random.Range(1, farmingCrop.CurrentCrop.MaxYield);
+            if (farmingCrop.IsComposted)
+                amnt *= 2;
             player.InventoryContainer.Add(farmingCrop.CurrentCrop.ResultId, amnt);
             player.skills.GetSkill(SKILLS.FARMING).AddExp(farmingCrop.CurrentCrop.Experience * amnt);
         }

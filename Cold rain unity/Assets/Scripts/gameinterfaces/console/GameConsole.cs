@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.gameinterfaces.console
 {
-    public class GameConsole : Node, SavingModule
+    public class GameConsole : Node
     {
         private GameConsole() { }
         public static GameConsole Instance;
@@ -58,7 +58,7 @@ namespace Assets.Scripts.gameinterfaces.console
         {
             if (history.Count >= maxTextFields)
             {
-                Destroy(history[0]);
+                Destroy(history[0].gameObject);
                 history.RemoveAt(0);
             }
             if (text.StartsWith(Constants.COMMAND_PREFIX))
@@ -118,16 +118,6 @@ namespace Assets.Scripts.gameinterfaces.console
         public void ProcessCommand(string text)
         {
             CommandHandler.ProcessCommand(gameManager,text);
-        }
-
-        public void Load()
-        {
-
-        }
-
-        public void Save()
-        {
-
         }
     }
 }
