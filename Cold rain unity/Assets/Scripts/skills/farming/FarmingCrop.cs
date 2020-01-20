@@ -190,7 +190,8 @@ namespace Assets.Scripts.skills.farming
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-timedone"), TimeDone);
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-daydone"), DayDone);
 
-            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-crop"), CurrentCrop.Id);
+            if(CurrentCrop != null)
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-crop"), CurrentCrop.Id);
 
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-watered"), IsWatered ? 1 : 0);
             PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"{Id}-composted"), IsComposted ? 1 : 0);
