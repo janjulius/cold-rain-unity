@@ -31,6 +31,8 @@ namespace Assets.Scripts.npc
             {
                 "Entity", "Player", "ObjectCollision"
             };
+            //WalkBoundaryNE += SpawnPosition;
+            //WalkBoundarySW += SpawnPosition;
         }
 
         protected override void EntityUpdate()
@@ -49,17 +51,19 @@ namespace Assets.Scripts.npc
         {
             if (Time.time > nextWalkAction)
             {
+                bool randomWalked = false;
                 FaceDirection faceDir = (FaceDirection)Random.Range(0, 3);
                 Vector2 target = GetNextTargetPosition(faceDir);
-                if(target.x > WalkBoundarySW.x 
+                Face(faceDir);
+                if (target.x > WalkBoundarySW.x 
                     && target.x < WalkBoundaryNE.x 
                     && target.y > WalkBoundarySW.y 
                     && target.y < WalkBoundaryNE.y)
                 {
-                    Face(faceDir);
                     SetDestination(target);
+                    randomWalked = true;
                 }
-                nextWalkAction += Time.time + UnityEngine.Random.Range(minWaitTime, maxWaitTime);
+                nextWalkAction += Time.time + (randomWalked ? UnityEngine.Random.Range(minWaitTime, maxWaitTime) : -Time.time);
             }
         }
         public override void SetDestination(Vector2 loc)
