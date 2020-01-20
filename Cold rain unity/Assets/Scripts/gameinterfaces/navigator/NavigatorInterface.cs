@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.gameinterfaces.other;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.gameinterfaces.navigator
         public SkillsInterface SkillsInterface;
         public EquipmentInterface EquipmentInterface;
         public GameObject MapInterface;
+        public ReportBugInterface BugReportInterface;
 
         public GameObject canvas;
         
@@ -35,6 +37,9 @@ namespace Assets.Scripts.gameinterfaces.navigator
 
         public void ToggleMapActivity() =>
             MapInterface.SetActive(!MapInterface.activeSelf);
+
+        public void ToggleReportActivity() =>
+            BugReportInterface.ToggleActive();
 
         public override void Create(Player player)
         {

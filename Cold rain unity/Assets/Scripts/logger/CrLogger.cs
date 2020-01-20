@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.logger
 {
     public class CrLogger
     {
+        public static List<string> logs = new List<string>();
+
         public static void Log(object caller, string message)
             => Log(caller, message, LogType.DEFAULT);
 
@@ -15,12 +18,15 @@ namespace Assets.Scripts.logger
             {
                 case LogType.WARNING:
                     Debug.LogWarning(msg);
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss")} [WARNING] {msg}");
                     break;
                 case LogType.ERROR:
                     Debug.LogError(msg);
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [ERROR] {msg}");
                     break;
                 default:
                     Debug.Log(msg);
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [DEFAULT] {msg}");
                     break;
             }
         }

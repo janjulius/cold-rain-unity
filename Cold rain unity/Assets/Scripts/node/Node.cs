@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.node;
+﻿using Assets.Scripts.logger;
+using Assets.Scripts.node;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class Node : Atom
     {
         if (!initiated)
         {
+            CrLogger.Log(this, "Initiated.", CrLogger.LogType.DEFAULT);
             initiated = true;
         }
         else
