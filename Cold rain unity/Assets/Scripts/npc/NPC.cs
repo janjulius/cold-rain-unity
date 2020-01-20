@@ -15,8 +15,8 @@ namespace Assets.Scripts.npc
     {
         public bool RandomlyWalk = false;
 
-        public Vector2 WalkBoundarySW;
         public Vector2 WalkBoundaryNE;
+        public Vector2 WalkBoundarySW;
 
         private float nextWalkAction = 0.0f;
 
@@ -31,8 +31,6 @@ namespace Assets.Scripts.npc
             {
                 "Entity", "Player", "ObjectCollision"
             };
-            //WalkBoundaryNE += SpawnPosition;
-            //WalkBoundarySW += SpawnPosition;
         }
 
         protected override void EntityUpdate()
