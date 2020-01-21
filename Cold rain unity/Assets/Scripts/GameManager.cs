@@ -98,7 +98,8 @@ public class GameManager : Node
     internal void LoadGame()
     {
         int loadedScene = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"), 1);
-        SceneManager.LoadScene(loadedScene == 0 ? 1 : loadedScene);
+        int l = loadedScene == 1 ? 2 : loadedScene;
+        SceneManager.LoadScene(l);
         questList.ForEach(q => q.Load());
 
         //time and day
