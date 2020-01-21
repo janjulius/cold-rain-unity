@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.managers
 {
@@ -61,12 +62,25 @@ namespace Assets.Scripts.managers
 
         public void Load()
         {
+            int s = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "size"), 0);
 
+            worldStateDict = new Dictionary<int, WorldState>(s);
+
+            for(int i = 0; i < s; i++)
+            {
+                Register(i);
+                SetState(i, PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"worldstate-{i}"), 0));
+            }
         }
 
         public void Save()
         {
+            PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "size"), worldStateDict.Count);
 
+            for(int i = 0; i < worldStateDict.Count; i++)
+            {
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"worldstate-{i}"), worldStateDict[i].state);
+            }
         }
 
     }
