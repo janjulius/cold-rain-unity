@@ -19,7 +19,8 @@ namespace Assets.Scripts.dialogue
 
         public void SendDialogues(Entity entity, string message)
         {
-            if(!handler.gameObject.activeSelf)
+            handler.OptionButtonPanel.SetActive(false);
+            if (!handler.gameObject.activeSelf)
                 Open();
             if (entity != null)
                 handler.SetSenderText(entity.EntityName);
@@ -32,6 +33,7 @@ namespace Assets.Scripts.dialogue
         public void SendOptionDialogue(string title, params string[] options)
         {
             Open();
+            handler.OptionButtonPanel.SetActive(true);
             handler.SetSenderText(title);
             handler.SetOptionsTexts(options);
         }
