@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b595e67c38f25cd47850b0166efd68a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: 0.5, y: 0.5}
+  SpawnPosition: {x: -31.5, y: -12.5}
   SpawnFaceDirection: 0
   EntityName: Player_name
   facingEntity: {fileID: 0}

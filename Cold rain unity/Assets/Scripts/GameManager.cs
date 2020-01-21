@@ -98,7 +98,7 @@ public class GameManager : Node
     internal void LoadGame()
     {
         int loadedScene = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "savedscene"), 1);
-        int l = loadedScene == 1 ? 2 : loadedScene;
+        int l = loadedScene == 1 ? 3 : loadedScene;
         SceneManager.LoadScene(l);
         questList.ForEach(q => q.Load());
 

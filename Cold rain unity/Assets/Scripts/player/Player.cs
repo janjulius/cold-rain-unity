@@ -287,8 +287,8 @@ public class Player : Entity, SavingModule
 
     public void Load()
     {
-        Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx")),
-                            PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy")));
+        Vector2 loadPos = new Vector2(PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posx"), -31.5f),
+                            PlayerPrefs.GetFloat(SavingHelper.ConstructPlayerPrefsKey(this, "posy"), -12.5f));
         SpawnPosition = loadPos;
         SpawnFaceDirection = (FaceDirection)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), 0);
         Combatstate = (Combatstate)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "combatstate"), 0);

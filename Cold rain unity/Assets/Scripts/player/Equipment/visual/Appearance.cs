@@ -78,6 +78,19 @@ namespace Assets.Scripts.player.Equipment.visual
             legsDatabase = Camera.main.GetComponent<LegsDatabase>();
             beardDatabase = Camera.main.GetComponent<BeardDatabase>();
 
+            if (GetComponentInParent<Player>())
+            {
+                HairId = UnityEngine.Random.Range(0, 14);
+                LegsId = UnityEngine.Random.Range(0, 2);
+                BeardId = UnityEngine.Random.Range(0, 3);
+
+                HairColor = RandomColor();
+                TopColor = RandomColor();
+                BottomColor = RandomColor();
+
+                print("LOREM" + RandomColor());
+            }
+
             LoadPrimitiveVisuals();
             UpdatePrimitiveVisuals();
             
@@ -89,6 +102,14 @@ namespace Assets.Scripts.player.Equipment.visual
             AdjustLayers(FaceDirection.DOWN);
 
             FinishInit?.Invoke();
+        }
+
+        public Color RandomColor()
+        {
+            return new Color(
+                UnityEngine.Random.Range(0f, 1f), 
+                UnityEngine.Random.Range(0f, 1f), 
+                UnityEngine.Random.Range(0f, 1f), 1f);
         }
 
         private void LoadPrimitiveVisuals()
