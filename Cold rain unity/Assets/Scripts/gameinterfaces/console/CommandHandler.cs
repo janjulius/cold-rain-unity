@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.contants;
 using Assets.Scripts.databases;
+using Assets.Scripts.item;
 using Assets.Scripts.managers;
 using System;
+using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.gameinterfaces.console
@@ -45,7 +47,7 @@ namespace Assets.Scripts.gameinterfaces.console
                 case "give":
                 case "item":
                     {
-                        if(cmd.Length < 2)
+                        if(cmd.Length < 3)
                         {
                             GameConsole.Instance.SendDevMessage("Invalid format, requires: item id amnt");
                             return false;
@@ -55,6 +57,25 @@ namespace Assets.Scripts.gameinterfaces.console
                         player.InventoryContainer.Add(id, quant);
                         return true;
                     }
+
+                case "itemn":
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        for(int i = 1; i < cmd.Length; i++)
+                        {
+                            sb.Append(cmd[i]);
+                            sb.Append(" ");
+                        }
+                        string search = sb.ToString().TrimEnd(' ');
+                        ItemDatabase itemdb = gameManager.gameObject.GetComponent<ItemDatabase>();
+                        Item res = itemdb.GetItemByName(search);
+                        if (res == null)
+                            return false;
+                        GameConsole.Instance.SendDevMessage($"Spawned: {res.Name}, id: {res.Id}");
+                        player.InventoryContainer.Add(res.Id, 1);
+                        return true;
+                    }
+
 
                 case "setqueststage":
                     {

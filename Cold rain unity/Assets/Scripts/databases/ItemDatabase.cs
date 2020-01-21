@@ -5,6 +5,7 @@ using Assets.Scripts.logger;
 using Assets.Scripts.skills;
 using Assets.Scripts.stats;
 using Assets.Scripts.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace Assets.Scripts.databases
         /// The inventory icons
         /// </summary>
         private Sprite[] InventoryIcon;
+
+        public List<Item> ItemList = new List<Item>();
 
         /// <summary>
         /// Builds the item database
@@ -461,6 +464,8 @@ namespace Assets.Scripts.databases
                 }
             }
 
+            ItemList = items.Cast<Item>().ToList();
+
             //for(int i = 0; i < InventoryIcon.Length; i++)
             //    ((Item)items[i]).SetSprites(InventoryIcon[i], EquipmentArray[i]);
 
@@ -470,6 +475,11 @@ namespace Assets.Scripts.databases
             CrLogger.Log(this, "Now allows for initialisation of: shops, consumeable database");
             GetComponent<ShopDatabase>().BuildDatabase();
             GetComponent<ConsumableDatabase>().BuildDatabase();
+        }
+
+        internal Item GetItemByName(string search)
+        {
+            return new Item(ItemList.Where(i => i.Name.ToLower() == search).FirstOrDefault() as Item);
         }
 
         /// <summary>

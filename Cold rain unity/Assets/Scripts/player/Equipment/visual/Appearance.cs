@@ -180,10 +180,34 @@ namespace Assets.Scripts.player.Equipment.visual
             {
                 case EquipmentType.MAINHAND:
                     mainHand.EquipmentSprites = item?.EquipSprites;
+                    mainHand.UpdateSprite(dir);
+                    break;
+                case EquipmentType.HEAD:
+                    headEquipment.EquipmentSprites = item?.EquipSprites;
+                    headEquipment.UpdateSprite(dir);
+                    hair.gameObject.SetActive(item == null);
+                    break;
+                case EquipmentType.OFFHAND:
+                    offHand.EquipmentSprites = item?.EquipSprites;
+                    offHand.UpdateSprite(dir);
+
+                    break;
+                case EquipmentType.TORSO:
+                    bodyEquipment.EquipmentSprites = item?.EquipSprites;
+                    bodyEquipment.UpdateSprite(dir);
+                    torsoCloth.gameObject.SetActive(item == null);
+                    break;
+                case EquipmentType.LEGS:
+                    legsEquipmentLeft.EquipmentSprites = item?.EquipSprites;
+                    legsEquipmentLeft.UpdateSprite(dir);
+                    legsEquipmentRight.EquipmentSprites = item?.EquipSprites;
+                    legsEquipmentRight.UpdateSprite(dir);
+                    legLeftCloth.gameObject.SetActive(item == null);
+                    legRightCloth.gameObject.SetActive(item == null);
                     break;
             }
-
-            mainHand.UpdateSprite(dir);
+            UpdateAlterVisuals();
+            UpdateAppearance(dir);
         }
 
         public void UpdateAppearance(FaceDirection dir)
@@ -212,8 +236,14 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
 
-                    mainHand?.SetLayerOrder(torsoLayer + 100);
-                    offHand?.SetLayerOrder(torsoLayer + 90);
+                    mainHand?.SetLayerOrder(torsoLayer + 90);
+                    offHand?.SetLayerOrder(torsoLayer + 100);
+
+                    legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+                    legsEquipmentRight?.SetLayerOrder(legRight.GetLayerOrder() + 1);
+                    bodyEquipment?.SetLayerOrder(torso.GetLayerOrder() + 1);
+                    headEquipment?.SetLayerOrder(head.GetLayerOrder() + 1);
+                    beard?.SetLayerOrder(torso.GetLayerOrder() + 2);
                     break;
                 case FaceDirection.RIGHT:
                     armLeft.SetLayerOrder(torsoLayer - 10);
@@ -229,6 +259,12 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     mainHand?.SetLayerOrder(torsoLayer + 100);
                     offHand?.SetLayerOrder(torsoLayer + 90);
+
+                    legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+                    legsEquipmentRight?.SetLayerOrder(legRight.GetLayerOrder() + 1);
+                    bodyEquipment?.SetLayerOrder(torso.GetLayerOrder() + 1);
+                    headEquipment?.SetLayerOrder(head.GetLayerOrder() + 1);
+                    beard?.SetLayerOrder(torso.GetLayerOrder() + 2);
                     break;
                 case FaceDirection.DOWN:
                     armLeft.SetLayerOrder(torsoLayer + 1);
@@ -244,6 +280,12 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     mainHand?.SetLayerOrder(torsoLayer + 100);
                     offHand?.SetLayerOrder(torsoLayer + 90);
+
+                    legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+                    legsEquipmentRight?.SetLayerOrder(legRight.GetLayerOrder() + 1);
+                    bodyEquipment?.SetLayerOrder(torso.GetLayerOrder() + 1);
+                    headEquipment?.SetLayerOrder(head.GetLayerOrder() + 1);
+                    beard?.SetLayerOrder(torso.GetLayerOrder() + 2);
                     break;
                 case FaceDirection.UP:
                     armLeft.SetLayerOrder(torsoLayer - 1);
@@ -259,6 +301,12 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     mainHand?.SetLayerOrder(torsoLayer - 100);
                     offHand?.SetLayerOrder(torsoLayer - 90);
+
+                    legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
+                    legsEquipmentRight?.SetLayerOrder(legRight.GetLayerOrder() + 1);
+                    bodyEquipment?.SetLayerOrder(torso.GetLayerOrder() + 1);
+                    headEquipment?.SetLayerOrder(head.GetLayerOrder() + 1);
+                    beard?.SetLayerOrder(torso.GetLayerOrder() - 2);
                     break;
                 default:
                     foreach (PlayerEquipVisual pv in primitiveVisuals)
