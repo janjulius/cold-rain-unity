@@ -40,10 +40,10 @@ namespace Assets.Scripts.skills.farming
         {
             this.CurrentCrop = crop;
             GameConsole.Instance.SendDevMessage($"Planting crop: {crop.Name}");
-            stageTimes = new List<FarmingTime>(5);
+            stageTimes.Clear();
             for (int i = 0; i < 5; i++)
             {
-                stageTimes[i] = (GetTimeAndDay((crop.TakesTime / 5) * i + 1));
+                stageTimes.Add(GetTimeAndDay((crop.TakesTime / 5) * i + 1));
                 GameConsole.Instance.SendDevMessage($"Time set to {stageTimes.Last().Day} at {stageTimes.Last().Time}");
             }
             TimeDone = stageTimes.Last().Time;

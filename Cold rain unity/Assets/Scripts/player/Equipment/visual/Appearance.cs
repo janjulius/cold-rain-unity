@@ -236,7 +236,7 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
 
-                    mainHand?.SetLayerOrder(torsoLayer + 90);
+                    mainHand?.SetLayerOrder(torsoLayer - 90);
                     offHand?.SetLayerOrder(torsoLayer + 100);
 
                     legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
@@ -258,7 +258,7 @@ namespace Assets.Scripts.player.Equipment.visual
                     torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
 
                     mainHand?.SetLayerOrder(torsoLayer + 100);
-                    offHand?.SetLayerOrder(torsoLayer + 90);
+                    offHand?.SetLayerOrder(torsoLayer - 90);
 
                     legsEquipmentLeft?.SetLayerOrder(legLeft.GetLayerOrder() + 1);
                     legsEquipmentRight?.SetLayerOrder(legRight.GetLayerOrder() + 1);

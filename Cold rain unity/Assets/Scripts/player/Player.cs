@@ -76,13 +76,7 @@ public class Player : Entity, SavingModule
         LoadAppearance();
         Face(SpawnFaceDirection);
 
-        InventoryContainer.Add(0, 1);
-        InventoryContainer.Add(2, 1);
-        InventoryContainer.Add(79, 1);
-        InventoryContainer.Add(4, 1);
-        InventoryContainer.Add(384, 1000);
-        InventoryContainer.Add(192, 3);
-        InventoryContainer.Add(177, 10);
+        LoadInventoryFile();
         //SetLocation(SpawnPosition);
     }
 
@@ -298,6 +292,18 @@ public class Player : Entity, SavingModule
         SpawnPosition = loadPos;
         SpawnFaceDirection = (FaceDirection)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), 0);
         Combatstate = (Combatstate)PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "combatstate"), 0);
+        
+    }
+
+    public void LoadInventoryFile()
+    {
+        int inventsize = PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, "inventsize"), 0);
+        for (int i = 0; i < inventsize; i++)
+        {
+            InventoryContainer.Add(
+                PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"inventitemid-{i}"), 0),
+                PlayerPrefs.GetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"inventitemamnt-{i}"), 0));
+        }
     }
 
     public void Save()
@@ -321,5 +327,16 @@ public class Player : Entity, SavingModule
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "facedir"), (int)FaceDirection);
         PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "combatstate"), (int)Combatstate);
         savingNewScene = false;
+
+        PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, "inventsize"), InventoryContainer.GetItems().Length);
+        for(int i = 0; i < InventoryContainer.GetItems().Length; i++)
+        {
+            Item item = InventoryContainer.GetItems()[i];
+            if (item != null)
+            {
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"inventitemid-{i}"), item.Id);
+                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"inventitemamnt-{i}"), item.Amount);
+            }
+        }
     }
 }
