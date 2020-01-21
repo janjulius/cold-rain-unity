@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.util;
+﻿using Assets.Scripts.contants;
+using Assets.Scripts.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.map
         private GameManager gameManager;
 
         public bool GoesToOtherScene;
-        public int SceneId = 0;
+        public SCENES SceneName;
         public int TransitionTime = 0;
 
         [Header("How long should the player be immobilized during this action.")]
@@ -67,9 +68,8 @@ namespace Assets.Scripts.map
         private void TriggerWarp()
         {
             if (GoesToOtherScene)
-            {
-                gameManager.FadeScreenWarp(TransitionTime, player, SceneId, endLocation);
-                //player.LoadIntoScene(SceneId, endLocation);
+            {                
+                gameManager.FadeScreenWarp(TransitionTime, player, (int)SceneName, endLocation);
             }
             else
             {
