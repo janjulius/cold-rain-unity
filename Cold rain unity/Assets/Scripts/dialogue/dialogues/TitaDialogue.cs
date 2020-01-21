@@ -73,12 +73,12 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 1:
                             if (theHouseQuest.IsStarted())
                             {
-                                if (theHouseQuest.Stage == 1)
+                                if (theHouseQuest.Stage == 2)
                                 {
                                     Player("Tito said you've been looking for santa's sleigh too, care to share what you know with me? I'm also looking for it.");
                                     stage++;
                                 }
-                                else if(theHouseQuest.Stage == 0)
+                                else if(theHouseQuest.Stage < 2)
                                 {
                                     Npc("You should go see my brother Tito about that first. Tito lives in a box in the center of town, right below the mayor's house.");
                                     stage = 100;
@@ -107,7 +107,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     break;
                 case 9:
                     Npc("So if you can find the second wind direction, you should be able to find the tree. Perhaps my brother Titus knows, you should be able to find him on the beach east of town.");
-                    theHouseQuest.SetStage(2);
+                    theHouseQuest.SetStage(3);
                     stage = 100;
                     break;
                 case 100:

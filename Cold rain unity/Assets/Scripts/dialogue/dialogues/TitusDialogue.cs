@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.quest;
+﻿using Assets.Scripts.managers;
+using Assets.Scripts.quest;
+using Assets.Scripts.skills;
 using System;
 
 namespace Assets.Scripts.dialogue.dialogues
@@ -73,25 +75,25 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 1:
                             if (theHouseQuest.IsStarted())
                             {
-                                if (theHouseQuest.Stage == 2)
+                                if (theHouseQuest.Stage == 3)
                                 {
                                     Player("Tita said you've been looking for santa's sleigh too, care to share what you know with me? I'm also looking for it.");
                                     stage++;
                                 }
-                                else if (theHouseQuest.Stage == 0)
+                                else if (theHouseQuest.Stage == 1)
                                 {
                                     Npc("You should go see my brother Tito about that first. Tito lives in a box in the center of town, right below the mayor's house.");
                                     stage = 100;
                                 }
-                                else if(theHouseQuest.Stage == 1)
+                                else if(theHouseQuest.Stage == 2)
                                 {
                                     Npc("You should go see my sister Tita about that first. Tita's usually roaming around the neighborhood west side of town.");
                                     stage = 100;
                                 }
                                 else
                                 {
-                                    Npc("I told you the there are two wind directions that describe the location of the tree, one of them is north but I'm not sure about the other one.");
-                                    stage = 100;
+                                    Npc("I'm not going to tell you anything!.");
+                                    stage = 12;
                                 }
                             }
                             else
@@ -102,19 +104,32 @@ namespace Assets.Scripts.dialogue.dialogues
                             break;
                     }
                     break;
-                //case 7:
-                //    Npc("That's right. I guess I'll share what i've gathered with you.. but only because Tito did.");
-                //    stage++;
-                //    break;
-                //case 8:
-                //    Npc("So what I've been able to gather is that the tree in question can easily be found if you have both wind directions. So far I've only been able to gather that the first direction is west.");
-                //    stage++;
-                //    break;
-                //case 9:
-                //    Npc("So if you can find the second wind direction, you should be able to find the tree. Perhaps my brother Titus knows, you should be able to find him on the beach east of town.");
-                //    theHouseQuest.SetStage(2);
-                //    stage = 100;
-                //    break;
+                case 7:
+                    Npc("That's right, I've been looking all over this beach for clues to where the sleigh might be. But I don't understand why I would just share it with you?");
+                    stage++;
+                    break;
+                case 8:
+                    Npc("I've been wandering this beach for as long as I can remember and all I ever found was a clue suggesting that the sleigh is on the north side of town.");
+                    stage++;
+                    break;
+                case 9:
+                    Npc("........................");
+                    stage++;
+                    break;
+                case 10:
+                    Npc("I just told you didn't I... ehm.. Whatever it was a worthless hint anyway, I checked north but I didnt find any sleigh.");
+                    stage++;
+                    break;
+                case 11:
+                    Player("(So I guess that means that the sleigh is in a tree that can be found north west of town.)");
+                    theHouseQuest.SetStage(4);
+                    WorldStateManager.Instance.SetState(StateConstants.THE_HOUSE_QUEST_TREES, 1);
+                    stage = 100;
+                    break;
+                case 12:
+                    Player("(This unfriendly hobo told me one of the wind directions is north, with that information I can conclude the sleigh is in a tree north west of town.");
+                    stage = 100;
+                    break;
                 case 100:
                     End();
                     break;

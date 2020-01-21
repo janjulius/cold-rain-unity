@@ -14,7 +14,8 @@ namespace Assets.Scripts.interactable.Skilling
         SkillingInterfaceManager skillingInterfaceManager;
         Player player;
         ArtisanFoodActivity foodActivity;
-        GameManager manager; public ArtisanInteractableType interactableType;
+        GameManager manager;
+        public ArtisanInteractableType interactableType;
         private readonly int berryAmount = 3;
         private readonly int milkAmount = 1;
         private readonly int cheeseAmount = 1;

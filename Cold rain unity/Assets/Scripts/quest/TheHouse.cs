@@ -1,10 +1,5 @@
 ﻿using Assets.Scripts.managers;
 using Assets.Scripts.skills;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.quest
 {
@@ -22,6 +17,7 @@ namespace Assets.Scripts.quest
         public override void GiveRewards(Player player)
         {
             WorldStateManager.Instance.SetState(StateConstants.HOUSE_STATE, 1);
+            WorldStateManager.Instance.SetState(StateConstants.THE_HOUSE_QUEST_TREES, 0);
         }
     }
 }
