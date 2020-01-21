@@ -21,5 +21,11 @@
         public static int FARMING_NPC_STATE = 16;
         public static int COOKING_NPC_STATE = 17;
         public static int HOUSE_STATE = 18;
+        public static int THE_HOUSE_QUEST_TREES = 19;
+        public static int FISHING_EXPANSION = 20;
+        public static int CROPS_EXPANSION = 21;
+        public static int LIVESTOCK_EXPANSION = 22;
+
+
     }
 }

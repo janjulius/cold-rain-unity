@@ -149,7 +149,7 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 7:
-                    Npc("GIVE it to you!? Who do you think I am, Santa Clause? You're not getting a dime from me for free.");
+                    Npc("GIVE it to you!? Who do you think I am, Santa Claus? You're not getting a dime from me for free.");
                     stage++;
                     break;
                 case 8:

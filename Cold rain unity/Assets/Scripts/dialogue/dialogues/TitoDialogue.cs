@@ -109,14 +109,14 @@ namespace Assets.Scripts.dialogue.dialogues
                         case 2:
                             if (theHouseQuest.IsStarted())
                             {
-                                if(theHouseQuest.Stage == 0)
+                                if(theHouseQuest.Stage == 1)
                                 {
                                     Player("I heard you've been looking for santa's sleigh, care to share what you know with me? I'm also looking for it.");
                                     stage = 8;
                                 }
                                 else
                                 {
-                                    Npc("I told you that the sleigh is somewhere in a tree somewhere around town. And that you should go see Tita, my sister. She should be roaming the neighborhood west of here.");
+                                    Npc("I told you that the sleigh is in a tree somewhere around town. And that you should go see Tita, my sister. She should be roaming the neighborhood west of here.");
                                     stage = 100;
                                 }
                             }
@@ -141,8 +141,8 @@ namespace Assets.Scripts.dialogue.dialogues
                     stage++;
                     break;
                 case 10:
-                    Npc("My sister Tita is also looking for the sleigh, she told me she's checking the neighborhood west of here. Maybe you should go ask her if she's found anything out.");
-                    theHouseQuest.SetStage(1);
+                    Npc("My sister Tita is also looking for the sleigh, she told me she's checking the neighborhood west of here. Maybe you should go ask her if she's found anything interesting.");
+                    theHouseQuest.SetStage(2);
                     stage = 100;
                     break;
                 case 100:
