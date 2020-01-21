@@ -79,7 +79,8 @@ namespace Assets.Scripts.managers
 
             for(int i = 0; i < worldStateDict.Count; i++)
             {
-                PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"worldstate-{i}"), worldStateDict[i].state);
+                if(worldStateDict.ContainsKey(i))
+                    PlayerPrefs.SetInt(SavingHelper.ConstructPlayerPrefsKey(this, $"worldstate-{i}"), worldStateDict[i].state);
             }
         }
 

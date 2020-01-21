@@ -115,7 +115,7 @@ namespace Assets.Scripts.player.Equipment.visual
             torsoCloth = GetComponentInChildren<TorsoCloth>();
             alterVisuals = new PlayerEquipVisual[]
             {
-                hair, beard, legLeftCloth, legRightCloth
+                hair, beard, legLeftCloth, legRightCloth, torsoCloth
             };
             allVisuals.AddRange(alterVisuals);
         }
@@ -201,8 +201,8 @@ namespace Assets.Scripts.player.Equipment.visual
             switch (dir)
             {
                 case FaceDirection.LEFT:
-                    armLeft.SetLayerOrder(torsoLayer + 5);
-                    armRight.SetLayerOrder(torsoLayer - 5);
+                    armLeft.SetLayerOrder(torsoLayer + 10);
+                    armRight.SetLayerOrder(torsoLayer - 10);
 
                     legLeft.SetLayerOrder(torsoLayer + 5);
                     legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
@@ -210,18 +210,22 @@ namespace Assets.Scripts.player.Equipment.visual
                     legRight.SetLayerOrder(torsoLayer - 5);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
 
+                    torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
+
                     mainHand?.SetLayerOrder(torsoLayer + 100);
                     offHand?.SetLayerOrder(torsoLayer + 90);
                     break;
                 case FaceDirection.RIGHT:
-                    armLeft.SetLayerOrder(torsoLayer - 5);
-                    armRight.SetLayerOrder(torsoLayer + 5);
+                    armLeft.SetLayerOrder(torsoLayer - 10);
+                    armRight.SetLayerOrder(torsoLayer + 10);
 
                     legLeft.SetLayerOrder(torsoLayer - 5);
                     legLeftCloth.SetLayerOrder(legLeft.GetLayerOrder() + 1);
 
                     legRight.SetLayerOrder(torsoLayer + 5);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
 
                     mainHand?.SetLayerOrder(torsoLayer + 100);
                     offHand?.SetLayerOrder(torsoLayer + 90);
@@ -236,6 +240,8 @@ namespace Assets.Scripts.player.Equipment.visual
                     legRight.SetLayerOrder(torsoLayer);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
 
+                    torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
+
                     mainHand?.SetLayerOrder(torsoLayer + 100);
                     offHand?.SetLayerOrder(torsoLayer + 90);
                     break;
@@ -248,6 +254,8 @@ namespace Assets.Scripts.player.Equipment.visual
 
                     legRight.SetLayerOrder(torsoLayer);
                     legRightCloth.SetLayerOrder(legRight.GetLayerOrder() + 1);
+
+                    torsoCloth.SetLayerOrder(torso.GetLayerOrder() + 1);
 
                     mainHand?.SetLayerOrder(torsoLayer - 100);
                     offHand?.SetLayerOrder(torsoLayer - 90);
