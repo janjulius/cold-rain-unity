@@ -19,6 +19,7 @@ namespace Assets.Scripts.databases.appearance
             items = new List<DbElement>()
             {
                 new LegStyle(0, "Back skirt"),
+                new LegStyle(1, "Back Legs"),
             };
 
             EquipmentArray = new EquipmentItemMultiArray[items.Count];
