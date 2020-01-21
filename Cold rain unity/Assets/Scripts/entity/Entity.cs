@@ -261,14 +261,27 @@ public class Entity : Node, Iinteractable
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorDirection(FaceDirection), Constants.TILE_SIZE, LayerMask.GetMask(NonPassableLayers));
 
-        if (hit.collider == null || this is NPC)
+
+        if ((hit.collider == null || this is NPC))
         {
-            if (!CanMove)
+            Move(loc);
+        }
+        else
+        {
+            if(Vector2.Distance(hit.collider.gameObject.transform.position, loc) == 1)
             {
-                timeM = 0;
-                startPosition = transform.position;
-                targetPosition = loc;
+                Move(loc);
             }
+        }
+    }
+
+    private void Move(Vector2 loc)
+    {
+        if (!CanMove)
+        {
+            timeM = 0;
+            startPosition = transform.position;
+            targetPosition = loc;
         }
     }
 
