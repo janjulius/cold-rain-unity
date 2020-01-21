@@ -40,9 +40,10 @@ namespace Assets.Scripts.skills.farming
         {
             this.CurrentCrop = crop;
             GameConsole.Instance.SendDevMessage($"Planting crop: {crop.Name}");
+            stageTimes = new List<FarmingTime>(5);
             for (int i = 0; i < 5; i++)
             {
-                stageTimes.Add(GetTimeAndDay((crop.TakesTime / 5) * i + 1));
+                stageTimes[i] = (GetTimeAndDay((crop.TakesTime / 5) * i + 1));
                 GameConsole.Instance.SendDevMessage($"Time set to {stageTimes.Last().Day} at {stageTimes.Last().Time}");
             }
             TimeDone = stageTimes.Last().Time;
@@ -61,6 +62,8 @@ namespace Assets.Scripts.skills.farming
 
         public void SetStage(int s)
         {
+            if (s > 5)
+                s = 5;
             if (!IsWatered && stage < 5)
             {
                 if (UnityEngine.Random.Range(0, 5) == 1)
@@ -133,6 +136,7 @@ namespace Assets.Scripts.skills.farming
             FarmingManager.Instance.Unregister(this);
             CurrentCrop = null;
             CropSprite.sprite = null;
+            stageTimes.Clear();
             stage = 0;
         }
 
