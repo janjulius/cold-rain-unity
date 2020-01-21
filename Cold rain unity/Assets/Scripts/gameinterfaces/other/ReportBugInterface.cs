@@ -42,8 +42,7 @@ namespace Assets.Scripts.gameinterfaces.other
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient();
-            mail.To.Add("jan.julius.de.lang@student.nhlstenden.com");
-            mail.To.Add("marcogeertsma@gmail.com");
+            mail.To.Add("crlogginginc@gmail.com");
             mail.From = new MailAddress("crbugreport@hotmail.com");
             mail.Subject = "Bug report";
             mail.Body = content;

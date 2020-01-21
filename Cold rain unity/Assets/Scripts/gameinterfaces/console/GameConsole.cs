@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.contants;
+using Assets.Scripts.logger;
 using Assets.Scripts.saving;
 using System;
 using System.Collections.Generic;
@@ -73,9 +74,26 @@ namespace Assets.Scripts.gameinterfaces.console
             inputfield.text = "";
         }
 
-        public void SendConsoleMessage(string text) => ProcessInput(text, false);
-        public void SendFilteredConsoleMessage(string text) => ProcessInput(text, true);
-        public void SendDevMessage(string text) { if (Constants.DEVELOPER_MODE) { ProcessInput(text, true); } }
+        public void SendConsoleMessage(string text)
+        {
+            ProcessInput(text, false);
+            CrLogger.Log(this, text, CrLogger.LogType.CONSOLE);
+        }
+
+        public void SendFilteredConsoleMessage(string text)
+        {
+            ProcessInput(text, true);
+            CrLogger.Log(this, text, CrLogger.LogType.FILTERED);
+        }
+
+        public void SendDevMessage(string text)
+        {
+            if (Constants.DEVELOPER_MODE)
+            {
+                ProcessInput(text, true);
+                CrLogger.Log(this, text, CrLogger.LogType.DEVELOPER);
+            }
+        }
         
         private void OnTextFieldSelected(string args0)
         {

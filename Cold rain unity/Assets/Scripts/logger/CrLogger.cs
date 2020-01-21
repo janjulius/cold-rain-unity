@@ -17,15 +17,25 @@ namespace Assets.Scripts.logger
             switch (type)
             {
                 case LogType.WARNING:
-                    Debug.LogWarning(msg);
+                    //Debug.LogWarning(msg);
                     logs.Add($"{DateTime.Now.ToString("h: mm:ss")} [WARNING] {msg}");
                     break;
                 case LogType.ERROR:
-                    Debug.LogError(msg);
+                    //Debug.LogError(msg);
                     logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [ERROR] {msg}");
                     break;
+                case LogType.DEVELOPER:
+                    //Debug.Log(msg);
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [DEVELOPER] {msg}");
+                    break;
+                case LogType.FILTERED:
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [FILTERED] {msg}");
+                    break;
+                case LogType.CONSOLE:
+                    logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [CONSOLE] {msg}");
+                    break;
                 default:
-                    Debug.Log(msg);
+                    //Debug.Log(msg);
                     logs.Add($"{DateTime.Now.ToString("h: mm:ss tt")} [DEFAULT] {msg}");
                     break;
             }
@@ -38,7 +48,10 @@ namespace Assets.Scripts.logger
         {
             DEFAULT,
             WARNING,
-            ERROR
+            ERROR,
+            DEVELOPER,
+            FILTERED,
+            CONSOLE
         }
     }
 }
