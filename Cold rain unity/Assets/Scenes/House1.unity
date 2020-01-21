@@ -5239,12 +5239,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  HairColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  TopColor: {r: 0.7830189, g: 0.7738241, b: 0.08495018, a: 1}
+  BottomColor: {r: 0.14967227, g: 0.13016199, b: 0.4245283, a: 1}
+  HairId: 1
+  BeardId: 1
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &147761973
@@ -5628,12 +5628,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
+  SkinColor: {r: 0.9811321, g: 0.9723349, b: 0.8191527, a: 1}
+  HairColor: {r: 0, g: 0, b: 0, a: 1}
+  TopColor: {r: 0.49803922, g: 0.7647059, b: 0.30980393, a: 1}
+  BottomColor: {r: 0.49803922, g: 0.7647059, b: 0.30980393, a: 1}
+  HairId: 14
+  BeardId: 0
   LegsId: 0
   BodyId: 0
   IsMale: 1
@@ -9943,12 +9943,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
+  HairColor: {r: 0.53333336, g: 0.2784314, b: 0.69803923, a: 1}
   TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  BottomColor: {r: 1, g: 1, b: 1, a: 1}
+  HairId: 11
+  BeardId: 1
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &276635548
@@ -13097,13 +13097,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
+  SkinColor: {r: 0.6698113, g: 0.48596048, b: 0.4012549, a: 1}
+  HairColor: {r: 0, g: 0, b: 0, a: 1}
+  TopColor: {r: 0.5442655, g: 0.6509434, b: 0.19958171, a: 1}
+  BottomColor: {r: 0.54509807, g: 0.6509804, b: 0.2, a: 1}
   HairId: 4
   BeardId: 2
-  LegsId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &363518541
@@ -18293,11 +18293,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
+  HairColor: {r: 0.4245283, g: 0.42368916, b: 0.42252582, a: 1}
+  TopColor: {r: 1, g: 1, b: 1, a: 1}
+  BottomColor: {r: 1, g: 1, b: 1, a: 1}
+  HairId: 7
+  BeardId: 0
   LegsId: 0
   BodyId: 0
   IsMale: 1
@@ -19788,12 +19788,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
+  HairColor: {r: 0.5377358, g: 0.37723643, b: 0.15472585, a: 1}
+  TopColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  BottomColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  HairId: 9
   BeardId: 2
-  LegsId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &478423604
@@ -22580,12 +22580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  HairColor: {r: 1, g: 1, b: 1, a: 1}
+  TopColor: {r: 0.6603774, g: 0.36140615, b: 0.12148453, a: 1}
+  BottomColor: {r: 0.8113208, g: 0.71323055, b: 0.4247953, a: 1}
+  HairId: 0
+  BeardId: 1
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &584348237
@@ -22750,7 +22750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfddfe80cde427e438b24b4d6699e7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: -10.5, y: -64.5}
+  SpawnPosition: {x: -11.5, y: -64.5}
   SpawnFaceDirection: 0
   EntityName: Finnick
   facingEntity: {fileID: 0}
@@ -26902,11 +26902,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
+  HairColor: {r: 0.9716981, g: 0.93975496, b: 0.0779192, a: 1}
+  TopColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  BottomColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  HairId: 14
+  BeardId: 0
   LegsId: 0
   BodyId: 0
   IsMale: 1
@@ -28270,12 +28270,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
+  HairColor: {r: 0.7372549, g: 0.4117647, b: 0.26666668, a: 1}
+  TopColor: {r: 0.6901961, g: 0.54509807, b: 0.30980393, a: 1}
+  BottomColor: {r: 0.32941177, g: 0.36078432, b: 0.6313726, a: 1}
+  HairId: 13
   BeardId: 2
-  LegsId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &780190397
@@ -37348,12 +37348,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  HairColor: {r: 0.7924528, g: 0.649911, b: 0.45229617, a: 1}
+  TopColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  BottomColor: {r: 0.77647066, g: 0.39607847, b: 0.15294118, a: 1}
+  HairId: 3
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1076059538
@@ -37697,11 +37697,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
+  HairColor: {r: 0.5, g: 0.3349506, b: 0.10613209, a: 1}
+  TopColor: {r: 0.4970578, g: 0.764151, b: 0.3063813, a: 1}
+  BottomColor: {r: 0.49803922, g: 0.7647059, b: 0.30980393, a: 1}
+  HairId: 5
+  BeardId: 0
   LegsId: 0
   BodyId: 0
   IsMale: 1
@@ -40634,13 +40634,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  SkinColor: {r: 0.54901963, g: 0.37254903, b: 0.23137255, a: 1}
+  HairColor: {r: 0.18039216, g: 0.15294118, b: 0.11764706, a: 1}
+  TopColor: {r: 0.22352941, g: 0.45490196, b: 0.78431374, a: 1}
+  BottomColor: {r: 0.14901961, g: 0.16078432, b: 0.6509804, a: 1}
+  HairId: 8
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1173422783
@@ -41848,13 +41848,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  SkinColor: {r: 0.54901963, g: 0.37254903, b: 0.23137255, a: 1}
+  HairColor: {r: 0.18039216, g: 0.15294118, b: 0.11764706, a: 1}
+  TopColor: {r: 0.22352941, g: 0.45490196, b: 0.78431374, a: 1}
+  BottomColor: {r: 0.14901961, g: 0.16078432, b: 0.6509804, a: 1}
+  HairId: 8
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1205266537
@@ -43228,13 +43228,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  SkinColor: {r: 0.54901963, g: 0.37254903, b: 0.23137255, a: 1}
+  HairColor: {r: 0.1792453, g: 0.15267254, b: 0.115833044, a: 1}
+  TopColor: {r: 0.22530258, g: 0.4561881, b: 0.7830189, a: 1}
+  BottomColor: {r: 0.15045391, g: 0.15893775, b: 0.6509434, a: 1}
+  HairId: 8
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1234212926
@@ -51627,12 +51627,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  HairColor: {r: 0.8392157, g: 0.6745098, b: 0.44705883, a: 1}
+  TopColor: {r: 0.85882354, g: 0.39215687, b: 0.4, a: 1}
+  BottomColor: {r: 0.34117648, g: 0.32941177, b: 0.34901962, a: 1}
+  HairId: 12
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1305004072
@@ -58610,12 +58610,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
+  HairColor: {r: 0.7735849, g: 0.70602906, b: 0.40503737, a: 1}
+  TopColor: {r: 0.49803922, g: 0.7647059, b: 0.30980393, a: 1}
+  BottomColor: {r: 0.49803922, g: 0.7647059, b: 0.30980393, a: 1}
+  HairId: 8
   BeardId: 2
-  LegsId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1483901698
@@ -60671,13 +60671,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
+  SkinColor: {r: 0.54901963, g: 0.37254903, b: 0.23137255, a: 1}
   HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
+  TopColor: {r: 0.25490195, g: 0.8, b: 0.4143426, a: 1}
+  BottomColor: {r: 0.14712042, g: 0.104396574, b: 0.4339623, a: 1}
   HairId: 4
-  BeardId: 2
-  LegsId: 0
+  BeardId: 1
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1563683349
@@ -61251,7 +61251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b042b4f7699be4aa073a741113ad7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: -8.5, y: -64.5}
+  SpawnPosition: {x: -8.5, y: -66.5}
   SpawnFaceDirection: 0
   EntityName: Yumpee
   facingEntity: {fileID: 0}
@@ -61998,13 +61998,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  SkinColor: {r: 0.5471698, g: 0.37415093, b: 0.22970808, a: 1}
+  HairColor: {r: 0.18867922, g: 0.14951938, b: 0.09522961, a: 1}
+  TopColor: {r: 0.22352941, g: 0.45490196, b: 0.78431374, a: 1}
+  BottomColor: {r: 0.14901961, g: 0.16078432, b: 0.6509804, a: 1}
+  HairId: 8
+  BeardId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1600953867
@@ -81968,13 +81968,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
+  SkinColor: {r: 0.54901963, g: 0.37254903, b: 0.23137255, a: 1}
   HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
+  TopColor: {r: 0.8, g: 0.33393306, b: 0.25490195, a: 1}
+  BottomColor: {r: 0.14901961, g: 0.105882354, b: 0.43529412, a: 1}
   HairId: 4
-  BeardId: 2
-  LegsId: 0
+  BeardId: 1
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1778486088
@@ -84086,12 +84086,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 4
-  BeardId: 2
-  LegsId: 0
+  HairColor: {r: 1, g: 1, b: 1, a: 1}
+  TopColor: {r: 0.046621215, g: 0.0082769515, b: 0.5849056, a: 1}
+  BottomColor: {r: 0.047058824, g: 0.011764706, b: 0.5882353, a: 1}
+  HairId: 3
+  BeardId: 3
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1820655492
@@ -107061,7 +107061,7 @@ MonoBehaviour:
   BottomColor: {r: 0.33094516, g: 0.36038536, b: 0.6320754, a: 1}
   HairId: 13
   BeardId: 2
-  LegsId: 0
+  LegsId: 1
   BodyId: 0
   IsMale: 1
 --- !u!61 &1911495623
@@ -110075,11 +110075,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6999423c5c8f41a4ee0081e745972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColor: {r: 1, g: 1, b: 1, a: 1}
-  HairColor: {r: 0.745283, g: 0.5711081, b: 0.33397114, a: 1}
-  TopColor: {r: 0.6271611, g: 0.25342646, b: 0.8018868, a: 1}
-  BottomColor: {r: 0.58788717, g: 0.2728729, b: 0.7924528, a: 1}
-  HairId: 2
+  SkinColor: {r: 1, g: 0.9940252, b: 0.7311321, a: 1}
+  HairColor: {r: 0, g: 0, b: 0, a: 1}
+  TopColor: {r: 0.7731122, g: 0.30286577, b: 0.7735849, a: 1}
+  BottomColor: {r: 0.7764706, g: 0.30588236, b: 0.7764706, a: 1}
+  HairId: 6
   BeardId: 0
   LegsId: 0
   BodyId: 0
