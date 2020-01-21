@@ -252,7 +252,7 @@ namespace Assets.Scripts.dialogue.dialogues
                 case 22:
                     Npc("I'll Teach you a little trick then, I learned it from my husband before he passed away.");
                     gameManager.FadeScreen(1);
-                    WorldStateManager.Instance.SetState(StateConstants.FARMING_NPC_STATE, 1);
+                    WorldStateManager.Instance.SetState(StateConstants.COOKING_NPC_STATE, 1);
                     stage++;
                     break;
                 case 23:
