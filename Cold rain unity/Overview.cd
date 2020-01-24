@@ -1,0 +1,1550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Assets.Scripts.activity.minigame.Activity" Collapsed="true">
+    <Position X="140" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAQAAAgAAAAAABAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\activity\minigame\Activity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.activity.minigame.ArtisanActivity" Collapsed="true">
+    <Position X="140.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAMAAAAAQAAAAAAAAAAAIAAAAACDEIACAA=</HashCode>
+      <FileName>Assets\Scripts\activity\minigame\ArtisanActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.activity.minigame.ArtisanFoodActivity" Collapsed="true">
+    <Position X="142.5" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAECAAiAgAAACAEAQAAIAAACAAAIAAABgAAiAA=</HashCode>
+      <FileName>Assets\Scripts\activity\minigame\ArtisanFoodActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraScript" Collapsed="true">
+    <Position X="221.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAAAAwECAAAAABAAADKAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\camera\CameraScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory" Collapsed="true">
+    <Position X="150.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAEAEAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\container\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RightClickMenu" Collapsed="true">
+    <Position X="220" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAAEAAAAAABAAAAAAAAAAABAAAAAQAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\container\rightclickmenu\RightClickMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RightClickMenuController" Collapsed="true">
+    <Position X="168.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iEGC4ABAAgBAAEIAAIAAAECgAABgAAAhAAAAQUABAAA=</HashCode>
+      <FileName>Assets\Scripts\container\rightclickmenu\RightClickMenuController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RightClickMenuItem" Collapsed="true">
+    <Position X="221.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\container\rightclickmenu\RightClickMenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="180.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hCRUGTAwGIAAAFQGABBAJAIAISBFAAErBAADBoAAQBI=</HashCode>
+      <FileName>Assets\Scripts\entity\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameInterface" Collapsed="true">
+    <Position X="144.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAEABCAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\GameInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="153.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAAAAAgAQAAYEgIUAAIjAQQIQEAABIgACCACAAYE=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mainMenu" Collapsed="true">
+    <Position X="220" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\menu\mainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextureOffsetter" Collapsed="true">
+    <Position X="221.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAACAAAAAAAAAAAAAAAAAEAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\menu\TextureOffsetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Node" Collapsed="true">
+    <Position X="181" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAAAQAAIAAAACAAAAAAAACAEAAAAAgAEA=</HashCode>
+      <FileName>Assets\Scripts\node\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Customization" Collapsed="true">
+    <Position X="220" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAgAgAAAAAAAAABAAAAAACAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Customization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="180.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEBAooAAiFC0CQQAEQCABQCVAAAAASACIAADAAAAEBA=</HashCode>
+      <FileName>Assets\Scripts\player\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Skills" Collapsed="true">
+    <Position X="187" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgJAAAAAAAAAAQQAAAACAAgAQgAAAAAAAAAAAIAI=</HashCode>
+      <FileName>Assets\Scripts\skills\Skills.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Settings" Collapsed="true">
+    <Position X="225.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\util\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.container.Container" Collapsed="true">
+    <Position X="129" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgIAAgABAAEAEAAsADAAAAAAAAkACAAIAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\container\Container.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.container.ContainerDisplay" Collapsed="true">
+    <Position X="145.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAABAAAEAAAAAAACAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\container\ContainerDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.container.ItemSlot" Collapsed="true">
+    <Position X="207.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAARAAABAAAAIQAAIEREAAAQAACBAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\container\ItemSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.container.ShopContainer" Collapsed="true">
+    <Position X="129" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\container\ShopContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.container.ShopSlot" Collapsed="true">
+    <Position X="207.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\container\ShopSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.contants.AnimalPricesConstants" Collapsed="true">
+    <Position X="218.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAQAAAAIAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\contants\AnimalPricesConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.contants.Constants" Collapsed="true">
+    <Position X="225.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAACAAAAAAAAAQAAAAAAEAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\contants\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.appearance.BeardDatabase" Collapsed="true">
+    <Position X="191.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\appearance\BeardDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.appearance.BodyDatabase" Collapsed="true">
+    <Position X="196.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\appearance\BodyDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.appearance.LegsDatabase" Collapsed="true">
+    <Position X="191.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\appearance\LegsDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.styles.hairstyles.HairDatabase" Collapsed="true">
+    <Position X="196.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\appearance\HairDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.styles.hairstyles.BeardStyle" Collapsed="true">
+    <Position X="131" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\styles\hairstyles\BeardStyle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.styles.hairstyles.HairStyle" Collapsed="true">
+    <Position X="133.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\styles\hairstyles\HairStyle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.CRDatabase" Collapsed="true">
+    <Position X="189.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAgAAAAAAAAgAAACAAAoAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\CRDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.DbElement" Collapsed="true">
+    <Position X="131.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\DbElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.ItemDatabase" Collapsed="true">
+    <Position X="189.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAQAAgAAAAAAAAAQAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\ItemDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.util.EquipmentItemMultiArray" Collapsed="true">
+    <Position X="225.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\EquipmentItemMultiArray.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.util.MathUtilities" Collapsed="true">
+    <Position X="223.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\util\MathUtilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.util.ReportBug" Collapsed="true">
+    <Position X="218.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\util\ReportBug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.util.ScreenTransitioner" Collapsed="true">
+    <Position X="214.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAAAAAAAAAAIAABAAAAAEAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\util\ScreenTransitioner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.util.Utilities" Collapsed="true">
+    <Position X="223.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\util\Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.game.ArtisanRecipeDatabase" Collapsed="true">
+    <Position X="189.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAgQAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\databases\game\ArtisanRecipeDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.game.ConsumableDatabase" Collapsed="true">
+    <Position X="194" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAACAAAAAAgQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\game\ConsumableDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.game.CropDatabase" Collapsed="true">
+    <Position X="189.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAQAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\game\CropDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.databases.game.shops.ShopDatabase" Collapsed="true">
+    <Position X="194" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAABAAACAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\databases\game\shops\ShopDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.Dialogue" Collapsed="true">
+    <Position X="162" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIgDIgACAAAIAAAAAAAAACAEAIACAIDAAQAAQAAEAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\Dialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.DialogueHandler" Collapsed="true">
+    <Position X="170.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAwIAAAAIQQAAAAAAAAAAAAABAACAAAgAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\DialogueHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArcherDialogue1" Collapsed="true">
+    <Position X="164" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArcherDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArcherDialogue2" Collapsed="true">
+    <Position X="170.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArcherDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArcherDialogue3" Collapsed="true">
+    <Position X="166.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArcherDialogue3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArcheryStoreDialogue1" Collapsed="true">
+    <Position X="161.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArcheryStoreDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArcheryStoreDialogue2" Collapsed="true">
+    <Position X="168.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArcheryStoreDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArtisanDialogue" Collapsed="true">
+    <Position X="164" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArtisanDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArtisanYouthDialogue1" Collapsed="true">
+    <Position X="170.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArtisanYouthDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.ArtisanYouthDialogue2" Collapsed="true">
+    <Position X="166.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\ArtisanYouthDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.BobDialogue" Collapsed="true">
+    <Position X="161.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\BobDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.CookingDialogue" Collapsed="true">
+    <Position X="168.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\CookingDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.CropsDialogue" Collapsed="true">
+    <Position X="161.75" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\CropsDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.CropsStoreDialogue" Collapsed="true">
+    <Position X="168.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\CropsStoreDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.CropsYouthDialogue1" Collapsed="true">
+    <Position X="161.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAABACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\CropsYouthDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.CropsYouthDialogue2" Collapsed="true">
+    <Position X="166.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\CropsYouthDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.FishingDialogue" Collapsed="true">
+    <Position X="170.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\FishingDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.FishingStoreDialogue" Collapsed="true">
+    <Position X="166.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\FishingStoreDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.FishingYouthDialogue1" Collapsed="true">
+    <Position X="161.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\FishingYouthDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.FishingYouthDialogue2" Collapsed="true">
+    <Position X="168.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\FishingYouthDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.FriendDialogue" Collapsed="true">
+    <Position X="164" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\FriendDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.HunterDialogue" Collapsed="true">
+    <Position X="170.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\HunterDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.HunterStoreDialogue" Collapsed="true">
+    <Position X="166.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\HunterStoreDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.HunterYouthDialogue1" Collapsed="true">
+    <Position X="161.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAACAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\HunterYouthDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.HunterYouthDialogue2" Collapsed="true">
+    <Position X="168.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\HunterYouthDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.LivestockDialogue" Collapsed="true">
+    <Position X="164" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAAEAIAAAEAAAAACAAAQAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\LivestockDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.LivestockStoreDialogue" Collapsed="true">
+    <Position X="170.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAAEAIAAAEAAAAACAAAQAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\LivestockStoreDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.LivestockYouthDialogue1" Collapsed="true">
+    <Position X="164" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAABACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\LivestockYouthDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.LivestockYouthDialogue2" Collapsed="true">
+    <Position X="170.75" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\LivestockYouthDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.MayorDialogue" Collapsed="true">
+    <Position X="164" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\MayorDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.TitaDialogue" Collapsed="true">
+    <Position X="168.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\TitaDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.TitoDialogue" Collapsed="true">
+    <Position X="161.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\TitoDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.TitusDialogue" Collapsed="true">
+    <Position X="168.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\TitusDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.WarriorDialogue1" Collapsed="true">
+    <Position X="164" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\WarriorDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.WarriorDialogue2" Collapsed="true">
+    <Position X="170.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\WarriorDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.WarriorDialogue3" Collapsed="true">
+    <Position X="166.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\WarriorDialogue3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.WarriorStoreDialogue1" Collapsed="true">
+    <Position X="161.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\WarriorStoreDialogue1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.dialogues.WarriorStoreDialogue2" Collapsed="true">
+    <Position X="168.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\dialogues\WarriorStoreDialogue2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.dialogue.simpledialogue.SimpleDialogue" Collapsed="true">
+    <Position X="164" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAAAAAAAIAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\dialogue\simpledialogue\SimpleDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.extensions.ArrayExtensions" Collapsed="true">
+    <Position X="220" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\extensions\ArrayExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.consumables.consumable.Consumable" Collapsed="true">
+    <Position X="124.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\game\consumables\consumable\Consumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.consumables.consumable.Food" Collapsed="true">
+    <Position X="124.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAgAAAABAAAAAAAIEAAAACAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\game\consumables\consumable\Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.consumables.consumable.ArtisanRecipe" Collapsed="true">
+    <Position X="128.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAEEAEAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\Artisan\ArtisanRecipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.consumables.ConsumableProperties" Collapsed="true">
+    <Position X="156.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAggAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\game\consumables\ConsumableProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.consumables.CookingProperties" Collapsed="true">
+    <Position X="227" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\game\consumables\CookingProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.game.time.GameClock" Collapsed="true">
+    <Position X="163.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAIAAAAAAAAAAIBACKAAAEAAQAAAACAQAACAQ=</HashCode>
+      <FileName>Assets\Scripts\game\time\GameClock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.activity.ActivityInterface" Collapsed="true">
+    <Position X="142.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAMAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\activity\ActivityInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.console.CommandHandler" Collapsed="true">
+    <Position X="223.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\console\CommandHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.console.ConsoleMessage" Collapsed="true">
+    <Position X="192" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\console\ConsoleMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.console.GameConsole" Collapsed="true">
+    <Position X="196.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQgAAAUBAAhAAEAAAAAAACAABAgAiBDREACAIAAAgI=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\console\GameConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.dialogue.DialogueUIHandler" Collapsed="true">
+    <Position X="221.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAhAAgAABQACAAACAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\dialogue\DialogueUIHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.navigator.EquipmentInterface" Collapsed="true">
+    <Position X="136" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQQABgAIIQBAAAAAAAAgAFAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\navigator\EquipmentInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.navigator.NavigatorInterface" Collapsed="true">
+    <Position X="138.25" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAABAEBAAUAAAAEAAACGAAAAAEAAADCIAFAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\navigator\NavigatorInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.navigator.SkillsInterface" Collapsed="true">
+    <Position X="140.5" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAABAAAAAAQAAAAAAgAACAEAKAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\navigator\SkillsInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.other.ReportBugInterface" Collapsed="true">
+    <Position X="142.75" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACBAAAAAAAABAAAAAAAAAEAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\other\ReportBugInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.quest.QuestRequestInterface" Collapsed="true">
+    <Position X="136" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgCAAQBBAAAAAIAAIAAAAAAAABEAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\quest\QuestRequestInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.shop.ShopInterface" Collapsed="true">
+    <Position X="148.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAhAAAgAAAAAAAAAAACAAEAAIAABAADAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\shop\ShopInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.skills.artisan.ArtisanInterface" Collapsed="true">
+    <Position X="138.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAICqABAAAIBABAAAKAIBIAAokgBAAAAgABBgAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\skills\artisan\ArtisanInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.skills.artisan.ArtisanSlot" Collapsed="true">
+    <Position X="158.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQEAgAAAAAAAQAQAAIAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\skills\artisan\ArtisanSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.skills.cooking.CookingInterface" Collapsed="true">
+    <Position X="140.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACgAAiABBAAIAIBAAgCAIBIAAgEgAAAAAAADBjCA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\skills\cooking\CookingInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.skills.cooking.CookingSlot" Collapsed="true">
+    <Position X="166" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAgAAAAAAAAAQQAAAAAAAAAAAAAAAAAgAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\skills\cooking\CookingSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.gameinterfaces.skills.SkillSlot" Collapsed="true">
+    <Position X="173" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgBAAAABAAAgAAAAAgABAAAACAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\gameinterfaces\skills\SkillSlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Interactable" Collapsed="true">
+    <Position X="194.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Interactable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.interactable.InteractableObject" Collapsed="true">
+    <Position X="194" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\InteractableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Questing.QuestInteractable" Collapsed="true">
+    <Position X="196.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAIAAAAAIBAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Questing\QuestInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Skilling.ArtisanInteractable" Collapsed="true">
+    <Position X="198.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAQABAAAAAAAAEQCEYAEAEAIBAAAAAAAABAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\ArtisanInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Skilling.CookingInteractable" Collapsed="true">
+    <Position X="200.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAYAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\CookingInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Skilling.FarmingInteractable" Collapsed="true">
+    <Position X="191.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\farming\FarmingInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.interactable.Skilling.farming.FarmingDialogue" Collapsed="true">
+    <Position X="166.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAAAAAAAIAAwAAAAAAAAAAAAAAIAAAEAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\farming\FarmingDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.item.GroundItem" Collapsed="true">
+    <Position X="160.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAEABIAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\item\GroundItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.item.Item" Collapsed="true">
+    <Position X="126.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAABAAAQEAIAAEABAAAASgAAIAAAAAAAAQCKAAAAA=</HashCode>
+      <FileName>Assets\Scripts\item\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.logger.CrLogger" Collapsed="true">
+    <Position X="218.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAQAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\logger\CrLogger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.managers.ActivityManager" Collapsed="true">
+    <Position X="175.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\managers\ActivityManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.managers.Statelistener" Collapsed="true">
+    <Position X="177.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAEAACAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\managers\Statelistener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.managers.WorldState" Collapsed="true">
+    <Position X="225.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAACAAAAAAAEAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\managers\WorldState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.managers.WorldStateManager" Collapsed="true">
+    <Position X="198.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhMAAAAAAAAAAAAAAAACAAAABAAAAQEAAAABAAAI=</HashCode>
+      <FileName>Assets\Scripts\managers\WorldStateManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.managers.skilling.FarmingManager" Collapsed="true">
+    <Position X="207" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAgAAAAAAAAAAAACEAAABAAAAQABAAABAEAA=</HashCode>
+      <FileName>Assets\Scripts\managers\skilling\FarmingManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.managers.skilling.SkillingInterfaceManager" Collapsed="true">
+    <Position X="202" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\managers\skilling\SkillingInterfaceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.map.Map" Collapsed="true">
+    <Position X="221.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\map\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.map.Warp" Collapsed="true">
+    <Position X="212" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAIAgAAAEAAEAAAEAAiAAFAABAABBAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\map\Warp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.math.ProgressCalculator" Collapsed="true">
+    <Position X="227" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAACAAAABAAAAAAAAAAAAAhAAABAAEAEA=</HashCode>
+      <FileName>Assets\Scripts\math\ProgressCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.node.Atom" Collapsed="true">
+    <Position X="181" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAACAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\node\Atom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.FriendlyNPC" Collapsed="true">
+    <Position X="183.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAAAAAAAAACAAAAJACAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\FriendlyNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.NPC" Collapsed="true">
+    <Position X="183.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAIIAAEAACAAAAAAAAAAAEAACBAAEAAAAQBA=</HashCode>
+      <FileName>Assets\Scripts\npc\NPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArcherNPC1" Collapsed="true">
+    <Position X="182.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArcherNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArcherNPC2" Collapsed="true">
+    <Position X="187" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArcherNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArcherNPC3" Collapsed="true">
+    <Position X="175.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArcherNPC3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArtisanNPC" Collapsed="true">
+    <Position X="180" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArtisanNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArtisanYouthNPC1" Collapsed="true">
+    <Position X="184.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArtisanYouthNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.ArtisanYouthNPC2" Collapsed="true">
+    <Position X="173.75" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\ArtisanYouthNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.BobNPC" Collapsed="true">
+    <Position X="178.25" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\BobNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.CookingNPC" Collapsed="true">
+    <Position X="182.75" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\CookingNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.CropsNPC" Collapsed="true">
+    <Position X="187.25" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\CropsNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.CropsYouthNPC1" Collapsed="true">
+    <Position X="175.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\CropsYouthNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.CropsYouthNPC2" Collapsed="true">
+    <Position X="180.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\CropsYouthNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.FishingNPC" Collapsed="true">
+    <Position X="184.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\FishingNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.FishingYouthNPC1" Collapsed="true">
+    <Position X="173.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\FishingYouthNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.FishingYouthNPC2" Collapsed="true">
+    <Position X="178" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\FishingYouthNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.FriendNPC" Collapsed="true">
+    <Position X="180.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\FriendNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.HunterNPC" Collapsed="true">
+    <Position X="184.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\HunterNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.HunterYouthNPC1" Collapsed="true">
+    <Position X="173.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\HunterYouthNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.HunterYouthNPC2" Collapsed="true">
+    <Position X="177.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\HunterYouthNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.LivestockNPC" Collapsed="true">
+    <Position X="182.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\LivestockNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.LivestockYouthNPC1" Collapsed="true">
+    <Position X="186.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\LivestockYouthNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.LivestockYouthNPC2" Collapsed="true">
+    <Position X="176" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\LivestockYouthNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.MayorNPC" Collapsed="true">
+    <Position X="180.5" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\MayorNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.TitaNPC" Collapsed="true">
+    <Position X="185" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\TitaNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.TitoNPC" Collapsed="true">
+    <Position X="173.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\TitoNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.TitusNPC" Collapsed="true">
+    <Position X="178" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\TitusNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.WarriorNPC1" Collapsed="true">
+    <Position X="182.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\WarriorNPC1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.WarriorNPC2" Collapsed="true">
+    <Position X="187" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\WarriorNPC2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.npc.npcs.WarriorNPC3" Collapsed="true">
+    <Position X="175.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\npc\npcs\WarriorNPC3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.clothes.ArmLeftCloth" Collapsed="true">
+    <Position X="150" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\clothes\ArmLeftCloth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.clothes.ArmRightCloth" Collapsed="true">
+    <Position X="154.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\clothes\ArmRightCloth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.clothes.LegLeftCloth" Collapsed="true">
+    <Position X="147.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\clothes\LegLeftCloth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.clothes.LegRightCloth" Collapsed="true">
+    <Position X="152.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\clothes\LegRightCloth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.clothes.TorsoCloth" Collapsed="true">
+    <Position X="156.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\clothes\TorsoCloth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.equipment.BodyEquipment" Collapsed="true">
+    <Position X="147.75" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\BodyEquipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.equipment.HeadEquipment" Collapsed="true">
+    <Position X="152.25" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\HeadEquipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.equipment.LegsEquipmentLeft" Collapsed="true">
+    <Position X="156.75" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\LegsEquipmentLeft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.equipment.LegsEquipmentRight" Collapsed="true">
+    <Position X="147.75" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\LegsEquipmentRight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.MainHand" Collapsed="true">
+    <Position X="150" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\MainHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.OffHand" Collapsed="true">
+    <Position X="152.25" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\equipment\OffHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.Appearance" Collapsed="true">
+    <Position X="209.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACJIAEhgSAIhAQIAACZAYQyASoihAACwABAoKAAgRA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\Appearance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.ArmLeft" Collapsed="true">
+    <Position X="154.5" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\ArmLeft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.ArmRight" Collapsed="true">
+    <Position X="156.75" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\ArmRight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.Beard" Collapsed="true">
+    <Position X="147.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\Beard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.Hair" Collapsed="true">
+    <Position X="152.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\Hair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.Head" Collapsed="true">
+    <Position X="156.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\Head.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.LegLeft" Collapsed="true">
+    <Position X="150" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\LegLeft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.LegRight" Collapsed="true">
+    <Position X="154.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\LegRight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.PlayerEquipVisual" Collapsed="true">
+    <Position X="152" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQACAAAAgAQECABAAAQAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\PlayerEquipVisual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.PlayerShadow" Collapsed="true">
+    <Position X="150" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\PlayerShadow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.visual.Torso" Collapsed="true">
+    <Position X="154.5" Y="23.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\visual\Torso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.EquipmentSlotController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="227" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\EquipmentSlotController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Assets.Scripts.player.Equipment.EquipmentSlots" Collapsed="true">
+    <Position X="205" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACIAAABAAAAAAEACQAAAAAAAhAAAAAIABAAA=</HashCode>
+      <FileName>Assets\Scripts\player\Equipment\EquipmentSlots.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.player.PlayerAudio" Collapsed="true">
+    <Position X="225.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\player\PlayerAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.quest.Quest" Collapsed="true">
+    <Position X="137.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACgIACAIAgAQAAAAAAAAQAAABAABEAAAgAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\quest\Quest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.362" />
+  </Class>
+  <Class Name="Assets.Scripts.quest.TehHouse" Collapsed="true">
+    <Position X="136.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\quest\TheHouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.quest.TitosTutorial" Collapsed="true">
+    <Position X="138.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\quest\TitosTutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.saving.GameLoader" Collapsed="true">
+    <Position X="216.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\saving\GameLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.saving.SavingHelper" Collapsed="true">
+    <Position X="223.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\saving\SavingHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.shops.constants.ShopConstants" Collapsed="true">
+    <Position X="227" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCAAABAAAAIgAQAAAAAIAwgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\shops\constants\ShopConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.shops.Shop" Collapsed="true">
+    <Position X="131" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABhIRAAAAAAEAEAAAAAAAAAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\shops\Shop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.skills.ArcherSkill" Collapsed="true">
+    <Position X="200.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\ArcherSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.ArtisanSkill" Collapsed="true">
+    <Position X="203" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\ArtisanSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.CookingSkill" Collapsed="true">
+    <Position X="205.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\CookingSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.FarmingSkill" Collapsed="true">
+    <Position X="200.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\FarmingSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.FishingSkill" Collapsed="true">
+    <Position X="200.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\FishingSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.HuntingSkill" Collapsed="true">
+    <Position X="203" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\HuntingSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.Skill" Collapsed="true">
+    <Position X="203.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAQAAAAAAAAAAQAAQJAAEAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Assets\Scripts\skills\Skill.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.skills.SkillRequirement" Collapsed="true">
+    <Position X="218.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAACABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\SkillRequirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.StateConstants" Collapsed="true">
+    <Position X="220" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAkAAAAgAAEIAAAFBQAAAgKAAAAAgAAgCQAQAAgCkAA=</HashCode>
+      <FileName>Assets\Scripts\skills\StateContants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.WarriorSkill" Collapsed="true">
+    <Position X="205.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\WarriorSkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.Artisan.CheeseShelf" Collapsed="true">
+    <Position X="170.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAEAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\Artisan\CheeseShelf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.Artisan.MilkBarrel" Collapsed="true">
+    <Position X="166.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAAAACAAAEAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\skills\Artisan\MilkBarrel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.farming.Crop" Collapsed="true">
+    <Position X="126.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAACAAAAAAQAAAAgAAAAAAARAAAAgAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\skills\farming\Crop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.skills.farming.FarmingCrop" Collapsed="true">
+    <Position X="155" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEASyIACGAAABAAEBACAAACEQAoACAAAABEAQAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\skills\farming\FarmingCrop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Assets.Scripts.skills.farming.FarmingTime" Collapsed="true">
+    <Position X="218.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Scripts\skills\farming\FarmingCrop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.stats.Stats" Collapsed="true">
+    <Position X="151.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAQAAEAAABAIQAAAIAAAAAAoAAEAE=</HashCode>
+      <FileName>Assets\Scripts\stats\Stats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.styles.clothingstyles.BodyStyle" Collapsed="true">
+    <Position X="128.75" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\styles\clothingstyles\BodyStyle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.styles.clothingstyles.LegStyle" Collapsed="true">
+    <Position X="133.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\styles\clothingstyles\LegStyle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.world.SimpleStateController" Collapsed="true">
+    <Position X="177.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\world\SimpleStateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Scripts.world.EnableTrigger" Collapsed="true">
+    <Position X="223.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\world\SimpleStateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Assets.Scripts.interactable.Iinteractable" Collapsed="true">
+    <Position X="218.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Iinteractable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Assets.Scripts.saving.SavingModule" Collapsed="true">
+    <Position X="220" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\saving\SavingModule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Combatstate" Collapsed="true">
+    <Position X="220" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\enums\Combatstate.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EquipmentType" Collapsed="true">
+    <Position X="221.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAACAAAAAAEAAQCAAAAAgAAAAAgEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\enums\EquipmentType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FaceDirection" Collapsed="true">
+    <Position X="223.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAICAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\enums\FaceDirection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InteractionType" Collapsed="true">
+    <Position X="227" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\enums\InteractionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SCENES" Collapsed="true">
+    <Position X="220" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAEAAAAAAAAEAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\enums\SCENES.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SKILLS" Collapsed="true">
+    <Position X="221.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAwgBAAAAAIAAAAAAAAAAAAAAAAAAgAACAA=</HashCode>
+      <FileName>Assets\Scripts\enums\SKILLS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UnityLayers" Collapsed="true">
+    <Position X="223.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAEAAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\enums\UnityLayers.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Assets.Scripts.interactable.Questing.QuestInteractableType" Collapsed="true">
+    <Position X="218.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Questing\QuestInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Assets.Scripts.interactable.Skilling.ArtisanInteractableType" Collapsed="true">
+    <Position X="218.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAABAAAAgAAAAAAAAgAAABAAAgHCAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\ArtisanInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Assets.Scripts.interactable.Skilling.FarmingInteractableType" Collapsed="true">
+    <Position X="225.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\interactable\Skilling\farming\FarmingInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

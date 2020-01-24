@@ -14,7 +14,7 @@ namespace Assets.Scripts.container
     /// <summary>
     /// Repersents a container which can hold items
     /// </summary>
-    public class Container : SavingModule
+    public class Container : Node, SavingModule
     {
         /// <summary>
         /// The items in the container

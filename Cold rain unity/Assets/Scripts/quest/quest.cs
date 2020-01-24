@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.Scripts.quest
 {
     [Serializable]
-    public abstract class Quest : SavingModule
+    public abstract class Quest : Node, SavingModule
     {
         public int Id { protected set; get; }
         public string Name { protected set; get; }
