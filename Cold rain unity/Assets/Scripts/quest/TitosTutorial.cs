@@ -20,6 +20,10 @@ namespace Assets.Scripts.quest
         public override void GiveRewards(Player player)
         {
             player.InventoryContainer.Add(384, 100);
+            player.InventoryContainer.Add(0, 1);
+            player.InventoryContainer.Add(1, 1);
+            player.InventoryContainer.Add(2, 1);
+            player.InventoryContainer.Add(3, 1);
             player.skills.GetSkill(SKILLS.ARTISAN).AddExp(150);
         }
     }
